@@ -3,647 +3,646 @@ description: na
 keywords: na
 title: Planning and Implementing Your Azure Rights Management Tenant Key
 search: na
-ms.date: 2015-10-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: f0d33c5f-a6a6-44a1-bdec-5be1bc8e1e14
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Planning and Implementing Your Azure Rights Management Tenant Key
-Use the information in this topic to help you plan for and manage your Rights Management service (RMS) tenant key for Azure RMS. For example, instead of Microsoft managing your tenant key (the default), you might want to manage your own tenant key to comply with specific regulations that apply to your organization.  Managing your own tenant key is also referred to as bring your own key, or BYOK.
+# 規劃及實作 Azure Rights Management 租用戶金鑰
+請使用本主題的資訊來協助您規劃和管理 Azure RMS 的 Rights Management 服務 (RMS) 租用戶金鑰。 例如，不是 Microsoft 管理租用戶金鑰 (預設值)，而是您可能想要管理您自己的租用戶金鑰，以遵循適用於貴組織的特定法規。  管理您自己的租用戶金鑰也稱為整合您自己的金鑰或 BYOK。
 
 > [!NOTE]
-> The RMS tenant key is also known as the Server Licensor Certificate (SLC) key. Azure RMS maintains one or more keys for each organization that subscribes to Azure RMS. Whenever a key is used for RMS within an organization (such as user keys, computer keys, document encryption keys), they cryptographically chain to your RMS tenant key.
+> RMS 租用戶金鑰也稱為「伺服器授權人憑證 (SLC)」金鑰。 Azure RMS 為訂閱 Azure RMS 的每個組織維護一或多個金鑰。 只要組織內的 RMS 使用金鑰時 (例如使用者金鑰、電腦金鑰、文件加密金鑰)，便會以加密編譯的方式鏈結至您的 RMS 租用戶金鑰。
 
-**At a glance:** Use the following table as a quick guide to your recommended tenant key topology. Then, use the additional sections for more information.
+**概覽：**使用下表做為您建議的租用戶金鑰拓撲的快速指南。 然後，如需詳細資訊，請使用其他各節。
 
-If you deploy Azure RMS by using a tenant key that is managed by Microsoft, you can change to BYOK later. However, you cannot currently change your Azure RMS tenant key from BYOK to managed by Microsoft.
+如果您使用 Microsoft 管理的租用戶金鑰部署 Azure RMS，則稍後可以變更為 BYOK。 不過，您目前無法將 Azure RMS 租用戶金鑰從 BYOK 變更為 Microsoft 管理的租用戶金鑰。
 
-|Business requirement|Recommended tenant key topology|
-|------------------------|-----------------------------------|
-|Deploy Azure RMS quickly and without requiring special hardware|Managed by Microsoft|
-|Need full IRM functionality in Exchange Online with Azure RMS|Managed by Microsoft|
-|Your keys are created by you and protected in a hardware security module (HSM)|BYOK<br /><br />Currently, this configuration will result in reduced IRM functionality in Exchange Online. For more information, see the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section.|
-Use the following sections to help you choose which tenant key topology to use, understand the tenant key lifecycle, how to implement bring your own key (BYOK), and what steps to take next:
+|商務需求|建議的租用戶金鑰拓撲|
+|--------|--------------|
+|快速部署 Azure RMS 且不需要特殊硬體|由 Microsoft 管理|
+|在 Exchange Online (含 Azure RMS) 中需要完整的 IRM 功能|由 Microsoft 管理|
+|您的金鑰是由您建立，並以硬體安全性模組 (HSM) 加以保護|BYOK<br /><br />目前，此組態將在 Exchange Online 中導致精簡的 IRM 功能。 如需詳細資訊，請參閱＜[BYOK 定價和限制](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing)＞一節。|
+請使用下列各節來協助您選擇要使用的租用戶金鑰拓撲、瞭解租用戶金鑰生命週期、如何實作「整合您自己的金鑰 (BYOK)」，及接下來應採取的步驟：
 
--   [Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ChooseTenantKey)
+-   [選擇您的租用戶金鑰拓撲：由 Microsoft 管理 (預設) 或由您管理 (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ChooseTenantKey)
 
--   [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing)
+-   [BYOK 定價和限制](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing)
 
--   [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK)
+-   [實作整合您自己的金鑰 (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK)
 
--   [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps)
+-   [後續步驟](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps)
 
-## <a name="BKMK_ChooseTenantKey"></a>Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)
-Decide which tenant key topology is best for your organization. By default, Azure RMS generates your tenant key and manages most aspects of the tenant key lifecycle. This is the simplest option with the lowest administrative overheads. In most cases, you do not even need to know that you have a tenant key. You just sign up for Azure RMS and the rest of the key management process is handled by Microsoft.
+## <a name="BKMK_ChooseTenantKey"></a>選擇您的租用戶金鑰拓撲：由 Microsoft 管理 (預設) 或由您管理 (BYOK)
+決定最適合您組織的租用戶金鑰拓撲。 依預設，Azure RMS 會產生您的租用戶金鑰，並管理租用戶金鑰生命週期的大多數作業。 這是系統管理負擔最小的最簡單選項。 在大多數情況下，您甚至無需知道您擁有租用戶金鑰。 您只要申請 Azure RMS，Microsoft 會為您處理金鑰管理程序的剩餘部分。
 
-Alternatively, you might want complete control over your tenant key, which involves creating your tenant key and keeping the master copy on your premises. This scenario is often referred to as bring your own key (BYOK). With this option, the following happens:
+此外，您可能想要完整控制您的租用戶金鑰，包含建立您的租用戶金鑰，並在您的部署中保留主要複本。 這種案例通常稱為「整合您自己的金鑰 (BYOK)」。 使用此選項時會發生下列狀況：
 
-1.  You generate your tenant key on your premises, in line with your IT policies.
+1.  您會依據您的 IT 原則在部署上產生租用戶金鑰。
 
-2.  You securely transfer the tenant key from a Hardware Security Module (HSM) in your possession to HSMs that are owned and managed by Microsoft. Throughout this process, your tenant key never leaves the hardware protection boundary.
+2.  您可從擁有的硬體安全模組 (HSM) 中，將租用戶金鑰安全地傳輸至 Microsoft 擁有及管理的 HSM。 在整個程序中，您的租用戶金鑰絕對不會離開硬體防護範圍。
 
-3.  When you transfer your tenant key to Microsoft, it stays protected by Thales HSMs. Microsoft has worked with Thales to ensure that your tenant key cannot be extracted from Microsoft’s HSMs.
+3.  當您將租用戶金鑰傳輸到 Microsoft 時，Thales HSM 會持續保護該金鑰。 Microsoft 與 Thales 合作，確保您的租用戶金鑰無法從 Microsoft 的 HSM 擷取。
 
-Although it’s optional, you will also probably want to use the near real-time usage logs from Azure RMS to see exactly how and when your tenant key is being used.
+雖然是選用項，您也可能想要使用來自 Azure RMS 幾近即時的使用記錄，查看您的租用戶金鑰目前的實際使用方式與時間。
 
 > [!NOTE]
-> As an additional protection measure, Azure RMS uses separate security worlds for its data centers in North America, EMEA (Europe, Middle East and Africa), and Asia. When you manage your own tenant key, it is tied to the security world of the region in which your RMS tenant is registered. For example, a tenant key from a European customer cannot be used in data centers in North America or Asia.
+> 作為其他防護措施，Azure RMS 對其在北美、EMEA (歐洲、中東和非洲) 和亞洲的資料中心使用不同的安全園地。 當您管理自己的租用戶金鑰時，它會連結到您 RMS 租用戶所登錄地區的安全園地。 例如，歐洲客戶的租用戶金鑰無法在北美或亞洲的資料中心使用。
 
-## <a name="BKMK_OverviewLifecycle"></a>The tenant key lifecycle
-If you decide that Microsoft should manage your tenant key, Microsoft handles most of the key lifecycle operations. However, if you decide to manage your tenant key, you are responsible for many of the key lifecycle operations and some additional procedures.
+## <a name="BKMK_OverviewLifecycle"></a>租用戶金鑰生命週期
+若您決定 Microsoft 應管理您的租用戶金鑰，Microsoft 會處理大多數金鑰生命週期作業。 不過，若您決定管理您的租用戶金鑰，則您必須負責許多金鑰生命週期作業和其他部分程序。
 
-The following diagrams show and compares these two options. The first diagram shows how little administrator overheads there are for you in the default configuration when Microsoft manages the tenant key.
+下列圖表顯示並比較這兩個選項。 第一個圖表顯示當 Microsoft 管理租用戶金鑰時，您在預設設定下承受的系統管理員負擔是如此的低。
 
 ![](../Image/RMS_BYOK_cloud.png)
 
-The second diagram shows the additional steps required when you manage your own tenant key.
+第二張圖顯示當您管理自己的租用戶金鑰時所需執行的其他步驟。
 
 ![](../Image/RMS_BYOK_onprem.png)
 
-If you decide to let Microsoft manage your tenant key, no further action is required for you to generate the key and you can skip the following sections and go straight to [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps).
+若您決定讓 Microsoft 管理您的租用戶金鑰，則您在產生金鑰時無需採取進一步動作，並可略過下列各節而直接前往[後續步驟](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps)。
 
-If you decide to manage your tenant key yourself, read the following sections for more information.
+若您決定自行管理租用戶金鑰，請閱讀下列各節以取得詳細資訊。
 
-### More information about Thales HSMs and Microsoft additions
-Azure RMS uses Thales HSMs to protect your keys.
+### Thales HSM 和 Microsoft 新增功能的相關資訊
+Azure RMS 使用 Thales HSM 來保護您的金鑰。
 
-Thales e-Security is a leading global provider of data encryption and cyber security solutions to the financial services, high technology, manufacturing, government, and technology sectors. With a 40-year track record of protecting corporate and government information, Thales solutions are used by four of the five largest energy and aerospace companies, 22 NATO countries, and secure more than 80 per cent of worldwide payment transactions.
+Thales e-Security 是全球資料加密和網域安全解決方案領導廠商，為金融服務、高科技、製造業、政府及科技業提供服務。 藉助 40 年保護公司和政府資訊的追蹤記錄，全球最大的五家能源和航太公司有四家公司、22 個 NATO 國家採用了 Thales 解決方案，這些解決方案保護全球超過 80% 的付款交易。
 
-Microsoft has collaborated with Thales to enhance the state of art for HSMs. These enhancements enable you to get the typical benefits of hosted services without relinquishing control over your keys. Specifically, these enhancements let Microsoft manage the HSMs so that you do not have to. As a cloud service, Azure RMS scales up at short notice to meet your organization’s usage spikes. At the same time, your key is protected inside Microsoft’s HSMs: You retain control over the key lifecycle because you generate the key and transfer it to Microsoft’s HSMs.
+Microsoft 與 Thales 合作增強 HSM 的最新功能。 這些增強功能可讓您獲得一般託管服務的好處，而且不必放棄您對金鑰的控制權。 尤其是這些增強功能可讓 Microsoft 為您管理 HSM。 作為雲端服務，Azure RMS 會依據您組織的用量尖峰需求短暫上調。 同時會在 Microsoft 的 HSM 內部保護您的金鑰：您仍可保留金鑰生命週期的控制權，因為您會產生金鑰並將金鑰傳輸給 Microsoft 的 HSM。
 
-For more information, see [Thales HSMs and Azure RMS](http://www.thales-esecurity.com/msrms/cloud) on the Thales web site.
+如需詳細資訊，請參閱 Thales 網站上的＜[Thales HSM 和 Azure RMS](http://www.thales-esecurity.com/msrms/cloud)＞。
 
-## <a name="BKMK_Pricing"></a>BYOK pricing and restrictions
-Organization that have an IT-managed Azure subscription can use BYOK and log its usage at no extra charge. Organizations that use RMS for individuals cannot use BYOK and logging because they do not have a tenant administrator to configure these features.
+## <a name="BKMK_Pricing"></a>BYOK 定價和限制
+具 IT 管理之 Azure 訂閱的組織可免費使用 BYOK 並記錄其使用情況。 使用個人版 RMS 的組織無法使用 BYOK 和記錄，因為它們沒有租用戶系統管理員來設定這些功能。
 
 > [!NOTE]
-> For more information about RMS for individuals, see [RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md).
+> 如需個人版 RMS 的詳細資訊，請參閱＜[個人版 RMS 和 Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)＞。
 
 ![](../Image/RMS_BYOK_noExchange.png)
 
-BYOK and logging work seamlessly with every application that integrates with Azure RMS. This includes cloud services such as SharePoint Online, on-premises servers that run Exchange and SharePoint that work with Azure RMS by using the RMS connector, and client applications such as Office 2013. You will get key usage logs regardless of which application makes requests of Azure RMS.
+BYOK 和記錄與整合 Azure RMS 的每個應用程式皆能完美合作。 這包括 SharePoint Online 之類的雲端服務、使用 RMS 連接器來執行使用 Azure RMS 的 Exchange 和 SharePoint 的內部部署伺服器，以及 Office 2013 等用戶端應用程式。 無論哪個應用程式要求 Azure RMS，您都會得到金鑰使用記錄。
 
-There is one exception: Currently, **Azure RMS BYOK is not compatible with Exchange Online**.  If you want to use Exchange Online, we recommend that you deploy Azure RMS in the default key management mode now, where Microsoft generates and manages your key. You have the option to move to BYOK later, for example, when Exchange Online does support Azure RMS BYOK. However, if you cannot wait, another option is to deploy Azure RMS with BYOK now, with reduced RMS functionality for Exchange Online (unprotected emails and unprotected attachments remain fully functional):
+但有一個例外：目前，**Azure RMS BYOK 與 Exchange Online 不相容**。  如果您想要使用 Exchange Online，我們建議您立即在預設金鑰管理模式中設定 Azure RMS，Microsoft 會在此種模式下產生並管理您的金鑰。 稍後當 Exchange Online 真的支援 Azure RMS BYOK 時，您就可以選擇移至 BYOK。 不過，如果您無法等待，另一個選項為立即部署 Azure RMS 與 BYOK 搭配，如此 Exchange online 將具有精簡的 RMS 功能 (未受保護的電子郵件及未受保護的附件仍然可以完全運作)。
 
--   Protected emails or protected attachments in Outlook Web Access cannot be displayed.
+-   無法顯示 Outlook Web Access 中受保護的電子郵件或受保護的附件。
 
--   Protected emails on mobile devices that use Exchange ActiveSync IRM cannot be displayed.
+-   無法顯示行動裝置上使用 Exchange ActiveSync IRM 的受保護電子郵件。
 
--   Transport decryption (for example, to scan for malware) and journal  decryption is not possible, so protected emails and protected attachments will be skipped.
+-   傳輸解密 (例如掃描惡意程式碼) 和日誌解密不可行，因此將略過受保護的電子郵件和受保護的附件。
 
--   Transport protection rules and data loss prevention (DLP) that enforce IRM policies is not possible, so RMS protection cannot be applied by using these methods.
+-   強制執行 IRM 原則的傳輸保護規則和資料外洩防護 (DLP) 不可行，因此無法使用這些方法套用 RMS 保護。
 
--   Server-based search for protected emails, so protected emails will be skipped.
+-   以伺服器為基礎搜尋受保護的電子郵件，因此將略過受保護的電子郵件。
 
-When you use Azure RMS BYOK with reduced RMS functionality for Exchange Online, RMS will work with email clients in Outlook on Windows and Mac, and on other email clients that don't use Exchange ActiveSync IRM.
+當您使用 Azure RMS BYOK 與 Exchange online 的精簡 RMS 功能搭配時，RMS 將在 Windows 和 Mac 上使用 Outlook 中的電子郵件用戶端，以及其他未使用 Exchange ActiveSync IRM 的電子郵件用戶端。
 
-If you are migrating to Azure RMS from AD RMS, you might have imported your key as a trusted publishing domain (TPD) to Exchange Online (also called BYOK in Exchange terminology, which is separate from Azure RMS BYOK). In this scenario, you must remove the TPD from Exchange Online to avoid conflicting templates and policies. For more information, see [Remove-RMSTrustedPublishingDomain](https://technet.microsoft.com/library/jj200720%28v=exchg.150%29.aspx) from the Exchange Online cmdlets library.
+如果您是從 AD RMS 移轉至 Azure RMS，您可能已將做為信任的發佈網域 (TPD) 的金鑰匯入至 Exchange Online (在 Exchange 術語中也稱為 BYOK，其是從 Azure RMS BYOK 分開的)。 在此案例中，您必須從 Exchange Online 中移除 TPD，才能避免衝突的範本和原則。 如需詳細資訊，請從 Exchange Online Cmdlet 文件庫中參閱[移除 RMSTrustedPublishingDomain](https://technet.microsoft.com/library/jj200720%28v=exchg.150%29.aspx)。
 
-Sometimes, the Azure RMS BYOK  exception for Exchange Online is not a problem in practice. For example, organizations that need BYOK and logging run their data applications (Exchange, SharePoint, Office) on-premises, and use Azure RMS for functionality that is not easily available with on-premises AD RMS (for example, collaboration with other companies and access from mobile clients). Both BYOK and logging work well in this scenario and allow the organization to have full control over their Azure RMS subscription.
+有時候，Exchange Online 的 Azure RMS BYOK 實際上不是問題。 例如，需要 BYOK 和記錄的組織會在內部部署上執行其資料應用程式 (Exchange、SharePoint、Office)，並對無法使用內部部署 AD RMS 輕易取得的功能使用 Azure RMS (例如，與其他公司協同作業及從行動用戶端存取)。 BYOK 和記錄在此情況中皆運作正常，且可讓組織完全控制其 Azure RMS 訂閱。
 
-## <a name="BKMK_ImplementBYOK"></a>Implementing bring your own key (BYOK)
-Use the information and procedures in this section if you have decided to generate and manage your tenant key; the bring your own key (BYOK) scenario:
+## <a name="BKMK_ImplementBYOK"></a>實作整合您自己的金鑰 (BYOK)
+若您已決定產生並管理您的租用戶金鑰，請使用本節的資訊和程序；整合您自己的金鑰 (BYOK) 案例：
 
--   [Prerequisites for BYOK](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Preqs)
+-   [BYOK 的必要條件](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Preqs)
 
--   [Generate and transfer your tenant key – over the Internet](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOK_Internet)
+-   [產生並傳輸您的租用戶金鑰 – 透過網際網路](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOK_Internet)
 
--   [Generate and transfer your tenant key – in person](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOK_InPerson)
+-   [產生和傳輸您的租用戶金鑰 – 親自轉交](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOK_InPerson)
 
 > [!IMPORTANT]
-> If you have already started to use [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (the service is activated) and you have users who run Office 2010, contact Microsoft Customer Support Services (CSS) before you run these procedures. Depending on your scenario and requirements, you can still use BYOK but with some limitations or additional steps.
+> 若已開始使用 [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (服務已啟動)，且具執行 Office 2010 的使用者，請先連絡 Microsoft 客戶支援服務 (CSS)，再執行這些程序。 依據您的案例和需求，您仍可使用 BYOK，但會有一些限制或其他步驟。
 > 
-> Also contact CSS if your organization has specific policies for handling keys.
+> 如果您的組織具有處理金鑰的特殊原則，亦請連絡 CSS。
 
-### <a name="BKMK_Preqs"></a>Prerequisites for BYOK
-See the following table for a list of prerequisites for bring your own key (BYOK).
+### <a name="BKMK_Preqs"></a>BYOK 的必要條件
+請參閱下表以取得「整合您自己的金鑰 (BYOK)」的必要條件清單。
 
-|Requirement|More information|
-|---------------|--------------------|
-|A subscription that supports Azure RMS.|For more information about the available subscriptions, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.|
-|You do not use RMS for individuals or Exchange Online. Or, if you use Exchange Online, you understand and accept the limitations of using BYOK with this configuration.|For more information about the restrictions and current limitations for BYOK, see the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section in this topic.<br /><br />**Important**: Currently, BYOK is not compatible with Exchange Online.|
-|Thales HSM, smartcards, and support software.<br /><br />**Note**: If you are migrating from AD RMS to Azure RMS by using software key to hardware key, you must have a minimum version of 11.62 for the Thales drivers.|You must have access to a Thales Hardware Security Module and basic operational knowledge of Thales HSMs. See [Thales Hardware Security Module](http://www.thales-esecurity.com/msrms/buy) for the list of compatible models, or to purchase an HSM if you do not have one.|
-|If you want to transfer your tenant key over the Internet rather than physically be present in Redmond, USA. there are 3 requirements:<br /><br />Requirement 1: An offline x64 workstation with a minimum Windows operation system of Windows 7 and Thales nShield software that is at least version 11.62.<br /><br />If this workstation runs Windows 7, you must [install Microsoft .NET Framework 4.5](http://go.microsoft.com/fwlink/?LinkId=225702).<br /><br />Requirement 2: A workstation that is connected to the Internet and has a minimum Windows operation system of Windows 7.<br /><br />Requirement 2: A USB drive or other portable storage device that has at least 16 MB free space.|These prerequisites are not required if you travel to Redmond and transfer your tenant key in person.<br /><br />For security reasons, we recommend that the first workstation is not connected to a network. However, this is not programmatically enforced.<br /><br />Note: In the instructions that follow, this first workstation is referred to as the **disconnected workstation**.<br /><br />In addition, if your tenant key is for a production network, we recommend that you use a second, separate workstation to download the toolset and upload the tenant key. But for testing purposes, you can use the same workstation as the first one.<br /><br />Note: In the instructions that follow, this second workstation is referred to as the **Internet-connected workstation**.|
-|Optional: Azure subscription.|If you want to log your tenant key usage (and Rights Management usage), you must have a subscription to Azure and sufficient storage on Azure to store your logs.|
-The procedures to generate and use your own tenant key depend on whether you want to do this over the Internet or in person:
+|需求|詳細資訊|
+|------|--------|
+|支援 Azure RMS 的訂閱|如需可用訂閱的詳細資訊，請參閱＜[Azure Rights Management 的需求](../Topic/Requirements_for_Azure_Rights_Management.md)＞主題中的＜[支援 Azure RMS 的雲端訂閱](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions)＞一節。|
+|您未使用個人版 RMS 或 Exchange Online。 或者，如果使用 Exchange Online，您了解並接受使用 BYOK 與此組態搭配的限制。|如需 BYOK 限制和目前限制的詳細資訊，請參閱本主題中的＜[BYOK 定價和限制](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing)一節。 **Important:** 目前，BYOK 與 Exchange Online 不相容。|
+|Thales HSM、智慧卡和支援軟體<br /><br />如果您使用軟體金鑰對硬體金鑰從 AD RMS 移轉到 Azure RMS，則 Thales 驅動程式的版本至少必須是 11.62 版。|您必須擁有 Thales 硬體安全模組的存取權並具備 Thales HSM 的基礎操作知識。 如需相容模型的清單，或者如果您沒有 HSM 而想要購買，請參閱＜[Thales 硬體安全性模組](http://www.thales-esecurity.com/msrms/buy)＞。|
+|若要透過網際網路傳輸您的租用戶金鑰，而非實體遞交到美國的雷德蒙德：<br /><br />1.  一部離線 x64 工作站，至少安裝 Windows 7 的 Windows 作業系統，及至少為 11.62 版的 Thales nShield 軟體。<br />    如果此工作站執行 Windows 7，您必須[安裝 Microsoft .NET Framework 4.5](http://go.microsoft.com/fwlink/?LinkId=225702)。<br />2.  連線至網際網路的工作站，至少有 Windows 7 的 Windows 作業系統。<br />3.  至少有 16 MB 可用空間的 USB 磁碟機或其他可攜式儲存裝置。|如果您去雷德蒙德並親自轉交您的租用戶金鑰，則無需符合這些必要條件。<br /><br />基於安全考量，我們建議您不要將第一個工作站連線至網路。 但無法透過設計程式完成這項工作。 **Note:** 在接下來的指示中，此工作站稱為中斷連線的工作站。<br />此外，若您的租用戶金鑰適用於生產網路，則我們建議您使用第二部個別工作站來下載工具組並上傳租用戶金鑰。 但為了測試用途，您可以使用第一部工作站。 **Note:** 在接下來的指示中，此第二部工作站稱為「連線網際網路的工作站」。|
+|選用：Azure 訂閱|若要記錄租用戶金鑰使用情況 (和 Rights Management 使用情況)，您必須訂閱 Azure，並在 Azure 上擁有儲存記錄的足夠空間。|
+您自己之租用戶金鑰的產生和使用程序，視您要透過網際網路還是親自交付而定：
 
--   **Over the Internet:** This requires some extra configuration steps, such as downloading and using a toolset and Windows PowerShell cmdlets. However, you do not have to physically be in a Microsoft facility to transfer your tenant key. Security is maintained by the following methods:
+-   **透過網際網路：**這需要執行一些額外的設定步驟，例如下載及使用工具組和 Windows PowerShell Cmdlet。 不過，您不必親自光臨 Microsoft 機構就能傳輸您的租用戶金鑰。 可藉由下列方法維護安全性：
 
-    -   You generate the tenant key from an offline workstation, which reduces the attack surface.
+    -   您可從離線工作站產生租用戶金鑰，從而縮小攻擊面。
 
-    -   The tenant key is encrypted with a Key Exchange Key (KEK), which stays encrypted until it is transferred to the Azure RMS HSMs. Only the encrypted version of your tenant key leaves the original workstation.
+    -   租用戶金鑰是使用「金鑰互換 (KEK)」加密，將金鑰傳輸至 Azure RMS HSM 之前會持續加密該金鑰。 只有租用戶金鑰的加密版本會離開原始工作站。
 
-    -   A tool sets properties on your tenant key that binds your tenant key to the Azure RMS security world. So after the Azure RMS HSMs receive and decrypt your tenant key, only these HSMs can use it. Your tenant key cannot be exported. This binding is enforced by the Thales HSMs.
+    -   工具會在您的租用戶金鑰上設定屬性，以便將您的租用戶金鑰繫結至 Azure RMS 安全園地。 因此在 Azure RMS HSM 接收和解密租用戶金鑰後，只有這些 HSM 可使用該金鑰。 您的租用戶金鑰無法匯出。 此繫結是由 Thales HSM 強制執行。
 
-    -   The Key Exchange Key (KEK) that is used to encrypt your tenant key is generated inside the Azure RMS HSMs and is not exportable. The HSMs enforce that there can be no clear version of the KEK outside the HSMs. In addition, the toolset includes attestation from Thales that the KEK is not exportable and was generated inside a genuine HSM that was manufactured by Thales.
+    -   用來加密租用戶金鑰的「金鑰互換 (KEK)」是在 Azure RMS HSM 內部產生，而且無法匯出。 在該處強制執行該動作的 HSM 在 HSM 外部可能沒有全新的 KEK 版本。 此外，工具組包含了 Thales 的認證，證明 KEK 無法匯出，且是在 Thales 製造的正版 HSM 內部產生。
 
-    -   The toolset includes attestation from Thales that the Azure RMS security world was also generated on a genuine HSM manufactured by Thales. This proves to you that Microsoft is using genuine hardware.
+    -   工具組包含了 Thales 的認證，證明 Azure RMS 安全園地也是在 Thales 製造的正版 HSM 上產生。 這向您證明 Microsoft 正在使用正版硬體。
 
-    -   Microsoft uses separate KEKs as well as separate Security Worlds in each geographical region, which ensures that your tenant key can be used only in data centers in the region in which you encrypted it. For example, a tenant key from a European customer cannot be used in data centers in North American or Asia.
+    -   Microsoft 在每個地理區使用不同的 KEK 與安全園地，如此可確保您的租用戶金鑰只能在加密該金鑰的地區資料中心內使用。 例如，歐洲客戶的租用戶金鑰無法在北美或亞洲的資料中心使用。
 
     > [!NOTE]
-    > Your tenant key can safely move through untrusted computers and networks because it is encrypted and secured with access control level permissions, which makes it usable only within your HSMs and Microsoft’s HSMs for Azure RMS. You can use the scripts that are provided in the toolset to verify the security measures and read more information about how this works from Thales: [Hardware Key management in the RMS Cloud](https://www.thales-esecurity.com/knowledge-base/white-papers/hardware-key-management-in-the-rms-cloud).
+    > 您的租用戶金鑰可在不受信任的電腦和網路之間安全地移動，因為金鑰經過加密，並以存取控制層級權限保護，確保僅可在您 HSM 及 Microsoft 的 Azure RMS HSM 中使用。 您可使用工具組提供的指令碼來確認安全性措施，並從 Thales 閱讀這項工作的詳細資訊：[RMS 雲端中的硬體金鑰管理](https://www.thales-esecurity.com/knowledge-base/white-papers/hardware-key-management-in-the-rms-cloud)。
 
--   **In person:** This requires that you contact Microsoft Customer Support Services (CSS) to schedule a key transfer appointment for Azure RMS. You must travel to a Microsoft office in Redmond, Washington, United States of America to transfer your tenant key to the Azure RMS security world.
+-   **親自轉交：**您需要連絡 Microsoft 客戶支援服務 (CSS) 來安排 Azure RMS 金鑰轉交事宜。 您必須到美國華盛頓州雷德蒙德的 Microsoft 辦事處，將您的租用戶金鑰轉交給 Azure RMS 安全園地。
 
-### <a name="BKMK_BYOK_Internet"></a>Generate and transfer your tenant key – over the Internet
-Use the following procedures if you want to transfer your tenant key over the Internet rather than travel to a Microsoft facility to transfer the tenant key in person:
+### <a name="BKMK_BYOK_Internet"></a>產生並傳輸您的租用戶金鑰 – 透過網際網路
+若要透過網際網路傳輸您的租用戶金鑰，而非至 Microsoft 機構親自轉交租用戶金鑰，請使用下列程序：
 
--   [Prepare your Internet-connected workstation](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareWorkstation)
+-   [準備連線網際網路的工作站](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareWorkstation)
 
--   [Prepare your disconnected workstation](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_DisconnectedPrepareWorkstation)
+-   [準備中斷連線的工作站](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_DisconnectedPrepareWorkstation)
 
--   [Generate your tenant key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate)
+-   [產生您的租用戶金鑰](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate)
 
--   [Prepare your tenant key for transfer](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer)
+-   [準備您的租用戶金鑰進行傳輸](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer)
 
--   [Transfer your tenant key to Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer)
+-   [將租用戶金鑰傳輸至 Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer)
 
-#### <a name="BKMK_InternetPrepareWorkstation"></a>Prepare your Internet-connected workstation
-To prepare your workstation that is connected to the Internet, follow these 3 steps:
+#### <a name="BKMK_InternetPrepareWorkstation"></a>準備連線網際網路的工作站
+若要準備連線至網際網路的工作站，請執行以下 3 個步驟：
 
--   [Step 1: Install Windows PowerShell for Azure Rights Management](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation1)
+-   [步驟 1：安裝 Azure Rights Management 的 Windows PowerShell](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation1)
 
--   [Step 2: Get your Azure Active Directory tenant ID](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation2)
+-   [步驟 2：取得您的 Azure Active Directory 租用戶識別碼](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation2)
 
--   [Step 3: Download the BYOK toolset](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation3)
+-   [步驟 3：下載 BYOK 工具組](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation3)
 
-##### <a name="BKMK_PrepareInternetConnectedWorkstation1"></a>Step 1: Install Windows PowerShell for Azure Rights Management
-From the Internet-connected workstation, download and install the Windows PowerShell module for Azure Rights Management.
+##### <a name="BKMK_PrepareInternetConnectedWorkstation1"></a>步驟 1：安裝 Azure Rights Management 的 Windows PowerShell
+從連線網際網路的工作站，下載並安裝 Azure Rights Management 的 Windows PowerShell 模組。
 
 > [!NOTE]
-> If you have previously downloaded this Windows PowerShell module, run the following command to check that your version number is at least 2.1.0.0: `(Get-Module aadrm -ListAvailable).Version`
+> 如果您先前已下載此 Windows PowerShell 模組，請執行下列命令來檢查版本號碼至少為 2.1.0.0：`(Get-Module aadrm -ListAvailable).Version`
 
-For installation instructions, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+如需安裝指示，請參閱[針對 Azure Rights Management 安裝 Windows PowerShell](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md)。
 
-##### <a name="BKMK_PrepareInternetConnectedWorkstation2"></a>Step 2: Get your Azure Active Directory tenant ID
-Start Windows PowerShell with the **Run as administrator** option, and then run the following commands:
+##### <a name="BKMK_PrepareInternetConnectedWorkstation2"></a>步驟 2：取得您的 Azure Active Directory 租用戶識別碼
+使用 [**以系統管理員身分執行**] 選項啟動 Windows PowerShell，然後執行下列命令：
 
--   Use the [Connect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629415.aspx) cmdlet to connect to the Azure RMS service:
+-   使用 [Connect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629415.aspx) Cmdlet，以連接至 Azure RMS 服務：
 
     ```
     Connect-AadrmService
     ```
-    When prompted, enter your [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] tenant administrator credentials (typically, you will use an account that is a global administrator for Azure Active Directory or Office 365).
+    出現提示時，輸入您的 [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] 租用戶系統管理員認證 (通常需要使用 Azure Active Directory 或 Office 365 的全域系統管理員帳戶)。
 
--   Use the [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdlet to display the configuration of your tenant:
+-   使用 [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) Cmdlet 以顯示您的租用戶的組態：
 
     ```
     Get-AadrmConfiguration
     ```
-    From the output, save the GUID from the first line (BPOSId). This is your Azure Active Directory tenant ID, which you will need later when you prepare your tenant key for upload.
+    從輸出中，儲存第一行的 GUID (BPOSId)。 這是您的 Azure Active Directory 租用戶識別碼，您於稍後準備上傳租用戶金鑰時會用到。
 
--   Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service until you are ready to upload your key:
+-   使用 [Disconnect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) Cmdlet 來中斷 Azure RMS 服務的連線，直到您準備好上傳您的金鑰為止：
 
     ```
     Disconnect-AadrmService
     ```
 
-Do not close the Windows PowerShell window.
+請勿關閉 Windows PowerShell 視窗。
 
-##### <a name="BKMK_PrepareInternetConnectedWorkstation3"></a>Step 3: Download the BYOK toolset
-Go to the Microsoft Download Center and [download the BYOK toolset](http://go.microsoft.com/fwlink/?LinkId=335781) for your region:
+##### <a name="BKMK_PrepareInternetConnectedWorkstation3"></a>步驟 3：下載 BYOK 工具組
+移至 Microsoft 下載中心並且針對您的地區[下載 BYOK 工具組](http://go.microsoft.com/fwlink/?LinkId=335781)：
 
-|Region|Package name|
-|----------|----------------|
-|North America|AzureRMS-BYOK-tools-UnitedStates.zip|
-|Europe|AzureRMS-BYOK-tools-Europe.zip|
-|Asia|AzureRMS-BYOK-tools-AsiaPacific.zip|
-The toolset includes the following :
+|地區|封裝名稱|
+|------|--------|
+|北美|AzureRMS-BYOK-tools-UnitedStates.zip|
+|歐洲|AzureRMS-BYOK-tools-Europe.zip|
+|亞洲|AzureRMS-BYOK-tools-AsiaPacific.zip|
+工具組包含下列組件：
 
--   A Key Exchange Key (KEK) package that has a name beginning with **BYOK-KEK-pkg-**.
+-   名稱開頭為 **BYOK-KEK-pkg-** 的金鑰互換 (KEK) 封裝。
 
--   A Security World package that has a name beginning with **BYOK-SecurityWorld-pkg-**.
+-   名稱開頭為 **BYOK-SecurityWorld-pkg-** 的安全園地封裝。
 
--   A python script named **verifykeypackage.py**.
+-   名為 **verifykeypackage.py** 的 Python 指令碼。
 
--   A command-line executable file named **KeyTransferRemote.exe**, a metadata file named **KeyTransferRemote.exe.config**, and associated DLLs.
+-   名為 **KeyTransferRemote.exe** 的命令列可執行檔、名為 **KeyTransferRemote.exe.config** 的中繼資料檔案，以及相關聯的 DLL。
 
--   A Visual C++ Redistributable Package, named **vcredist_x64.exe**.
+-   名為 **vcredist_x64.exe** 的 Visual C++ 可轉散發套件。
 
-Copy the package to a USB drive or other portable storage.
+將封裝複製到 USB 磁碟機或其他可攜式儲存裝置。
 
-#### <a name="BKMK_DisconnectedPrepareWorkstation"></a>Prepare your disconnected workstation
-To prepare your workstation that is not connected to a network (either the Internet or your internal network), follow these 2 steps:
+#### <a name="BKMK_DisconnectedPrepareWorkstation"></a>準備中斷連線的工作站
+若要準備未連線至網路 (網際網路或您的內部網路) 的工作站，請執行以下 2 個步驟：
 
--   [Step 1: Prepare the disconnected workstation with Thales HSM](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareDisconnectedWorkstation1)
+-   [步驟 1：使用 Thales HSM 準備中斷連線的工作站](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareDisconnectedWorkstation1)
 
--   [Step 2: Install the BYOK toolset on the disconnected workstation](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareDisconnectedWorkstation2)
+-   [步驟 2：在中斷連線的工作站上安裝 BYOK 工具組](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareDisconnectedWorkstation2)
 
-##### <a name="BKMK_PrepareDisconnectedWorkstation1"></a>Step 1: Prepare the disconnected workstation with Thales HSM
-On the disconnected workstation, install the nCipher (Thales) support software on a Windows computer, and then attach a Thales HSM to that computer.
+##### <a name="BKMK_PrepareDisconnectedWorkstation1"></a>步驟 1：使用 Thales HSM 準備中斷連線的工作站
+在中斷連線的工作站，於 Windows 電腦上安裝 nCipher (Thales) 支援軟體，然後將 Thales HSM 連接至該電腦。
 
-Ensure that the Thales tools are in your path **(%nfast_home%\bin** and **%nfast_home%\python\bin**). For example, type the following:
+確定 Thales 工具位於您的路徑 **(%nfast_home%\bin** 和 **%nfast_home%\python\bin**)。 例如，鍵入下列命令：
 
 ```
 set PATH=%PATH%;”%nfast_home%\bin”;”%nfast_home%\python\bin”
 ```
-For more information, see the user guide included with the Thales HSM, or visit the Thales website for Azure RMS at [http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud).
+如需詳細資訊，請參閱 Thales HSM 隨附的使用者指南，或造訪 Azure RMS 的 Thales 網站：[http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud)。
 
-##### <a name="BKMK_PrepareDisconnectedWorkstation2"></a>Step 2: Install the BYOK toolset on the disconnected workstation
-Copy the BYOK toolset package from the USB drive or other portable storage, and then do the following:
+##### <a name="BKMK_PrepareDisconnectedWorkstation2"></a>步驟 2：在中斷連線的工作站上安裝 BYOK 工具組
+從 USB 磁碟機或其他可攜式儲存裝置中複製 BYOK 工具組封裝，然後執行下列動作：
 
-1.  Extract the files from the downloaded package into any folder.
+1.  從下載的封裝中將檔案解壓縮至任何資料夾。
 
-2.  From that folder, run vcredist_x64.exe.
+2.  從該資料夾中執行 vcredist_x64.exe。
 
-3.  Follow the instructions to the install the Visual C++ runtime components for Visual Studio 2012.
+3.  依照指示安裝 Visual Studio 2012 的 Visual C++ 執行階段元件。
 
-#### <a name="BKMK_InternetGenerate"></a>Generate your tenant key
-On the disconnected workstation, following these 3 steps to generate your own tenant key:
+#### <a name="BKMK_InternetGenerate"></a>產生您的租用戶金鑰
+在中斷連線的工作站上，執行下列 3 個步驟以產生您自己的租用戶金鑰：
 
--   [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1)
+-   [步驟 1：建立安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1)
 
--   [Step 2: Validate the downloaded package](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate2)
+-   [步驟 2：驗證下載的封裝](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate2)
 
--   [Step 3: Create a new key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate3)
+-   [步驟 3：建立新金鑰](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate3)
 
-##### <a name="BKMK_InternetGenerate1"></a>Step 1: Create a security world
-Start a command prompt and run the Thales new-world program.
+##### <a name="BKMK_InternetGenerate1"></a>步驟 1：建立安全園地
+啟動命令提示字元並執行 Thales new-world 程式。
 
 ```
 new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 ```
-This program creates a **Security World** file at %NFAST_KMDATA%\local\world, which corresponds to the C:\ProgramData\nCipher\Key Management Data\local folder. You can use different values for the quorum but in our example, you’re prompted to enter three blank cards and pins for each one. Then, any two cards will be required to have administrative access to the security world (your specified quorum).  These cards become the **Administrator Card Set** for the new security world. At this stage, you can specify the password or PIN for each ACS card, or add it later with a command.
+此程式會在 %NFAST_KMDATA%\local\world 中建立與 C:\ProgramData\nCipher\Key Management Data\local 資料夾對應的**安全園地**檔案。 您可為仲裁使用不同值，但在我們的範例中，系統會提示您為每個值輸入三張卡片和 Pin 碼。 然後，任兩張卡片必須具有系統管理權限來存取安全園地 (您指定的仲裁)。  這些卡片將成為新安全園地的**系統管理員卡組**。 在這個階段，您可以為每一張 ACS 卡片指定密碼或 PIN，或稍後以命令來新增。
 
 > [!TIP]
-> You can verify the current configuration status of your HSM by using the `nkminfo` command.
+> 您可以使用 `nkminfo` 命令，確認您 HSM 的目前組態狀態。
 
-Then do the following:
+然後執行下列動作：
 
-1.  Install the Thales CNG provider as described in the Thales documentation, and configure it to use the new security world.
+1.  依照 Thales 文件的說明安裝 Thales CNG 提供者，並進行設定以使用新安全園地。
 
-2.  Back up the world file in **%nfast_kmdata%\local**. Secure and protect the world file, the Administrator Cards, and their pins, and make sure that no single person has access to more than one card.
+2.  備份 **%nfast_kmdata%\local** 中的園地檔案。 保護園地檔案、系統管理員卡及其 Pin 碼，並確定沒有一個人可存取多張卡。
 
-##### <a name="BKMK_InternetGenerate2"></a>Step 2: Validate the downloaded package
-This step is optional but recommended so that you can validate the following:
+##### <a name="BKMK_InternetGenerate2"></a>步驟 2：驗證下載的封裝
+這是選用性步驟，但建議您使用以驗證下列情況：
 
--   The Key Exchange Key that is included in the toolset has been generated from a genuine Thales HSM.
+-   已從正版 Thales HSM 中產生工具組所包含的「金鑰互換」。
 
--   The hash of the Azure RMS Security World that is included in the toolset has been generated in a genuine Thales HSM.
+-   已在正版 Thales HSM 中產生工具組中包含的「Azure RMS 安全園地」雜湊。
 
--   The Key Exchange Key is non-exportable.
+-   金鑰互換無法匯出。
 
 > [!NOTE]
-> To validate the downloaded package, the HSM must be connected, powered on, and must have a security world on it (such as the one you’ve just created).
+> 若要驗證下載的封裝，必須連接 HSM 並開機，且必須具有安全園地 (如您剛才建立的一個安全園地)。
 
-###### To validate the downloaded package
+###### 若要驗證下載的封裝
 
-1.  Run the verifykeypackage.py script by tying one of the following, depending on your region:
+1.  依據您的地區輸入下列一項，以執行 verifykeypackage.py 指令碼：
 
-    -   For North America:
+    -   適用於北美：
 
         ```
         python verifykeypackage.py -k BYOK-KEK-pkg-NA-1 -w BYOK-SecurityWorld-pkg-NA-1
         ```
 
-    -   For Europe:
+    -   適用於歐洲：
 
         ```
         python verifykeypackage.py -k BYOK-KEK-pkg-EU-1 -w BYOK-SecurityWorld-pkg-EU-1
         ```
 
-    -   For Asia:
+    -   適用於亞洲：
 
         ```
         python verifykeypackage.py -k BYOK-KEK-pkg-AP-1 -w BYOK-SecurityWorld-pkg-AP-1
         ```
 
     > [!TIP]
-    > The Thales software includes a Python interpreter at %NFAST_HOME%\python\bin
+    > Thales 軟體包含 Python 解釋器，位於 %NFAST_HOME%\python\bin
 
-2.  Confirm that you see the following, which indicates successful validation: **Result:  SUCCESS**
+2.  確認看到下列表示成功驗證的結果：**結果：成功**
 
-This script validates the signer chain up to the Thales root key. The hash of this root key is embedded in the script and its value should be **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. You can also confirm this value separately by visiting the [Thales website](http://www.thalesesec.com/).
+此指令碼會驗證簽章者鏈結，最高至 Thales 根金鑰。 此根金鑰的雜湊內嵌於指令碼中，且其值必須為 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 您也可以藉由造訪 [Thales 網站](http://www.thalesesec.com/)，個別確認此值。
 
-You’re now ready to create a new key that will be your RMS tenant key.
+您現在準備建立新金鑰，它將是您的 RMS 租用戶金鑰。
 
-##### <a name="BKMK_InternetGenerate3"></a>Step 3: Create a new key
-Generate a CNG key by using the Thales **generatekey** and **cngimport** programs.
+##### <a name="BKMK_InternetGenerate3"></a>步驟 3：建立新金鑰
+使用 Thales **generatekey** 和 **cngimport** 程式來產生 CNG 金鑰。
 
-Run the following command to generate the key:
+執行下列命令以產生金鑰：
 
 ```
 generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey plainname=contosokey nvram=no pubexp=
 ```
-When you run this command, use these instructions:
+執行此命令時，請使用下列指示：
 
--   For the key size, we recommend 2048 but also support 1024-bit RSA keys for existing AD RMS customers who have such keys and are migrating to Azure RMS.
+-   對於金鑰大小，我們建議設為 2048，但對於擁有此類金鑰並正在移轉至 Azure RMS 的現有 AD RMS 客戶，也支援 1024 位元 RSA 金鑰。
 
--   Replace the value of *contosokey* for the **ident** and **plainname** with any string value. To minimize administrative overheads and reduce the risk of errors, we recommend that you use the same value for both, and use all lower case characters.
+-   以任何字串值取代 **ident** 和 **plainname** 的 *contosokey* 值。 為了盡可能降低系統管理負擔並降低錯誤風險．我們建議您對二者使用相同值，並全部使用小寫字元。
 
--   The pubexp is left blank (default) in this example, but you can specify specific values. For more information, see the Thales documentation.
+-   此範例中的 pubexp 保留空白 (預設值)，但您可以指定特定值。 如需詳細資訊，請參閱 Thales 文件。
 
-Then run the following command to import the key to CNG:
+接著執行下列命令，將金鑰匯入至 CNG：
 
 ```
 cngimport --import -M --key=contosokey --appname=simple contosokey
 ```
-When you run this command, use these instructions:
+執行此命令時，請使用下列指示：
 
--   Replace *contosokey* with the same value that you specified in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+-   以＜*產生您的租用戶金鑰*＞一節的[步驟 1：建立安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1)中指定的相同值來取代 *contosokey*。
 
--   Use the **-M** option so that the key is suitable for this scenario. Without this, the resultant key will be a user-specific key for the current user.
+-   使用 **-M** 選項，使金鑰適用於此案例。 若未執行此動作，導出的金鑰將是目前使用者的使用者特定金鑰。
 
-This command creates a Tokenized Key file in your %NFAST_KMDATA%\local folder with a name starting with **key_caping_** followed by a SID. For example: **key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**. This file contains an encrypted key.
+此命令會在您的 %NFAST_KMDATA%\local 資料夾中建立信號化金鑰檔案，檔案名稱的開頭為 **key_caping_**，後面接著 SID。 例如：**key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**。 此檔案包含加密的金鑰。
 
 > [!TIP]
-> You can see the current configuration status of your keys by using the `nkminfo –k` command.
+> 您可以使用 `nkminfo –k` 命令，查看您金鑰的目前組態狀態。
 
-Back up this Tokenized Key File in a safe location.
+在安全的位置備份此信號化金鑰檔案。
 
 > [!IMPORTANT]
-> When you later transfer your key to Azure RMS, Microsoft cannot export this key back to you so it becomes extremely important that you back up your key and security world safely. Contact Thales for guidance and best practices for backing up your key.
+> 當您稍後將金鑰傳輸至 Azure RMS 時，Microsoft 無法將此金鑰回傳給您，因此請務必安全地備份您的金鑰和安全園地。 如需備份金鑰的指引及最佳作法，請連絡 Thales。
 
-You are now ready to transfer your tenant key to Azure RMS.
+您現在準備好將租用戶金鑰傳輸至 Azure RMS。
 
-#### <a name="BKMK_InternetPrepareTransfer"></a>Prepare your tenant key for transfer
-On the disconnected workstation, following these 4 steps to prepare your own tenant key:
+#### <a name="BKMK_InternetPrepareTransfer"></a>準備您的租用戶金鑰進行傳輸
+在中斷連線的工作站上，執行下列 4 個步驟以準備您自己的租用戶金鑰：
 
--   [Step 1: Create a copy of your key with reduced permissions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer1)
+-   [步驟 1：以降低的權限建立金鑰複本](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer1)
 
--   [Step 2: Inspect the new copy of the key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer2)
+-   [步驟 2：檢查金鑰的新複本](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer2)
 
--   [Step 3: Encrypt your key by using Microsoft’s Key Exchange Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer3)
+-   [步驟 3：使用 Microsoft 的金鑰互換來加密您的金鑰](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer3)
 
--   [Step 4: Copy your key transfer package to the Internet-connected workstation](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer4)
+-   [步驟 4：將您的金鑰傳輸封裝複製至連線網際網路的工作站](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer4)
 
-##### <a name="BKMK_InternetPrepareTransfer1"></a>Step 1: Create a copy of your key with reduced permissions
-To reduce the permissions on your tenant key, do the following:
+##### <a name="BKMK_InternetPrepareTransfer1"></a>步驟 1：以降低的權限建立金鑰複本
+若要降低租用戶金鑰上的權限，請執行下列動作：
 
--   From a command prompt, run one of the following, depending on your region:
+-   視您的地區而定，從命令提示字元執行下列其中一項：
 
-    -   For North America:
+    -   適用於北美：
 
         ```
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-1
         ```
 
-    -   For Europe:
+    -   適用於歐洲：
 
         ```
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1
         ```
 
-    -   For Asia:
+    -   適用於亞洲：
 
         ```
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1
         ```
 
-When you run this command, replace *contosokey* with the same value you specified in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+當您執行此命令時，以＜*產生您的租用戶金鑰*＞一節的[步驟 1：建立安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1)中指定的相同值來取代 *contosokey*。
 
-You will be asked to plug in your security world ACS cards, and if specified, their password or PIN..
+系統會要求您插入安全園地 ACS 卡片，並詢問其密碼或 PIN (如果指定的話)。
 
-When the command completes, you will see **Result: SUCCESS** and the copy of your tenant key with reduced permissions will be in the file named key_xferacId_*&lt;contosokey&gt;*.
+完成命令時，您會看到**結果：成功**，並將在名為 key_xferacId_*&lt;contosokey&gt;* 的檔案中看到降低權限的租用戶金鑰複本。
 
-##### <a name="BKMK_InternetPrepareTransfer2"></a>Step 2: Inspect the new copy of the key
-Optionally, run the Thales utilities to confirm the minimal permissions on the new tenant key:
+##### <a name="BKMK_InternetPrepareTransfer2"></a>步驟 2：檢查金鑰的新複本
+選擇性執行 Thales 公用程式來確認新租用戶金鑰上的最低權限：
 
--   aclprint.py:
+-   aclprint.py：
 
     ```
     "%nfast_home%\bin\preload.exe" -m 1 -A xferacld -K contosokey "%nfast_home%\python\bin\python" "%nfast_home%\python\examples\aclprint.py"
     ```
 
--   kmfile-dump.exe:
+-   kmfile-dump.exe：
 
     ```
     "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
     ```
 
-When you run these command, replace *contosokey* with the same value you specified in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+當您執行這些命令時，以＜*產生您的租用戶金鑰*＞一節的[步驟 1：建立安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1)中指定的相同值來取代 *contosokey*。
 
-##### <a name="BKMK_InternetPrepareTransfer3"></a>Step 3: Encrypt your key by using Microsoft’s Key Exchange Key
-Run one of the following commands, depending on your region:
+##### <a name="BKMK_InternetPrepareTransfer3"></a>步驟 3：使用 Microsoft 的金鑰互換來加密您的金鑰
+視您的地區而定，執行下列其中一個命令：
 
--   For North America:
+-   適用於北美：
 
     ```
     KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-1 -TenantBposId GUID -KeyFriendlyName ContosoFirstkey
     ```
 
--   For Europe:
+-   適用於歐洲：
 
     ```
     KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1 -TenantBposId GUID -KeyFriendlyName ContosoFirstkey
     ```
 
--   For Asia:
+-   適用於亞洲：
 
     ```
     KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1 -TenantBposId GUID -KeyFriendlyName ContosoFirstkey
     ```
 
-When you run this command, use these instructions:
+執行此命令時，請使用下列指示：
 
--   Replace *contosokey* with the identifier that you used to generate the key in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+-   使用從＜*產生您的租用戶金鑰*＞一節的 [步驟 1：建立安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1)中用來產生金鑰的識別碼來取代 *contosokey*。
 
--   Replace *GUID* with your Azure Active Directory tenant ID that you retrieved in [Step 2: Get your Azure Active Directory tenant ID](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation2) from the *Prepare your Internet-connected workstation* section.
+-   以您在＜*準備連線網際網路的工作站*＞一節的[步驟 2：取得您的 Azure Active Directory 租用戶識別碼](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation2)中所擷取 Azure Active Directory 租用戶識別碼來取代 *GUID*。
 
--   Replace *ContosoFirstKey* with a label that will be used for your output file name.
+-   以將用於輸出檔案名稱的標籤來取代 *ContosoFirstKey*。
 
-When this completes successfully it displays **Result: SUCCESS** and there will be a new file in the current folder that has the following name: TransferPackage-*ContosoFirstkey*.byok
+成功完成時會顯示**結果**：**成功**，且目前資料夾具有下列名稱的新檔案：TransferPackage-*ContosoFirstkey*.byok
 
-##### <a name="BKMK_InternetPrepareTransfer4"></a>Step 4: Copy your key transfer package to the Internet-connected workstation
-Use a USB drive or other portable storage to copy the output file from the previous step (KeyTransferPackage-*ContosoFirstkey*.byok) to your Internet-connected workstation.
+##### <a name="BKMK_InternetPrepareTransfer4"></a>步驟 4：將您的金鑰傳輸封裝複製至連線網際網路的工作站
+使用 USB 磁碟機或其他可攜式儲存裝置，將輸出檔案從上一個步驟 (KeyTransferPackage-*ContosoFirstkey*.byok) 複製到連線網際網路的工作站。
 
 > [!NOTE]
-> Use security practices to protect the file because it includes your private key.
+> 安全性作法可用來保護檔案，因為其中包含您的私密金鑰。
 
-#### <a name="BKMK_InternetTransfer"></a>Transfer your tenant key to Azure RMS
-On the Internet-connected workstation,  follow these 3 steps To transfer your new tenant key to Azure RMS, :
+#### <a name="BKMK_InternetTransfer"></a>將租用戶金鑰傳輸至 Azure RMS
+在連線網際網路的工作站上，執行下列 3 個步驟將新租用戶金鑰傳輸至 Azure RMS：
 
--   [Step 1: Connect to Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer1)
+-   [步驟 1：連線至 Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer1)
 
--   [Step 2: Upload the key package](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer2)
+-   [步驟 2：上傳金鑰封裝](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer2)
 
--   [Step 3: Enumerate your tenant keys – as needed](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer3)
+-   [步驟 3：列舉您的租用戶金鑰 - 視需要](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer3)
 
-##### <a name="BKMK_InternetTransfer1"></a>Step 1: Connect to Azure RMS
-Return to the Windows PowerShell window and type the following:
+##### <a name="BKMK_InternetTransfer1"></a>步驟 1：連線至 Azure RMS
+返回 Windows PowerShell 視窗並鍵入下列命令：
 
-1.  Reconnect to the [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] service:
+1.  重新連線到 [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] 服務：
 
     ```
     Connect-AadrmService
     ```
 
-2.  Use the [Get-AadrmKeys](http://msdn.microsoft.com/library/windowsazure/dn629420.aspx) cmdlet to see your current tenant key configuration:
+2.  使用 [Get-AadrmKeys](http://msdn.microsoft.com/library/windowsazure/dn629420.aspx) Cmdlet 來查看目前的租用戶金鑰組態：
 
     ```
     Get-AadrmKeys
     ```
 
-##### <a name="BKMK_InternetTransfer2"></a>Step 2: Upload the key package
-Use the [Add-AadrmKey](http://msdn.microsoft.com/library/windowsazure/dn629418.aspx) cmdlet to upload the key transfer package that you copied from the disconnected workstation:
+##### <a name="BKMK_InternetTransfer2"></a>步驟 2：上傳金鑰封裝
+使用 [Add-AadrmKey](http://msdn.microsoft.com/library/windowsazure/dn629418.aspx) Cmdlet 來上傳從中斷連線的工作站中複製的金鑰傳輸封裝：
 
 ```
 Add-AadrmKey –KeyFile <PathToPackageFile> -Verbose
 ```
 > [!WARNING]
-> You are prompted to confirm this action. It’s important to understand that this action cannot be undone. When you upload a tenant key, it automatically becomes your organization’s primary tenant key and users will start to use this tenant key when they protect documents and files.
+> 系統會提示您確認此動作。 請務必瞭解此動作是無法還原的。 當您上傳租用戶金鑰時，它會自動成為您組織的主要租用戶金鑰，且使用者在保護文件和檔案時將開始使用此租用戶金鑰。
 
-If the upload is successful, you will see the following message: **The Rights management service successfully added the key.**
+若上傳成功，您會看到下列訊息：**Rights Management 服務已成功新增金鑰。**
 
-Expect a replication delay for the change to propagate to all [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] data centers.
+將變更傳播到所有 [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] 資料中心時預期會發生複寫延遲。
 
-##### <a name="BKMK_InternetTransfer3"></a>Step 3: Enumerate your tenant keys – as needed
-Use the Get-AadrmKeys cmdlet again to see the change in your tenant key, and whenever you want to see a list of your tenant keys. The tenant keys displayed include the initial tenant key that Microsoft generated for you, and any tenant keys that you added:
+##### <a name="BKMK_InternetTransfer3"></a>步驟 3：列舉您的租用戶金鑰 - 視需要
+再次使用 Get-AadrmKeys 指令程式來查看租用戶金鑰中的變更，並查看您的租用戶金鑰清單。 隨即顯示租用戶金鑰，包含 Microsoft 為您產生的初始租用戶金鑰，及您新增的任何租用戶金鑰：
 
 ```
 Get-AadrmKeys
 ```
-The tenant key that is marked **Active** is the one that your organization is currently using to protect documents and files.
+標示為 [**作用中**] 的租用戶金鑰是您組織目前用來保護文件和檔案的金鑰。
 
-You have now completed all the steps required for bring your own key over the Internet and can go to [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps).
+您現在已完成透過網際網路整合您自己金鑰的所有必要步驟，並可移至[後續步驟](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps)。
 
-### <a name="BKMK_BYOK_InPerson"></a>Generate and transfer your tenant key – in person
-Use the following procedures if you do not want to transfer your tenant key over the Internet, but instead, transfer your tenant key in person.
+### <a name="BKMK_BYOK_InPerson"></a>產生和傳輸您的租用戶金鑰 – 親自轉交
+若不想透過網際網路傳輸您的租用戶金鑰，而是要親自轉交您的租用戶金鑰，請使用下列程序。
 
--   [Generate your tenant key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateKey)
+-   [產生您的租用戶金鑰](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateKey)
 
--   [Transfer your tenant key to Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Transfer)
+-   [將租用戶金鑰傳輸至 Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Transfer)
 
-#### <a name="BKMK_GenerateKey"></a>Generate your tenant key
-To generate your own tenant key, follow these 3 steps:
+#### <a name="BKMK_GenerateKey"></a>產生您的租用戶金鑰
+若要產生您自己的租用戶金鑰，請執行下列 3 個步驟：
 
--   [Step 1: Prepare a workstation with Thales HSM](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey1)
+-   [步驟 1：使用 Thales HSM 準備工作站](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey1)
 
--   [Step 2: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey2)
+-   [步驟 2：建立安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey2)
 
--   [Step 3: Create a new key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey3)
+-   [步驟 3：建立新金鑰](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey3)
 
-##### <a name="BKMK_GenerateYourKey1"></a>Step 1: Prepare a workstation with Thales HSM
-Install the nCipher (Thales) support software on a Windows computer. Attach a Thales HSM to that computer. Ensure the Thales tools are in your path. For more information, see the user guide included with the Thales HSM, or visit the Thales website for Azure RMS at [http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud).
+##### <a name="BKMK_GenerateYourKey1"></a>步驟 1：使用 Thales HSM 準備工作站
+在 Windows 電腦上安裝 nCipher (Thales) 支援軟體。 將 Thales HSM 附加至該電腦。 確定 Thales 工具位於您的路徑。 如需詳細資訊，請參閱 Thales HSM 隨附的使用者指南，或造訪 Azure RMS 的 Thales 網站，網址為 [http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud)。
 
-##### <a name="BKMK_GenerateYourKey2"></a>Step 2: Create a security world
-Start a command prompt and run the Thales new-world program.
+##### <a name="BKMK_GenerateYourKey2"></a>步驟 2：建立安全園地
+啟動命令提示字元並執行 Thales new-world 程式。
 
 ```
 new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 ```
-This program creates a **Security World** file at %NFAST_KMDATA%\local\world, which corresponds to the C:\ProgramData\nCipher\Key Management Data\local folder. You can use different values for the quorum but in our example, you’re prompted to enter three blank cards and pins for each one. Then, any two cards will give full access to the security world.  These cards become the **Administrator Card Set** for the new security world.
+此程式會在 %NFAST_KMDATA%\local\world 中建立與 C:\ProgramData\nCipher\Key Management Data\local 資料夾對應的**安全園地**檔案。 您可為仲裁使用不同值，但在我們的範例中，系統會提示您為每個值輸入三張卡片和 Pin 碼。 接著，會將安全園地的完整存取權授予任兩張卡片。  這些卡片將成為新安全園地的**系統管理員卡組**。
 
-Then do the following:
+然後執行下列動作：
 
-1.  Install the Thales CNG provider as described in the Thales documentation, and configure it to use the new security world.
+1.  依照 Thales 文件的說明安裝 Thales CNG 提供者，並進行設定以使用新安全園地。
 
-2.  Back up the world file. Secure and protect the world file, the Administrator Cards, and their pins, and make sure that no single person has access to more than one card.
+2.  備份園地檔案。 保護園地檔案、系統管理員卡及其 Pin 碼，並確定沒有一個人可存取多張卡。
 
-You’re now ready to create a new key that will be your RMS tenant key.
+您現在準備建立新金鑰，它將是您的 RMS 租用戶金鑰。
 
-##### <a name="BKMK_GenerateYourKey3"></a>Step 3: Create a new key
-Generate a CNG key by using the Thales **generatekey** and **cngimport** programs.
+##### <a name="BKMK_GenerateYourKey3"></a>步驟 3：建立新金鑰
+使用 Thales **generatekey** 和 **cngimport** 程式來產生 CNG 金鑰。
 
-Run the following command to generate the key:
+執行下列命令以產生金鑰：
 
 ```
 generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey plainname=contosokey nvram=no pubexp=
 ```
-When you run this command, use these instructions:
+執行此命令時，請使用下列指示：
 
--   For the key size, we recommend 2048 but also support 1024-bit RSA keys for existing AD RMS customers who have such keys and are migrating to Azure RMS.
+-   對於金鑰大小，我們建議設為 2048，但對於擁有此類金鑰並正在移轉至 Azure RMS 的現有 AD RMS 客戶，也支援 1024 位元 RSA 金鑰。
 
--   Replace the value of *contosokey* for the **ident** and **plainname** with any string value. To minimize administrative overheads and reduce the risk of errors, we recommend that you use the same value for both, and use all lower case characters.
+-   以任何字串值取代 **ident** 和 **plainname** 的 *contosokey* 值。 為了盡可能降低系統管理負擔並降低錯誤風險．我們建議您對二者使用相同值，並全部使用小寫字元。
 
--   The pubexp is left blank (default) in this example, but you can specify specific values. For more information, see the Thales documentation.
+-   此範例中的 pubexp 保留空白 (預設值)，但您可以指定特定值。 如需詳細資訊，請參閱 Thales 文件。
 
-Then run the following command to import the key to CNG:
+接著執行下列命令，將金鑰匯入至 CNG：
 
 ```
 cngimport --import –M --key=contosokey --appname=simple contosokey
 ```
-When you run this command, use these instructions:
+執行此命令時，請使用下列指示：
 
--   Replace *contosokey* with the same value that you specified in Step 1.
+-   以您在步驟 1 中指定的相同值取代 *contosokey*。
 
--   Use the **-M** option so that the key is suitable for this scenario. Without this, the resultant key will be a user-specific key for the current user.
+-   使用 **-M** 選項，使金鑰適用於此案例。 若未執行此動作，導出的金鑰將是目前使用者的使用者特定金鑰。
 
-This command creates a Tokenized Key file in your %NFAST_KMDATA%\local folder with a name starting with **key_caping_** followed by a SID. For example: **key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**. This file contains an encrypted key.
+此命令會在您的 %NFAST_KMDATA%\local 資料夾中建立信號化金鑰檔案，檔案名稱的開頭為 **key_caping_**，後面接著 SID。 例如：**key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**。 此檔案包含加密的金鑰。
 
-Back up this Tokenized Key File in a safe location.
+在安全的位置備份此信號化金鑰檔案。
 
 > [!IMPORTANT]
-> When you later transfer your key to Azure RMS, Microsoft will have a non-recoverable copy of your key. This means that nobody can retrieve your key from the HSMs at Microsoft. This allows you to retain exclusive control over your tenant key. Therefore it becomes extremely important that you back up your key and security world safely. Contact Thales for guidance and best practices for backing up your key.
+> 稍後將金鑰傳輸至 Azure RMS 時，Microsoft 將具有您的金鑰複本，而且無法復原。 這表示沒有任何人可從 Microsoft 上的 HSM 擷取您的金鑰。 如此可讓您保有租用戶金鑰的專有控制權。 因此安全地備份您的金鑰及安全園地是極為重要的動作。 如需備份金鑰的指引及最佳作法，請連絡 Thales。
 
-You are now ready to transfer your tenant key to Azure RMS.
+您現在準備好將租用戶金鑰傳輸至 Azure RMS。
 
-#### <a name="BKMK_Transfer"></a>Transfer your tenant key to Azure RMS
-After you have generated your own key, you must transfer it to Azure RMS before you use it. For the highest level of security, this transfer is a manual process that requires you to fly to the Microsoft office in Redmond, Washington, United States of America. To complete this process, follow these 3 steps:
+#### <a name="BKMK_Transfer"></a>將租用戶金鑰傳輸至 Azure RMS
+產生您自己的金鑰後，必須先將它傳輸至 Azure RMS 再進行使用。 如需最高等級的安全性，您必須飛抵美國華盛頓州雷德蒙德的 Microsoft 辦事處以手動執行轉交程序。 若要完成此程序，請執行下列 3 個步驟：
 
--   [Step 1: Bring your key to Microsoft](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey1)
+-   [步驟 1：將您的金鑰帶到 Microsoft](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey1)
 
--   [Step 2: Transfer your key to the Window Azure RMS security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey2)
+-   [步驟 2：將您的金鑰傳輸至 Window Azure RMS 安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey2)
 
--   [Step 3: Closing procedures](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey3)
+-   [步驟 3：關閉程序](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey3)
 
-###### Step 1: Bring your key to Microsoft
+###### 步驟 1：將您的金鑰帶到 Microsoft
 
--   Contact Microsoft Customer Support Services (CSS) to schedule a key transfer appointment for Azure RMS. Bring the following to Microsoft in Redmond:
+-   連絡 Microsoft 客戶支援服務 (CSS) 來安排 Azure RMS 金鑰轉交事宜。 將下列物品攜至雷德蒙德的 Microsoft：
 
-    -   A quorum of your Administrative Cards. If you followed the previous instructions in [Step 2: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey2), these are any two of your three cards.
+    -   系統管理卡的仲裁。 若您遵循[步驟 2：建立安全園地](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey2)的前述指示，則為您三張卡片的任兩張。
 
-    -   Personnel authorized to carry your Administrative Cards and pins, typically two (one for each card).
+    -   獲授權攜帶您的系統管理卡和 Pin 碼的人員，通常是兩人 (一人一張卡片)。
 
-    -   Your Security World file (%NFAST_KMDATA%\local\world) on a USB drive.
+    -   您在 USB 磁碟機中的安全園地檔案 (%NFAST_KMDATA%\local\world)。
 
-    -   Your Tokenized Key File on a USB drive.
+    -   您在 USB 磁碟機中的信號化金鑰檔案。
 
-###### Step 2: Transfer your key to the Window Azure RMS security world
+###### 步驟 2：將您的金鑰傳輸至 Window Azure RMS 安全園地
 
-1.  When you arrive at Microsoft to transfer your key, the following happens:
+1.  當您抵達 Microsoft 轉交您的金鑰時，會發生下列情況：
 
-    -   Microsoft provides you with an offline workstation that has a Thales HSM attached, Thales software installed, and a Azure RMS Security World file pre-loaded into the folder C:\Temp\Destination.
+    -   Microsoft 提供您已連接 Thales HSM、已安裝 Thales 軟體，並已將 Azure RMS 安全園地檔案預先載入至 C:\Temp\Destination 資料夾的離線工作站。
 
-    -   On this workstation, you load your Security World file and Tokenized Key File from your USB drive into the C:\Temp\Source folder.
+    -   在此工作站上，您會將安全園地檔案和信號化金鑰檔案從您的 USB 磁碟機載入至 C:\Temp\Source 資料夾。
 
-    -   Azure RMS operators securely transfer your key to the Azure RMS security world by using Thales utilities.
+    -   Azure RMS 操作員會使用 Thales 公用程式，將您的金鑰安全地傳輸至 Azure RMS 安全園地。
 
-    This process will look similar to the following, where the last parameter of key-xfer-im in this example is replaced by your Tokenized Key File name:
+    此程序與下列程序類似，在此範例中，會以您的信號化金鑰檔案名稱取代 key-xfer-im 的最後一個參數：
 
     **C:\&gt; mk-reprogram.exe --owner c:\Temp\Destination add c:\Temp\Source**
 
     **C:\&gt; key-xfer-im.exe c:\Temp\Source c:\Temp\Destination --module c:\Temp\Source\key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**
 
-2.  Mk-reprogram will ask you and the Azure RMS operators to plug in their respective Administrator cards and pins. These commands output a Tokenized Key File in C:\Temp\Destination that contains your key protected by Azure RMS security world.
+2.  Mk-reprogram 將要求您和 Azure RMS 操作員插入其相對的系統管理員卡和 Pin 碼。 這些命令會在 C:\Temp\Destination 中輸出信號化金鑰檔案，包含您受 Azure RMS 安全園地所保護的金鑰。
 
-###### Step 3: Closing procedures
+###### 步驟 3：關閉程序
 
--   In your presence, Azure RMS operators do the following:
+-   Azure RMS 操作員會在您在場的情況下執行下列工作：
 
-    -   Run a tool that Microsoft developed in collaboration with Thales that removes two permissions: The permission to recover the key, and the permission to change permissions. After this is done, this copy of your key is locked to the Azure RMS security world. Thales HSMs will not allow Azure RMs operators with their Administrator cards to recover the plaintext copy of your key.
+    -   執行 Microsoft 與 Thales 合作開發的工具，該工具會移除兩個權限：用來復原金鑰的權限，及用來變更權限的權限。 完成此動作後，會將此金鑰複本鎖定至 Azure RMS 安全園地。 Thales HSM 不會允許 Azure RM 操作員使用其系統管理員卡來復原您金鑰的純文字複本。
 
-    -   Copy the resulting key file to a USB drive to later upload to the Azure RMS service.
+    -   將導出的金鑰檔案複製至 USB 磁碟機，於稍後上傳至 Azure RMS 服務。
 
-    -   Factory-reset the HSM, and wipe the workstation clean.
+    -   原廠會重設 HSM，並完全清理工作站。
 
-You have now completed all the steps required for bring your own key in person and can return to your organization for the next steps.
+您現在已完成親自轉交您自己金鑰的所有必要步驟，並可回到您的組織執行接下來的步驟。
 
-## <a name="BKMK_NextSteps"></a>Next steps
+## <a name="BKMK_NextSteps"></a>後續步驟
 
-1.  Start to use your tenant key:
+1.  開始使用您的租用戶金鑰：
 
-    -   If you haven’t already done so, you must now activate Rights Management so that your organization can start to use RMS. Users immediately start to use your tenant key (managed by Microsoft or managed by you).
+    -   若您尚未這麼做，則現在必須啟用 Rights Management，如此您的組織才能開始使用 RMS。 使用者會立即開始使用您的租用戶金鑰 (由 Microsoft 管理或由您自行管理)。
 
-        For more information about activation, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+        如需啟動的詳細資訊，請參閱＜[啟用 Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)＞。
 
-    -   If you had already activated Rights Management and then decided to manage your own tenant key, users gradually transition from the old tenant key to the new tenant key, and this staggered transition can take a few weeks to complete. Documents and files that were protected with the old tenant key remains accessible to authorized users.
+    -   如果您已啟用 Rights Management，然後決定管理您自己的租用戶金鑰，使用者會逐漸從舊租用戶金鑰轉移至新租用戶金鑰，而此交錯轉移可能會耗費數週才能完成。 授權的使用者仍可存取舊租用戶金鑰所保護的文件和檔案。
 
-2.  Consider enabling usage logging, which logs every transaction that RMS performs.
+2.  請考慮啟用使用記錄，它會記錄 RMS 執行的每筆交易。
 
-    If you decided to manage your own tenant key, logging includes information about using your tenant key. See the following example of a log file displayed in Excel where the **Decrypt** and **SignDigest** Request Types show that the tenant key is being used.
+    如果您決定管理您自己的租用戶金鑰，記錄將包含您租用戶金鑰的相關使用資訊。 請參閱 Excel 中顯示的下列記錄檔範例，其中 **Decrypt** 和 **SignDigest** 要求類型會顯示正在使用的租用戶金鑰。
 
     ![](../Image/RMS_Logging.gif)
 
-    For more information about usage logging, see [Logging and Analyzing Azure Rights Management Usage](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
+    如需使用記錄的詳細資訊，請參閱＜[記錄和分析 Azure Rights Management 使用情況](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md)＞。
 
-3.  Maintain your tenant key.
+3.  維護您的租用戶金鑰。
 
-    For more information, see [Operations for Your Azure Rights Management Tenant Key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md).
+    如需詳細資訊，請參閱[Azure Rights Management 租用戶金鑰的作業](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md)。
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## 請參閱
+[設定 Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 

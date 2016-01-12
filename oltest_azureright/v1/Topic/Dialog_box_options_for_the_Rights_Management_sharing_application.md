@@ -3,64 +3,63 @@ description: na
 keywords: na
 title: Dialog box options for the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 7b91ab30-6363-4929-bcbd-4dfbd05f644a
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Dialog box options for the Rights Management sharing application
-Use this information to help you specify the options in the RMS sharing application **add protection** dialog box or the **share protected** dialog box. You will see this dialog box when you [protect a file to share](http://technet.microsoft.com/library/dn574735.aspx) or you [protect a file in place](http://technet.microsoft.com/library/dn574733.aspx) and choose custom permissions.
+# Rights Management 共用應用程式的對話方塊選項
+使用此資訊來幫助您在 RMS 共用應用程式的 [新增保護] 對話方塊或 [共用保護] 對話方塊中指定選項。 當您[保護要共用的檔案](http://technet.microsoft.com/library/dn574735.aspx)或[就地保護檔案](http://technet.microsoft.com/library/dn574733.aspx)並選擇自訂權限時，您會看到這個對話方塊方塊。
 
 > [!IMPORTANT]
-> If the options you see are different from those documented here, you probably don’t have the latest version of the sharing application installed. You can download the latest version from the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page.
+> 如果您看到的選項與此處所列的不同，您可能未安裝最新版本的共用應用程式。 您可以從 [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) 頁面下載最新版本。
 > 
-> How do you know if you have the latest version? Look for **Microsoft Rights Management sharing application** listed in Programs and Features, and check the corresponding version number. To see and use the options in the table, the version should be at least **1.0.1770.0**. You can check the latest version number from the download page.
+> 如何知道是否您有最新版本？ 尋找列在 [程式和功能] 中的 [Microsoft Rights Management 共用應用程式]，並檢查對應的版本號碼。 若要查看及使用資料表中的選項，版本應該至少是 **1.0.1770.0**。 您可以從下載頁面檢查最新版本號碼。
 
-In addition to the options that you can choose, you might also be wondering:
+除了您可以選擇的選項，您可能也想知道：
 
--   [What’s the .ppdf file that’s automatically created?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
+-   [什麼是自動建立的 .ppdf 檔案？](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
 
--   [What’s the difference between generic protection and built-in (native) protection?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative)
+-   [一般保護和內建 (原生) 保護有何差異？](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative)
 
-|Option|Description|
-|----------|---------------|
-|**USERS**|If you haven’t already specified an email address from Outlook, type the email addresses of the people that you want to be able to open the file.<br /><br />If your organization uses the on-premises version of Rights Management (AD RMS), the email addresses you can  specify are restricted to  people within your organization. When this applies, and you try to specify external email addresses, you will see a message that says your company configuration allows sharing of protected content only within the company. However, if your organization uses Azure RMS, these email addresses can be for people within  your  organization, or for people in another organization.<br /><br />For example: janetm@contoso.com; p.dover@fabrikam.com|
-|**Generic Protection**|If this option is selected, it means that the file you selected cannot be natively protected. For more information, see. [What’s the difference between generic protection and built-in (native) protection?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative) in this topic.|
-|**Viewer – View Only**<br /><br />**Reviewer – View and Edit**<br /><br />**Co-Author – View, Edit, Copy, and Print**<br /><br />**Co-Owner – All Permissions**<br /><br />Note: All these options have a round icon before the name, which represent a world globe. This icon is used because typically, you select one of these options when you send your attachment to somebody in a different organization.|Select one of these options if you want to define the rights for your protected document. Click each option to view a description.<br /><br />When you choose one of these options, only the people you specify in **USERS** have the rights you specify to open and use the document. For example, if they forward to somebody else, the document would not open.|
-|Policy templates that your administrator configures.<br /><br />For example, if your company name is Contoso, Ltd: **Contoso, Ltd - Confidential View Only**<br /><br />Note: All these options have a square icon before the name, which represent an office building. This icon is used because typically, you select one of these options when you send your attachment to somebody in your organization.|When you share a document with people who work for your organization, you see the available policy templates that your administrator configures. Choose one of these when the document should not be shared outside your organization.<br /><br />When you choose one of these options, your administrator defines the rights for the document and who can open it.|
-|**Expire these documents on**|Select this option only for time-sensitive files that the users that you selected should not be able to open after a date that you specify. You will still be able to open the original file but after midnight (your current time zone), on the day that you specify, others will not be able to open the file.<br /><br />This option is not available if you select a policy template that your administrator configures.|
-|**Email me when somebody tries to open these documents**|Note: This option is currently in preview.<br /><br />Select this option if you want to receive email notifications whenever somebody tries to open the document that you’re protecting. The email message will say who tried to open it, when, and whether they were successful.<br /><br />This option is available only if your organization uses Azure RMS. If your organization uses the on-premises version of Rights Management (AD RMS), you will not see this option.|
-|**Allow me to instantly revoke access to these documents**|Choose this option if you might need to revoke access to the documents later by using the document tracking site, and revocation needs to take effect immediately. However, setting this option means that while the document is not revoked, users always need an Internet connection to read the document, each time they access it. There might be some scenarios where users can’t connect their device to the Internet, and users can’t read your document as you intended.<br /><br />If you do not choose this option, you can still revoke the documents later, by using the document tracking site. However, because users do not always need an Internet connection to read the document, they won’t know immediately that the document is revoked and can continue to read it until they next authenticate with Azure RMS. By default, the maximum number of days that somebody could continue to read a protected document that you’ve revoked is 30 days, but an administrator can change this value to be fewer or greater than 30 days.<br /><br />This option is available only if your organization uses Azure RMS. If your organization uses the on-premises version of Rights Management (AD RMS), you will not see this option.|
+|選項|說明|
+|------|------|
+|**使用者**|如果您尚未從 Outlook 指定電子郵件地址，請輸入您允許開啟檔案的人員的電子郵件地址。<br /><br />如果您的組織使用 Rights Management (AD RMS) 內部部署版本，您可以指定電子郵件地址僅限於組織內的人員。 在此情況下，如果您嘗試指定外部電子郵件地址，您會看到訊息指出，您的公司設定僅允許在公司內共用受保護的內容。 不過，如果您的組織使用 Azure RMS，這些電子郵件地址可以是您組織內的人員或另一個組織的人員。<br /><br />例如：janetm@contoso.com; p.dover@fabrikam.com|
+|**一般保護**|如果選取這個選項，就表示您選取的檔案無法受到原生保護。如需詳細資訊，請參閱本主題中的＜[一般保護和內建 (原生) 保護有何差異？](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative)＞。|
+|**檢閱者 - 僅檢視**<br /><br />**檢閱者 - 檢視及編輯**<br /><br />**共同作者 - 檢視、編輯、複製及列印**<br /><br />**共同擁有者 - 所有權限** **Note:** 這些選項的名稱前面全都有一個代表地球儀的圓形圖示。 使用這個圖示是因為，當您傳送附件給另一個組織中的某人時，通常會選取其中一個選項。|如果您想要定義受保護文件的權限，請選取其中一個選項。 按一下每個選項可檢視描述。<br /><br />當您選擇其中一個選項時，只有您在 [使用者] 中指定的人員，才有您指定的權限可開啟和使用文件。 例如，如果他們轉寄給別人，則別人無法開啟文件。|
+|您的系統管理員所設定的原則範本。<br /><br />例如，如果您的網域名稱為 Contoso, Ltd：**Contoso, Ltd - 僅限機密檢視** **Note:** 這些選項的名稱前面全都有一個代表辦公大樓的方形圖示。 使用這個圖示是因為，當您傳送附件給您組織中的某人時，通常會選取其中一個選項。|當與您組織中的人員共用文件時，您會看到系統管理員所設定的可用原則範本。 不應該在組織外共用文件時，請選擇其中一個原則範本。<br /><br />當您選擇其中一個選項時，您的系統管理員會定義文件的權限和哪些人可以開啟文件。|
+|**這些文件的到期日**|僅針對時間緊迫的檔案選取這個選項，您選取的使用者在您指定日期之後就無法開啟這些檔案。 您仍然可以開啟原始檔案，但在您指定的那天午夜過後 (您目前的時區)，其他人將無法開啟檔案。<br /><br />如果您選取系統管理員所設定的原則範本，則無法使用這個選項。|
+|**當有人嘗試開啟這些文件時傳送電子郵件給我**|**Note:** 這個選項目前為預覽狀態。<br />每當有人嘗試開啟您所保護的文件時，如果您想要收到電子郵件通知，請選取這個選項。 電子郵件訊息將告訴您是誰嘗試開啟、何時嘗試及是否成功。<br /><br />只有當您的組織使用 Azure RMS 時，才有這個選項可用。 如果您的組織使用 Rights Management (AD RMS) 內部部署版本，您不會看到這個選項。|
+|**允許我立即撤銷這些文件的存取權**|如果您稍後可能需要使用文件追蹤網站撤銷文件的存取權，且撤銷必須立即生效，請選擇這個選項。 不過，設定這個選項表示在未撤銷文件之前，使用者每次存取文件時，永遠需要網際網路連線才能讀取文件。 在某些情況下，使用者可能無法將他們的裝置連線到網際網路，使用者也就無法如您預期般地讀取文件。<br /><br />如果您沒有選擇這個選項，您稍後還是可以使用文件追蹤網站來撤銷文件。 不過，因為使用者不一定需要網際網路連線才能讀取文件，所以不會立即得知文件已被撤銷，因而能夠繼續讀取文件，直到下次再向 Azure RMS 驗證為止。 根據預設，某人最多有 30 天可以持續讀取您已撤銷的受保護文件，但是系統管理員可以將此值變更為少於或多於 30 天。<br /><br />只有當您的組織使用 Azure RMS 時，才有這個選項可用。 如果您的組織使用 Rights Management (AD RMS) 內部部署版本，您不會看到這個選項。|
 
-## <a name="BKMK_GenericNative"></a>What’s the difference between generic protection and built-in (native) protection?
+## <a name="BKMK_GenericNative"></a>一般保護和內建 (原生) 保護有何差異？
 
--   When you **generically protect a file**, unauthorized people cannot open the file. But after authorized people open the file, they could then forward it unprotected to other people or save it in a location that others could access. They do, however, see a message that tells them what permissions they have for the file, and they are asked to honor these, but this protection cannot be enforced. In addition, when you generically protect a file, you cannot restrict the permissions further than authorization. For example you cannot restrict the content to view-only, or do not print.:
-
-    > [!NOTE]
-    > A generically protected file always has a file name extension of **.pfile**.
-
--   In comparison, when you use the **built-in (native) protection** of Rights Management with applications that support this (for example, Office files), the protection applies to the file even if the file is then sent to somebody else or saved in another location. And, when you protect these files, you can use restrictive permissions such as read-only, or the permission to edit but not print or copy. For example, you could select **Viewer – View Only**, so that the content cannot be edited, printed, or copied.
-
-For additional technical information, see the [Levels of protection – native and generic](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) section in the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
-
-## <a name="BKMK_PPDF"></a>What’s the .ppdf file that’s automatically created?
-
--   When you share a protected file by email (share protected), the RMS sharing application automatically creates a **.ppdf** version of the file for Word, Excel, PowerPoint, or PDF. This is a read-only protected version of the file that only authorized people can open, and it ensures that the recipients can always read the attachment, even if they are using a mobile device that doesn’t have an application that natively supports Rights Management. Providing these people have the RMS sharing app installed, they will be able to read the attachment.
-
-    In this scenario, unlike a generically protected file, usage restriction is enforced. The recipient will not be able to save this version of the file and if they forward the attachment to somebody else, the original restrictions remain with the document. Only people that were authorized for the protected document will be able to open it.
+-   當您**對檔案施以一般保護**時，未經授權的人員無法開啟檔案。 但在獲得授權的人員開啟檔案之後，他們可以將檔案以未受保護的方式轉寄給其他人，或儲存在其他人可以存取的位置。 不過，他們會看到訊息，指出他們對檔案擁有的權限，並要求他們遵守，但無法強制執行這項保護。 此外，當您對檔案施以一般保護時，您無法超越授權來限制權限。 比方說，您不能將內容限制為僅檢視或不可列印。
 
     > [!NOTE]
-    > A .ppdf file is automatically created when you share protected (share by email) but is not created when you protect in-place.
+    > 受一般保護的檔案一律具有副檔名 **.pfile**。
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+-   相較之下，當您使用 Rights Management 的**內建 (原生) 保護**來保護支援此選項的應用程式時 (例如 Office 檔案)，檔案保護即生效，即使檔案後來傳送給別人或另存他處也一樣。 當您保護這些檔案時，您可以使用嚴格的權限，例如唯讀，或可編輯但不可列印或複製的權限。 例如，您可以選取 [檢閱者 - 僅檢視]，以禁止編輯、列印或複製內容。
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+如需其他技術資訊，請參閱 [Rights Management 共用應用程式系統管理員指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_administrator_guide.md)主題的＜[保護的層級 – 原生和一般](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection)＞一節。
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+## <a name="BKMK_PPDF"></a>什麼是自動建立的 .ppdf 檔案？
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+-   當您透過電子郵件共用受保護的檔案時 (共用保護)，RMS 共用應用程式會自動為 Word、 Excel、 PowerPoint 或 PDF 建立檔案的 **.ppdf** 版本。 這是檔案的唯讀受保護版本，只有獲得授權的人員才可以開啟，也可確保收件者一定可以讀取附件，即使他們使用的行動裝置沒有原本就支援 Rights Management 的應用程式也沒問題。 如果這些人有安裝 RMS 共用應用程式，他們將能夠讀取附件。
+
+    在此情況下，不同於受一般保護的檔案，將會強制執行使用限制。 收件者將無法儲存這個版本的檔案，如果他們將附件轉寄給別人，文件仍然保有原始限制。 只有已獲授權開啟受保護文件的人才可以開啟文件。
+
+    > [!NOTE]
+    > 共用保護時 (透過電子郵件共用) 會自動建立 .ppdf 檔案，但就地保護時不會建立。
+
+## 範例和其他指示
+如需 Rights Management 共用應用程式的使用範例及作法指示，請參閱 Rights Management 共用應用程式使用者指南中下列各節：
+
+-   [使用 RMS 共用應用程式的範例](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+
+-   [您想要做什麼事？](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+
+## 請參閱
+[Rights Management 共用應用程式使用者指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_user_guide.md)
 

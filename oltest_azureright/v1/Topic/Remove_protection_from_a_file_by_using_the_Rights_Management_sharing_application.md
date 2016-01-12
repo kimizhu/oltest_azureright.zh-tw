@@ -3,36 +3,35 @@ description: na
 keywords: na
 title: Remove protection from a file by using the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: da95b938-eaad-4c83-a21e-ff1d4872aae4
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Remove protection from a file by using the Rights Management sharing application
-To remove protection from a file (that is, unprotect a file) that was previously protected by using the RMS sharing application, use the **Remove Protection** option from File Explorer.
+# 透過使用 Rights Management 共用應用程式從檔案移除保護
+若要從先前使用 RMS 共用應用程式保護的檔案移除保護 (也就是取消保護檔案)，從 [檔案總管] 使用 [移除保護] 選項。
 
 > [!IMPORTANT]
-> You must be an owner of the file to remove protection.
+> 您必須是檔案的擁有者才能移除保護。
 
-### To remove protection from a file
+### 若要移除檔案的保護
 
-1.  From File Explorer, right-click the file (for example, Sample.ptxt), select **Protect with RMS**, click **Protect in-place**, and then click **Remove Protection**:
+1.  從 [檔案總管] 中以滑鼠右鍵按一下檔案 (例如 Sample.ptxt)，選取 [施以 RMS 保護]，按一下 [就地保護]，然後按一下 [移除保護]：
 
     ![](../Image/ADRMS_MSRMSApp_RemoveProtection.png)
 
-    You might be prompted for credentials.
+    系統不會提示您提供認證。
 
-The original protected file is deleted (for example, Sample.ptxt) and replaced with a file that has the same name but with the unprotected file name extension (for example, Sample.txt).
+原始受保護的檔案 (例如 Sample.ptxt) 已刪除，並且以有相同名稱但沒有受保護副檔名的檔案 (例如 Sample.txt) 取代。
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## 範例和其他指示
+如需 Rights Management 共用應用程式的使用範例及作法指示，請參閱 Rights Management 共用應用程式使用者指南中下列各節：
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [使用 RMS 共用應用程式的範例](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [您想要做什麼事？](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## 請參閱
+[Rights Management 共用應用程式使用者指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_user_guide.md)
 

@@ -3,25 +3,24 @@ description: na
 keywords: na
 title: Rights Management Sharing Application for Windows
 search: na
-ms.date: 2015-10-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 7d8a8abe-6de1-4088-90ee-e0c4bd6deec8
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Rights Management Sharing Application for Windows
-The Rights Management sharing application for Windows (also known as just “the RMS sharing app”) is a free, downloadable application for organizations that use [Active Directory Rights Management Services](https://technet.microsoft.com/library/cc772403.aspx) (AD RMS) or [Azure Rights Management](https://technet.microsoft.com/library/jj585024.aspx) (Azure RMS), and for organizations that don’t have their own information protection infrastructure but want to consume content that has been protected by other organizations that use Azure RMS.
+# 適用於 Windows 的 Rights Management 共用應用程式
+適用於 Windows 的 Rights Management 共用應用程式 (也簡稱為「RMS 共用應用程式」) 是免費、可下載的應用程式，適用於使用 [Active Directory Rights Management Service](https://technet.microsoft.com/library/cc772403.aspx) (AD RMS) 或 [Azure Rights Management](https://technet.microsoft.com/library/jj585024.aspx) (Azure RMS) 的組織，以及適用於沒有自己的資訊保護基礎結構，但想要取用其他使用 Azure RMS 的組織所保護之內容的組織。
 
--   [Rights Management sharing application: Version release history](../Topic/Rights_Management_sharing_application__Version_release_history.md)
+-   [Rights Management 共用應用程式：版本發行記錄](../Topic/Rights_Management_sharing_application__Version_release_history.md)
 
--   [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md)
+-   [Rights Management 共用應用程式系統管理員指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_administrator_guide.md)
 
--   [Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+-   [Rights Management 共用應用程式使用者指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_user_guide.md)
 
 > [!TIP]
-> There’s also a Rights Management sharing app for Mac computers and mobile devices. For more information, see [FAQ for Rights Management Sharing Application for Mobile and Mac Platforms](http://technet.microsoft.com/dn451248).
+> 另外，還有適用於 Mac 電腦和行動裝置的 Rights Management 共用應用程式。 如需詳細資訊，請參閱[適用於行動和 Mac 平台之 Rights Management 共用應用程式的常見問題集](http://technet.microsoft.com/dn451248)。
 
-## See Also
-[FAQ for Rights Management Sharing Application for Windows](http://technet.microsoft.com/dn467883)
+## 請參閱
+[適用於 Windows 的 Rights Management 共用應用程式的常見問題集](http://technet.microsoft.com/dn467883)
 

@@ -3,55 +3,54 @@ description: na
 keywords: na
 title: Download and install the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 2bf09690-9dba-43b7-9e0a-0110915d4081
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Download and install the Rights Management sharing application
-You do not have to be a local administrator to install the RMS sharing application. However, if you are not and you use Office 2010, there are some limitations. For more information, see the [If you are not a local administrator and use Office 2010](#BKMK_SetupOffice2010) section in this topic.
+# 下載及安裝 Rights Management 共用應用程式
+您不需要是本機系統管理員也能安裝 RMS 共用應用程式。 然而，如果你不是本機系統系統管理員，且使用 Office 2010，則會有一些限制。 如需詳細資訊，請參閱本主題的＜[如果你不是本機系統管理員並使用 Office 2010](#BKMK_SetupOffice2010)＞一節。
 
-### To download and install the Rights Management sharing application
+### 下載及安裝 Rights Management 共用應用程式
 
-1.  Go to the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+1.  移至 Microsoft 網站上的 [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) 頁面。
 
-2.  In the **Computers** section, click the icon for the **RMS app for Windows** and save the **Setup.exe** file to install Microsoft Rights Management sharing application.
+2.  在 [電腦] 區段中，按一下 [適用於 Windows 的 RMS 應用程式] 的圖示並儲存 **Setup.exe** 檔案，以安裝 Microsoft Rights Management 共用應用程式。
 
-3.  Double-click the Setup.exe file that was downloaded. If you are prompted to continue, click **Yes**.
+3.  按兩下下載的 Setup.exe 檔案。 如果系統提示您繼續進行，請按一下 **[是]**。
 
-4.  On the **Setup Microsoft RMS** page, click **Next**, and wait for the installation to finish.
+4.  在 [安裝 Microsoft RMS] 頁面上，按 [下一步]，並等候安裝完成。
 
     > [!NOTE]
-    > The RMS sharing application requires the Microsoft .NET Framework, minimum version 4.0. Setup checks to see whether this is installed and if it is not, you will see a message with a link to install it.
+    > RMS 共用應用程式需要至少 Microsoft.NET Framework 4.0 版。 安裝程式會檢查是否已安裝，如果尚未安裝，您會看到訊息，具有安裝的連結。
 
-5.  When the installation finishes, click **Restart** to restart your computer and complete the installation. Or, click **Close** and restart your computer later to complete the installation.
+5.  當安裝完成時，按一下 [重新啟動] 以重新啟動您的電腦並完成安裝。 或者按一下 [關閉]，稍後重新啟動電腦以完成安裝。
 
-You’re now ready to start protecting your files or read files that others have protected.
+您現在已就緒可以開始保護您的檔案，或者讀取其他人已保護的檔案。
 
-## <a name="BKMK_SetupOffice2010"></a>If you are not a local administrator and use Office 2010
-If you sign in to your computer and do not have local administrative rights, and Setup detects that you have Office 2010 installed, you will see a warning message that some scenarios will not work with this configuration. The scenarios are:
+## <a name="BKMK_SetupOffice2010"></a>如果你不是本機系統管理員並使用 Office 2010
+如果您登入您的電腦，且不具有本機系統管理權限，當安裝程式偵測到你已經安裝 Office 2010，你會看到一則警告訊息，指出某些案例將不適用於此設定。 案例包括：
 
--   If your organization uses Azure RMS rather than an on-premises version of RMS:
+-   如果您的組織使用 Azure RMS，而不是內部部署版本的 RMS：
 
-    -   The Information Rights Management (IRM) features of Office will not be available. For example, the **Do Not Forward** option for emails, and the **Restrict Access** permissions that you can set from the **File** menu in Word and Excel. You can use the Share Protected option on the ribbon, and the right-click options from File Explorer.
+    -   將無法使用 Office 的資訊版權管理 (IRM) 功能。 例如，電子郵件的**不要轉發**選項、可以從 Word 和 Excel 的**檔案**功能表設定的**限制存取**許可權。 您可以使用功能區上的 [保護的共用] 選項，以及 [檔案總管] 中的按右鍵選項。
 
--   If your organization uses an on-premises version of RMS rather than Azure RMS:
+-   如果您的組織使用內部部署的 RMS，而不是 Azure RMS：
 
-    -   You won’t be able to read a protected document sent to you by somebody from another organization that’s using Azure RMS.
+    -   若使用 Azure RMS 的其他組織中的人傳送受保護的文件給您，你將無法讀取文件。
 
-If you are not a local administrator and use Office 365 or Office 2013, you do not see this message and these scenarios are supported.
+如果您不是本機系統管理員，並使用 Office 365 或辦公室 2013，你不會看到這則訊息和支援的那些案例。
 
-You can continue the installation with these known limitations. Or you can stop the installation and either rerun it with the **Run as administrator** option when you run Setup.exe in step 3, or ask an administrator to install it for you. Administrators can [script this installation](https://technet.microsoft.com/library/dn339003.aspx) for you so that it installs automatically.
+您可以繼續安裝並接受這些已知的限制。 或者，你可以停止安裝，然後重新執行安裝並在執行步驟 3 的 Setup.exe 時使用 [以系統管理員身份執行] 選項，或是請系統管理員為您安裝。 系統管理員可以為您[用指令碼進行此安裝](https://technet.microsoft.com/library/dn339003.aspx)，讓它自動安裝。
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## 範例和其他指示
+如需 Rights Management 共用應用程式的使用範例及作法指示，請參閱 Rights Management 共用應用程式使用者指南中下列各節：
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [使用 RMS 共用應用程式的範例](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [您想要做什麼事？](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## 請參閱
+[Rights Management 共用應用程式使用者指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_user_guide.md)
 

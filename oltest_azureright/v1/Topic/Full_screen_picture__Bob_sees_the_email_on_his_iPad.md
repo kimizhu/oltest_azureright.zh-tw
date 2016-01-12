@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: Bob sees the email on his iPad
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: e748fd78-8bba-4168-96cf-f96def078283
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: Bob sees the email on his iPad
+# 全螢幕圖片：Bob 在他的 iPad 上看到電子郵件
 ![](../Image/AzRMS_StoryboardEmaill2.PNG)
 
-Back to [Azure RMS in action: Safely share attachments with mobile users](http://technet.microsoft.com/library/jj585026.aspx).
+回到 [Azure RMS 運作方式：安全地與行動使用者共用附件](http://technet.microsoft.com/library/jj585026.aspx)。
 

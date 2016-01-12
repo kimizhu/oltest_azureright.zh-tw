@@ -3,434 +3,295 @@ description: na
 keywords: na
 title: RMS Protection with Windows Server File Classification Infrastructure (FCI)
 search: na
-ms.date: 2015-10-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 9aa693db-9727-4284-9f64-867681e114c9
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# RMS Protection with Windows Server File Classification Infrastructure (FCI)
-Use this article for instructions and a script to use the Rights Management (RMS) client with the RMS Protection tool to configure File Server Resource Manager and file classification infrastructure (FCI).
+# 具有 Windows Server 檔案分類基礎結構 (FCI) 的 RMS 保護
+使用這份文件作為指示，以及搭配 RMS 保護工具來使用 Rights Management (RMS) 用戶端的指令碼，以設定檔案伺服器資源管理員和檔案分類基礎結構 (FCI)。
 
-This solutions lets you automatically protect all files in a folder on a file server running Windows Server, or automatically protect files that meet a specific criteria. For example, files that have been classified as containing confidential or sensitive information. This solution uses [Azure Rights Management](../Topic/Azure_Rights_Management.md) (Azure RMS) to protect the files, so you must have this technology deployed in your organization.
+這個解決方案可讓您自動保護執行 Windows Server 的檔案伺服器上的資料夾中的所有檔案，或自動保護符合特定準則的檔案。 例如，已分類為包含機密或敏感資訊的檔案。 這個解決方案會使用 [Azure Rights Management](../Topic/Azure_Rights_Management.md) (Azure RMS) 來保護檔案，所以您必須在組織中部署這項技術。
 
 > [!NOTE]
-> Although Azure RMS includes a [connector](https://technet.microsoft.com/library/dn375964.aspx) that supports file classification infrastructure, that solution supports native protection only—for example, Office files.
+> 雖然 Azure RMS 包含支援檔案分類基礎結構的[連接器](https://technet.microsoft.com/library/dn375964.aspx)，但是該解決方案僅支援原生保護 — 例如 Office 檔案。
 > 
-> To support all file types with file classification infrastructure, you must use the Windows PowerShell **RMS Protection** module, as documented in this article. The RMS Protection cmdlets, like the RMS sharing application, support generic protection as well as native protection, which means that all files can be protected. For more information about these different protection levels, see the [Levels of protection – native and generic](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) section in the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
+> 若要支援具有檔案分類基礎結構的所有檔案類型，您必須使用 Windows PowerShell **RMS 保護**模組，如本文所述。 RMS 保護 Cmdlet，像是 RMS 共用應用程式，支援一般保護以及原生保護，這表示可以保護所有檔案。 如需不同保護層級的詳細資訊，請參閱＜[Rights Management 共用應用程式系統管理員指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_administrator_guide.md)＞主題的＜[保護的層級 – 原生和一般](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection)＞一節。
 
-The instructions that follow are for Windows Server 2012 R2 or Windows Server 2012. If you run other supported versions of Windows, you might need to adapt some of the steps for differences between your operating system version and the one documented in this article.
+接下來的指示適用於 Windows Server 2012 R2 或 Windows Server 2012。 如果您執行其他支援的 Windows 版本，您可能需要針對您的作業系統版本和本文所述版本之間的差異，調整一些步驟。
 
-## Prerequisites for Azure RMS protection with Windows Server FCI
-Prerequisites for these instructions:
+## 具有 Windows Server FCI 之 Azure RMS 保護的必要條件
+這些指示的必要條件：
 
--   On each file server where you will run File Resource Manager with file classification infrastructure:
+-   在您於其中執行具有檔案分類基礎結構的檔案資源管理員的每個檔案伺服器：
 
-    -   You have installed File Server Resource Manager as one of the role services for the File Services role.
+    -   您已安裝檔案伺服器資源管理員做為檔案服務角色的其中一個角色服務。
 
-    -   You have identified a local folder that contains files to protect with Rights Management. For example, C:\FileShare.
+    -   您已識別包含要使用 Rights Management 保護的檔案的本機資料夾。 例如，C:\FileShare。
 
-    -   You have installed the RMS Protection tool, including the prerequisites for the tool (such as the RMS client) and for Azure RMS (such as the service principal account). For more information, see [RMS Protection Cmdlets](https://msdn.microsoft.com/library/azure/mt433195.aspx).
+    -   您已安裝 RMS 保護工具，包括工具 (例如 RMS 用戶端) 和 Azure RMS (例如服務主體帳戶) 的必要條件。 如需詳細資訊，請參閱 [RMS 保護 Cmdlet](https://msdn.microsoft.com/library/azure/mt433195.aspx)。
 
-    -   If you want to change the default level of RMS protection (native or generic) for specific file name extensions, you have edited the registry as described in the [File API configuration](https://msdn.microsoft.com/library/dn197834%28v=vs.85%29.aspx) page.
+    -   如果您想要針對特定副檔名變更 RMS 保護的預設層級 (原生或一般)，則編輯登錄，如[檔案 API 組態](https://msdn.microsoft.com/library/dn197834%28v=vs.85%29.aspx)頁面所述。
 
-    -   You have an Internet connection, with configured computer settings if required for a proxy server. For example: `netsh winhttp import proxy source=ie`
+    -   您有網際網路連接，如果 Proxy 伺服器需要，電腦設定也已進行設定。 例如：`netsh winhttp import proxy source=ie`
 
--   You have configured the additional prerequisites for your Azure Rights Management deployment, as described in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx). Specifically, you have the following values to connect to Azure RMS by using a service principal:
+-   您已經為您的 Azure Rights Management 部署設定額外必要條件，如 [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx) 中所述。 具體而言，您使用服務主體時有下列值來連接至 Azure RMS：
 
     -   BposTenantId
 
     -   AppPrincipalId
 
-    -   Symmetric key
+    -   對稱金鑰
 
--   You have synchronized your on-premises Active Directory user accounts with Azure Active Directory or Office 365, including their email address. This is required for all users that might need to access files after they are protected by FCI and Azure RMS. If you do not  do this step (for example, in a test environment), users might be blocked from accessing these files. If you need more information about this account configuration, see [Preparing for Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).
+-   您已同步處理您的內部部署 Active Directory 使用者帳戶與 Azure Active Directory 或 Office 365，包括其電子郵件地址。 所有使用者都需要此項，才能存取受到 FCI 和 Azure RMS 保護的檔案。 如果你未執行此步驟 (例如，在測試環境中)，使用者可能會被阻止存取這些檔案。 如果您需要此帳戶組態的詳細資訊，請參閱[準備 Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md)。
 
--   You have identified the Rights Management template to use, which will protect the files. Make sure that you know the ID for this template by using the [Get-RMSTemplate](https://msdn.microsoft.com/library/azure/mt433197.aspx) cmdlet.
+-   您已識別要使用的 Rights Management 範本，它會保護檔案。 請確定您知道此範本的識別碼，方法是使用 [Get-RMSTemplate](https://msdn.microsoft.com/library/azure/mt433197.aspx) Cmdlet。
 
-## Instructions to configure File Server Resource Manager FCI for Azure RMS protection
-Follow these instructions to automatically protect all files in a folder, by using a Windows PowerShell script as a custom task. Do these procedures in this order:
+## 設定 Azure RMS 保護的檔案伺服器資源管理員 FCI 的指示
+請遵循這些指示以使用 Windows PowerShell 指令碼做為自訂工作，來自動保護資料夾中的所有檔案。 以下列順序執行這些程序：
 
-1.  Save the Windows PowerShell script
+1.  儲存 Windows PowerShell 指令碼
 
-2.  Create a classification property for Rights Management (RMS)
+2.  建立 Rights Management (RMS) 的分類屬性
 
-3.  Create a classification rule (Classify for RMS)
+3.  建立分類規則 (針對 RMS 分類)
 
-4.  Configure the classification schedule
+4.  設定分類排程
 
-5.  Create a custom file management task (Protect files with RMS)
+5.  建立自訂檔案管理工作 (使用 RMS 保護檔案)
 
-6.  Test the configuration by manually running the rule and task
+6.  以手動方式執行規則和工作來測試組態
 
-At the end of these instructions, all files in your selected folder will be classified with the custom property of RMS, and these files will then be protected by Rights Management. For a more complex configuration that selectively protects some files and not others, you can then create or use a different classification property and rule, with a file management task that protects just those files.
+在這些指示的結尾，您選取的資料夾中的所有檔案會分類為 RMS 的自訂屬性，然後這些檔案會受到 Rights Management 的保護。 對於選擇性保護某些檔案而不保護其他檔案的較複雜設定，您可以建立或使用不同的分類屬性和規則，具有僅保護這些檔案的檔案管理工作。
 
-#### Save the Windows PowerShell script
+#### 儲存 Windows PowerShell 指令碼
 
-1.  Expand the [Windows PowerShell Script for Azure RMS protection by using File Server Resource Manager FCI](#BKMK_RMSProtection_Script) section in this article, and copy its contents. Paste the contents of the script and  name the file **RMS-Protect-FCI.ps1** on your own computer.
+1.  展開本文中的＜[使用檔案伺服器資源管理員 FCI 的 Windows PowerShell Script for Azure RMS 保護](#BKMK_RMSProtection_Script)＞區段，然後複製其內容。 將指令碼的內容貼上至您自己的電腦，並且將檔案命名為 **RMS-Protect-FCI.ps1**。
 
-2.  Review the script and make the following changes:
+2.  檢閱指令碼並且進行下列變更：
 
-    -   Search for the following string and replace it with your own AppPrincipalId that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   搜尋下列字串並且以您用於 [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) Cmdlet 的 AppPrincipalId 取代，以連線至 Azure RMS：
 
         ```
         <enter your AppPrincipalId here>
         ```
-        For example, the script might look like this:
+        例如，指令碼可能如下所示：
 
         `[Parameter(Mandatory = $false)]`
 
-        `[Parameter(Mandatory = $false)]             [string]$AppPrincipalId = "b5e3f76a-b5c2-4c96-a594-a0807f65bba4",`
+        `[Parameter(Mandatory = $false)] [string]$AppPrincipalId = "b5e3f76a-b5c2-4c96-a594-a0807f65bba4",`
 
-    -   Search for the following string and replace it with your own symmetric key that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   搜尋下列字串並且以您用於 [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) Cmdlet 的對稱金鑰取代，以連線至 Azure RMS：
 
         ```
         <enter your key here>
         ```
-        For example, the script might look like this:
+        例如，指令碼可能如下所示：
 
         `[Parameter(Mandatory = $false)]`
 
         `[string]$SymmetricKey = "zIeMu8zNJ6U377CLtppkhkbl4gjodmYSXUVwAO5ycgA="`
 
-    -   Search for the following string and replace it with your own BposTenantId (tenant ID) that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   搜尋下列字串並且以您用於 [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) Cmdlet 的 BposTenantId (租用戶 ID) 取代，以連線至 Azure RMS：
 
         ```
         <enter your BposTenantId here>
         ```
-        For example, the script might look like this:
+        例如，指令碼可能如下所示：
 
         `[Parameter(Mandatory = $false)]`
 
         `[string]$BposTenantId = "23976bc6-dcd4-4173-9d96-dad1f48efd42",`
 
-    -   If your server is running Windows Server 2012, you might have to manually load the RMSProtection module at the beginning of the script. Add the following command (or equivalent if  the "Program Files"  folder is  on a drive other than the  C: drive :
+    -   如果您的伺服器執行 Windows Server 2012，您可能必須在指令碼開頭手動載入 RMSProtection 模組。 新增下列命令 (或同等命令，如果 "Program Files" 資料夾是在 C: 磁碟機以外的磁碟機上：
 
         ```
         Import-Module "C:\Program Files\WindowsPowerShell\Modules\RMSProtection\RMSProtection.dll"
         ```
 
-3.  Sign the script. If you do not sign the script (more secure), you must configure Windows PowerShell on the servers that run it. For example, run a Windows PowerShell session with the **Run as Administrator** option, and type: **Set-ExecutionPolicy Unrestricted**. However, this configuration lets all unsigned scripts run (less secure).
+3.  簽署指令碼。 如果您未簽署指令碼 (較安全)，您必須在執行它的伺服器上設定 Windows PowerShell。 例如，使用 [以系統管理員身分執行] 選項來執行 Windows PowerShell 工作階段，然後輸入：**Set-ExecutionPolicy Unrestricted**。 不過，這種組態會讓所有未簽署的指令碼執行 (較不安全)。
 
-    For more information about signing Windows PowerShell scripts, see [about_Signing](https://technet.microsoft.com/library/hh847874.aspx) in the PowerShell documentation library.
+    如需有關簽署 Windows PowerShell 指令碼的詳細資訊，請參閱 PowerShell 文件庫中的 [about_Signing](https://technet.microsoft.com/library/hh847874.aspx)。
 
-4.  Save the file locally on each file server that will run File Resource Manager with file classification infrastructure. For example, save the file in **C:\RMS-Protection**. Secure this file by using NTFS permissions so that unauthorized users cannot modify it.
+4.  在其中執行具有檔案分類基礎結構的檔案資源管理員的每個檔案伺服器上，本機儲存檔案： 例如，將檔案儲存在 **C:\RMS-Protection**。 藉由使用 NTFS 權限來保護此檔案，這樣未經授權的使用者就不能修改它。
 
-You're now ready to start configuring File Server Resource Manager.
+您現在可以開始設定檔案伺服器資源管理員。
 
-#### Create a classification property for Rights Management (RMS)
+#### 建立 Rights Management (RMS) 的分類屬性
 
--   In File Server Resource Manager, Classification Management, create a new local property:
+-   在 [檔案伺服器資源管理員]、[分類管理] 中，建立新的本機屬性：
 
-    -   **Name**: Type **RMS**
+    -   **名稱**：輸入 **RMS**
 
-    -   **Description**:   Type **Rights Management protection**
+    -   **描述**： 輸入 **Rights Management 保護**
 
-    -   **Property Type**: Select **Yes/No**
+    -   **屬性類型**：選取 [是/否]
 
-    -   **Value**: Select **Yes**
+    -   **值**：選取 [是]。
 
-We can now create a classification rule that uses this property.
+我們現在可以建立使用這個屬性的分類規則。
 
-#### Create a classification rule (Classify for RMS)
+#### 建立分類規則 (針對 RMS 分類)
 
--   Create a new classification rule:
+-   建立新的分類規則：
 
-    -   On the **General** tab:
+    -   在 [一般] 索引標籤上：
 
-        -   **Name**: Type **Classify for RMS**
+        -   **名稱**：輸入**針對 RMS 分類**
 
-        -   **Enabled**: Keep the default, which is that this checkbox is selected.
+        -   **[已啟用]**：保留預設值，預設值為選取此核取方塊。
 
-        -   **Description**: Type **Classify all files in the &lt;folder name&gt; folder for Rights Management**.
+        -   **描述**：輸入**針對 Rights Management 分類 &lt;資料夾名稱&gt; 資料夾中的所有檔案**。
 
-            Replace *&lt;folder name&gt;* with your chosen folder name. For example, **Classify all files in the C:\FileShare folder for Rights Management**
+            將 *&lt;資料夾名稱&gt;* 取代為您選擇的資料夾名稱。 例如，**針對 Rights Management 分類 C:\FileShare 資料夾中的所有檔案**
 
-        -   **Scope**: Add your chosen folder. For example, **C:\FileShare**.
+        -   **範圍**：新增您選擇的資料夾。 例如，**C:\FileShare**。
 
-            Do not select the checkboxes.
+            請不要選取任何核取方塊。
 
-    -   On the **Classification** tab:
+    -   在 [分類] 索引標籤上：
 
-    -   **Classification method**: Select **Folder Classifier**
+    -   **分類方法**：選取 [資料夾分類器]
 
-    -   **Property** name: Select **RMS**
+    -   **屬性**名稱：選取 [RMS]
 
-    -   Property **value**: Select **Yes**
+    -   屬性**值**：選取 [是]。
 
-Although you can run the classification rules manually, for ongoing operations, you will want this rule to run on a schedule so that new files will be classified with the RMS property.
+雖然您可以手動執行分類規則，但是對於進行中的作業，您會想要排程執行此規則，讓新的檔案以 RMS 屬性進行分類。
 
-#### Configure the classification schedule
+#### 設定分類排程
 
--   On the **Automatic Classification** tab:
+-   在 [自動分類] 索引標籤上：
 
-    -   **Enable fixed schedule**: Select this checkbox.
+    -   **啟用固定排程**：選取此核取方塊。
 
-    -   Configure the schedule for all classification rules to run, which includes our new rule to classify files with the RMS property.
+    -   針對要執行的所有分類規則設定排程，其中包含我們以 RMS 屬性分類檔案的新規則。
 
-    -   **Allow continuous classification for new files**: Select this checkbox so that new files will be classified.
+    -   **允許對新檔案進行連續分類**：選取此核取方塊，便會分類新的檔案。
 
-    -   Optional: Make any other changes that you want, such as configuring options for reports and notifications.
+    -   選用：進行您想要的任何其他變更，例如設定報告和通知的選項。
 
-Now you've completed the classification configuration, you're ready to configure a management task to apply the RMS protection to the files.
+現在您已經完成分類設定，您可以設定管理工作以將 RMS 保護套用至檔案。
 
-#### Create a custom file management task (Protect files with RMS)
+#### 建立自訂檔案管理工作 (使用 RMS 保護檔案)
 
--   In **File Management Tasks**, create a new file management task:
+-   在 [檔案管理工作] 中，建立新的檔案管理工作：
 
-    -   On the **General** tab:
+    -   在 [一般] 索引標籤上：
 
-        -   **Task name**: Type **Protect files with RMS**
+        -   **工作名稱**：輸入**以 RMS 保護檔案**
 
-        -   Keep the **Enable** checkbox selected.
+        -   保持選取 [啟用] 核取方塊。
 
-        -   **Description**: Type **Protect files in &lt;folder name&gt; with Rights Management and a template by using a Windows PowerShell script.**
+        -   **描述**：輸入**藉由使用 Windows PowerShell 指令碼，以 Rights Management 和範本保護 &lt;資料夾名稱&gt; 中的檔案。**
 
-            Replace *&lt;folder name&gt;* with your chosen folder name. For example, **Protect files in C:\FileShare with Rights Management and a template by using a Windows PowerShell script**
+            將 *&lt;資料夾名稱&gt;* 取代為您選擇的資料夾名稱。 例如，**藉由使用 Windows PowerShell 指令碼，以 Rights Management 和範本保護 C:\FileShare 中的檔案**
 
-        -   **Scope**: Select your chosen folder. For example, **C:\FileShare**.
+        -   **範圍**：選取您選擇的資料夾。 例如，**C:\FileShare**。
 
-            Do not select the checkboxes.
+            請不要選取任何核取方塊。
 
-    -   On the **Action** tab:
+    -   在 [動作] 索引標籤上：
 
-        -   **Type**: Select **Custom**
+        -   **類型**：選取 [自訂]
 
-        -   **Executable**: Specify the following:
+        -   **可執行檔**：指定下列項目：
 
             ```
             C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
             ```
-            If Windows is not on your C: drive, modify this path or browse to this file.
+            如果 Windows 不是在 C: 磁碟機上，修改此路徑或瀏覽至此檔案。
 
-        -   **Argument**: Specify the following, supplying your own values for &lt;path&gt; and &lt;template ID&gt;:
+        -   **引數**：指定下列項目，提供您自己的 &lt;路徑&gt; 和 &lt;範本識別碼&gt; 值：
 
             ```
             -Noprofile -Command "<path>\RMS-Protect-FCI.ps1 -File '[Source File Path]' -TemplateID <template GUID> -OwnerMail [Source File Owner Email]"
             ```
-            For example, if you copied the script to C:\RMS-Protection and the template ID you identified from the prerequisites is e6ee2481-26b9-45e5-b34a-f744eacd53b0, specify the following:
+            例如，如果您將指令碼複製到 C:\RMS-Protection，且您從必要條件識別的範本識別碼為 e6ee2481-26b9-45e5-b34a-f744eacd53b0，請指定下列項目：
 
             `-Noprofile -Command "C:\RMS-Protection\RMS-Protect-FCI.ps1 -File '[Source File Path]' -TemplateID e6ee2481-26b9-45e5-b34a-f744eacd53b0 -OwnerMail [Source File Owner Email]"`
 
-            In this command, **[Source File Path]** and **[Source File Owner Email]** are both FCI-specific variables, so type these exactly as they appear in the command above. The first one is used by FCI to automatically specify the identified file in the folder, and the second is for FCI to automatically retrieve the email address of the named Owner of the identified file. This command is repeated for each file in the folder, which in our example, is each file in the C:\FileShare folder that additionally, has RMS as a file classification property.
+            在這個命令中，[來源檔案路徑] 和 [來源檔案擁有者電子郵件] 都是 FCI 特定變數，因此請在上述命令中如實輸入。 FCI 使用第一個變數以自動指定資料夾中的已識別檔案，第二個變數是讓 FCI 自動擷取已識別檔案之具名擁有者的電子郵件地址。 此命令會針對資料夾中的每個檔案重複，在我們的範例中，是 C:\FileShare 資料夾中的每個檔案，另外具有 RMS 做為檔案分類屬性。
 
             > [!NOTE]
-            > The **-OwnerMail [Source File Owner Email]** parameter and value ensures that the original owner of the file is granted the Rights Management owner of the file after it is protected. This ensures that the original file owner has all Rights Management rights to their own files. When files are created by a domain user, the email address is  automatically retrieved from Active Directory by using the user account name in the file's Owner property. To do this, the file server must be in the same domain or trusted domain as the user.
+            > **-OwnerMail [Source File Owner Email]** 參數和值可確保在檔案受到保護之後，檔案的原始擁有者已被授與為檔案的 Rights Management 擁有者。 這可確保原始檔案擁有者對其自己的檔案具有所有 Rights Management 權限。 當檔案是由網域使用者建立時，會使用檔案的 [擁有者] 屬性中的使用者帳戶名稱，自動從 Active Directory 擷取電子郵件地址。 若要做到這一點，檔案伺服器必須與使用者位於相同的網域或信任的網域中。
             > 
-            > Whenever possible, assign the original owners to protected documents, to ensure that these users continue to have full control over the files that they created. However, if you use the [Source File Owner Email] variable as above, and a file does not have a domain user defined as the owner (for example, a local account was used to create the file, so the owner displays SYSTEM), the script will fail.
+            > 請盡可能將原始的擁有者指派至受保護的文件，以確保這些使用者繼續擁有他們所建立之檔案的完整控制權。 不過，如果您使用上述的 [來源檔案擁有者電子郵件] 變數，且檔案沒有定義為擁有者的網域使用者 (例如，用於建立檔案的本機帳戶，讓使用者顯示 SYSTEM)，則指令碼將會失敗。
             > 
-            > For files that do not have a domain user as owner, you can either copy and save these files yourself as a domain user, so that you become the owner for just these files. Or, if you have permissions, you can manually change the owner.  Or alternatively, you can supply a specific email address (such as your own or a group address for the IT department) instead of the [Source File Owner Email] variable, which means that all files you protect by using this script will use this email address to define the new owner.
+            > 對於沒有網域使用者做為擁有者的檔案，您可以自行以網域使用者身分複製及儲存這些檔案，如此您就會變成這些檔案的擁有者。 或者，如果您有權限，可以手動變更擁有者。  或者，您可以提供特定電子郵件地址 (例如您自己或 IT 部門的群組地址)，而不是 [來源檔案擁有者電子郵件] 變數，這表示您使用這個指令碼保護的所有檔案將會使用此電子郵件地址來定義新的擁有者。
 
-    -   **Run the command as**: Select **Local System**
+    -   **命令執行身分**：選取 [本機系統]
 
-    -   On the **Condition** tab:
+    -   在 [條件] 索引標籤上：
 
-        -   **Property**: Select **RMS**
+        -   **屬性**：選取 [RMS]
 
-        -   **Operator**: Select **Equal**
+        -   **運算子**：選取 [等於]
 
-        -   **Value**: Select **Yes**
+        -   **值**：選取 [是]。
 
-    -   On the **Schedule** tab:
+    -   在 [排程] 索引標籤上：
 
-        -   **Run at**: Configure your preferred schedule.
+        -   **執行身分**：設定您偏好的排程。
 
-            Allow plenty of time for the script to complete. Although this solution  protects all files in the folder, the script runs once for each file, each time. Although this takes longer than protecting all the files at the same time, which the RMS Protection tool supports, this file-by-file configuration for FCI is more powerful. For example, the protected files can have different owners (retain the original owner) when you use the   [Source File Owner Email] variable, and this file-by-file action will be required if you later change the configuration to selectively protect files rather than all files in a folder.
+            允許充足的時間讓指令碼完成。 雖然這個解決方案會保護資料夾中的所有檔案，但是指令碼每次只會對每個檔案執行一次。 雖然這樣所花費的時間比同時保護所有檔案 (RMS 保護工具支援) 還久，但是針對 FCI 的此逐檔案組態功能更強大。 例如，當您使用 [來源檔案擁有者電子郵件] 變數時，受保護的檔案可以有不同的擁有者 (保留原始的擁有者)，而且如果您稍後將組態變更為選擇性保護檔案而不是資料夾中的所有檔案，則需要此逐檔案的動作。
 
-        -   **Run continuously on new files**: Select this checkbox.
+        -   **持續在新檔案上執行**：選取此核取方塊。
 
-#### Test the configuration by manually running the rule and task
+#### 以手動方式執行規則和工作來測試組態
 
-1.  Run the classification rule:
+1.  執行分類規則：
 
-    1.  Click **Classification Rules** &gt; **Run Classification With All Rules Now**
+    1.  按一下 [分類規則] &gt; [以所有規則立即執行分類]
 
-    2.  Click **Wait for classification to complete**, and then click **OK**.
+    2.  按一下 [等待分類完成]，然後按一下 [確定]。
 
-2.  Wait for the **Running Classification** dialog box to close and then view the results in the automatically displayed report. You should see **1** for the **Properties** field and the number of files in your folder. Confirm by using File Explorer and checking the properties of files in your chosen folder. On the **Classification** tab, you should see **RMS** as a property name and **Yes** for its **Value**.
+2.  等候 [正在執行分類] 對話方塊關閉，然後再檢視自動顯示報告中的結果。 您應該會在 [屬性] 欄位和資料夾中的檔案數目看到 **1**。 使用 [檔案總管] 進行確認，並且檢查您所選擇的資料夾中的檔案屬性。 在 [分類] 索引標籤上，您應該會看到屬性名稱為 [RMS]，其 [值] 為 [是]。
 
-3.  Run the file management task:
+3.  執行檔案管理工作：
 
-    1.  Click **File Management Tasks** &gt; **Protect files with RMS** &gt; **Run File Management Task Now**
+    1.  按一下 [檔案管理工作] &gt; [以 RMS 保護檔案] &gt; [立即執行檔案管理工作]
 
-    2.  Click **Wait for the task to complete**, and then click **OK**.
+    2.  按一下 [等待工作完成]，然後按一下 [確定]。
 
-4.  Wait for the **Running File Management Task** dialog box to close and then view the results in the automatically displayed report. You should see the number of files that are in your chosen folder in the **Files** field. Confirm that the files in your chosen folder are now protected by RMS. For example, if your chosen folder is C:\FileShare, type the following in a Windows PowerShell session and confirm that no files have a status of **UnProtected**:
+4.  等候 [正在執行檔案管理工作] 對話方塊關閉，然後再檢視自動顯示報告中的結果。 您應該會在 [檔案] 欄位中看到您所選擇的資料夾中的檔案數目。 確認您所選擇的資料夾中的檔案現在受到 RMS 保護。 例如，如果您選擇的資料夾是 C:\FileShare，在 Windows PowerShell 工作階段中輸入下列項目，並確認沒有任何檔案具有 [未受保護] 狀態：
 
     ```
     foreach ($file in (Get-ChildItem -Path C:\FileShare -Force | where {!$_.PSIsContainer})) {Get-RMSFileStatus -f $file.PSPath}
     ```
     > [!TIP]
-    > Some troubleshooting tips:
+    > 疑難排解秘訣：
     > 
-    > -   If you see **0** in the report, instead of the number of files in your folder, this indicates that the script did not run. First, check the script itself by loading it in Windows PowerShell ISE to validate the script contents and try running it to see if any errors are displayed. With no arguments specified, the script will try to connect and authenticate to Azure RMS.
+    > -   如果您在報告中看到 **0**，而不是資料夾中的檔案數目，這表示指令碼並未執行。 首先，檢查指令碼本身，方法是在 Windows PowerShell ISE 中載入指令碼以驗證指令碼內容，並嘗試執行以查看是否顯示任何錯誤。 不指定任何引數時，指令碼會嘗試連接和驗證至 Azure RMS。
     > 
-    >     -   If the script reports that it couldn't connect to Azure RMS, check the values it displays for the service principal account, which you specified in the script.  For more information about how to create this service principal account, see the second prerequisite in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx)
-    >     -   If the script reports that it could connect to Azure RMS and your Azure region is outside North America, check that you have edited the registry correctly for this configuration. A good test for this is to run Get-RMSTemplate directly from Windows PowerShell on the server. For more information about the registry edits, see the third prerequisite in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx).
-    > -   If the script by itself runs in Windows PowerShell ISE without errors, try running it as follows from a  PowerShell session, specifying a file name to protect and without the -OwnerEmail parameter:
+    >     -   如果指令碼報告它無法連接至 Azure RMS，請檢查它針對服務主體帳戶顯示的值，這是您在指令碼中指定的值。  如需有關如何建立此服務主體帳戶的詳細資訊，請參閱 [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx) 中的第二個必要條件
+    >     -   如果指令碼報告它可以連接至北美洲以外的 Azure RMS 和您的 Azure 區域，請檢查您已經針對此組態正確編輯登錄。 一個很好的測試是在伺服器上直接從 Windows PowerShell 執行 Get-RMSTemplate。 如需有關登錄編輯的詳細資訊，請參閱 [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx) 中的第三個必要條件
+    > -   如果在 Windows PowerShell ISE 中執行的指令碼本身沒有錯誤，請嘗試如下所示從 PowerShell 工作階段執行它，指定要保護的檔案名稱而不指定 -OwnerEmail 參數：
     > 
     >     ```
     >     powershell.exe -Noprofile -Command "<path>\RMS-Protect-FCI.ps1 -File <full path and name of a file>' -TemplateID <template GUID>"
     >     ```
-    >     -   If the script runs successfully in this Windows PowerShell session, check  your entries for **Executive** and **Argument** in the file management task action.  If you have specified **-OwnerEmail [Source File Owner Email]**, try removing this parameter.
+    >     -   如果指令碼在此 Windows PowerShell 工作階段中成功執行，請在檔案管理工作動作中檢查 [執行] 和 [引數] 的項目。  如果您已經指定 [-OwnerEmail [來源檔案擁有者電子郵件]]，請嘗試移除此參數。
     > 
-    >         If the file management task works successfully without  **-OwnerEmail [Source File Owner Email]**, check that the unprotected files have a domain user listed as the file owner, rather than **SYSTEM**.  To do this, use the **Security** tab for the file's properties, and then click **Advanced**. The **Owner** value is displayed immediately after the file **Name**. Also, verify that the file server is in the same domain or a trusted domain to lookup the user's email address from Active Directory Domain Services.
-    > -   If you see the correct number of files in the report but the files are not protected, try protecting the files manually by using the [Protect-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx) cmdlet, to see if any errors are displayed.
+    >         如果在沒有 -OwnerEmail [來源檔案擁有者電子郵件] 的情況下成功運作檔案管理工作，請檢查未受保護的檔案是否具有列為檔案擁有者而非 [SYSTEM] 的網域使用者。  若要做到這一點，請使用檔案屬性的 [安全] 索引標籤，然後按一下[進階]。 在檔案 [名稱] 之後，會立即顯示 [擁有者] 值。 同時，也會驗證檔案伺服器是否位於相同的網域或信任的網域中，以從 Active Directory 網域服務查閱使用者的電子郵件地址。
+    > -   如果您在報告中看到正確的檔案數目，但是檔案未受保護，請嘗試使用 [Protect-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx) Cmdlet 以手動方式保護檔案，來查看是否顯示任何錯誤。
 
-When you have confirmed that these tasks run successfully, you can close File Resource Manager. New files will be automatically protected and all files will be protected again when the schedules run. Re-protecting files ensures that any changes to the template are applied to the files.
+當你確認這些工作已成功執行時，您可以關閉 [檔案資源管理器]。 新檔案將自動受到保護，而且所有檔案將在排程執行時再次受到保護。 重新保護檔案可確保對範本所做的任何變更都會套用至檔案。
 
-### <a name="BKMK_RMSProtection_Script"></a>Windows PowerShell Script for Azure RMS protection by using File Server Resource Manager FCI
-This section contains the sample script to copy and edit, as described in the preceding section.
+### <a name="BKMK_RMSProtection_Script"></a>使用檔案伺服器資源管理員 FCI 的 Windows PowerShell Script for Azure RMS 保護
+本章節包含複製和編輯的範例指令碼，如前一節所述。
 
-*&#42;&#42;Disclaimer&#42;&#42;: This sample script is not supported under any Microsoft standard support program or service. This sample*
-*script is provided AS IS without warranty of any kind.*
+*&#42;&#42;免責聲明&#42;&#42;：這個範例指令碼在任何 Microsoft 標準支援計劃或服務底下不受支援。 這個範例指令碼是依現狀提供，不含任何種類的擔保。*
 
 ```
-<#
-.SYNOPSIS 
-     Helper script to protect all file types with Azure RMS and FCI.
-.DESCRIPTION
-     Protect files with Azure RMS and Windows Server FCI, using an RMS template ID.   
-#>
-param(
-            [Parameter(Mandatory = $false)]
-            [ValidateScript({ If($_ -eq "") {$true} else { if (Test-Path -Path $_ -PathType Leaf) {$true} else {throw "Can't find file specified"} } })]
-            [string]$File,
-
-            [Parameter(Mandatory = $false)]
-            [string]$TemplateID,
-
-            [Parameter(Mandatory = $false)]
-            [string]$OwnerMail,
-
-            [Parameter(Mandatory = $false)]
-            [string]$AppPrincipalId = "<enter your AppPrincipalId here>",
-
-            [Parameter(Mandatory = $false)]
-            [string]$SymmetricKey = "<enter your key here>",
-
-            [Parameter(Mandatory = $false)]
-            [string]$BposTenantId = "<enter your BposTenantId here>"
-) 
-
-# script information
-[String] $Script:Version = 'version 1.0' 
-[String] $Script:Name = "RMS-Protect-FCI.ps1"
-
-#global working variables
-[switch] $Script:isScriptProcess = $False # Controls the script process. If false, the script gracefully stops running.
-
-#**Functions (general helper)***************************************
-function Get-ScriptName(){ 
-
-	return $MyInvocation.ScriptName.Substring($MyInvocation.ScriptName.LastIndexOf('\') + 1, $MyInvocation.ScriptName.LastIndexOf('.') - $MyInvocation.ScriptName.LastIndexOf('\') - 1)
-}
-
-#**Functions (script specific)**************************************
-
-function Check-Module{
-
-	param ([String]$Module = $(Throw "Module name not specified"))
-
-	[bool]$isResult = $False
-
-	#try to load the module
-	if (get-module -list -name $Module) {
-		import-module $Module
-
-		if (get-module -name $Module ) {
-
-			$isResult = $True
-		} else {
-			$isResult = $False
-		} 
-
-	} else {
-			$isResult = $False
-	}
-	return $isResult
-}
-
-function Protect-File ($ffile, $ftemplateId, $fownermail) {
-
-    [bool] $returnValue = $false
-    try {
-        If ($OwnerMail -eq $null -or $OwnerMail -eq "") {
-            $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId
-            $returnValue = $true
-            Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId")
-        } else {
-            $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId -OwnerEmail $fownermail
-            $returnValue = $true
-            Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId, set Owner: $fownermail")
-        }
-    } catch {
-        Write-Host ( "ERROR" + "During protection of file: $ffile with Template: $ftemplateId")
-            }
-    return $returnValue
-}
-
-function Set-RMSConnection ($fappId, $fkey, $fbposId) {
-
-	[bool] $returnValue = $false
-    try {
-               Set-RMSServerAuthentication -AppPrincipalId $fappId -Key $fkey -BposTenantId $fbposId
-        Write-Host ("Information: " + "Connected to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId")
-        $returnValue = $true
-    } catch {
-        Write-Host ("ERROR" + "During connection to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId")
-
-    }
-    return $returnValue
-}
-
-#**Main Script (Script)*********************************************
-Write-Host ("-== " + $Script:Name + " " + $Version + " ==-")
-
-$Script:isScriptProcess = $True
-
-# Validate Azure RMS connection by checking the module and then connection
-if ($Script:isScriptProcess) {
- 		if (Check-Module -Module RMSProtection){
-    	$Script:isScriptProcess = $True
-	} else {
-
-		Write-Host ("The RMSProtection module is not loaded") -foregroundcolor "yellow" -backgroundcolor "black"	        
-		$Script:isScriptProcess = $False
-	}
-}
-
-if ($Script:isScriptProcess) {
-	#Write-Host ("Try to connect to Azure RMS with AppId: $AppPrincipalId and BPOSID: $BposTenantId" )	
-    if (Set-RMSConnection $AppPrincipalId $SymmetricKey $BposTenantId) {
-	    Write-Host ("Connected to Azure RMS")
-
-    } else {
-		Write-Host ("Couldn't connect to Azure RMS") -foregroundcolor "yellow" -backgroundcolor "black"
-		$Script:isScriptProcess = $False
-	}
-}
-
-#  Start working loop
-if ($Script:isScriptProcess) {
-    if ( !(($File -eq $null) -or ($File -eq "")) ) {
-        if (!(Protect-File -ffile $File -ftemplateId $TemplateID -fownermail $OwnerMail)) {
-            $Script:isScriptProcess = $False           
-        }
-    }
-}
-
-# Closing
-if (!$Script:isScriptProcess) { Write-Host "ERROR occurred during script process" -foregroundcolor "red" -backgroundcolor "black"}
-write-host ("-== " + $Script:Name + " " + $Version + "  ==-")
-if (!$Script:isScriptProcess) { exit(-1) } else {exit(0)}
+<# .SYNOPSIS Helper script to protect all file types with Azure RMS and FCI. .DESCRIPTION Protect files with Azure RMS and Windows Server FCI, using an RMS template ID. #> param( [Parameter(Mandatory = $false)] [ValidateScript({ If($_ -eq "") {$true} else { if (Test-Path -Path $_ -PathType Leaf) {$true} else {throw "Can't find file specified"} } })] [string]$File, [Parameter(Mandatory = $false)] [string]$TemplateID, [Parameter(Mandatory = $false)] [string]$OwnerMail, [Parameter(Mandatory = $false)] [string]$AppPrincipalId = "<enter your AppPrincipalId here>", [Parameter(Mandatory = $false)] [string]$SymmetricKey = "<enter your key here>", [Parameter(Mandatory = $false)] [string]$BposTenantId = "<enter your BposTenantId here>" ) # script information [String] $Script:Version = 'version 1.0' [String] $Script:Name = "RMS-Protect-FCI.ps1" #global working variables [switch] $Script:isScriptProcess = $False # Controls the script process. If false, the script gracefully stops running. #**Functions (general helper)*************************************** function Get-ScriptName(){ return $MyInvocation.ScriptName.Substring($MyInvocation.ScriptName.LastIndexOf('\') + 1, $MyInvocation.ScriptName.LastIndexOf('.') - $MyInvocation.ScriptName.LastIndexOf('\') - 1) } #**Functions (script specific)************************************** function Check-Module{ param ([String]$Module = $(Throw "Module name not specified")) [bool]$isResult = $False #try to load the module if (get-module -list -name $Module) { import-module $Module if (get-module -name $Module ) { $isResult = $True } else { $isResult = $False } } else { $isResult = $False } return $isResult } function Protect-File ($ffile, $ftemplateId, $fownermail) { [bool] $returnValue = $false try { If ($OwnerMail -eq $null -or $OwnerMail -eq "") { $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId $returnValue = $true Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId") } else { $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId -OwnerEmail $fownermail $returnValue = $true Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId, set Owner: $fownermail") } } catch { Write-Host ( "ERROR" + "During protection of file: $ffile with Template: $ftemplateId") } return $returnValue } function Set-RMSConnection ($fappId, $fkey, $fbposId) { [bool] $returnValue = $false try { Set-RMSServerAuthentication -AppPrincipalId $fappId -Key $fkey -BposTenantId $fbposId Write-Host ("Information: " + "Connected to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId") $returnValue = $true } catch { Write-Host ("ERROR" + "During connection to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId") } return $returnValue } #**Main Script (Script)********************************************* Write-Host ("-== " + $Script:Name + " " + $Version + " ==-") $Script:isScriptProcess = $True # Validate Azure RMS connection by checking the module and then connection if ($Script:isScriptProcess) { if (Check-Module -Module RMSProtection){ $Script:isScriptProcess = $True } else { Write-Host ("The RMSProtection module is not loaded") -foregroundcolor "yellow" -backgroundcolor "black" $Script:isScriptProcess = $False } } if ($Script:isScriptProcess) { #Write-Host ("Try to connect to Azure RMS with AppId: $AppPrincipalId and BPOSID: $BposTenantId" ) if (Set-RMSConnection $AppPrincipalId $SymmetricKey $BposTenantId) { Write-Host ("Connected to Azure RMS") } else { Write-Host ("Couldn't connect to Azure RMS") -foregroundcolor "yellow" -backgroundcolor "black" $Script:isScriptProcess = $False } } #  Start working loop if ($Script:isScriptProcess) { if ( !(($File -eq $null) -or ($File -eq "")) ) { if (!(Protect-File -ffile $File -ftemplateId $TemplateID -fownermail $OwnerMail)) { $Script:isScriptProcess = $False } } } # Closing if (!$Script:isScriptProcess) { Write-Host "ERROR occurred during script process" -foregroundcolor "red" -backgroundcolor "black"} write-host ("-== " + $Script:Name + " " + $Version + "  ==-") if (!$Script:isScriptProcess) { exit(-1) } else {exit(0)}
 ```
 
-## Modifying the instructions to selectively protect files
-When you have the preceding instructions working, it's then very easy to modify them for a more sophisticated configuration. For example, protect files by using the same script but only for files that contain personal identifiable information, and perhaps select a template that has more restrictive rights.
+## 修改指示以選擇性保護檔案
+當前述的指示運作時，很容易就能加以修改，以便設定更複雜的組態。 例如，使用相同指令碼但是只針對包含個人識別資訊的檔案來保護檔案，並且也許選取具有更嚴格權限的範本。
 
-To do this, use one of the built-in classification properties (for example, **Personally Identifiable Information**) or create your own new property. Then create a new rule that uses this property. For example, you might select the **Content Classifier**, choose the **Personally Identifiable Information** property with a value of **High**, and configure the string or expression pattern that identifies the file to be configured for this property (such as the  string "**Date of Birth**").
+若要這樣做，請使用其中一個內建分類屬性 (例如，**個人識別資訊**) 或建立您自己的新屬性。 然後建立使用這個屬性的新規則。 例如，您可能會選取 [內容分類器]，選擇 [個人識別資訊] 屬性，其值是 [高]，並且設定字串或運算式模式，識別要針對此屬性設定的檔案 (例如字串「**出生日期**」)。
 
-Now all you need to do is create a new file management task that uses the same script but perhaps with a different template, and configure the condition for the classification property that you have just configured. For example, instead of the condition that we configured previously (**RMS** property, **Equal**, **Yes**), select the **Personally Identifiable Information** property with the **Operator** value set to **Equal** and the **Value** of **High**.
+現在您只需要建立新的檔案管理工作，它會使用相同指令碼但是或許會使用不同的範本，以及設定您剛才設定的分類屬性的條件。 例如，不是我們先前設定的條件 ([RMS] 屬性、[等於]、[是])，選取 [個人識別資訊] 屬性，[運算子] 值設為 [等於] 且 [值] 為 [高]。
 

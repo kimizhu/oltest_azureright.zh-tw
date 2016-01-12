@@ -6,63 +6,62 @@ search: na
 ms.date: na
 ms.tgt_pltfrm: na
 ms.assetid: a69ead9d-7dd3-4b38-9830-4728e9757341
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: noindex,nofollow
 ---
-# Active Directory Rights Management Services Mobile Device Extension
-The Active Directory Rights Management Services (AD RMS) mobile device extension runs on top of an existing AD RMS deployment. This lets users who have mobile devices protect and consume sensitive data when their device supports the latest RMS client and uses RMS-enlightened apps. For example, users on these device can do the following:
+# Active Directory Rights Management Services 行動裝置擴充功能
+Active Directory Rights Management Services (AD RMS) 行動裝置延伸模組是在現有的 AD RMS 部署上執行。這可讓擁有行動裝置的使用者在其裝置支援最新的 RMS 用戶端，並使用 RMS 架構應用程式時，保護和取用機密資料。例如，這些裝置的使用者可以執行以下操作：
 
--   Use the RMS sharing app to consume protected text files in different formats (including .txt, .csv, and .xml).
+-   使用 RMS 共用應用程式取用不同格式 (包括 .txt、.csv 和 .xml) 的受保護文字檔案。
 
--   Use the RMS sharing app to consume protected image files (including .jpg, .gif, and .tif.
+-   使用 RMS 共用應用程式取用受保護的影像檔 (包括 .jpg、.gif 和 .tif)。
 
--   Use the RMS sharing app to open any file that have been generically protected (.pfile format).
+-   使用 RMS 共用應用程式開啟以一般方式保護的任何檔案 (.pfile 格式)。
 
--   Use the RMS sharing app to protect image files on the device.
+-   使用 RMS 共用應用程式保護裝置上的影像檔。
 
--   Use an RMS-enlightened PDF viewer for mobile devices to open PDF files that were protected with the RMS sharing application for Windows, or another RMS-enlightened application.
+-   使用 RMS 架構的 PDF 檢視器，讓行動裝置開啟使用適用於 Windows 的 RMS 共用應用程式或其他 RMS 架構應用程式保護的 PDF 檔。
 
--   Use other apps from software vendors who provide RMS-enlightened apps that support file types that natively support RMS.
+-   使用軟體廠商的其他應用程式，這些應用程式可提供支援原生支援 RMS 之檔案類型的 RMS 架構應用程式。
 
--   Use your internally developed RMS-enlightened apps that were written by using the RMS SDK.
+-   使用透過 RMS SDK 撰寫之內部開發的 RMS 架構應用程式。
 
 > [!NOTE]
-> You can download the RMS sharing app from the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+> 您可以從 Microsoft 網站上的 [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) 頁面，下載 RMS 共用應用程式。
 > 
-> For more information about the different file types that RMS supports, see the [Supported file types and file name extensions](http://technet.microsoft.com/library/dn339003.aspx) section in the Rights Management sharing application administrator guide.
+> 如需有關 RMS 支援的不同檔案類型的詳細資訊，請參閱《Rights Management 共用應用程式系統管理員指南》中的[支援的檔案類型和副檔名](http://technet.microsoft.com/library/dn339003.aspx)一節。
 
-You don’t need the mobile device extension to consume or author protected email on devices if they use mail applications that support Exchange ActiveSync IRM. This native support for RMS and mobile devices was introduced with Exchange 2010 Service Pack 1.
+如果使用支援 Exchange ActiveSync IRM 的電子郵件應用程式，就不需要使用行動裝置擴充功能在裝置上取用或撰寫受保護的電子郵件。對於 RMS 和行動裝置的這項支援是與 Exchange 2010 Service Pack 1 一起推出。
 
-Use the following sections to deploy the Active Directory Rights Management Services (AD RMS) mobile device extension:
+使用下列各節部署 Active Directory Rights Management Services (AD RMS) 行動裝置擴充功能：
 
--   [Prerequisites for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Preqs)
+-   [AD RMS 行動裝置擴充功能的先決條件](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Preqs)
 
-    -   [Configuring AD FS for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
+    -   [為 AD RMS 行動裝置擴充功能設定 AD FS](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
 
-    -   [Configuring AD FS for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
+    -   [為 AD RMS 行動裝置擴充功能設定 AD FS](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
 
--   [Specifying the DNS SRV records for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV)
+-   [為 AD RMS 行動裝置擴充功能指定 DNS SRV 記錄](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV)
 
--   [Deploying the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Deploy)
+-   [部署 AD RMS 行動裝置擴充功能](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Deploy)
 
-## <a name="BKMK_Preqs"></a>Prerequisites for the AD RMS mobile device extension
-Before you install the AD RMS mobile device extension, make sure that these dependencies are in place.
+## <a name="BKMK_Preqs"></a>AD RMS 行動裝置擴充功能的先決條件
+安裝 AD RMS 行動裝置擴充功能之前，請確定這些相依性已就緒。
 
-|Requirement|More information|
-|---------------|--------------------|
-|An existing AD RMS deployment on Windows Server 2012 R2 or Windows Server 2012. **Note:** AD RMS must be using a full Microsoft SQL Server-based database on a separate server and not the Windows Internal Database that is often used for testing on the same server.|For documentation about AD RMS, see [Active Directory Rights Management Services](http://technet.microsoft.com/library/hh831364.aspx) in the Windows Server library.|
-|AD FS deployed on Windows Server 2012 R2|For documentation about AD FS, see [Windows Server 2012 R2 AD FS Deployment Guide](http://technet.microsoft.com/library/dn486820.aspx) in the Windows Server library.<br /><br />AD FS must be configured for the mobile device extension. For instructions, see the [Configuring AD FS for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS) section in this topic.|
-|SRV records in DNS|Create one or more SRV records in your company domain or domains:<br /><br />-   One record for each email domain suffix that users will use<br />-   One record for every FQDN used by your RMS clusters to protect content<br /><br />When users supply their email address from their mobile device, the domain suffix is used to identify whether they should use an AD RMS infrastructure or Azure RMS. When the SRV record is found, clients are redirected to the AD RMS server that responds to that URL.<br /><br />When users consume protected content with a mobile device, the client application looks in DNS for a record that matches the FQDN in the URL of the cluster that protected the content. The device is then directed to the AD RMS cluster specified in the DNS record and acquires a license to open the content. In most cases, the RMS cluster will be the same RMS cluster that protected the content.<br /><br />For information about how to specify the SRV records, see the [Specifying the DNS SRV records for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV) section in this topic.|
-|Currently supported clients:<br /><br />-   Android devices using the latest version of the RMS sharing app for Android|Minimum version of Android 4.0.3.<br /><br />Download the RMS sharing app for Android from the [Microsoft Connect site](https://connect.microsoft.com/site1170/Downloads) and sideload it onto the device.|
+|需求|其他資訊|
+|------|--------|
+|現有的 AD RMS 部署在 Windows Server 2012 R2 或 Windows Server 2012 上。 **Note:** AD RMS 必須在另一部伺服器上使用完整的 Microsoft SQL Server 型資料庫，而不是在相同伺服器上通常用於測試的 Windows 內部資料庫。|如需有關 AD RMS 的文件，請參閱 Windows Server 文件庫中的 [Active Directory Rights Management Services](http://technet.microsoft.com/library/hh831364.aspx)。|
+|AD FS 部署在 Windows Server 2012 R2 上|如需有關 AD FS 的文件，請參閱 Windows Server 文件庫中的 [Windows Server 2012 R2 AD FS 部署指南](http://technet.microsoft.com/library/dn486820.aspx)。<br /><br />必須為行動裝置擴充功能設定 AD FS。如需指示，請參閱本主題中的[為 AD RMS 行動裝置擴充功能設定 AD FS](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)一節。|
+|DNS 中的 SRV 記錄|在您公司的一或多個網域中建立一或多筆 SRV 記錄：<br /><br />-   一筆記錄供使用者將會使用的每個電子郵件網域尾碼使用<br />-   一筆記錄供您的 RMS 叢集為保護內容所使用的每個 FQDN 使用<br /><br />當使用者從其行動裝置提供他們的電子郵件地址時，網域尾碼用來識別應該使用 AD RMS 基礎結構還是 Azure RMS。找到 SRV 記錄時，就會將用戶端重新導向至回應該 URL 的 AD RMS 伺服器。<br /><br />當使用者使用行動裝置取用受保護的內容時，用戶端應用程式會查詢 DNS 是否有符合保護內容之叢集的 URL 中的 FQDN 的記錄。接著，裝置會導向至 DNS 記錄中指定的 AD RMS 叢集，並取得開啟內容的授權。在大部分情況下，RMS 叢集將會是保護內容的相同 RMS 叢集。<br /><br />如需有關如何指定 SRV 記錄的資訊，請參閱本主題中的[為 AD RMS 行動裝置擴充功能指定 DNS SRV 記錄](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV)一節。|
+|目前支援的用戶端：<br /><br />-   使用適用於 Android 的最新版 RMS 共用應用程式的 Android 裝置|最低版本為 Android 4.0.3。<br /><br />從 [Microsoft Connect 網站](https://connect.microsoft.com/site1170/Downloads)下載適用於 Android 的 RMS 共用應用程式並側載到裝置。|
 
-### <a name="BKMK_ADFS"></a>Configuring AD FS for the AD RMS mobile device extension
-You must first configure AD FS, and then authorize the RMS sharing app for Android.
+### <a name="BKMK_ADFS"></a>為 AD RMS 行動裝置擴充功能設定 AD FS
+您必須先設定 AD FS，然後再授權適用於 Android 的 RMS 共用應用程式。
 
-##### Step 1: To configure AD FS
+##### 步驟 1：設定 AD FS
 
--   You can either run a Windows PowerShell script to automatically configure AD FS to support the AD RMS mobile device extension, or you can manually specify the configuration options and values:
+-   您可以執行 Windows PowerShell 指令碼來自動設定 AD FS，以支援 AD RMS 行動裝置擴充功能，或者您可以手動指定設定選項和值：
 
-    -   To automatically configure AD FS, copy and paste the following into a Windows PowerShell script file, and then run it:
+    -   若要自動設定 AD FS，請將下列複製並貼到 Windows PowerShell 指令碼檔案，然後執行：
 
         ```
         # This Script Configures the Microsoft Rights Management Mobile Device Extension and Claims used in the ADFS Server
@@ -123,27 +122,27 @@ You must first configure AD FS, and then authorize the RMS sharing app for Andro
         }
         ```
 
-    -   To manually configure AD FS, use these settings:
+    -   若要手動設定 AD FS，請使用以下設定：
 
-        |Configuration|Value|
-        |-----------------|---------|
-        |**Relying Party Trust**|api.rms.rest.com|
-        |**Claim rule**|**Attribute store**:  Active Directory<br /><br />**E Mail-Addresses**:  E-Mail-Address<br /><br />**User-Principal-Name**:  UPN<br /><br />**Proxy-Address**:  https://schemas.xmlsoap.org/claims/ProxyAddresses|
+        |設定|值|
+        |------|-----|
+        |**信賴憑證者信任**|api.rms.rest.com|
+        |**宣告規則**|[屬性存放區]：Active Directory<br /><br />[電子郵件地址]：電子郵件地址<br /><br />[使用者主體名稱]：UPN<br /><br />[Proxy 位址]：https://schemas.xmlsoap.org/claims/ProxyAddresses|
 
-##### Step 2: Authorize the RMS sharing app for Android
+##### 步驟 2：授權適用於 Android 的 RMS 共用應用程式
 
--   Run the following Windows PowerShell command to add support for Android devices:
+-   執行下列 Windows PowerShell 命令以增加 Android 裝置的支援：
 
     ```
     Add-AdfsClient -Name "RMSsharingAndroid" -ClientId "com.microsoft.ipviewer" -RedirectUri @("com.microsoft.ipviewer://authorize")
     ```
 
-### <a name="BKMK_SRV"></a>Specifying the DNS SRV records for the AD RMS mobile device extension
-You must create DNS SRV records for each email domain that your users use. If all your users use child domains from a single parent domain, and all users from this contiguous namespace use the same RMS cluster, you can use just one SRV record in the parent domain, and RMS will find the appropriate DNS records.
+### <a name="BKMK_SRV"></a>為 AD RMS 行動裝置擴充功能指定 DNS SRV 記錄
+您必須為您的使用者使用的每個電子郵件網域建立 DNS SRV 記錄。如果您的使用者使用單一父網域的子網域，而且這個連續的命名空間中的所有使用者使用相同的 RMS 叢集，您可以在父網域中，只使用一筆 SRV 記錄，RMS 就會尋找適當的 DNS 記錄。
 
-The SRV records have the following format: _rmsdisco._http._tcp. *&lt;emailsuffix&gt;**&lt;portnumber&gt;**&lt;RMSClusterFQDN&gt;*
+SRV 記錄的格式如下：_rmsdisco._http._tcp. *&lt;emailsuffix&gt;**&lt;portnumber&gt;**&lt;RMSClusterFQDN&gt;*
 
-For example, if your organization has users with the following email addresses:
+例如，如果您的組織有下列電子郵件地址的使用者：
 
 -   user@contoso.com
 
@@ -151,26 +150,26 @@ For example, if your organization has users with the following email addresses:
 
 -   user@fabrikam.com
 
-- and there are no other child domains for contoso.com that use a different RMS cluster than the one named **rmsserver.contoso.com**, create two DNS SRV records that have these values:
+，而且對於 contoso.com，沒有使用名稱不同於 **rmsserver.contoso.com** 之 RMS 叢集的其他子網域，請建立兩個具有以下這些值的 DNS SRV 記錄：
 
 -   _rmsdisco._http._tcp.contoso.com 443 rmsserver.contoso.com
 
 -   _rmsdisco._http._tcp.fabrikam.com 443 rmsserver.contoso.com
 
-In addition to these DNS SRV records for your email domains, you must create another DNS SRV record in the user domains. This record must specify the URLs of your RMS cluster that protects content. Every file that is protected by RMS includes a URL to the cluster that protected that file. Mobile devices use the DNS SRV record and the URL FQDN specified in the record to find the corresponding RMS cluster that can support mobile devices.
+除了用於您的電子郵件網域的這些 DNS SRV 記錄之外，您還必須在使用者網域中建立另一個 DNS SRV 記錄。此記錄必須指定保護內容之 RMS 叢集的 URL。受 RMS 保護的每個檔案都包含保護該檔案之叢集的 URL。行動裝置使用 DNS SRV 記錄，以及記錄中指定的 URL FQDN 尋找可支援行動裝置的對應 RMS 叢集。
 
-For example, if your RMS cluster is **rmsserver.contoso.com**, create a DNS SRV record that has the following values: **_rmsdisco._http._tcp.rmsserver.contoso.com 443 rmsserver.contoso.com**
+例如，如果您的 RMS 叢集是 **rmsserver.contoso.com**，請建立具有以下值的 DNS SRV 記錄：**_rmsdisco._http._tcp.rmsserver.contoso.com 443 rmsserver.contoso.com**
 
-## <a name="BKMK_Deploy"></a>Deploying the AD RMS mobile device extension
-Before you install the AD RMS mobile device extension, make sure that the prerequisites from the preceding section are first in place, and that you know the URL of your AD FS server. Then do the following:
+## <a name="BKMK_Deploy"></a>部署 AD RMS 行動裝置擴充功能
+安裝 AD RMS 行動裝置擴充功能之前，請確定已符合上一節的先決條件，而且您知道您的 AD FS 伺服器的 URL。然後執行下列動作：
 
-1.  Download the AD RMS mobile device extension from the [Microsoft Connect site](http://go.microsoft.com/fwlink/?LinkId=397245).
+1.  從 [Microsoft Connect 網站](http://go.microsoft.com/fwlink/?LinkId=397245)下載 AD RMS 行動裝置擴充功能。
 
-2.  Run Setup.exe to start the Active Directory Rights Management Services Mobile Device Extension Setup Wizard.
+2.  執行 Setup.exe 以啟動 [Active Directory Rights Management Services 行動裝置擴充功能安裝精靈]。
 
-3.  When prompted, enter the URL of the AD FS server that you configured previously.
+3.  出現提示時，輸入您先前設定之 AD FS 伺服器的 URL。
 
-4.  Complete the wizard.
+4.  完成精靈。
 
-Run this wizard on all the nodes in your RMS cluster.
+在您的 RMS 叢集的所有節點上執行此精靈。
 

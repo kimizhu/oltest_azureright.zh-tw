@@ -3,93 +3,88 @@ description: na
 keywords: na
 title: Rights Management sharing application: Version release history
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 6751bd90-959f-4eba-91ed-6588ac983762
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Rights Management sharing application: Version release history
-The Rights Management team regularly updates the Rights Management sharing application for fixes and new functionality. Use the following information to see what’s new or changed in a release. The most current release is listed first.
+# Rights Management 共用應用程式：版本發行記錄
+Rights Management 小組會定期更新 Rights Management 共用應用程式以進行修正和新增功能。 使用下列資訊查看版本的新功能或變更。 最新的版本會先列出。
 
-Versions before January 1, 2015 are not listed.
+不會列出 2015 年 1 月 1 日之前的版本。
 
 > [!NOTE]
-> If you have feedback or a question about the RMS sharing application, send an email message to [AskIPTeam](mailto:AskIPTeam@microsoft.com?subject=RMS%20sharing%20app:%20Feedback%20or%20question).
+> 如果您有任何與 RMS 共用應用程式相關的意見反應或疑問，請將電子郵件訊息傳送至 [AskIPTeam](mailto:AskIPTeam@microsoft.com?subject=RMS%20sharing%20app:%20Feedback%20or%20question)。
 
-## Version 1.0.2004.0
-**Released**: 12/11/2015
+## 版本 1.0.2004.0
+**發行**：12/11/2015
 
-**Fixes**:
+**修正**：
 
--   Only the file owner and people with **Co-Owner** permissions levels can unprotect files. Previously, the owner and people with **Co-Author** and **Co-owner** permissions levels could unprotect files.
+-   改進錯誤訊息 (正確性和清晰性)。
 
--   Native protection for **.tif** files (in addition to .tiff files), to produce an RMS-protected, read-only **.ptif** file.
+-   內容加密和解密的效能改進。
 
--   Improvements for error messages (accuracy and clarity).
+**新功能**：
 
--   Performance improvements for encrypting and decrypting content.
+-   支援非系統管理員的安裝，讓標準使用者可以安裝 RMS 共用應用程式。
 
-**New features**:
+    執行 Office 2010 的標準使用者會有一些限制。 如需詳細資訊，請參閱＜[下載及安裝 Rights Management 共用應用程式](../Topic/Download_and_install_the_Rights_Management_sharing_application.md)＞使用者指示中的＜[如果你不是本機系統管理員並使用 Office 2010](../Topic/Download_and_install_the_Rights_Management_sharing_application.md#BKMK_SetupOffice2010)＞一節。
 
--   Support for non-administrator installation, so that standard users can install the RMS sharing application.
+## 1.0.1908.0 版
+**發行**：2015/9/16
 
-    There are some restrictions for standard users who run Office 2010. For more information, see the  [If you are not a local administrator and use Office 2010](../Topic/Download_and_install_the_Rights_Management_sharing_application.md#BKMK_SetupOffice2010) section in the [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md)  user instructions.
+**修正**：
 
-## Version 1.0.1908.0
-**Released**: 9/16/2015
+-   支援 Azure RMS 的多因素驗證 (MFA)，該驗證也會移除使用新式驗證之應用程式對 Microsoft 登入小幫手的相依性。
 
-**Fixes**:
+    如需詳細資訊，請參閱 [Azure Rights Management 的需求](../Topic/Requirements_for_Azure_Rights_Management.md)中的＜[Multi-Factor Authentication (MFA) 和 Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_MFA)＞一節。
 
--   Support for multi-factor authentication (MFA) for Azure RMS, which also removes the dependency on the Microsoft Sign-in Assistant for applications that use modern authentication.
+## 1.0.1784.0 版
+**發行**：2015/7/30
 
-    For more information, see the [Multi-factor authentication (MFA) and Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_MFA)   section in  [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
+**修正**：
 
-## Version 1.0.1784.0
-**Released**: 7/30/2015
+-   權限原則範本的預設重新整理間隔會從 7 天減少到 1 天。
 
-**Fixes**:
+-   少數回復和次要的 bug。
 
--   The default refresh interval for rights policy templates is reduced from 7 days to 1 day.
+## 1.0.1770.0 版
+**發行**：2015/4/25
 
--   Small number of regressions and minor bugs.
+**修正**：
 
-## Version 1.0.1770.0
-**Released**: 4/25/2015
+-   現在，只有擁有者和共同擁有者可以移除保護。 共同作者不能移除保護。
 
-**Fixes**:
+-   網路共用上的檔案現在可以受到保護。
 
--   Now, only owner and co-owners can remove protection. Co-authors cannot remove protection.
+**新功能**：
 
--   Files that are on a network share can now be protected.
+-   支援文件追蹤和撤銷。 如需詳細資訊，請參閱[當您使用 RMS 共用應用程式時，追蹤及撤銷文件](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md)。
 
-**New features**:
+-   當您選擇 [共用保護] 時的範本支援：
 
--   Support for document tracking and revocation. For more information, see [Track and revoke your documents when you use the RMS sharing application](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).
+    -   您現在可以選取範本。
 
--   Template support when you choose **Share Protected**:
+    -   您會看到包含範本和自訂權限的清單方塊，而不是滑動軸。
 
-    -   You can now select templates.
+    -   您不會再看見**允許在所有裝置上使用**和**強制使用限制**的選項。 根據檔案類型，會改為自動選取 [一般保護]。
 
-    -   Instead of the slider, you will see a list box that includes templates and custom permissions.
+    如需詳細資訊，請參閱[Rights Management 共用應用程式的對話方塊選項](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md)。
 
-    -   You no longer see options for **Allow consumption on all devices** and **Enforce usage restrictions**. Instead, **Generic Protection** is automatically selected, depending on the file type.
+## 1.0.1667.0 版
+**發行**：2015/1/19
 
-    For more information, see [Dialog box options for the Rights Management sharing application](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md).
+**修正**：
 
-## Version 1.0.1667.0
-**Released**: 1/19/2015
+-   RMS 共用應用程式 PPDF 檢視器中的中文語言字型支援。
 
-**Fixes**:
+-   改進的錯誤處理和訊息。
 
--   Support for Chinese language fonts in the RMS sharing app PPDF viewer.
+-   較新版本的應用程式可供下載時，可修正自動更新通知的相關問題。
 
--   Improved error handling and messaging.
+**新功能**：
 
--   Fix to an issue with the automatic update notification when a newer version of the app is available for download.
-
-**New features**:
-
--   **Support for multiple email domains within your organization**: If you use AD RMS and users in your organization have multiple email domains, this update lets your users consume content that has been protected by users in your organization in other domains. For more information, see the [AD RMS only: Support for multiple email domains within your organization](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_FederatedDomains) section in the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
+-   **貴組織內多個電子郵件網域的支援**：如果您使用 AD RMS 且組織中的使用者有多個電子郵件網域，這項更新可讓您的使用者取用受組織中使用者在其他網域中所保護的內容。 如需詳細資訊，請參閱 [Rights Management 共用應用程式系統管理員指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_administrator_guide.md)中的＜[僅限 AD RMS：支援貴組織內有多個電子郵件網域](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_FederatedDomains)＞一節。
 

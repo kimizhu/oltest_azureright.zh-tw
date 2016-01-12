@@ -3,59 +3,58 @@ description: na
 keywords: na
 title: Configuring Usage Rights for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 97ddde38-b91b-42a5-8eb4-3ce6ce15393d
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Configuring Usage Rights for Azure Rights Management
-When you set protection on files or emails by using Azure Rights Management (Azure RMS) and you do not use a template, you must configure the usage rights yourself. In addition, when you configure custom templates for Azure RMS, you select the usage rights that will then be automatically applied when the template is selected by users, administrators, or configured services. For example, in the Azure  classic portal you can select roles that configure a logical grouping of usage rights, or you can configure the individual rights.
+# 設定 Azure Rights Management 的使用權限
+當您使用 Azure Rights Management (Azure RMS) 在檔案或電子郵件上設定保護，且沒有使用範本時，您必須自行設定使用權限。 此外，當您為 Azure RMS 設定自訂範本時，您會選取使用權限，而當使用者、系統管理員或設定的服務選取範本時，自動套用會您選取的使用權限。 例如，在 Azure 傳統入口網站，您可以選取角色來設定使用權限的邏輯群組，也可以設定個別權限。
 
-Use this topic to help you configure the usage rights you want for the application you’re using and understand how these rights are interpreted by applications.
+使用本主題來協助您設定您使用的應用程式所需的使用權限，並了解應用程式如何解譯這些權限。
 
-## Usage Rights and Descriptions
-The following table lists and describes the usage rights that Rights Management supports, and how they are used and interpreted. In this table, the **Common name** is typically how you might see the usage right displayed or referenced, as a more friendly version of the single-word value that is used in the code (the **Encoding in policy** value). The **API Constant or Value** is the SDK name for an MSIPC API call, used when you write an RMS-enlightened application that checks for a usage right, or adds a usage right to a policy.
+## 使用權限和描述
+下表列出並描述 Rights Management 支援的使用權限，以及如何使用和解讀這些權限。 在這個資料表中，**一般名稱**通常是您可能看到某處顯示或提及的使用權限，比程式碼中使用的單一字詞值 (**原則中的編碼**值) 更易於了解。**API 常數或值**是 MSIPC API 呼叫的 SDK 名稱，當您撰寫啟用 RMS 的應用程式來檢查使用權限或將使用權限加入至原則時會用到。
 
-|Common name|Encoding in policy|Description|Implementation in Office custom rights|Name in the Azure  classic portal|Name in AD RMS templates|API constant or value|Additional information|
-|---------------|----------------------|---------------|------------------------------------------|-------------------------------------|----------------------------|-------------------------|--------------------------|
-|Edit Content, Edit|DOCEDIT|Allows the user to modify, rearrange, format or filter the content inside the application. It does not grant the right to save the edited copy.|As part of the **Change** and **Full Control** options.|**Edit Content**|**Edit**|Not applicable|In Office applications, this right also allows the user to save the document.|
-|Save|EDIT|Allows the user to save the document in its current location.|As part of the **Change** and **Full Control** options.|**Save File**|**Save**|IPC_GENERIC_WRITEL"EDIT"|In Office applications, this right also allows the user to modify the document.|
-|Comment|COMMENT|Enables the option to add annotations or comments to the content.|Not implemented|Not implemented|Not implemented|IPC_GENERIC_COMMENTL"COMMENT"|This right is available in the SDK, is available as an ad-hoc policy in the RMS Protection module for Windows PowerShell, and has been implemented in some software vendor applications. However, it is not widely used and is not currently supported by Office applications.|
-|Save As, Export|EXPORT|Enables the option to save the content to a different file name (Save As). Depending on the application, the file might be saved without protection.|As part of the **Change** and **Full Control** options.|**Export Content (Save As)**|**Export (Save As)**|IPC_GENERIC_EXPORTL"EXPORT"|This right also allows the user to perform other export options in applications, such as **Send to OneNote**.|
-|Forward|FORWARD|Enables the option to forward an email message and to add recipients to the **To** and **Cc** lines.|Denied when using the **Do Not Forward** standard policy.|**Forward**|**Forward**|IPC_EMAIL_FORWARDL"FORWARD"|Does not allow the forwarder to grant rights to other users as part of the forward action.|
-|Full Control|OWNER|Grants all rights to the document and all available actions can be performed.|As the **Full Control** custom option.|**Full Control**|**Full Control**|IPC_GENERIC_ALLL"OWNER"|Includes the ability to remove protection.|
-|Print|PRINT|Enables the options to print the content.|As the **Print Content** option in custom permissions. Not a per-recipient setting.|**Print**|**Print**|IPC_GENERIC_PRINTL"PRINT|No additional information|
-|Reply|REPLY|Enables the Reply option in an email client, without allowing changes in the **To** or **Cc** lines.|Not applicable|**Reply**|**Reply**|IPC_EMAIL_REPLY|No additional information|
-|Reply All|REPLYALL|Enables the **Reply All** option in an email client, but doesn’t allow the user to add recipients to the **To** or **Cc** lines.|Not applicable|**Reply All**|**Reply All**|IPC_EMAIL_REPLYALLL"REPLYALL"|No additional information|
-|View, Open, Read|VIEW|Allows the user to open the document and see the content.|As the **Read** custom policy, **View** option.|**View Content**|**View**|IPC_GENERIC_READL"VIEW"|No additional information|
-|Copy|EXTRACT|Enables options to copy data from the document into the same or another document.|As the **Allow users with Read access to copy content** custom policy option.|**Copy and Extract content**|**Extract**|IPC_GENERIC_EXTRACTL"EXTRACT"|In some applications it also allows the whole document to be saved in unprotected form.|
-|View Rights|VIEWRIGHTSDATA|Allows the user to see the policy that is applied to the document.|Not implemented|**View Assigned Rights**|**View Rights**|IPC_READ_RIGHTSL"VIEWRIGHTSDATA"|Ignored by some applications.|
-|Change Rights|EDITRIGHTSDATA|Allows the user to change the policy that is applied to the document. Includes including removing protection.|Not implemented|**Change Rights**|**Edit Rights**|IPC_WRITE_RIGHTSL"EDITRIGHTSDATA"|No additional information|
-|Allow Macros|OBJMODEL|Enables the option to run macros or perform other programmatic or remote access to the content in a document.|As the **Allow Programmatic Access** custom policy option. Not a per-recipient setting.|**Allow Macros**|**Allow Macros**|Not applicable|No additional information|
+|一般名稱|原則中的編碼|說明|Office 自訂權限中的實作|Azure 傳統入口網站中的名稱。|AD RMS 範本中的名稱|API 常數或值|其他資訊|
+|--------|----------|------|-------------------|---------------------|-----------------|------------|--------|
+|編輯內容，編輯|DOCEDIT|允許使用者修改、重新排列、格式化或篩選應用程式內的內容。 不授與權限來儲存編輯過的複本。|[變更] 和 [完全控制] 選項的一部分。|**編輯內容**|**編輯**|不適用|在 Office 應用程式中，這個權限也允許使用者儲存文件。|
+|儲存|編輯|可讓使用者將文件儲存在目前的位置。|[變更] 和 [完全控制] 選項的一部分。|**儲存檔案**|**儲存**|IPC_GENERIC_WRITEL"EDIT"|在 Office 應用程式中，這個權限也允許使用者修改文件。|
+|註解|COMMENT|啟用這個選項可將註解或意見加入至內容。|未實作|未實作|未實作|IPC_GENERIC_COMMENTL"COMMENT"|此權限可在 SDK 中使用、在 Windows PowerShell 的 RMS 保護模組中可作為特定原則使用，而且在某些軟體廠商應用程式中已實作。 不過，尚未廣泛使用，Office 應用程式目前也不支援。|
+|另存新檔，匯出|匯出|啟用這個選項可將內容儲存為不同的檔案名稱 (另存新檔)。 視應用程式而定，儲存的檔案可能未受保護。|[變更] 和 [完全控制] 選項的一部分。|**匯出內容 (另存新檔)**|**匯出 (另存新檔)**|IPC_GENERIC_EXPORTL"EXPORT"|這個權限也允許使用者在應用程式中執行其他匯出選項，例如 [傳送到 OneNote]。|
+|轉寄|轉寄|啟用這個選項可轉寄電子郵件訊息和將收件者新增到 [收件者] 和 [副本] 行。|使用「不要轉寄」標準原則時拒絕。|**轉寄**|**轉寄**|IPC_EMAIL_FORWARDL"FORWARD"|不允許轉寄者在轉寄動作中授與權限給其他使用者。|
+|完全控制|OWNER|授與文件的所有權限，可以執行所有可用的動作。|做為 [完全控制] 自訂選項。|**完全控制**|**完全控制**|IPC_GENERIC_ALLL"OWNER"|包括能夠移除保護。|
+|Print|PRINT|啟用列印內容的選項。|做為自訂權限中的 [列印內容] 選項。 不是個別收件者設定。|**Print**|**Print**|IPC_GENERIC_PRINTL"PRINT|沒有其他資訊|
+|回覆|回覆|在電子郵件用戶端中啟用 [回覆] 選項，不允許變更 [收件者] 或 [副本] 行。|不適用|**回覆**|**回覆**|IPC_EMAIL_REPLY|沒有其他資訊|
+|全部回覆|REPLYALL|在電子郵件用戶端中啟用 [全部回覆] 選項，但不允許使用者將收件者新增至 [收件者] 或 [副本] 行。|不適用|**全部回覆**|**全部回覆**|IPC_EMAIL_REPLYALLL"REPLYALL"|沒有其他資訊|
+|檢視，開啟，讀取|檢視|可讓使用者開啟文件並看見內容。|做為 [讀取] 自訂原則，[檢視] 選項。|**檢視內容**|**檢視**|IPC_GENERIC_READL"VIEW"|沒有其他資訊|
+|複製|擷取|啟用將文件中的資料複製到相同或不同文件的選項。|做為 [允許具有讀取存取權的使用者複製內容] 自訂原則選項。|**複製和擷取內容**|**擷取**|IPC_GENERIC_EXTRACTL"EXTRACT"|在某些應用程式中，這也允許以未受保護的形式儲存整份文件。|
+|檢視權限|VIEWRIGHTSDATA|允許使用者看到套用至文件的原則。|未實作|**檢視指派的權限**|**檢視權限**|IPC_READ_RIGHTSL"VIEWRIGHTSDATA"|某些應用程式會忽略。|
+|變更權限|EDITRIGHTSDATA|允許使用者變更套用至文件的原則。 包括移除保護。|未實作|**變更權限**|**編輯權限**|IPC_WRITE_RIGHTSL"EDITRIGHTSDATA"|沒有其他資訊|
+|允許巨集|OBJMODEL|啟用這個選項可對文件中的內容執行巨集，或對執行其他程式設計或遠端存取。|做為 [允許程式設計存取] 自訂原則選項。 不是個別收件者設定。|**允許巨集**|**允許巨集**|不適用|沒有其他資訊|
 
-## Rights included in permissions  levels
-Some applications group usage rights together into permissions levels, to make it easier to select usage rights that are typically used together. These permisisons levels help to abstract a level of complexity from users, so they can choose options that are role-based.  For example, **Reviewer** and **Co-Author**. Although these options often show users a summary of the rights, they might not include every right that is listed in the previous table.
+## 權限層級中包含的權限
+有些應用程式群組使用權限會組成權限層級，以便選取通常一起使用的使用權限。 這些權限層級有助於為使用者釐清複雜的權限，以便他們選擇以角色為基礎的選項。  例如，[檢閱者] 和 [共同作者]。 雖然這些選項通常會對使用者顯示權限的摘要，但可能不包括上表所列的每個權限。
 
-Use the following table for a list of these permissions levels and a complete list of the rights that they contain.
+使用下表來取得這些權限層級的清單以及它們所含權限的完整清單。
 
-|Permissions Level|Applications|Rights included (common name)|
-|---------------------|----------------|---------------------------------|
-|Viewer|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Reply<br /><br />Reply All|
-|Reviewer|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]|
-|Co-Author|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Copy<br /><br />View Rights<br /><br />Change Rights<br /><br />Allow Macros<br /><br />Save As, Export<br /><br />Print<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]|
-|Co-Owner|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Copy<br /><br />View Rights<br /><br />Change Rights<br /><br />Allow Macros<br /><br />Save As, Export<br /><br />Print<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]<br /><br />Full Control|
-Footnote 1: Not applicable to the Rights Management sharing application for Windows
+|權限層級|應用程式|包含的權限 (一般名稱)|
+|--------|--------|----------------|
+|檢視者|Azure 傳統入口網站<br /><br />適用於 Windows 的 Rights Management 共用應用程式|檢視，開啟，讀取<br /><br />回覆<br /><br />全部回覆|
+|檢閱者|Azure 傳統入口網站<br /><br />適用於 Windows 的 Rights Management 共用應用程式|檢視，開啟，讀取<br /><br />儲存<br /><br />編輯內容，編輯<br /><br />回覆<sup>*</sup><br /><br />全部回覆<sup>*</sup><br /><br />轉寄<sup>*</sup>|
+|共同作者|Azure 傳統入口網站<br /><br />適用於 Windows 的 Rights Management 共用應用程式|檢視，開啟，讀取<br /><br />儲存<br /><br />編輯內容，編輯<br /><br />複製<br /><br />檢視權限<br /><br />變更權限<br /><br />允許巨集<br /><br />另存新檔，匯出<br /><br />Print<br /><br />回覆<sup>*</sup><br /><br />全部回覆<sup>*</sup><br /><br />轉寄<sup>*</sup>|
+|共同擁有者|Azure 傳統入口網站<br /><br />適用於 Windows 的 Rights Management 共用應用程式|檢視，開啟，讀取<br /><br />儲存<br /><br />編輯內容，編輯<br /><br />複製<br /><br />檢視權限<br /><br />變更權限<br /><br />允許巨集<br /><br />另存新檔，匯出<br /><br />Print<br /><br />回覆<sup>*</sup><br /><br />全部回覆<sup>*</sup><br /><br />轉寄<sup>*</sup><br /><br />完全控制|
+<sup>*</sup>不適用於 Windows 的 Rights Management 共用應用程式
 
-## Rights included in the default templates
-The rights that are included with the default templates are as follows:
+## 預設範本中包含的權限
+預設範本中包含的權限如下所示：
 
-|Display Name|Rights included (common name)|
-|----------------|---------------------------------|
-|&lt;organization name&gt; - Confidential View Only|View, Open, Read|
-|&lt;organization name&gt; - Confidential|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />View Rights<br /><br />Allow Macros<br /><br />Forward<br /><br />Reply<br /><br />Reply All|
+|顯示名稱|包含的權限 (一般名稱)|
+|--------|----------------|
+|&lt;組織名稱&gt; - 僅限機密檢視|檢視，開啟，讀取|
+|&lt;組織名稱&gt; - 機密|檢視，開啟，讀取<br /><br />儲存<br /><br />編輯內容，編輯<br /><br />檢視權限<br /><br />允許巨集<br /><br />轉寄<br /><br />回覆<br /><br />全部回覆|
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## 請參閱
+[設定 Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 

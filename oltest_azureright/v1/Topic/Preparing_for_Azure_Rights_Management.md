@@ -3,29 +3,28 @@ description: na
 keywords: na
 title: Preparing for Azure Rights Management
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: afbca2d6-32a7-4bda-8aaf-9f93f5da5abc
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Preparing for Azure Rights Management
-After you have signed up for a cloud subscription and established your organization with an account for [!INCLUDE[o365_1](../Token/o365_1_md.md)] or Azure Active Directory, you’re ready to enable the [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] service.
+# 準備 Azure Rights Management
+在您申請雲端訂閱，並使用 [!INCLUDE[o365_1](../Token/o365_1_md.md)] 或 Azure Active Directory 的帳戶建立您的組織後，您即準備好啟用 [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] 服務。
 
-However, before you do so, make sure that the following are in place:
+不過，在您這麼做之前，請確定已備妥下列條件：
 
--   User accounts and groups in the cloud that you create manually or that are automatically created and synchronized from Active Directory Domain Services (AD DS).
+-   您手動建立，或者從 Active Directory 網域服務 (AD DS) 自動建立和同步的雲端中使用者帳戶和群組。
 
-    When you synchronize your on-premises accounts and groups, not all attributes need to be synchronized. For a list of the attributes that must be synchronized for Azure RMS, see this [Azure RMS section](https://azure.microsoft.com/documentation/articles/active-directory-aadconnectsync-attributes-synchronized/) from the Azure Active Directory documentation. For ease of deployment, we recommend that you use [Azure AD Connect](http://azure.microsoft.com/documentation/articles/active-directory-aadconnect/) to connect your on-premises directories with Azure Active Directory but you can use any directory synchronization method that achieves the same result.
+    當您將內部部署帳戶和群組進行同步時，並不是所有的屬性皆需要同步。 關於 Azure RMS 必須同步的屬性清單，請參閱 Azure Active Directory 文件中的 [Azure RMS 一節](https://azure.microsoft.com/documentation/articles/active-directory-aadconnectsync-attributes-synchronized/)。 為了便於部署，我們推薦您使用 [Azure AD Connect](http://azure.microsoft.com/documentation/articles/active-directory-aadconnect/) 來連接您的內部部署目錄與 Azure Active Directory，但你也可以使用可達到相同結果的任何目錄同步方法。
 
--   Mail-enabled groups in the cloud that you will use with Rights Management. These can be built-in groups or manually created groups that contain users who will use Rights Management.
+-   您將在雲端中擁有郵件功能的群組中使用 Rights Management。 這些可以是內建群組或手動建立的群組，後者包含將使用 Rights Management 的使用者。
 
-    If you have Exchange Online, you can create and use mail-enabled groups by using the Exchange admin center. If you have AD DS and are synchronizing to Azure AD, you can create and use mail-enabled groups that are either security groups or distribution groups.
+    如果您有 Exchange Online，您可以使用 Exchange 系統管理中心，建立和使用擁有郵件功能的群組。 如果您有 AD DS 且正在同步處理至 Azure AD，您可以建立和使用屬於安全性群組或通訊群組之擁有郵件功能的群組。
 
-## Enable Rights Management
-By default, [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] is disabled when you sign up for your [!INCLUDE[o365_2](../Token/o365_2_md.md)] or Azure AD account. To enable [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] for your organization, you must activate the service. For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+## 啟用 Rights Management
+依預設，當您申請 [!INCLUDE[o365_2](../Token/o365_2_md.md)] 或 Azure AD 帳戶時會停用 [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)]。 若要啟動組織的 [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)]，則您必須啟動服務。 如需詳細資訊，請參閱[啟用 Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)。
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## 請參閱
+[設定 Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 

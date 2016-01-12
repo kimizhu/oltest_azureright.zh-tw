@@ -6,15 +6,14 @@ search: na
 ms.date: na
 ms.tgt_pltfrm: na
 ms.assetid: a6fa85be-f92a-4e00-9efc-9dbfd4dfbfcb
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: noindex,nofollow
 ---
-# Rights Management (RMS) Client
-Insert introduction here.
+# Rights Management (RMS) 用戶端
+在這裡插入簡介。
 
-## Section Heading
-Insert section body here.
+## 區段標題
+在這裡插入區段內文。
 
-### Subsection Heading
-Insert subsection body here.
+### 子區段標題
+在這裡插入子區段內文。
 

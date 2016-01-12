@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: Alice shares protected attachment
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: feeef78d-3c2e-432b-817d-d06f784be226
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: Alice shares protected attachment
+# 全螢幕圖片：Alice 分享受保護的附件
 ![](../Image/AzRMS_StoryboardEmaill1.PNG)
 
-Back to [Azure RMS in action: Safely share attachments with mobile users](http://technet.microsoft.com/library/jj585026.aspx).
+回到[Azure RMS 運作方式：安全地與行動使用者共用附件](http://technet.microsoft.com/library/jj585026.aspx)。
 

@@ -3,62 +3,62 @@ description: na
 keywords: na
 title: View and use files that have been protected by Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: e5fa4666-6906-405a-9e0c-2c52d4cd27c8
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# View and use files that have been protected by Rights Management
-When the [Rights Management (RMS) sharing application is installed on your computer](https://technet.microsoft.com/library/dn574734%28v=ws.10%29.aspx), you view a protected file by simply double-clicking it. The file might be an attachment in an email message, or you might see it when you use File Explorer.
+# 檢視並使用 Rights Management 保護的檔案
+當**externalLink tag is not supported!!!!**
+ 檔案可能是電子郵件郵件的附件，您也可能在使用 [檔案總管] 時看見它。
 
 > [!NOTE]
-> Before you can view the protected file, RMS must first confirm that you are authorized to view the file, which it does by checking your user name and password. In some cases, this might be cached and you will not see a prompt that asks for your credentials. In other cases, you will be prompted to supply your credentials.
+> RMS 必須先確認您有權檢視受保護的檔案 (檢查您的使用者名稱和密碼)，您才可以檢視檔案。 在某些情況下，這可能已快取，所以不會提示您提供認證。 在其他情況下會提示您提供認證。
 > 
-> If your organization does not use either Azure Rights Management (Azure RMS) or AD RMS, you can apply for a free account that will accept your credentials so that you can open files that are protected by using RMS:
+> 如果您的組織不使用 Azure Rights Management (Azure RMS) 或 AD RMS，您可以申請免費帳戶，在接受您的認證後，您就可以開啟使用 RMS 保護的檔案：
 > 
-> -   To apply for this account, click the link to apply for [RMS for individuals](http://go.microsoft.com/fwlink/?LinkId=309469).
+> -   若要申請此帳戶，請按一下連結來申請[個人版 RMS](http://go.microsoft.com/fwlink/?LinkId=309469)。
 > 
->     When you sign up, use your company email address rather than a personal email address. If you are signing up because you were emailed a protected attachment, use the same email address that was used to send you the email message.
-> -   For more information, see [RMS for Individuals and Windows Azure Rights Management](http://technet.microsoft.com/library/dn592127.aspx).
+>     當您註冊時，使用您的公司電子郵件地址而不是個人的電子郵件地址。 如果您是因為在電子郵件中收到受保護的附加檔案而註冊，請使用電子郵件訊息寄給您時所使用的相同電子郵件地址。
+> -   如需詳細資訊，請參閱 [個人版 RMS 和 Azure Rights Management | Microsoft](http://technet.microsoft.com/library/dn592127.aspx)。
 
-## <a name="BKMK_ViewPFILE"></a>To view a protected file
-By using File Explorer or the email message that contains the attachment, double-click the protected file, and enter your credentials if prompted to do so.
+## <a name="BKMK_ViewPFILE"></a>檢視受保護的檔案
+使用檔案總管或含有附件的電子郵件訊息，按兩下受保護的檔案，然後輸入您的認證 (如果提示您這樣做)。
 
-If you see two versions of the file but with different file name extensions, open the file that has a .ppdf file extension only if the other file does not open. If you cannot open the .ppdf version either, first install the [RMS sharing application](http://technet.microsoft.com/library/dn574734.aspx), which knows how to open files that have a .ppdf file name extension.
+如果您看到檔案有兩個版本，但副檔名不同，只有當無法開啟其中一個檔案時，才開啟副檔名為 .ppdf 的另一個檔案。 如果您也無法開啟 .ppdf 版本，請先安裝 [RMS 共用應用程式](http://technet.microsoft.com/library/dn574734.aspx)，它知道如何開啟 .ppdf 副檔名的檔案。
 
 > [!NOTE]
-> For more information, see “[What’s the .ppdf file that’s automatically created?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)”.
+> 如需詳細資訊，請參閱[什麼是自動建立的 .ppdf 檔案？](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)。
 
-How the file opens depends on how it was protected, which you can tell by looking at the file name extension. In each case, opening the file might be audited and remains audited as long as it is protected. In addition, if the file was sent as an email attachment, the sender might be notified by email each time you open the file.
+如何開啟檔案取決於它受保護的方式，從副檔名就可以判斷。 在各種情況下，開啟檔案時可能經過稽核，而且只要檔案受到保護，就會持續稽核。 此外，如果檔案是以電子郵件附件的形式傳送，則您每次開啟檔案時，寄件者就可能收到電子郵件通知。
 
-|File name extension and protection|More information|
-|--------------------------------------|--------------------|
-|The file has a **.pfile** file name extension.<br /><br />The file was generically protected.|When you open the file, you see a **protected file** dialog box from the sharing application that tells you who protected the file and that you are expected to honor the co-owner permissions. Click **Open** to read the file.<br /><br />![](../Image/ADRMS_MSRMSApp_PfilePermission.png)|
-|The file has a **.ppdf** file name extension or is a protected text or image file (such as **.ptxt** or **.pjpg**).<br /><br />The file has been natively protected as a read-only copy.|The file opens by using the viewer that installs with the RMS sharing application. This file is read-only, even if you save it to another location or rename it.|
-|Other file name extensions.<br /><br />The file has been natively protected.|The file opens by using the application that is associated with the original file name extension, and a restriction banner is displayed at the top of the file. The banner might display the permissions that are applied to the file, or it might provide a link to display them. For example, you might see the following where you must click **Permission is currently restricted** to see the actual permissions that are applied to the file and the people that can access it:<br /><br />![](../Image/ADRMS_MSRMSApp_RestrictedAccess.png)|
-For a complete list of file name extensions that Rights Management supports, see the [Supported file types and file name extensions](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_SupportFileTypes) sections in the  [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md). If your file name extension is not listed, use a web search to see if it is a file name extension that is supported by another application.
+|副檔名與保護|詳細資訊|
+|----------|--------|
+|此檔案具有 **.pfile** 副檔名。<br /><br />檔案受到一般保護。|當您開啟檔案時，您會看到共用應用程式的 [受保護的檔案] 對話方塊，告知您檔案是由誰保護檔案，並提醒您遵守共同擁有者權限。 按一下 [開啟] 讀取檔案。<br /><br />![](../Image/ADRMS_MSRMSApp_PfilePermission.png)|
+|檔案的副檔名為 **.ppdf**，也可能是受保護的文字或影像檔 (例如 **.ptxt** 或 **.pjpg**)。<br /><br />檔案已受到原生保護成為唯讀複本。|檔案是使用隨著 RMS 共用應用程式一起安裝的檢視器來開啟。 這個檔案是唯讀，即使儲存到別處或重新命名也一樣。|
+|其他副檔名。<br /><br />檔案已受到原生保護。|檔案是使用原始副檔名相關聯的應用程式來開啟，而且檔案頂端會顯示限制橫幅。 此橫幅可能顯示套用至檔案的權限，也可能提供連結來顯示權限。 例如，您可能會看到下列訊息，您必須按一下 **目前權限限制**，查看套用到該檔案的實際權限，以及可存取它的人員：<br /><br />![](../Image/ADRMS_MSRMSApp_RestrictedAccess.png)|
+如需 Rights Management 支援的完整副檔名清單，請參閱 [Rights Management 共用應用程式系統管理員指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_administrator_guide.md)中的[支援的檔案類型與副檔名](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_SupportFileTypes)章節。 如果未列出您的副檔名，請使用 Web 搜索以查看它是否為其他應用程式支援的副檔名。
 
 > [!NOTE]
-> If, after confirming that the file is protected by Rights Management, and the file does not open, download and use the [RMS Analyzer tool](https://www.microsoft.com/en-us/download/details.aspx?id=46437). Follow the instructions in the tool to check for problems on your computer that might prevent a protected document from opening.
+> 如果在確認檔案受 Rights Management 保護且未開啟之後，請下載並使用 [RMS Analyzer 工具](https://www.microsoft.com/en-us/download/details.aspx?id=46437)。 按照工具中的指示，檢查電腦上可能會使受保護的檔案無法開啟的問題。
 
-## <a name="BKMK_UserDefined"></a>To use files that have been protected (for example, edit and print the file)
-If, after opening the protected file,  you want to do more than just read it (for example, edit, copy, and print it):
+## <a name="BKMK_UserDefined"></a>使用已受保護的檔案 (例如編輯和列印檔案)
+如果在開啟受保護的檔案之後，您不只想要讀取該檔案而已 (例如，編輯、複製和列印)：
 
-|File name extension|Instructions|
-|-----------------------|----------------|
-|The file has a **.pfile** file name extension.|Save the opened file and give it a new file name extension that is associated with the application that you want to use.<br /><br />For example, if a file was protected by using the file name document.vsdx.pfile, view the file and in File Explorer, save the file as document.vsdx.<br /><br />The new file is no longer protected. If you want to protect it, you must do this manually. For instructions, see [Protect a file on a device &#40;protect in-place&#41; by using the Rights Management sharing application](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md).|
-|The file has a **.ppdf** file name extension or is a protected text or image file (such as **.ptxt** or **.pjpg**).|You can only view the file and if you rename or move it, the protection remains with the file.|
-|Other file name extensions.|Your device must have an application that understands Rights Management to use these files. These applications are called RMS-enlightened applications. Applications from Office 2016, Office 2013,  and Office 2010 (such as Word, Excel, PowerPoint, and Outlook) are examples of applications that are enlightened for Rights Management. But applications that do not come from Microsoft, such as other software companies and your own line-of-business applications, might also be enlightened for Rights Management.<br /><br />Applications that are enlightened for Rights Management know how to open files that have been protected by other Rights Management enlightened applications. They also persist the protection that is applied to them, even if you edit the file or save it to another file name or another location. These applications let you use the file according to the permissions that are currently applied to the file, so that if you have permissions to use the file, you can do so. For example, you might be able to edit the file but not print it.|
+|副檔名|指示|
+|-------|------|
+|此檔案具有 **.pfile** 副檔名。|儲存已開啟的檔案，並提供新的副檔名 (與您想要使用的應用程式相關聯)。<br /><br />比方說，如果檔案是以檔案名稱 document.vsdx.pfile 而受保護，請檔案總管中檢視檔案，並將檔案儲存為 document.vsdx。<br /><br />新的檔案不再受到保護。 如果您想要保護檔案，則必須手動進行。 如需相關指示，請參閱＜[使用 Rights Management 共用應用程式保護裝置上的檔案 &#40;就地保護&#41;](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md)＞。|
+|檔案的副檔名為 **.ppdf**，也可能是受保護的文字或影像檔 (例如 **.ptxt** 或 **.pjpg**)。|您只能檢視檔案，如果您重新命名或移動它，檔案仍然是受到保護。|
+|其他副檔名。|您的裝置上必須有了解 Rights Management 的應用程式，才能使用這些檔案。 這些應用程式稱為啟用 RMS 的應用程式。 舉例來說，Office 2016、Office 2013 和 Office 2010 提供的應用程式 (例如 Word、Excel、PowerPoint 及 Outlook) 就是啟用 Rights Management 的應用程式。 但不是來自 Microsoft 的應用程式，例如其他軟體公司和自己的企業營運應用程式，也可能已啟用 Rights Management。<br /><br />已啟用 Rights Management 的應用程式知道如何開啟已受其他 Rights Management 應用程式所保護的檔案。 它們也會保留已套用的保護，即使您編輯檔案或儲存為其他檔名或另存別處也一樣。 這些應用程式可讓您根據目前套用至檔案的權限來使用檔案，因此只要您有權限使用檔案，您就可以這樣做。 例如，您可能可以編輯檔案但不能列印。|
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## 範例和其他指示
+如需 Rights Management 共用應用程式的使用範例及作法指示，請參閱 Rights Management 共用應用程式使用者指南中下列各節：
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [使用 RMS 共用應用程式的範例](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [您想要做什麼事？](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## 請參閱
+[Rights Management 共用應用程式使用者指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_user_guide.md)
 
