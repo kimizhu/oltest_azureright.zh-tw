@@ -6,215 +6,214 @@ search: na
 ms.date: na
 ms.tgt_pltfrm: na
 ms.assetid: f10c8e7e-aa83-473d-857a-f01a7908552e
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: noindex,nofollow
 ---
-# Rights Management sharing application user guide - revision for single topic
-The Microsoft Rights Management (RMS) sharing application for Windows helps you keep important documents and pictures safe from people who shouldn’t see them, even if you email them or save them to another device. You can also use this application to open and use files that other people have protected by using the same Rights Management technology.
+# Rights Management 共用應用程式使用者指南 - 單一主題的修訂
+適用於 Windows 的 Microsoft Rights Management (RMS) 共用應用程式可協助您保護重要文件與圖片的安全，即使您以電子郵件傳送，或將它們儲存到另一個裝置，也不會讓不該看到它們的人看到。您也可以使用此應用程式開啟並使用其他人已使用相同的權限管理技術保護的檔案。
 
-All you need is a computer that runs at least Windows 7, and a local administrator account to install the RMS sharing application. Then [download and install](http://go.microsoft.com/fwlink/?LinkId=303970) this free application from Microsoft.
+您只需要一部至少執行 Windows 7 的電腦以及一個本機系統管理員帳戶，就可以安裝 RMS 共用應用程式。接著，從 Microsoft [下載並安裝](http://go.microsoft.com/fwlink/?LinkId=303970)這個免費的應用程式。
 
-If you have questions that are not answered by this guide, see [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+如果您有本指南未回答的問題，請參閱[適用於 Windows 的 Microsoft Rights Management 共用應用程式常見問題集](http://go.microsoft.com/fwlink/?LinkId=303971)。
 
-Here are just some examples of how you might use the sharing application, to help protect your files.
+以下是您如何使用共用應用程式協助保護您的檔案的一些範例。
 
-|I want to …|How to do this|
-|---------------|------------------|
-|**… safely share financial information with somebody I trust who is outside my organization**<br /><br />You work with a partner company and want to email them an Excel spreadsheet that contains projected sales figures. You want them to be able to view the figures but not change them.|You use the Share Protected button on the ribbon in Excel, type the email addresses of the two people that you work with in the partner company, select Viewer on the slider, and click Send.<br /><br />When the email arrives at the partner company, only the recipients in the email can view the spreadsheet and they cannot save, edit, print, or forward it.<br /><br />Details: See **Protect a file that you share by email** in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.|
-|**… safely send a document by email to somebody who uses an iOS device**<br /><br />You want to email a highly confidential Word document to a coworker, who you know, regularly checks email on their iOS device.|You use File Explorer to right-click the file, and select Share Protected. In the RMS sharing application, you select the Allow consumption on all devices option, and send the file as an attachment to your coworker.<br /><br />The recipient receives the email on their iOS device, clicks the link in the email that tells them how to download the sharing application, installs the version for iOS devices, and then views the document.<br /><br />Details: See **Protect a file that you share by email** in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.|
-|**… read an attachment I’ve received in an email message that has a securely shared file attachment but I can’t read it because my company doesn’t use Rights Management**<br /><br />The email sender is somebody who you trust because you’ve done business with them in the past and you suspect that they might be sending you information about a potential new business opportunity.|You follow the instructions in the email and click the link to sign up for Microsoft Rights Management. Microsoft confirms that your organization does not have a subscription to Office 365, sends you an email to complete the free signup process, and you sign in with your new account. You click the second link in the email to install the Rights Management sharing app and can then open the email attachment to read about the new business opportunity.<br /><br />Details: See **View and use files that have been protected by Rights Management** in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.|
-|**… protect company-confidential files on my laptop so they can’t be accessed by people outside my company**<br /><br />You travel a lot and use your laptop to access and update files in a folder that must be secured against unauthorized access.|You have the RMS sharing application installed on your laptop. You use File Explorer to protect the files by using a template, which quickly protects the files. If your laptop is stolen, you have peace of mind that nobody outside your company can access these documents.<br /><br />Details: See **Protect a file on a device (protect in-place)** in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.|
+|我想要...|如何執行此動作|
+|----------|-----------|
+|**...與組織外部我信任的某個人安全地共用財務資訊**<br /><br />您與合作夥伴公司一起工作，而且想要以電子郵件將包含預測的銷售數字的 Excel 試算表傳送給他們。您希望他們能夠檢視這些數字，但不要變更。|您在 Excel 中，使用功能區上的 [已保護共用] 按鈕，輸入合作夥伴公司中與您一起工作的兩個人的電子郵件地址，選取滑桿上的 [檢視者]，然後按一下 [傳送]。<br /><br />在當電子郵件抵達合作夥伴公司時，只有電子郵件中的收件者可以檢視試算表，而且他們無法儲存、編輯、列印或轉寄該試算表。<br /><br />詳細資料：請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**保護您透過電子郵件共用的檔案** 。|
+|**...將文件透過電子郵件安全地傳送給使用 iOS 裝置的某個人**<br /><br />您想要以電子郵件將具有高度機密的 Word 文件傳送給您知道會在其 iOS 裝置上定期檢查電子郵件的同事。|您使用 [檔案總管]，以滑鼠右鍵按一下該檔案，然後選取 [已保護共用]。在 RMS 共用應用程式中，您選取 [允許在所有裝置上使用] 選項，然後將檔案當做附件，傳送給您的同事。<br /><br />收件者在其 iOS 裝置上收到電子郵件，按一下告訴他們如何下載共用應用程式、安裝適用於 iOS 裝置的版本，然後檢視文件的電子郵件中的連結。<br /><br />詳細資料：請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**保護您透過電子郵件共用的檔案** 。|
+|**...讀取我在包含安全共用檔案附件的電子郵件訊息中收到的附件，但是因為我的公司不使用 Rights Management 而無法讀取**<br /><br />電子郵件寄件者是因為您過去曾與他們做過生意而信任的人，而且您懷疑他們可能是要將潛在新商機的相關資訊傳送給您。|您遵循電子郵件中的指示，按一下連結以註冊 Microsoft Rights Management。Microsoft 確認您的組織沒有訂閱 Office 365 後，傳送一封電子郵件給您以完成免費的註冊程序，然後您使用您的新帳戶登入。您按一下電子郵件中的第二個連結以安裝 Rights Management 共用應用程式，然後就可以開啟電子郵件附件，讀取新商機的相關資訊。<br /><br />詳細資料：請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**檢視並使用 Rights Management 保護的檔案**。|
+|**...保護我的膝上型電腦上的公司機密檔案，讓我的公司以外的人員無法存取**<br /><br />您經常出差，並使用您的膝上型電腦存取和更新資料夾中的檔案。這些檔案必須加以保護，以免未經授權者存取。|您的膝上型電腦上有安裝 RMS 共用應用程式。您使用 [檔案總管] 保護使用範本的檔案，這樣可以快速地保護檔案。如果您的膝上型電腦遭竊，您不用擔心您公司以外的人存取這些文件。<br /><br />詳細資料：請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**保護裝置上的檔案 (就地保護)**。|
 
-## <a name="BKMK_UsingMSRMSApp"></a>What do you want to do?
-Use the following instructions to help you work with protected files.
+## <a name="BKMK_UsingMSRMSApp"></a>您要執行什麼作業？
+使用下列指示協助您處理受保護的檔案。
 
-### <a name="BKMK_DownloadInstall"></a>Download and install the Rights Management sharing application
+### <a name="BKMK_DownloadInstall"></a>下載並安裝 Rights Management 共用應用程式
 
-1.  Go to the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+1.  移至 Microsoft 網站上的 [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) 頁面。
 
-2.  In the **Computers** section, click the icon for the **RMS app for Windows** and save the Microsoft Rights Management sharing application installation package to your computer.
+2.  在 [電腦] 區段中，按一下 [適用於 Windows 的 RMS 應用程式] 的圖示，然後將 Microsoft Rights Management 共用應用程式安裝套件儲存到您的電腦。
 
-3.  Double click the compressed file that was downloaded, and then double-click **setup.exe**. If you are prompted to continue, click **Yes**.
+3.  按兩下已下載的壓縮檔，然後按兩下 [setup.exe]。如果提示您繼續，請按一下 [是]。
 
     > [!TIP]
-    > You might have to scroll to the bottom of the list in the current folder to see **setup.exe**.
+    > 您可能必須捲動至目前資料夾中的清單底部，才能看到 **setup.exe**。
 
-4.  On the **Setup Microsoft RMS** page, click **Next**, and wait for the installation to finish.
+4.  在 [安裝 Microsoft RMS] 頁面上，按一下 [下一步]，並等候安裝完成。
 
-5.  When the installation finishes, click **Restart** to restart your computer and complete the installation. Or, click **Close** and restart your computer later to complete the installation.
+5.  當安裝完成時，按一下 [重新啟動] 來重新啟動電腦，並完成安裝。或者按一下 [關閉]，稍後重新啟動電腦，以完成安裝。
 
-You’re now ready to start protecting your files or read files that others have protected.
+您現在準備好開始保護您的檔案，或讀取其他人已保護的檔案。
 
-#### More information
-You must have a local administrator account to install the sharing application. If you do not log in as a local administrator, you can use the **Run as administrator** option when you run Setup.exe in step 3.
+#### 其他資訊
+您必須具備本機系統管理員帳戶，才能安裝共用應用程式。如果您沒有以本機系統管理員身分登入，可以在步驟 3 中執行 Setup.exe 時，使用 [以系統管理員身分執行] 選項。
 
-### <a name="BKMK_ProtectInPlace"></a>Protect a file on a device (protect in-place)
+### <a name="BKMK_ProtectInPlace"></a>保護裝置上的檔案 (就地保護)
 
-1.  In File Explorer, select a file, a folder, or multiple files to protect. Right-click, and then select **Protect in-place**. For example:
+1.  在 [檔案總管] 中，選取要保護的一個檔案、一個資料夾或多個檔案。按一下滑鼠右鍵，然後選取 [就地保護]。例如：
 
     ![](../Image/ADRMS_MSRMSApp_SP_CompanyDefined.png)
 
     > [!NOTE]
-    > If you do not see the **Protect in-place** option, it’s likely that either the sharing application is not installed on your computer, or your computer must be restarted to complete the installation. For more information about how to install the sharing application, see the **Download and install the Rights Management sharing application** instructions in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.
+    > 如果您沒有看到 [就地保護] 選項，可能是您的電腦上未安裝共用應用程式，或者您的電腦必須重新啟動以完成安裝。如需有關如何安裝共用應用程式的詳細資訊，請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**下載並安裝 Rights Management 共用應用程式**指示。
 
-2.  Do one of the following:
+2.  執行下列其中一個步驟：
 
-    -   Select a policy template: These are predefined permissions that restrict access and usage to people in your organization. If this is the first time you have protected a file on this computer, you will first need to select **Company-defined Protection** to download the templates. The name of the templates begin with your company name and then a descriptive name of the permission. For example: **Contoso - Confidential View Only**
+    -   選取原則範本：這些是預先定義的權限，會限制您組織中人員的存取和使用。如果這是您第一次保護此電腦上的檔案，您必須先選取 [公司定義的保護] 以下載範本。範本的名稱開頭是您公司的名稱，然後是權限的描述性名稱。例如：**Contoso - Confidential View Only**
 
-    -   Select **Custom permissions**: Choose this option if the templates don’t provide the level of protection that you need. For example, you want to grant access to people outside your organization, or you want to explicitly set the protection options yourself. Specify the options that you want for this file in the **add protection** dialog box, and then click **Apply**.
+    -   選取 [自訂權限]：如果範本沒有提供您需要的保護層級，請選擇這個選項。例如，您想要將存取權授與您組織外部的人員，或您想要明確地自行設定保護選項。在 [新增保護] 對話方塊中指定這個檔案的選項，然後按一下 [套用]。
 
         > [!NOTE]
-        > For more information about the options in this dialog box, see the **Specify options in the Rights Management dialog box** instructions in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.
+        > 如需有關此對話方塊中選項的詳細資訊，請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**在 Rights Management 對話方塊中指定選項**指示。
 
-3.  You might quickly see a dialog box to tell you that the file is being protected, and the focus then returns to File Explorer. The selected file or files are now protected. In some cases (when adding protection changes the file name extension), the original file in File Explorer is replaced with a new file that has the Rights Management protection lock icon. For example:
+3.  您可能會快速看到一個對話方塊，告訴您檔案受到保護，然後焦點就會回到 [檔案總管]。選取的一或多個檔案現在會受到保護。在某些情況下 (新增保護變更副檔名時)，會將 [檔案總管] 中的原始檔案取代成具有 Rights Management 保護鎖定圖示的新檔案。例如：
 
     ![](../Image/ADRMS_MSRMSApp_Pfile.png)
 
-If you later need to remove protection from a file, see the **Remove protection from a file** instructions in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.
+如果您之後需要從檔案移除保護，請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**從檔案移除保護**指示。
 
-#### More information
-When you protect a file in-place, it replaces the original, unprotected file. You can then leave the file where it is, copy it to another folder or device, or share the folder that it is in and the file will remain protected. You could also attach the protected file to an email message, although the recommended way to share a protected file by email is directly from File Explorer or an Office application (see **Protect a file that you share by email** in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide).
+#### 其他資訊
+當您就地保護檔案時，它會取代原始未受保護的檔案。接著，您可以將該檔案保留在原地、將其複製到另一個資料夾或裝置，或共用仍在其中且檔案仍然受到保護的資料夾。您也可以將受保護的檔案附加到電子郵件訊息，但是共用受保護檔案的建議方式是透過電子郵件，直接從 [檔案總管] 或 Office 應用程式共用 (請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**保護您透過電子郵件共用的檔案**)。
 
-You can use the same technique to protect multiple files at the same time, or a folder. When you protect a folder, all the files in that folder are automatically selected for protection but new files that you create in that folder will not be automatically protected.
+您可以使用相同的技術，同時保護多個檔案或一個資料夾。當您保護某個資料夾時，會自動選取該資料夾中的所有檔案進行保護，但是您在該資料夾中建立的新檔案將不會自動受到保護。
 
-If you see any errors when you try to protect files, refer to [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+嘗試保護檔案時如果遇到錯誤，請參閱[適用於 Windows 的 Microsoft Rights Management 共用應用程式常見問題集](http://go.microsoft.com/fwlink/?LinkId=303971)。
 
-### <a name="BKMK_ProtectSharing"></a>Protect a file that you share by email
+### <a name="BKMK_ProtectSharing"></a>保護您透過電子郵件共用的檔案
 
-1.  Use one of the following options:
+1.  使用下列其中一個選項：
 
-    -   For File Explorer: Right-click the file and select **Share Protected**:
+    -   對於 [檔案總管]：以滑鼠右鍵按一下檔案，並選取 [已保護共用]：
 
         ![](../Image/ADRMS_MSRMSApp_ShareProtectedMenu.png)
 
-    -   For Office application: Make sure that you have first saved the file. Then, on the **Protection** group, click **Share Protected**.
+    -   對於 Office 應用程式：請確定您已經先儲存檔案。然後，在 [保護] 群組中，按一下 [已保護共用]。
 
         ![](../Image/ADRMS_MSRMSApp_SP_OfficeToolbar.png)
 
     > [!NOTE]
-    > If you do not see these options for sharing protection, it’s likely that either the sharing application is not installed on your computer, or your computer must be restarted to complete the installation. For more information about how to install the sharing application, see the **Download and install the Rights Management sharing application** instructions in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.
+    > 如果您沒有看到這些用於共用保護的按鈕，可能是您的電腦上未安裝共用應用程式，或者您的電腦必須重新啟動以完成安裝。如需有關如何安裝共用應用程式的詳細資訊，請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**下載並安裝 Rights Management 共用應用程式**指示。
 
-2.  Specify the options that you want for this file in the **share protected** dialog box, and then click **Send**.
+2.  在 [已保護共用] 對話方塊中指定這個檔案的選項，然後按一下 [傳送]。
 
     ![](../Image/ADRMS_MSRMSAPP_SP_ShareProtected.gif)
 
     > [!NOTE]
-    > For more information about the options in this dialog box, see the **Specify options in the Rights Management dialog box** instructions in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.
+    > 如需有關此對話方塊中選項的詳細資訊，請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**在 Rights Management 對話方塊中指定選項**指示。
 
-3.  You might quickly see a dialog box to tell you that the file is being protected, and then you see an email message created for you that has the subject **I have securely shared file(s) with you**. In this email message, the file that you selected is attached and protected, and the text in the email contains links for the following:
+3.  您可能會快速看到一個對話方塊，告訴您檔案受到保護，然後您會看到為您所建立的電子郵件，其主旨是：[我已經安全地與您共用檔案]。在此電子郵件訊息中，會附加並保護您所選取的檔案，而且電子郵件中的文字包含以下內容的連結：
 
-    -   RMS for individuals
+    -   個人版 RMS
 
-    -   The RMS sharing application
+    -   RMS 共用應用程式
 
-    -   This user guide
+    -   本使用者指南
 
-    Example:
+    範例：
 
     ![](../Image/ADRMS_MSRMSApp_EmailMessage.PNG)
 
-4.  Optional: You can change anything that you want in this email message. For example, you can add to or change the subject or text in the message.
+4.  選擇性：您可以變更此電子郵件訊息中的任何項目。例如，您可以加入或變更訊息中的主旨或文字。
 
     > [!WARNING]
-    > Although you can add or remove people from this email message, this does not change the permissions for the attachment that you specified in the **share protected** dialog box. If you want to change those permissions, for example, give a new person permissions to open the file, close the email message without saving or sending it, and return to step 1.
+    > 雖然您可以從此電子郵件訊息新增或移除人員，但是這不會變更您在 [已保護共用] 對話方塊中指定之附件的權限。如果您想要變更這些權限 (例如，授與新的人員開啟檔案的權限)，請關閉電子郵件訊息，但不儲存或傳送，然後返回步驟 1。
 
-5.  Send the email message.
+5.  傳送電子郵件訊息。
 
-#### More information
-When you protect a file that you share by email, it creates a new version of the original file. The original file remains unprotected and the new version is protected and automatically attached to an email that you then send.
+#### 其他資訊
+當您保護您以電子郵件共用的檔案時，它會建立原始檔案的新版本。原始檔案仍未受保護，而新版本受到保護，且會自動附加到您之後要傳送的電子郵件中。
 
-The email message has a default subject and default text that you can change before sending it.
+電子郵件訊息包含您可以在傳送之前變更的預設主旨和預設文字。
 
-There are two ways to protect a file that you share by email:
+保護您透過電子郵件共用的檔案有兩種方式：
 
--   From File Explorer: This method works for all files.
+-   從 [檔案總管]：這個方法適用於所有檔案。
 
--   From an Office application: This method works for applications that the Rights Management sharing application supports by using the Office add-in so that you see the **Protection** group on the ribbon.
+-   從 Office 應用程式：這個方法適用於 Rights Management 共用應用程式使用 Office 增益集支援的應用程式，讓您可以在功能區上看見 [保護] 群組。
 
 > [!NOTE]
-> In this version of the Rights Management sharing application, there is no add-in for Outlook that lets you protect files and email messages directly from the Outlook application. Instead, use the procedure in this section.
+> 在這個版本的 Rights Management 共用應用程式中，沒有適用於 Outlook 的增益集可讓您直接從 Outlook 應用程式保護檔案和電子郵件訊息。因此，請改用本節中的程序。
 
-### <a name="BKMK_ViewUseProtected"></a>View and use files that have been protected by Rights Management
+### <a name="BKMK_ViewUseProtected"></a>檢視並使用 Rights Management 保護的檔案
 
-#### <a name="BKMK_ViewPFILE"></a>To view a protected file
-By using File Explorer or the email message that contains the attachment, double-click the protected file, and enter your credentials if prompted to do so. How the file opens depends on how it was protected.
+#### <a name="BKMK_ViewPFILE"></a>檢視受保護的檔案
+使用 [檔案總管] 或含有附件的電子郵件訊息，按兩下受保護的檔案，然後輸入您的認證 (如果您收到提示)。檔案開啟的方式取決於受保護的方式。
 
--   If the file was generically protected (it has a .pfile file extension):
+-   如果檔案以一般方式受到保護 (副檔名為 .pfile)：
 
-    You see a **protected file** dialog box from the sharing application that tells you who protected the file and that you are expected to honor the co-owner permissions. You are informed that when you open the file, this action is audited.
+    您會看到來自共用應用程式的 [受保護的檔案] 對話方塊，告訴您是誰在保護檔案，而且您應該履行共同擁有者權限。當您開啟檔案時，您會收到通知，此動作經過稽核。
 
     ![](../Image/ADRMS_MSRMSApp_PfilePermission.png)
 
-    Click **Open** to read the file.
+    按一下 [開啟] 以讀取檔案。
 
--   If the file was natively protected (it does not have a .pfile file extension):
+-   如果檔案以原生方式受到保護 (副檔名不是 .pfile)：
 
-    The file opens by using the application that is associated with the original file name extension, and a restriction banner is displayed at the top of the file. The banner might display the permissions that are applied to the file, or it might provide a link to display them. For example, you might see the following where you must click **Permission is currently restricted** to see the actual permissions that are applied to the file and the people that can access it:
+    使用與原始副檔名相關聯的應用程式開啟檔案，並在檔案頂端顯示一個限制橫幅。該橫幅可能會顯示套用到檔案的權限，或者可能提供可用來顯示權限的連結。例如，您可能看到下列訊息，其中，您必須按一下 [目前權限限制] 以查看套用到檔案的實際權限，以及可以存取該檔案的人員：
 
     ![](../Image/ADRMS_MSRMSApp_RestrictedAccess.png)
 
-    This file is also audited and remains audited as long as it is protected.
+    這個檔案也經過稽核，而且只要檔案受到保護，就會維持稽核狀態。
 
-##### More information
-Before you can view the protected file, RMS must first confirm that you are authorized to view the file, which it does by checking your user name and password. In some cases, this might be cached and you will not see a prompt that asks for your credentials. In other cases, you will be prompted to supply your credentials.
+##### 其他資訊
+RMS 必須先檢查您的使用者名稱和密碼，確認您獲得授權可以檢視檔案，然後您就可以檢視受保護的檔案。在某些情況下，這可能都經過快取，因此您不會看到要求您提供認證的提示。在其他情況下，系統將會提示您提供認證。
 
-If your organization does not use either Windows Azure Rights Management (Windows Azure RMS) or AD RMS, you can apply for a free account that will accept your credentials so that you can open files that are protected by using RMS. To apply for this account, click the link to apply for [RMS for individuals](http://go.microsoft.com/fwlink/?LinkId=309469).
+如果您的組織不使用 Windows Azure Rights Management (Windows Azure RMS) 或 AD RMS，您可以申請可接受您的認證的免費帳戶，讓您可以開啟使用 RMS 保護的檔案。若要申請此帳戶，按一下連結以申請[個人版 RMS](http://go.microsoft.com/fwlink/?LinkId=309469)。
 
-#### <a name="BKMK_UserDefined"></a>To use files that have been protected (for example, edit and print the file)
-If the protected file has a .pfile file extension:
+#### <a name="BKMK_UserDefined"></a>使用已受保護的檔案 (例如，編輯和列印檔案)
+如果受保護檔案的副檔名為 .pfile：
 
--   Save the opened file and give it a new file name extension that is associated with the application that you want to use.
+-   儲存開啟的檔案，並賦予一個與您要使用之應用程式相關聯的新副檔名。
 
-    For example, if a file was protected by using the file name document.vsdx.pfile, view the file and in File Explorer, save the file as document.vsdx.
+    例如，如果檔案是透過使用檔案名稱 document.vsdx.pfile 而受到保護，請檢視該檔案，並在 [檔案總管] 中，將該檔案另存為 document.vsdx。
 
-    The new file is no longer protected. If you want to protect it, you must do this manually. For instructions, see **How to protect a file on a device (protect in-place) by using the Rights Management sharing application** in the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.
+    新檔案將不再受到保護。如果要保護它，您必須手動執行。如需指示，請參閱本指南[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節的**如何使用 Rights Management 共用應用程式保護裝置上的檔案 (就地保護)**。
 
-If the originally protected file did not have a .pfile extension:
+如果最初受保護檔案的副檔名不是 .pfile：
 
--   You cannot do anything other than view the file unless you have an application that understands Rights Management. These applications are called Rights Management enlightened applications. Applications from Office 2013 and Office 2010 (such as Word, Excel, PowerPoint, and Outlook) are examples of applications that are enlightened for Rights Management. But applications that do not come from Microsoft, such as other software companies and your own line-of-business applications, might also be enlightened for Rights Management.
+-   除非您有了解 Rights Management 的應用程式，否則您只能檢視檔案。這些應用程式稱為 Rights Management 架構應用程式。Rights Management 架構的應用程式範例包括 Office 2013 與 Office 2010 (例如 Word、Excel、PowerPoint 和 Outlook) 的應用程式。但是，如果不是 Microsoft 的應用程式，例如其他軟體公司和您自己的企業營運系統應用程式，也可能具有 Rights Management 架構。
 
-    Applications that are enlightened for Rights Management know how to open files that have been protected by other Rights Management enlightened applications. They also persist the protection that is applied to them, even if you edit the file or save it to another file name or another location. These applications let you use the file according to the permissions that are currently applied to the file, so that if you have permissions to use the file, you can do so. For example, if the file was protected as Read-only, you will not be able to make changes or print the file.
+    Rights Management 架構的應用程式知道如何開啟受到其他 Rights Management 架構應用程式所保護的檔案。即使您編輯檔案或將它儲存為其他檔名或其他位置，它們也會繼續保留套用到檔案的保護。這些應用程式可讓您根據目前套用至檔案的權限來使用檔案，如此一來，如果您具有使用檔案的權限，就可以這樣做。例如，如果檔案以「唯讀」方式受到保護，您將無法變更或列印檔案。
 
-### <a name="BKMK_RemoveProtection"></a>Remove protection from a file
-From File Explorer, right-click the file (for example, Sample.ptxt), click **Protect in-place**, and then click **Remove Protection**:
+### <a name="BKMK_RemoveProtection"></a>從檔案移除保護
+從 [檔案總管]，以滑鼠右鍵按一下檔案 (例如，Sample.ptxt)，按一下 [就地保護]，然後按一下 [移除保護]：
 
 ![](../Image/ADRMS_MSRMSApp_RemoveProtection.png)
 
-You might be prompted for credentials.
+系統可能會提示您輸入認證。
 
-#### More information
-The original protected file is deleted (for example, Sample.ptxt) and replaced with a file that has the same name but with the unprotected file name extension (for example, Sample.txt).
+#### 其他資訊
+原始受保護的檔案會遭到刪除 (例如，Sample.ptxt)，並取代成名稱相同，但副檔名未受保護的檔案 (例如，Sample.txt)。
 
-To remove protection from a file (that is, unprotect a file) that was previously protected by using the RMS sharing application, use the **Remove Protection** option from File Explorer.
+若要從先前使用 RMS 共用應用程式保護的檔案移除保護 (也就是取消保護檔案)，請從 [檔案總管] 使用 [移除保護] 選項。
 
 > [!IMPORTANT]
-> You must be an owner of the file to remove protection.
+> 您必須是檔案擁有者才能移除保護。
 
-### <a name="BKMK_ShortcutKeys"></a>Use keyboard shortcuts in the Rights Management sharing application
-Press the **Alt** key to see the available access keys, and then press **Alt** + the access key to select an option.
+### <a name="BKMK_ShortcutKeys"></a>在 Rights Management 共用應用程式中使用鍵盤快速鍵
+按下 **Alt** 鍵查看可用的便捷鍵，然後按下 **Alt** + 便捷鍵以選取一個選項。
 
-#### More information
-As an example, in the **share protected** dialog box, press **Alt** to see the access keys, and then press **Alt + u** to select the **Users must login every time they open this file** check box.
+#### 其他資訊
+例如，在 [已保護共用] 對話方塊中，按下 **Alt** 以查看便捷鍵，然後按下 **Alt + u** 以選取 [使用者必須在每次開啟此檔案時登入] 核取方塊。
 
 ![](../Image/ADRMS_MSRMSApp_AccessKeys.png)
 
-### <a name="BKMK_SpecifyDialogOptions"></a>Specify options in the Rights Management dialog box
+### <a name="BKMK_SpecifyDialogOptions"></a>在 Rights Management 對話方塊中指定選項
 
-|Option|Description|
-|----------|---------------|
-|**USERS**|Type the email addresses of the people that you want to be able to open the file. Use semicolons for multiple addresses. These can be email addresses inside your organization, or outside.<br /><br />For example: janetm@contoso.com; pdover@fabricom.com|
-|**Allow consumption on all devices**|When you choose this option that lets users open the file on mobile devices such as an iPad, the permissions is automatically set to **CO-OWNER** (all permissions) so that generic protection is used to protect the file.|
-|**PERMISSIONS**|Move the slider to the permission that you want for this file.<br /><br />In some cases, the permissions are automatically set to CO-OWNER and cannot be changed. This happens if you select **Allow consumption on all devices**. And it also happens if you are protecting a file that cannot be natively protected by RMS, and so must be generically protected. The sharing application makes this determination, based on the file name extension. **Tip:** You can use the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website to quickly check which applications support built-in protection.|
-|**Users must login every time they open this file**|Select this option when you need higher security for a file because it requires that the users you specify are always authenticated, every time they access the file. To do this, if their credentials are not cached, they will be prompted for their user name and password. However, this setting requires that these users always have Internet access to open the file, and being prompted to unlock a file and waiting for the authentication process to finish can be frustrating.|
-|**Content expires on**|Select this option only for time-sensitive files that the users that you selected should not be able to open after a date that you specify. You will still be able to open the original file.|
+|選項|說明|
+|------|------|
+|**使用者**|輸入您希望能夠開啟檔案之人員的電子郵件地址。請使用分號分隔多個地址。這些可能是您組織內部或外部的電子郵件地址。<br /><br />例如：janetm@contoso.com; pdover@fabricom.com|
+|**允許在所有裝置上使用**|當您選擇此選項，讓使用者開啟 iPad 等行動裝置上的檔案時，會將權限自動設為 [共同擁有者] (所有權限)，以便使用一般保護來保護檔案。|
+|**權限**|將滑桿移至您想要為此檔案賦予的權限。<br /><br />在某些情況下，權限會自動設定為 [共同擁有者]，而且無法變更。如果您選取 [允許在所有裝置上使用] 便會發生此狀況。此外，如果您要保護無法受到 RMS 以原生方式保護的檔案，而必須以一般方式保護時，也會發生這個情況。共用應用程式會根據副檔名來判斷。 **Tip:** 您可以使用 Microsoft 網站上的 [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) 頁面，快速檢查支援內建保護的應用程式。|
+|**使用者必須在每次開啟此檔案時登入**|如果某個檔案因為要求您指定的使用者在每次存取時一律要經過驗證而需要較高的安全性，請選取此選項。若要這樣做，如果他們的認證沒有經過快取，將會提示他們輸入其使用者名稱和密碼。不過，此設定會要求這些使用者一律在連線至網際網路時，才能開啟檔案，而且要收到解除鎖定檔案的提示，因此，等待驗證程序完成可能很令人沮喪。|
+|**內容到期日**|只有針對您選取的使用者在您指定的日期之後無法開啟的時間有限的檔案，才選取此選項。您仍然可以開啟原始檔案。|
 
-#### More information
-Use the table to help you specify the options in the sharing application **add protection** dialog box or the **share protected** dialog box. You will see this dialog box when you protect a file in place and choose custom permissions, or you protect a file to share.
+#### 其他資訊
+使用此表格協助您在共用應用程式的 [新增保護] 對話方塊或 [已保護共用] 對話方塊中指定選項。當您就地保護檔案，並選擇自訂權限時，或保護要共用的檔案時，您會看到這個對話方塊。
 
-For more information about protecting a file in place and protecting a file to share, see the [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp) section of this guide.
+如需有關就地保護檔案以及保護要共用的檔案的詳細資訊，請參閱本指南的[您要執行什麼作業？](../Topic/Rights_Management_sharing_application_user_guide_-_revision_for_single_topic.md#BKMK_UsingMSRMSApp)一節。
 
-## See Also
-[Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md)
- [Microsoft Rights Management sharing application download](http://go.microsoft.com/fwlink/?LinkId=303970)
- [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971)
+## 請參閱
+[Rights Management 共用應用程式系統管理員指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_administrator_guide.md)
+ [Microsoft Rights Management 共用應用程式下載](http://go.microsoft.com/fwlink/?LinkId=303970)
+ [適用於 Windows 的 Microsoft Rights Management 共用應用程式常見問題集](http://go.microsoft.com/fwlink/?LinkId=303971)
 

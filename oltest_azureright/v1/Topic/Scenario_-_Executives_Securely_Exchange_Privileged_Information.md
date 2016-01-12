@@ -3,118 +3,91 @@ description: na
 keywords: na
 title: Scenario - Executives Securely Exchange Privileged Information
 search: na
-ms.date: 2015-09-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: e18cf5df-859e-4028-8d19-39b0842df33d
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Scenario - Executives Securely Exchange Privileged Information
-This scenario and supporting user documentation uses Azure Rights Management so that executives can safely exchange emails and attachments by email with one another and policies automatically restrict access to the executives without requiring special action from them. The emails and any attachments will be automatically protected by Azure Rights Management.
+# 案例 - 主管安全地交換機密資訊
+本節包含系統管理員指示，以及使用者指示的指引。您必須先完成對系統管理員的指示，然後再告知使用者這個組態。
 
-If required, you can add an exception to the rule, such as the abbreviation of DNP (for "Do Not Protect") in the email message subject, so that executives can specify this if they need to send an unprotected email to other executives-for example, to review before forwarding to others.
-
-The instructions are suitable for the following set of circumstances:
-
--   Executives share confidential information with one another that should not be shared with others.
-
--   Executives do not need to do anything different when they send these emails other than send them to a work email address rather than a personal email address.
-
--   Executives have a way to override the rule themselves if they ever need to send an unprotected email message to other executives.
-
-## Deployment Instructions
+## 系統管理員的指示
 ![](../Image/AzRMS_AdminBanner.png)
 
-Make sure that the following requirements are in place, and then follow the instructions for the supporting procedures before going on to the user documentation.
+使用這些指示可讓主管安全地互換電子郵件與電子郵件附件，並有原則會自動限制主管的存取，完全不需要他們採取任何特殊動作。這些電子郵件及所有附件均由 Azure Rights Management 提供保護。
 
-## Requirements for this Scenario
-For the instructions for this scenario to work, the following must be in place:
+指示適用於下列一組情況：
 
-|Check|Requirement|If you need more information|
-|---------|---------------|--------------------------------|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|You have prepared accounts and groups for Office 365 or Azure Active Directory:<br /><br />A mail-enabled group named **Executives**, and all executives are members of this group<br /><br />A mail-enabled group named **RMS administrators**, and all administrators that will configure Azure RMS are members of this group|[Preparing for Azure Rights Management](https://technet.microsoft.com/library/jj585029.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Your Azure Rights Management tenant key is managed by Microsoft; you are not using BYOK|[Planning and Implementing Your Azure Rights Management Tenant Key](https://technet.microsoft.com/library/dn440580.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Azure Rights Management is activated|[Activating Azure Rights Management](https://technet.microsoft.com/library/jj658941.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|One of these configurations:<br /><br />Exchange Online is enabled for Azure Rights Management<br /><br />The RMS connector is installed and configured for Exchange on-premises|For Exchange Online: Expand the [Exchange Online: IRM Configuration](https://technet.microsoft.com/library/jj585031.aspx) section in [Configuring Applications for Azure Rights Management](https://technet.microsoft.com/library/jj585031.aspx).<br /><br />For Exchange on-premises: [Deploying the Azure Rights Management Connector](https://technet.microsoft.com/library/dn375964.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|You have configured a custom template as described next|[Configuring Custom Templates for Azure Rights Management](https://technet.microsoft.com/library/dn642472.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|You have configured a transport protection rule for IRM, as described later in this article|For Exchange Online: [Create a Transport Protection Rule](https://technet.microsoft.com/library/dd302432.aspx)<br /><br />For Exchange 2013: [Create a Transport Protection Rule](https://technet.microsoft.com/en-us/library/dd302432%28v=exchg.150%29.asp)<br /><br />For Exchange 2010: [Create a Transport Protection Rule](https://technet.microsoft.com/en-us/library/dd302432%28v=exchg.141%29.aspx)|
+-   主管可以互相交換與對他人保密的機密資訊。
 
-#### To configure the custom template for executives
+-   主管在傳送這些電子郵件時，除了必須將郵件傳送到公司電子郵件地址，而不能傳送到個人電子郵件地址之外，其餘都與一般傳送作業相同。
 
-1.  In the Azure classic portal: Create a new custom template for Azure Rights Management, which contains these values and settings:
+## 此案例的需求
+此案例要能運作，必須滿足下列條件：
 
-    -   Name: **Executives**
+|Check|需求|如果需要更多資訊|
+|---------|------|------------|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|備妥 Office 365 或 Azure Active Directory 的帳戶與群組：<br /><br />-   具備郵件功能的群組 (名為**主管**)<br />-   所有主管都是**主管**群組的成員|[準備 Azure Rights Management](https://technet.microsoft.com/library/jj585029.aspx)|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|您的 Azure Rights Management 租用戶金鑰由 Microsoft 管理；您不會使用 BYOK|[規劃及實作 Azure Rights Management 租用戶金鑰](https://technet.microsoft.com/library/dn440580.aspx)|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Azure Rights Management 已啟動|[啟用 Azure Rights Management](https://technet.microsoft.com/library/jj658941.aspx)|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Azure Rights Management 會啟用 Exchange Online|展開 [Exchange Online：IRM 組態](https://technet.microsoft.com/library/jj585031.aspx)一節 (位於[針對 Azure Rights Management 設定應用程式](https://technet.microsoft.com/library/jj585031.aspx))。|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|您已如下所述設定自訂範本|[設定 Azure Rights Management 的自訂範本](https://technet.microsoft.com/library/dn642472.aspx)|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|您已如下所述設定 IRM 的傳輸保護規則|[建立傳輸保護規則](https://technet.microsoft.com/library/dd302432.aspx)|
 
-    -   Rights: Grant the **Executives** mail-enabled group **Co-Owner** rights
+#### 若要設定主管電子郵件的自訂範本：
 
-    -   Scope: Select the **Executives** mail-enabled group, and the **RMS administrators** mail-enabled group.
+1.  在 Azure 入口網站中：為 Azure Rights Management 建立新的自訂範本，其中包含下列值及設定：
 
-2.  Publish the new template.
+    -   名稱：**主管**
 
-3.  For Exchange Online only: Refresh the templates by using the Windows PowerShell for Exchange Online command:
+    -   權限：將 [共同擁有者] 權限授與具備郵件功能的「主管」群組
+
+2.  發行新範本。
+
+3.  使用 Exchange Online 的 Windows PowerShell 命令，重新整理 Exchange Online 的範本：
 
     ```
-    Import-RMSTrustedPublishingDomain -Name "RMS Online -1 " -RefreshTemplates -RMSOnline
+    Import-RMSTrustedPublishingDomain -Name "RMS Online -1" -RefreshTemplates –RMSOnline
     ```
 
-#### To configure the transport rule for IRM
+#### 若要設定自動保護主管所接收及傳送的電子郵件：
 
--   Use the Exchange documentation referenced in the table for procedural information to create the transport rule with the following settings:
+-   在 Exchange 系統管理中心中：建立新的郵件流程規則，其中包含下列值及設定:
 
-    -   Name: **Apply the Executives templates to executive emails**
+    -   按一下新增圖示，然後選取 [套用權限保護至郵件]
 
-    -   Specify the **Executives** group as the sender and recipient of the rule and additional condition.
+    -   在 [新增規則] 頁面上：
 
-    -   For the action, select **Apply rights protection to the message with** and then select the **Executives** template that you configured.
+        -   指定名稱，例如**將主管範本套用至主管電子郵件**
 
-    -   Add the exception of **DNP** (as an abbreviation for "Do Not Protect"), or your choice of words to identify this exception, to be included in the subject.
+        -   對於 [若為以下情況，套用這個規則]，選取 [寄件者.... 是此群組的成員]，然後選取 [主管]。
 
-    -   Make sure the rule is configured for **Enforce**.
+        -   按一下 [新增條件]，選取 [收件者.... 是此群組的成員]，然後選取 [主管]。
 
-## User Documentation Instructions
-Unless you want to provide instructions of how to specify **DNP** or your choice of exception words or phrases in the email subject, there are no procedural instructions to give to users for this scenario because protecting emails from and to executives requires no special action from them. Email messages and any attachments are automatically protected so that only the members of the Executives group can access them.
+        -   對於 [執行下列動作]，確定已選取 [將權限保護套用到具有下列條件的郵件]，然後按一下 [選取一個]，以選取 [主管] 範本。
 
-However, you might need to inform the executives and your help desk that these emails will be automatically protected and how this can restrict their use of these emails. For example, they cannot successfully be read by other people if the emails or attachments are later forwarded to others. If you configured the DNP (or equivalent) exception, make sure that the help desk is aware of this configuration so that executives can override the rule themselves, without requiring action from an Exchange administrator.
+        -   確定已選取 [選擇用於此規則的模式]、[強制]。
 
-Using the following template, copy and paste the announcement into a communication for your end users, and make these modifications to reflect your environment:
+        -   按一下 [儲存]。
 
-1.  Replace the instances of *&lt;organization name&gt;* with the name of your organization.
+## 使用者指示
+此案例因為不需要主管執行任何特殊的動作來保護其所接收及傳送的電子郵件，所以沒有特定的使用者指示。電子郵件訊息及所有附件均會自動受到保護，只允許 [主管] 群組的成員進行存取。但您可能需要告知主管與技術支援人員這些電子郵件會自動受到保護，以及他們在使用這類電子郵件時的限制。例如若將這類電子郵件或附件轉寄給他人，他人可能無法順利閱讀。
 
-2.  If you chose a different string from DNP for the exemption, replace that value and the explanation accordingly.
+完成此案例的 Exchange Online 之後，可以傳送下列標準電子郵件通訊範例給主管。
 
-3.  Replace *&lt;emaildomain&gt;* with your organization's email domain name.
-
-4.  Replace *&lt;contact details&gt;* with instructions for how your users can contact the help desk, such as a website link, email address, or telephone number.
-
-5.  Make any additional modifications that you want to the announcement, and then send it to these users.
-
-The example documentation shows how this announcement might look for users, after your customizations.
-
-![](../Image/AzRMS_UsersBanner.png)
-
-### IT Announcement: &lt;Organization name&gt; executive emails are now automatically protected
-From now on, whenever you send emails to another &lt;organization name&gt; executive in the company, the contents of the emails and any attachments will be automatically protected such that only another executive in the company can access them to read the information, print it, copy from it, and so on. This restriction applies even if you forward the email message to others, or save the attachments. This protection helps to prevent data loss of confidential and sensitive information.
-
-Note that if you want others who are not a &lt;organization name&gt; executive to be able to read and edit the information that you send in these emails, you must email it to them separately. Or, to override the automatic protection, type the letters **DNP** (as an abbreviation for Do Not Protect) anywhere in the email message subject.
-
-When sending company-confidential information to another &lt;organization name&gt; executive, please remember to send it to their work email address (*name*@&lt;emaildomain&gt;) and not to a personal email address.
-
-**Need help?**
-
--   Contact the help desk: &lt;contact details&gt;
-
-#### Example User Documentation
+### 範例使用者文件
 ![](../Image/AzRMS_ExampleBanner.png)
 
-##### IT Announcement: VanArsdel executive emails are now automatically protected
-From now on, whenever you send emails to another VanArsdel executive in the company, the contents of the emails and any attachments will be automatically protected such that only another executive in the company can access them to read the information, print it, copy from it, and so on. This restriction applies even if you forward the email message to others, or save the attachments. This protection helps to prevent data loss of confidential and sensitive information.
+##### IT 公告：主管電子郵件現在會自動施以保護
 
-Note that if you want others who are not a VanArsdel executive to be able to read and edit the information that you send in these emails, you must email it to them separately. Or, to override the automatic protection, type the letters **DNP** (as an abbreviation for Do Not Protect) anywhere in the email message subject.
+-   從現在起，當您傳送電子郵件給公司的另一位主管時，電子郵件及任何附件的內容都會自動施以保護，只有公司的該名收件主管才能存取，進而閱讀其資訊、列印、複製其中的內容及執行其他作業等等。當您將電子郵件訊息轉寄給其他人或儲存附件時，也同樣會套用此限制。此項保護有助於防止機密或敏感資訊的資料遺失。
 
-When sending company-confidential information to another VanArsdel executive, please remember to send it to their work email address (*name*@vanarsdelltd.com) and not to a personal email address.
+    請注意，若您希望他人也能閱讀及編輯這些電子郵件中的資訊，您必須個別傳送電子郵件給這些人。
 
-**Need help?**
+    將公司機密資訊傳送給另一位主管時，請務必傳送到該主管的公司電子郵件地址，而不是個人電子郵件地址。
 
--   Contact the help desk: helpdesk@vanarsdelltd.com
+**需要協助嗎？**
+
+-   請連絡技術支援人員：helpdesk@vanarsdelltd.com
 

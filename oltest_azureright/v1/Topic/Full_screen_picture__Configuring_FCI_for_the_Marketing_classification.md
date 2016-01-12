@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: Configuring FCI for the Marketing classification
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: ba3e247d-ea5e-4009-8eac-74f70270ece0
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: Configuring FCI for the Marketing classification
+# 全螢幕圖片：在 FCI 中設定行銷分類
 ![](../Image/AzRMS_ExampleFCI_Configuration.png)
 
-Back to [Azure RMS in action: Automatically protecting files on file servers running Windows Server and File Classification Infrastructure](http://technet.microsoft.com/library/jj585026.aspx).
+回到 [Azure RMS 運作方式：在執行 Windows Server 和檔案分類基礎結構的檔案伺服器上自動保護檔案](http://technet.microsoft.com/library/jj585026.aspx)。
 

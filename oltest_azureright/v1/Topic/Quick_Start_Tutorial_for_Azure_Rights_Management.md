@@ -3,237 +3,236 @@ description: na
 keywords: na
 title: Quick Start Tutorial for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1db923bf-7d19-4fdd-a413-bfeb58af5e03
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Quick Start Tutorial for Azure Rights Management
-Use this tutorial to quickly try out Microsoft Azure Rights Management (also known as Azure RMS) for your organization with just 5 steps that should take you less than 15 minutes. You’ll activate the service, securely send a confidential document by email to somebody in another organization, and then be able to track when that document is opened. When the confidential document is emailed, it is encrypted while in transit and can be read only by the person it is sent to, using the permissions that are set by the sender.
+# Azure Rights Management 的快速入門教學指導
+透過本教學課程所提供的 5 個步驟，您將能夠快速為組織試用 Microsoft Azure Rights Management (也稱為 Azure RMS)，所需時間不超過 15 分鐘。 您會啟動服務、透過電子郵件安全傳送機密文件給別的組織的人員，接著還能夠在文件被開啟時加以追蹤。 透過電子郵件送出的機密文件會在傳輸過程中加密，並且只有其收件者才能使用寄件者設定的權限加以讀取。
 
 ![](../Image/AzRMS_QuickStartStepsAll.PNG)
 
-This tutorial is aimed at IT administrators and consultants, to help them evaluate Azure Rights Management as an information protection solution for an organization. In a production environment, the instructions to activate the service would be done by an administrator and the instructions to send the document would be done by end users. Both sets of instructions are included in this tutorial, to demonstrate the end-to-end scenario of securely sending a confidential document to somebody in another organization. If you have any problems completing this tutorial, send an email message to [AskIPTeam](mailto:askipteam@microsoft.com?subject=Having%20problems%20with%20the%20Quick%20Start%20tutorial) and we will help you out.
+本教學課程的目標對象是 IT 系統管理員和顧問，目的是協助他們評估 Azure Rights Management 是否能夠做為組織的資訊保護解決方案。 在生產環境中，啟動服務的指示由系統管理員來執行，傳送文件的指示則由一般使用者執行。 本教學課程囊括這兩項指示，以示範將機密文件安全傳送給別的組織的人員的端對端案例。 如果您在完成本教學課程時遇到任何問題，請寄送電子郵件到 [AskIPTeam](mailto:askipteam@microsoft.com?subject=Having%20problems%20with%20the%20Quick%20Start%20tutorial)，我們會助您一臂之力。
 
-To complete this tutorial, you will need the following:
+若要完成本教學課程，您需要具備下列項目：
 
--   A subscription that supports Azure Rights Management . This can be a paid subscription or a trial subscription. If you want to use document tracking, which is required for step 5 in this tutorial, your subscription must support document tracking. For more information about the subscription options and links to free trials, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.
+-   支援 Azure Rights Management 的訂閱。 付費或試用的訂閱都行。 如果您想要使用文件追蹤 (本教學課程的步驟 5 需要用到此功能)，您的訂閱必須支援文件追蹤。 如需訂閱選項和免費試用連結的詳細資訊，請參閱 [Azure Rights Management 的需求](../Topic/Requirements_for_Azure_Rights_Management.md)主題的[支援 Azure RMS 的雲端訂閱](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions)一節。
 
-    Tip: If you need to get a subscription, do this in advance because this process can sometimes take a while to complete.
+    提示：如果您需要取得訂閱，請事先進行，因為這項程序有時可能需要一段時間才能完成。
 
--   An administrator account to sign in to the Office 365 admin center or the Azure classic portal, so that you can activate the Rights Management service. This account must also have an email address and a working email service (for example, Exchange Online or Exchange Server).
+-   用來登入 Office 365 系統管理中心或是 Azure 傳統入口網站的系統管理員帳戶，以便能夠啟動 Rights Management 服務。 此帳戶也必須有電子郵件地址和工作電子郵件服務 (例如 Exchange Online 或 Exchange Server)。
 
--   A computer running Windows (minimum of Windows 7 SP1), and which has installed either Office 2016, Office 2013, or Office 2010.
+-   執行 Windows (至少要是 Windows 7 SP1)，且已安裝 Office 2016、Office 2013 或 Office 2010 的電腦。
 
-Let’s get started.
+讓我們開始這次的教學。
 
-## Step 1: Activate the Rights Management service
+## 步驟 1：啟動 Rights Management 服務
 ![](../Image/AzRMS_QuickStartSteps1.PNG)
 
-Even though you might have a subscription that supports Azure Rights Management, the service is disabled by default. To activate it, you can use either the Office 365 admin center, or the Azure classic portal:
+雖然您擁有的訂閱可能會支援 Azure Rights Management，但這項服務預設是停用狀態。 若要啟動它，您可以使用 Office 365 系統管理中心或是 Azure 傳統入口網站：
 
--   If you have an Office 365 subscription that includes Azure Rights Management, or an Office 365 subscription that excludes Azure Rights Management but you have a subscription for Azure RMS Premium: **Use the Office 365 admin center**.
+-   如果您有包含 Azure Rights Management 的 Office 365 訂閱，或是所擁有的 Office 365 訂閱雖然沒有 Azure Rights Management，但您另外有 Azure RMS 進階版的訂閱：**使用 Office 365 系統管理中心**。
 
--   If you do not have an Office 365 subscription: **Use the Azure classic portal**.
+-   如果您沒有 Office 365 訂閱：**使用 Azure 傳統入口網站**。
 
 ![](../Image/AzRMS_Tutorial_1_Screenshots.png)
 
-#### To activate Rights Management from the Office 365 admin center
+#### 若要從 Office 365 系統管理中心啟動 Rights Management
 
-1.  Go to the [Office 365 portal](https://portal.office.com/) and sign in with your work or school account.
+1.  移至 [Office 365 入口網站](https://portal.office.com/)，以您的工作或學校帳戶登入。
 
-2.  If the Office 365 admin center does not automatically display, select the app launcher icon in the upper-left and choose **Admin**. The **Admin** tile appears only to Office 365 administrators.
+2.  如果 Office 365 系統管理中心未自動顯示，請選取左上角的應用程式啟動器圖示，並選擇 **[管理員]**。 只有 Office 365 管理員才會看到 **[管理員]** 方塊。
 
     > [!TIP]
-    > For admin center help, see [About the Office 365 admin center - Admin Help](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547).
+    > 如需系統管理中心說明，請參閱 [關於 Office 365 系統管理中心 - 管理員說明](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547)。
 
-3.  In the left pane, expand **SERVICE SETTINGS**.
+3.  展開左窗格中的 **[服務設定]**。
 
-4.  Click **Rights Management**.
+4.  按一下 **[Rights Management]**。
 
-5.  On the **RIGHTS MANAGEMENT** page, click **Manage**.
+5.  在 **[RIGHTS MANAGEMENT]** 頁面上，按一下 **[管理]**。
 
-6.  On the **rights management** page, click **activate**.
+6.  在 **[RIGHTS MANAGEMENT]** 頁面上，按一下 **[啟動]**。
 
-7.  When prompted **Do you want to activate Rights Management?**, click **activate**.
+7.  出現 **[是否要啟動 Rights Management?]**] 提示時，按一下 **[啟動]**。
 
-You should now see **Rights management is activated** and the option to deactivate (you might need to manually refresh the page)
+現在，您應該會看到 **[Rights Management 已啟動]** 及用來停用的選項 (您可能需要手動重新整理頁面)。
 
-At this time, do not click **advanced features**. This takes you to the Azure classic portal where you can configure templates, which are not needed for this tutorial. Instead, you can close the Office 365 admin center.
+此時請不要按 **[進階功能]**。 這會帶您到 Azure 傳統入口網站供您設定範本，但本教學課程不需要用到範本。 您反而可以關閉 Office 365 系統管理中心。
 
-#### To activate Rights Management from the Azure portal
+#### 從 Azure 入口網站啟動 Rights Management
 
-1.  Go to the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=275081) and sign in.
+1.  移至 [Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=275081)並登入。
 
-2.  In the left pane, click **ACTIVE DIRECTORY**.
+2.  在左窗格中，按一下 **[ACTIVE DIRECTORY]**。
 
-3.  From the **active directory** page, click **RIGHTS MANAGEMENT**.
+3.  從 **[active directory]** 頁面中，按一下 **[RIGHTS MANAGEMENT]**。
 
-4.  Select the directory to manage for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], click **ACTIVATE**, and then confirm your action.
+4.  選取要為 [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] 管理的目錄，按一下 **[啟動]**，然後確認您的動作。
 
-The **RIGHTS MANAGEMENT STATUS** should now display **Active** and the **ACTIVATE** option is replaced with **DEACTIVATE**.
+**[RIGHTS MANAGEMENT 狀態]** 現在應該會顯示為 **[作用中]**，且 **[啟動]** 選項會取代為 **[停用]**。
 
-Although you can configure other options for Rights Management in the portal, these are not needed for this tutorial, so you can close the Azure classic portal.
+雖然您可以在入口網站設定 Rights Management 的其他選項，但本教學課程不需要用到這些選項，因此您可以關閉 Azure 傳統入口網站。
 
-That’s all you need to do for this first step. The service is activated so all users in your organization can now start to protect important and sensitive documents. In a production environment, you might want to restrict who can do this initially, for a phased rollout. But it’s not necessary for this tutorial.
+在第一個步驟中，您只需要做到這個程度就行。 將服務啟動，讓您組織中的所有使用者現在可以開始保護重要且敏感的文件。 在生產環境中，您可能會想要限制可以首先執行這項操作的使用者，以便分階段實作。 但在本教學課程中，則不需要這麼做。
 
-Although not included here, for a production deployment, you probably will also probably want to configure custom templates. Templates make it easier for users to quickly apply the right settings when they need to protect files. When you activate Rights Management, you automatically get 2 default templates and it’s likely you will want to supplement these with your own custom templates in a production environment. But templates are not needed for this tutorial, so you’re ready to go to the next step.
+雖然本文並未提及，但在生產部署期間，您可能也會想要設定自訂範本。 有了範本，使用者就能在需要保護檔案時，更輕鬆快速地套用正確設定。 您在啟動 Rights Management 時會自動獲得 2 個預設範本，並且您很可能會想讓生產環境中除了有這兩個預設範本外，再補上自己的自訂範本。 但本教學課程不需要用到範本，因此您已經可以進入下一個步驟。
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|About activating Rights Management and controlling who can protect files and email when the service is activated   →|[Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)|
-|About the default templates and how to create new, custom templates   →|[Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md)|
+|如果您想要更多的資訊|其他資訊|
+|--------------|--------|
+|關於啟動 Rights Management 以及控制誰可以在服務啟動時保護檔案和電子郵件   →|[啟用 Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)|
+|關於預設範本以及如何建立全新自訂範本   →|[設定 Azure Rights Management 的自訂範本](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md)|
 
-## Step 2: Install the Rights Management sharing application
+## 步驟 2：安裝 Rights Management 共用應用程式
 ![](../Image/AzRMS_QuickStartSteps2.PNG)
 
-The Rights Management sharing application (also known as the “RMS sharing app”) isn’t a requirement for Azure Rights Management, but we recommend it for all computers and mobile devices that support Azure Rights Management. The RMS sharing application integrates with Office applications by installing an Office add-in so that users can easily protect files directly from the ribbon. It also makes it possible to protect all files types by applying generic protection for files that are not natively supported by Azure Rights Management, and a document tracking site for users to track and revoke files that they have protected. We’ll be using the document tracking site later in this tutorial.
+Azure Rights Management 並不需要 Rights Management 共用應用程式 (也稱為「RMS 共用應用程式」)，但我們建議所有支援 Azure Rights Management 的電腦和行動裝置使用它。 RMS 共用應用程式會藉由安裝 Office 增益集來整合 Office 應用程式，讓使用者得以從功能區直接且輕易地保護檔案。 它還能夠藉由對 Azure Rights Management 並未原生支援的檔案套用一般保護，來保護所有檔案類型，並有文件追蹤網站可供使用者追蹤和撤銷他們所保護的檔案。 我們會在本教學課程後面用到文件追蹤網站。
 
-This application is free to download and offers a scripted install for production environments. But for this tutorial, we’ll install it locally.
+此應用程式可免費下載，並有提供指令碼式安裝以供生產環境使用。 但在本教學課程中，我們會在本機進行安裝。
 
 ![](../Image/AzRMS_Tutorial_2_Screenshots.png)
 
-#### To download and install the Rights Management sharing application
+#### 下載及安裝 Rights Management 共用應用程式
 
-1.  Go to the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+1.  移至 Microsoft 網站上的 [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) 頁面。
 
-2.  In the **Computers** section, click the icon for the **RMS app for Windows** and save the **Setup.exe** file to install the Microsoft Rights Management sharing application.
+2.  在 **[電腦]** 區段中，按一下 **[適用於 Windows 的 RMS 應用程式]** 的圖示並儲存 **Setup.exe** 檔案，以安裝 Microsoft Rights Management 共用應用程式。
 
-3.  For a local install, you must use an administrator account to run the Setup.exe file that was downloaded. If you are prompted to continue, click **Yes**.
+3.  若要進行本機安裝，您必須使用系統管理員帳戶來執行已下載的 Setup.exe 檔案。 如果系統提示您繼續進行，請按一下 **[是]**。
 
-4.  On the **Setup Microsoft RMS** page, click **Next**, and wait for the installation to finish.
+4.  在 [安裝 Microsoft RMS] 頁面上按 [下一步]，並等候安裝完成。
 
-5.  When the installation finishes, click **Restart** if prompted to restart your computer, or click  **Close** to complete the installation.
+5.  當安裝完成時，如果系統提示您重新啟動電腦則按一下 **[重新啟動]**，否則請按一下 **[關閉]** 以完成安裝。
 
-You’re now ready to start protecting files that contain information that you want to share but only with the people that you specify.
+您現在已經可以開始保護內有想要只與所指定人員分享之資訊的檔案。
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|About a local installation of the Rights Management sharing application for Windows and user instructions   →|[Rights Management sharing application user guide](http://technet.microsoft.com/library/dn339006.aspx)|
-|About the scripted installation of the Rights Management sharing application for Windows and more technical information   →|[Rights Management sharing application administrator guide](http://technet.microsoft.com/library/dn339003.aspx)|
-|To understand the difference between native protection and generic protection   →|[What’s the difference between generic protection and built-in (native) protection?](https://technet.microsoft.com/library/dn574738.aspx)|
+|如果您想要更多的資訊|其他資訊|
+|--------------|--------|
+|關於適用於 Windows 的 Rights Management 共用應用程式的本機安裝以及使用者指示   →|[Rights Management 共用應用程式使用者指南 (英文)](http://technet.microsoft.com/library/dn339006.aspx)|
+|關於適用於 Windows 的 Rights Management 共用應用程式的指令碼式安裝以及更多技術資訊   →|[Rights Management 共用應用程式系統管理員指南 (英文)](http://technet.microsoft.com/library/dn339003.aspx)|
+|了解原生保護和一般保護的差異   →|[一般保護和內建 (原生) 保護有何差異？](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 3: Email your document that you want to protect
+## 步驟 3：以電子郵件傳送您想要保護的文件
 ![](../Image/AzRMS_QuickStartSteps3.PNG)
 
-For this step, first create and save a document using Word that will represent your document that you want to protect, and name it **Confidential.docx**. For this tutorial, it doesn’t matter what text it actually contains, but you will want it to contain some text so you can more easily confirm that the authorized recipient could read it. For example, you might type: **If you can read this from your email attachment, the sender has successfully shared a file that was protected with Azure RMS.**
+在此步驟中，請先使用 Word 建立並儲存一份文件來代表您想要保護的文件，並將它命名為 **Confidential.docx**。 在本教學課程中，這份文件實際包含什麼文字並不重要，但您勢必會想讓它包含一些文字，以便可以更輕鬆地確認獲得授權的收件者可以讀取此文件。 例如，您可以輸入：**如果您可以從電子郵件附件讀取這份文件，表示寄件者已成功共用以 Azure RMS 保護的檔案。**
 
-You’re then ready to safely share this document by email.
+接著，您就可以安全地透過電子郵件共用這份文件。
 
 ![](../Image/AzRMS_Tutorial_3_Screenshots.png)
 
-#### To safely share your document by email
+#### 安全地透過電子郵件共用文件
 
-1.  Using Outlook, create a new message and attach the file that you just created.
+1.  使用 Outlook 建立新的郵件，並附加您剛才建立的檔案。
 
-2.  In the **To** box, type one or more business email addresses. Make sure you specify a business email address, such as **janetm@contoso.com** or **p.dover@fabrikam.com** because currently, Azure Rights Management doesn’t support personal email addresses that you might use at home from your Internet provider. Don’t worry about whether the person you’re sending it to also has Azure Rights Management or not.
+2.  在 **[收件者]** 方塊中，輸入一或多個公司電子郵件地址。 請確定您指定的是公司電子郵件地址，例如 **janetm@contoso.com** 或 **p.dover@fabrikam.com**，因為 Azure Rights Management 目前並不支援您可能會在家裡使用的網際網路提供者所提供的個人電子郵件地址。 別擔心文件的收件者是否也有 Azure Rights Management。
 
-3.  Type a subject, such as  **Confidential document** and then type a short message for the email, such as **Please read this confidential document and do not share it with others.**
+3.  輸入主旨，例如**機密文件**，然後在電子郵件中輸入簡短訊息，例如**請閱讀這份機密文件，並請勿與他人共用。**
 
-4.  Then, on the **Message** tab, in the **RMS** group, click **Share Protected** and then click **Share Protected** again:
+4.  然後，在 **[訊息]** 索引標籤的 **[RMS]** 群組中，按一下 **[共用保護]**，接著再按一下 **[共用保護]**：
 
-5.  In the **share protected** dialog box:
+5.  在 **[共用保護]** 對話方塊中：
 
-    1.  Select **Viewer – View Only**.
+    1.  選取 **[檢閱者 - 僅檢視]**。
 
-        This means our recipients will be able to view the document but not edit or print it.
+        這表示我們的收件者將能夠檢視文件，但不能進行編輯或列印。
 
-    2.  Select **Email me when somebody tries to open these documents**.
+    2.  選取 **[有人嘗試開啟這些文件時傳送電子郵件給我]**。
 
-        You’ll get an email notification each time the recipients try to open the attachment, and also if somebody else tries to open it—for example, your recipient forwards the email to co-worker. In this last scenario, you’ll see that access was denied and from the user details, you can decide whether to send that person a copy of the document that they can open.
+        每當收件者嘗試開啟附件以及有其他人嘗試開啟時，例如收件者將電子郵件轉寄給同事，您就會收到電子郵件通知。 在最後一個案例中，您會看到存取遭到拒絕，而且您可以從使用者詳細資料來決定是否要傳送一份文件給該名人員，以便他能夠開啟。
 
-    3.  Select **Allow me to instantly revoke access to these documents**.
+    3.  選取 **[允許我立即撤銷這些文件的存取權]**。
 
-        This option requires the recipients to have an Internet connection each time they open the attachment but with the benefit that if you later revoke the document, the next time they try to open it, they will not be able to. If you do not select this option, the recipients might be able to open it even without an Internet connection but with the disadvantage that if you later revoke the document, there might be a delay for when that takes effect.
+        若選取這個選項，收件者每次開啟附件時都必須要有網際網路連線，但好處是如果您稍後撤銷文件，收件者下次嘗試開啟附件時，將不會成功。 如果您沒有選取這個選項，收件者即使沒有網際網路連線也可能可以開啟附件，但壞處是如果您稍後撤銷文件，其效果可能會延遲發生。
 
-    4.  Click **Send Now**.
+    4.  按一下 **[立即傳送]**。
 
-        The email with attachment is sent to the email addresses that you specified. In addition to your email message, they will see instructions how to read the attached document that is protected by Azure Rights Management.
+        帶有附件的電子郵件就會傳送至您指定的電子郵件地址。 除了您寄送的電子郵件外，收件者還會看到相關指示，這些指示會說明如何讀取 Azure Rights Management 所保護的附加文件。
 
-Now you’ve sent your protected document, you’re ready to ask your recipients to wait for it to arrive and then open it. But don’t close Outlook, because we’ll use it again in our final step to track the attachment.
+現在您已送出受保護的文件，因此您可以要求收件者等候其送達，然後將其開啟。 但請不要關閉 Outlook，因為我們會在最後一個步驟中再次用到它來追蹤附件。
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions and alternative methods for protecting files that you share by email   →|[Protect a file that you share by email by using the Rights Management sharing application](https://technet.microsoft.com/library/dn574735.aspx)|
-|About the options in the **share protected** dialog box   →|[Dialog box options for the Rights Management sharing application](https://technet.microsoft.com/library/dn574738.aspx)|
+|如果您想要更多的資訊|其他資訊|
+|--------------|--------|
+|保護透過電子郵件共用之檔案的完整指示和其他方法   →|[藉由使用 Rights Management 共用應用程式，保護您透過電子郵件共用的檔案](https://technet.microsoft.com/library/dn574735.aspx)|
+|關於 **[共用保護]** 對話方塊中的選項   →|[Rights Management 共用應用程式的對話方塊選項](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 4: Ask your recipients to open the emailed document
+## 步驟 4：要求收件者開啟以電子郵件送達的文件
 ![](../Image/AzRMS_QuickStartSteps4.PNG)
 
-Your recipients can use many devices to read the protected document that you sent as an email attachment. The devices include iPads, iPhones, Android tablets and phones, Mac computers, as well as Windows computers.
+收件者可以使用多種裝置來讀取您以電子郵件附件傳送的受保護文件。 這些裝置包括 iPad、iPhone、Android 平板電腦和手機、Mac 電腦以及 Windows 電腦。
 
-Ask them to read the email message that you sent. They will see your email message and before that, the following text:
+請要求他們閱讀您傳送的電子郵件。 他們會看到您的電子郵件，不過在此之前會先看到下列文字：
 
-**The sender has protected the attachments with Microsoft RMS. You must** [sign in](http://aka.ms/rms)
-      **to open them.**
+**寄件者已使用 Microsoft RMS 保護附件。您必須** [登入](http://aka.ms/rms)
+      **才能開啟附件。**
 
-When they click the link, it takes them to instructions to install the RMS sharing app and if necessary, sign up for a free account. The free account grants them a subscription for RMS for individuals, which ensures that authorized users can always read a protected document, even if their organization does not have Azure RMS. They are then ready to read the protected attachment by using the following instructions.
+當他們按下連結時，連結會將他們帶往用來安裝 RMS 共用應用程式以及在必要時註冊免費帳戶的指示。 免費帳戶會授與他們個人版 RMS 訂閱，以確保獲得授權的使用者一律可以讀取受保護的文件，即使其組織沒有 Azure RMS。 然後，他們就可以使用下列指示讀取受保護的附件。
 
 ![](../Image/AzRMS_Tutorial_4_Screenshots.png)
 
-#### To view the protected document attachment
+#### 檢視受保護的文件附件
 
-1.  Because Azure Rights Management protected a Word document, there are two attachments for the email message. These are actually two versions of the same file but with different file name extensions. Open the version that has the **.ppdf** file name extension (**Confidential.ppdf**).
+1.  因為 Azure Rights Management 保護了 Word 文件，所以電子郵件內有兩個附件。 這兩個附件實際上是相同檔案的兩個版本，只是它們的副檔名不同。 開啟具有 **.ppdf** 副檔名的版本 (**Confidential.ppdf**)。
 
-    If you have a version of [Office on your device that supports Rights Management](https://technet.microsoft.com/library/dn655136.aspx), you can open the other version of the file (**Confidential.docx**), so that it opens in Word.
+    如果[您裝置上的 Office 版本支援 Rights Management](https://technet.microsoft.com/library/dn655136.aspx)，您就可以開啟此檔案的另一個版本 (**Confidential.docx**)，讓它在 Word 中開啟。
 
-2.  If you are prompted for your user name and password, enter your user name in the same format as the email address that was used to send you the email and attachment. For example, **janetm@contoso.com** or **p.dover@fabrikam.com**. For your password, type the password that you supplied when you signed up for RMS for individuals. Or, if your organization has Azure RMS, enter your usual work password.
+2.  如果系統提示您輸入使用者名稱和密碼，請輸入與您用來傳送電子郵件和附件的電子郵件地址格式相同的使用者名稱。 例如 **janetm@contoso.com** 或 **p.dover@fabrikam.com**。 至於密碼，請輸入您註冊個人版 RMS 時所提供的密碼。 或者，如果貴組織擁有 Azure RMS，請輸入您平常的工作密碼。
 
-The document opens and you can now read the contents. For example, it might say **If you can read this from your email attachment, the sender has successfully shared a file that was protected with Azure RMS.** Because it’s read-only, you cannot change the contents.
+文件隨即開啟，您現在可以讀取其內容。 例如，內容可能是說：「**如果您可以從電子郵件附件讀取這份文件，表示寄件者已成功共用以 Azure RMS 保護的檔案。**」因為是唯讀文件，您並無法變更其內容。
 
-As an optional step, you could ask your recipient to forward the email to other people that you didn’t include in your original email. Even if those other people work for an organization that has Azure Rights Management or they apply for their own RMS for individuals subscription, they won’t be able to open the attachment. When they are promoted for their user name, access to the document will be denied.
+有一個選擇性步驟是，您可以要求收件者將電子郵件轉寄給不是原始電子郵件收件者的其他人。 即使這些人所服務的組織有 Azure Rights Management 或是他們本身申請自己的個人版 RMS 訂閱，他們還是無法開啟附件。 當系統提示他們輸入使用者名稱時，他們對於文件的存取便會遭到拒絕。
 
-Now that the recipient has opened the attachment and optionally, forwarded it to somebody else, expect to get an email notification that reports this activity. But email messages are easy to lose over time, so a better way to track who accessed your document is to use the document tracking site, which is covered in the final step.
+現在收件者已開啟附件並選擇性地將它轉寄給其他人，請期待您會收到報告此活動的電子郵件通知。 然而由於電子郵件很容易在經過一段時間後遺失，因此若要追蹤有誰存取過您的文件，比較好的方法是使用文件追蹤網站，最後一個步驟便是在講述這個方法。
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions for viewing files that are protected by Azure Rights Management   →|[View and use files that have been protected by Rights Management](https://technet.microsoft.com/library/dn574741.aspx)|
-|About the free subscription, RMS for individuals   →|[RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
-|About the two versions of the file that you see attached to the email message   →|[What’s the .ppdf file that’s automatically created?](https://technet.microsoft.com/library/dn574738.aspx)|
+|如果您想要更多的資訊|其他資訊|
+|--------------|--------|
+|用來檢視以 Azure Rights Management 保護之檔案的完整指示   →|[檢視並使用 Rights Management 保護的檔案](https://technet.microsoft.com/library/dn574741.aspx)|
+|關於免費的個人版 RMS 訂閱   →|[個人版 RMS 和 Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
+|關於您看到的附加至電子郵件的兩個檔案版本   →|[什麼是自動建立的 .ppdf 檔案？](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 5: Track your protected document
+## 步驟 5：追蹤受保護的文件
 ![](../Image/AzRMS_QuickStartSteps5.PNG)
 
 > [!NOTE]
-> For this step, you must have a subscription that supports document tracking. To check whether your subscription includes document tracking, see [Comparison of Rights Management Services (RMS) Offerings](https://technet.microsoft.com/dn858608.aspx).
+> 在此步驟中，您必須有支援文件追蹤的訂閱。 若要檢查您的訂閱是否包含文件追蹤，請參閱[比較 Rights Management Services (RMS) 所提供的功能](https://technet.microsoft.com/dn858608.aspx)。
 
-This step is optional, but most people like to know if the attachment they sent to people has been opened, when, and even from where. For example:
+這是選擇性步驟，但多數人都會想要知道他們傳送給別人的附件是否已開啟、其開啟時間，甚至是從哪裡開啟的。 例如：
 
--   You’re expecting a response from somebody by a specified time and you can see from the document tracking site that she hasn’t opened the document even though the deadline is approaching. You send her a follow-up email or telephone her as a timely reminder.
+-   您預期有人會在指定時間前回應您的郵件，但您在文件追蹤網站看到她還沒開啟過文件，截止時間已經快到了。 您傳送跟進電子郵件給她，或打電話及時提醒她。
 
--   After seeing that somebody has opened the document, you follow up to ask her if she has any questions or requires additional information.
+-   看到有人開啟文件後，您接著向她詢問她是否有任何疑問或需要其他資訊。
 
 ![](../Image/AzRMS_Tutorial_5_Screenshots.png)
 
-#### To track your protected document
+#### 追蹤受保護的文件
 
-1.  Using Outlook, on the **Home** tab, in the **RMS** group, click **Track Usage**.
+1.  使用 Outlook，在 **[首頁]** 索引標籤的 **[RMS]** 群組中，按一下 **[追蹤使用情況]**。
 
-2.  If you see the **Protect and share on your terms** page, click **Sign in** and supply your user name and password again.
+2.  如果您看到 **[由您保護和共用]** 頁面，按一下 **[登入]** 並再次提供您的使用者名稱和密碼。
 
-3.  On the **Your shared documents** page, you’ll see the document that you attached to the email, **Confidential.docx**. At this point, it’s the only file displayed but as you share additional protected documents, the list will grow.
+3.  在 **[您共用的文件]** 頁面上，您會看到您附加至電子郵件的文件 **Confidential.docx**。 此時只有顯示這個檔案，若您共用其他受保護的文件，清單將會增加。
 
-    From this page, you’ll see when you shared the document (when you sent the email with the protected attachment), the date of the last activity, and the name of the recipient you sent the email to. Click the document name for additional details.
+    在這個頁面中，您會看到文件的共用時間 (您何時傳送有受保護附加的電子郵件)、最後一次活動的日期，以及電子郵件寄送到的目標收件者的名稱。 按一下文件名稱以獲得其他詳細資料。
 
-4.  On the new page, which has the name of the file that you clicked, you’ll see summary details for that document only, and a list of other options that are available for the document (**List**, **Timeline**, **Map**, **Settings**).
+4.  在有您所點按之檔案名稱的新網頁上，您只會看到該文件的摘要詳細資料，以及該文件可用的其他選項清單 (**[清單]**、**[時間表]**、**[對應]**、**[設定]**)。
 
-    Click each option to explore different ways to track your protected document. Or, still on the **Summary** page, click **Open in Excel** to export the information to a spreadsheet, or click **Revoke access** to stop sharing the document.
+    按一下每個選項來瀏覽受保護文件的不同追蹤方式。 或是留在 **[摘要]** 頁面上，按一下 **[在 Excel 中開啟]** 將資訊匯出到試算表，或按一下 **[撤銷存取權]** 停止共用文件。
 
-You can return to this site to track further activity for your protected document, or revoke access if necessary. You can even access the site from your mobile device or tablet, by using a browser with this link: [document tracking](http://go.microsoft.com/fwlink/?LinkId=529562)
+有必要時，您就可以回到這個網站來進一步追蹤受保護文件的活動，或撤銷其存取權。 您甚至可以從您的行動裝置或平板電腦的瀏覽器使用下列連結存取這個網站：[文件追蹤](http://go.microsoft.com/fwlink/?LinkId=529562)
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions for tracking your documents   →|[Track and revoke your documents when you use the RMS sharing application](https://technet.microsoft.com/library/dn986611.aspx)|
-|Two minute video that explains and shows document tracking   →|[Azure RMS Document Tracking and Revocation](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)|
-|For troubleshooting and customer questions   →|[FAQ for Document Tracking](https://technet.microsoft.com/dn947488)|
+|如果您想要更多的資訊|其他資訊|
+|--------------|--------|
+|用來追蹤文件的完整指示   →|[當您使用 RMS 共用應用程式時，追蹤及撤銷文件](https://technet.microsoft.com/library/dn986611.aspx)|
+|說明和示範文件追蹤的兩分鐘影片   →|[Azure RMS 文件追蹤和撤銷](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)|
+|疑難排解和客戶問題   →|[文件追蹤的常見問題集](https://technet.microsoft.com/dn947488)|
 
-## Next Steps
-This tutorial stepped you through just one scenario for how Azure RMS can help protect your data. To see other common uses, see the [Azure RMS in action](https://technet.microsoft.com/library/jj585026.aspx) section from the [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) article. There are other sections in this article that you might also find useful, such as how Azure RMS works and what business problems it can solve.
+## 後續步驟
+本教學課程只有帶領您逐步了解 Azure RMS 如何協助保護資料的其中一個案例。 若要查看其他常見的使用案例，請參閱[什麼是 Azure Rights Management？](../Topic/What_is_Azure_Rights_Management_.md) 文章中的 [Azure RMS 運作方式](https://technet.microsoft.com/library/jj585026.aspx)一節。 此文章中還有可能對您也有幫助的其他章節，例如 Azure RMS 是如何運作的以及它能解決哪些商務問題。
 
-If you’re ready to start deploying Azure RMS, use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) for your deployment steps and links for how-to instructions.
+如果您已準備好開始部署 Azure RMS，請使用 [Azure Rights Management 部署藍圖](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) 作為您的部署步驟和作法指示的連結。
 
-## See Also
-[Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
+## 請參閱
+[開始使用 Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

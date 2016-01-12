@@ -3,91 +3,51 @@ description: na
 keywords: na
 title: Scenario - Retain Control of Documents Stored in SharePoint
 search: na
-ms.date: 2015-09-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1b6244c7-5ab9-4881-bc8f-6fa960390d89
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Scenario - Retain Control of Documents Stored in SharePoint
-This scenario and supporting user documentation uses Azure Rights Management to ensure that Office documents stored in SharePoint remain under your control by using protected libraries. For example, the documents are automatically protected from accidental or intended leakage by users and you can block access to content even after it is downloaded or synchronized. The files you want to protect might be for internal collaborating on design documents or plans, or for other deliverables. When you configure protected libraries for SharePoint, the Office files stored in them will be protected by Azure Rights Management.
+# 案例 - 保留對儲存在 SharePoint 中文件的控制
+本節包含系統管理員指示，以及使用者指示的指引。您必須先完成對系統管理員的指示，然後再告知使用者這個組態。
 
-The instructions are suitable for the following set of circumstances:
-
--   Employees share and collaborate using Office documents that are on a SharePoint library.
-
--   Employees do not need to set or change the permissions that an administrator sets at the library level.
-
--   Employees do not need to share these documents with people outside your organization.
-
-## Deployment Instructions
+## 系統管理員的指示
 ![](../Image/AzRMS_AdminBanner.png)
 
-Make sure that the following requirements and the supporting procedures are in place before you go on to the user documentation.
+使用這些指示可透過受保護的文件庫，確保您能夠控制儲存在 SharePoint 中的 Office 文件。例如，文件會自動施以保護，以避免使用者蓄意或意外洩漏，同時還能在文件下載或同步處理之後，封鎖對內容的存取。需要保護的檔案可能會是需要共同作業的設計文件或計畫，也可能屬於交付項目。當您設定 SharePoint 的受保護文件庫時，其中所儲存的 Office 檔案會由 Azure Rights Management 提供保護。
 
-## Requirements for this Scenario
-For this scenario to work, the following must be in place:
+指示適用於下列一組情況：
 
-|Check|Requirement|If you need more information|
-|---------|---------------|--------------------------------|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|You have prepared accounts and groups for Office 365 or Azure Active Directory|[Preparing for Azure Rights Management](https://technet.microsoft.com/library/jj585029.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Azure Rights Management is activated|[Activating Azure Rights Management](https://technet.microsoft.com/library/jj658941.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|If you will use SharePoint Server: Deploy the RMS connector and configure it for SharePoint|[Deploying the Azure Rights Management Connector](https://technet.microsoft.com/library/dn375964.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Configure permissions for the SharePoint site to protect|[Manage permissions for a list, library, folder, document, or list item](https://support.office.com/en-ca/article/Manage-permissions-for-a-list-library-folder-document-or-list-item-9d13e7df-a770-4646-91ab-e3c117fcef45)<br /><br />[Apply Information Rights Management to a list or library](http://office.microsoft.com/sharepoint-help/apply-information-rights-management-to-a-list-or-library-HA102891460.aspx)|
-|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Configure SharePoint for IRM and protected libraries|[Set up Information Rights Management (IRM) in SharePoint admin center](https://support.office.com/en-us/article/Set-up-Information-Rights-Management-IRM-in-SharePoint-admin-center-239ce6eb-4e81-42db-bf86-a01362fed65c)<br /><br />[Apply Information Rights Management to a list or library](http://office.microsoft.com/sharepoint-help/apply-information-rights-management-to-a-list-or-library-HA102891460.aspx)|
+-   員工共用及合作處理 Office 文件。
 
-#### To configure the SharePoint library for IRM settings
+-   文件包含非公開但不一定是內部專用的資訊。
 
-1.  After you have configured SharePoint to use the IRM service, navigate to your SharePoint library to protect with Azure RMS. In the **Settings** &gt; **Information Rights Management (IRM)** page for the site , in addition to selecting **Restrict permissions on this library on download**, and specifying a policy title for administrators and a policy descriptions for users, click **SHOW OPTIONS**.
+-   對於系統管理員在文件庫層級所設定的權限，員工無須設定或變更。
 
-2.  Select the following:
+## 此案例的需求
+此案例要能運作，必須滿足下列條件：
 
-    -   **Do not allow users to upload documents that do not support IRM**
+|Check|需求|如果需要更多資訊|
+|---------|------|------------|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|您已針對 Office 365 或 Azure Active Directory 準備帳戶和群組|[準備 Azure Rights Management](https://technet.microsoft.com/library/jj585029.aspx)|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|Azure Rights Management 已啟動|[啟用 Azure Rights Management](https://technet.microsoft.com/library/jj658941.aspx)|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|若要使用 SharePoint Server：部署 RMS 連接器，並針對 SharePoint 加以設定|[部署 Azure Rights Management 連接器](https://technet.microsoft.com/library/dn375964.aspx)|
+|![](../Image/4d269a30-a873-45c5-87de-30ee6558e7b0.gif)|設定 SharePoint 的 IRM 及受保護文件庫|[在 SharePoint 系統管理中心設定資訊版權管理 (IRM)](https://support.office.com/en-us/article/Set-up-Information-Rights-Management-IRM-in-SharePoint-admin-center-239ce6eb-4e81-42db-bf86-a01362fed65c)<br /><br />[將資訊版權管理套用至清單或程式庫](http://office.microsoft.com/sharepoint-help/apply-information-rights-management-to-a-list-or-library-HA102891460.aspx)|
 
-    -   Optional: **Allow group protection. Default group** and then specify the name of an additional group that might need to collaborate on documents stored in this library, but outside SharePoint. For example, the Sales group has Edit permissions to the site and somebody from this group downloads a document, saves it to disk, and emails it to a co-worker who is not in the Sales group. If the co-worker is in the group you specify here, she will automatically inherit the same permissions that are configured for the site and be able to edit the document.
+## 使用者指示
+此案例因為不需要使用者執行任何特殊的動作，所以沒有特定的使用者指示。文件會依據 SharePoint 系統管理員為網站設定的權限而自動受到保護。但您可能需要告知使用者與技術支援人員哪些文件庫受到保護，以及他們在使用這類文件時的限制。例如目前的限制可能會讓文件只能在行動裝置上檢視而無法編輯。
 
-        Without this option, only users that have access to the SharePoint library will be able to collaborate on these documents, and only by downloading the documents directly from SharePoint. In many cases, this restriction is appropriate.
+當將 SharePoint 文件庫設定為使用 Azure RMS 之後，可以傳送下列標準電子郵件通訊範例給相關部門或小組。
 
-## User Documentation Instructions
-There are no procedural instructions to give to users for this scenario because protected libraries require no special action from users. Documents are automatically protected on download, according to the permissions that a SharePoint administrator sets for the site. However, inform users about this change so that they know what to expect, and let your help desk know which libraries are protected and how this can restrict the use of the documents. For example, because of current limitations, these documents can be viewed but not edited with mobile devices. If you configured the group protection, let users know which groups can access and edit documents outside SharePoint.
-
-Using the following template, copy and paste the announcement into a communication for your end users, and make these modifications to reflect your environment:
-
-1.  Replace each instance of *&lt;name of SharePoint library&gt;* with the name and link of the SharePoint library that you configured for Azure Rights Management. If this communication is for more than one protected library, change the instructions accordingly.
-
-2.  If you configured the **Allow group protection. Default group** option, replace *&lt;group name&gt;* with name of the group you configured and supply the reason for &lt;reason why this group has access permissions to collaborate on the files but not by using the SharePoint library&gt;. If you did not configure this option, delete this sentence.
-
-3.  Replace *&lt;contact details&gt;* with instructions for how your users can contact the help desk, such as a website link, email address, or telephone number.
-
-4.  Make any additional modifications that you want to the announcement, and then send it to these users.
-
-The example documentation shows how this announcement might look for users, after your customizations.
-
-![](../Image/AzRMS_UsersBanner.png)
-
-### IT Announcement: Changes to the &lt;name of SharePoint library&gt; site
-The SharePoint site, **&lt;name of SharePoint library&gt;**, is now configured for secure collaboration. Now, only members of the &lt;group name&gt; can open these documents from this site, even if you save them locally or email them to somebody else. The exception is that you can share them with members of the &lt;group name&gt; after you have downloaded the documents, so that &lt;reason why this group has access permissions to collaborate on the files but not by using the SharePoint library&gt;. When you edit the files, you see a yellow information banner at the top of the document, to let you know that it has this protection and who can access them.
-
-This change helps to keep our company-confidential data safe from people who should not see it. If you use a mobile device to access these protected documents, you can view them but you must use a desktop device to edit them.
-
-You will not be able to upload documents to the &lt;name of SharePoint site&gt; site if they do not support secure collaboration.
-
-**Need help?**
-
--   Contact the help desk: &lt;contact details&gt;
-
-### Example User Documentation
+### 範例使用者文件
 ![](../Image/AzRMS_ExampleBanner.png)
 
-#### IT Announcement: Changes to the Sales Forecasts and Reports site
-The SharePoint site, **Sales Forecasts and Reports**, is now configured for secure collaboration. Now, only members of our Sales and Marketing team can open these documents from this site, even if you save them locally or email them to somebody else. The exception is that you can share them with members of the Finance team after you have downloaded the documents, so that they can extract the monthly forecast figures. When you edit the files, you see a yellow information banner at the top of the document, to let you know that it has this protection and who can access them.
+##### IT 公告：變更銷售預測與報表網站
 
-This change helps to keep our company-confidential data safe from people who should not see it. If you use a mobile device to access these protected documents, you can view them but you must use a desktop device to edit them.
+-   SharePoint **銷售預測與報表**網站現在已設有保護，可安全地共同作業。從現在起，您只能直接編輯儲存在此網站中的試算表與 Word 文件；例如，您無法將文件儲存到其他位置稍後編輯，也無法透過電子郵件傳送給他人。您可以使用行動裝置檢視這類文件，但必須使用 Windows 電腦才能編輯。
 
-You will not be able to upload documents to the Sales Forecasts and Reports site if they do not support secure collaboration.
+**需要協助嗎？**
 
-**Need help?**
-
--   Contact the help desk: helpdesk@vanarsdelltd.com
+-   請連絡技術支援人員：helpdesk@vanarsdelltd.com
 

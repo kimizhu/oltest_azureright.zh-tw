@@ -3,74 +3,73 @@ description: na
 keywords: na
 title: RMS Client Deployment Notes
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 03cc8c6f-3b63-4794-8d92-a5df4cdf598f
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# RMS Client Deployment Notes
-The  Rights Management Service client (RMS client) version 2 is also known as the MSIPC client. It is software for Windows computers that communicates with Microsoft Rights Management services on-premises or in the cloud to help protect access to and usage of information as it flows through applications and devices, within the boundaries of your organization, or outside  those managed boundaries. In addition to shipping with the [Rights Management sharing application for Windows](https://technet.microsoft.com/library/dn919648.aspx), the RMS client is  available [as an optional download](http://www.microsoft.com/download/details.aspx?id=38396) that can, with acknowledgment and acceptance of its license agreement, be freely distributed with  third-party software so that clients can  protect and consume content that has been  protected by Rights Management services.
+# RMS 用戶端部署注意事項
+Rights Management Service 用戶端 (RMS 用戶端) 第 2 版也稱為 MSIPC 用戶端。 它是 Windows 電腦軟體，可在內部部署上或雲端中與 Microsoft Rights Management Service 通訊，以在資訊流過應用程式和裝置時，在您組織的界限內或那些受管理界限外，協助保護資訊的存取和使用。 除了隨附於[適用於 Windows 的 Rights Management 共用應用程式](https://technet.microsoft.com/library/dn919648.aspx)外，RMS 用戶端也可以[當作選擇性下載項目](http://www.microsoft.com/download/details.aspx?id=38396)提供，如此只要確認並接受其授權合約，即可搭配協力廠商軟體免費散發，讓用戶端可以保護和取用 Rights Management Service 所保護的內容。
 
-This topic includes the following sections:
+本主題包含下列各節：
 
--   [Redistributing the RMS Client](#BKMK_RedistributeInstaller)
+-   [轉散發 RMS 用戶端](#BKMK_RedistributeInstaller)
 
--   [Installing the RMS Client](#BKMK_InstallClient)
+-   [安裝 RMS 用戶端](#BKMK_InstallClient)
 
--   [Questions and Answers About the RMS Client](#BKMK_QA)
+-   [有關 RMS 用戶端的問題與回答](#BKMK_QA)
 
--   [RMS Client Settings](#BKMK_Settings)
+-   [RMS 用戶端設定](#BKMK_Settings)
 
--   [AD RMS Only: Limiting the RMS Client to Use Trusted AD RMS Servers](#BKMK_UsingTrustedServers)
+-   [僅限 AD RMS：限制 RMS 用戶端使用信任的 AD RMS 伺服器](#BKMK_UsingTrustedServers)
 
--   [RMS Service Discovery](#BKMK_ServiceDiscovery)
+-   [RMS 服務探索](#BKMK_ServiceDiscovery)
 
-## <a name="BKMK_RedistributeInstaller"></a>Redistributing the RMS Client
-The RMS client can be freely redistributed and bundled with other applications and IT solutions. If you are an application developer or solution provider and want to redistribute the  RMS client, you have two options:
+## <a name="BKMK_RedistributeInstaller"></a>轉散發 RMS 用戶端
+RMS 用戶端可以免費轉散發，並與其他應用程式和 IT 解決方案組成套件。 如果您是應用程式開發人員或解決方案提供者，而且想要轉散發 RMS 用戶端，則您有兩個選項：
 
--   Recommended: Embed the RMS client installer in your application installation and run it in silent mode (the **/quiet** switch, detailed in the next section).
+-   建議：將 RMS 用戶端安裝程式嵌入您的應用程式安裝，並以無訊息模式執行 (**/quiet** 切器，下一節會詳加說明)。
 
--   Make the RMS client a prerequisite for your application. With this option, you might need to provide users with additional instructions for them to obtain, install, and update their computers with the client before they can use your application.
+-   使 RMS 用戶端成為應用程式的必要條件。 使用此選項時，您可能需要為使用者提供其他指示，讓他們可以取得、安裝和更新其電腦與用戶端，然後再使用您的應用程式。
 
-## <a name="BKMK_InstallClient"></a>Installing the RMS Client
-The RMS client is contained in an installer executable file named **setup_msipc_***&lt;arch&gt;***.exe**, where *&lt;arch&gt;* is either **x86** (for 32-bit client computers) or **x64** (for 64-bit client computers). The 64-bit (x64) installer package installs both a 32-bit runtime executable for compatibility with 32-bit applications that run on a 64-bit operating system installation, as well as a 64-bit runtime executable for supporting native 64-bit applications. The 32-bit (x86) installer will not run on a 64-bit Windows installation.
+## <a name="BKMK_InstallClient"></a>安裝 RMS 用戶端
+RMS 用戶端包含在名為 **setup_msipc_***&lt;ach &gt;***.exe** 的安裝程式可執行檔中，其中 *&lt;ach &gt;* 是 **x86** (針對 32 位元用戶端電腦) 或 **x64** (針對 64 位元用戶端電腦)。 64 位元 (x64) 安裝程式套件會同時安裝 32 位元執行階段可執行檔，以與 64 位元作業系統安裝上執行的 32 位元應用程式相容，以及安裝 64 位元執行階段，支援原生 64 位元應用程式。 32 位元 (x86) 安裝程式不會在 64 位元 Windows 安裝上執行。
 
 > [!NOTE]
-> You need elevated privileges to install the RMS client, such as a member of the Administrators group on the local computer.
+> 您需要提高權限，才能安裝 RMS 用戶端，例如本機電腦上的 Administrators 群組成員。
 
-You can install the  RMS client by using either of the following installation methods:
+您可以使用下列其中一 種安裝方法來安裝 RMS 用戶端：
 
--   **Silent mode.** By using the **/quiet** switch as part of the command-line options, you can silently install the  RMS client on computers. The following  example  shows a silent mode installation for the  RMS client on a 64-bit client computer:
+-   **無訊息模式。** 使用 **/quiet** 切換作為命令列選項的一部分，您可以用無訊息方式在電腦上安裝 RMS 用戶端。 下列範例顯示 64 位元用戶端電腦上 RMS 用戶端的無訊息模式安裝：
 
     ```
     setup_msipc_x64.exe /quiet
     ```
 
--   **Interactive mode.** Alternately, you can install the  RMS client by using the GUI-based setup program that's provided by the  RMS Client  Installation Wizard. To do this, double-click the  RMS client installer package (**setup_msipc_***&lt;arch&gt;***.exe**) in the folder to which it was copied or downloaded on your local computer.
+-   **互動模式。** 或者，您可以使用 RMS 用戶端安裝精靈所提供的 GUI 安裝程式來安裝 RMS 用戶端。 若要這樣做，請按兩下資料夾中的 RMS 用戶端安裝程式套件 (**setup_msipc_***&lt; a c h &gt;***.exe**)，而此資料夾正是先前在本機電腦上複製或下載它之處。
 
-## <a name="BKMK_QA"></a>Questions and Answers About the RMS Client
-The following section contains frequently asked questions about the RMS client and the answers to them.
+## <a name="BKMK_QA"></a>有關 RMS 用戶端的問題與回答
+下節包含有關 RMS 用戶端的常見問題集，以及它們的回答。
 
-### Which operating systems support the RMS client?
-The RMS client is supported with the following operating systems:
+### 哪些作業系統支援 RMS 用戶端？
+下列作業系統支援 RMS 用戶端：
 
-|Windows Server Operating System|Windows Client Operating System|
-|-----------------------------------|-----------------------------------|
+|Windows Server 作業系統|Windows 用戶端作業系統|
+|-----------------------|-------------------|
 |Windows Server 2012 R2|Windows 8.1|
 |Windows Server 2012|Windows 8|
-|Windows Server 2008 R2|Windows 7 with minimum of SP1|
-|Windows Server 2008 (AD RMS only)|Windows Vista with minimum of SP2 (AD RMS only)|
+|Windows Server 2008 R2|Windows 7 (至少含 SP1)|
+|Windows Server 2008 (僅限 AD RMS)|Windows Vista (至少含 SP2，僅限 AD RMS)|
 
-### Which processors or platforms support the  RMS client?
-The  RMS client is supported on x86 and x64 computing platforms.
+### 哪些處理器或平台支援 RMS 用戶端？
+x86 和 x64 運算平台支援 RMS 用戶端。
 
-### Where is the  RMS client installed?
-By default, the RMS client is installed in %ProgramFiles%\Active Directory Rights Management Services Client 2.&lt;minor version number&gt;.
+### 安裝 RMS 用戶端的位置？
+依預設，RMS 用戶端安裝在 %ProgramFiles%\Active Directory Rights Management Services Client 2.&lt;minor version number&gt; 中。
 
-### What files  are associated with the RMS client software?
-The following files  are installed as part of the  RMS client software:
+### 哪些檔案與 RMS 用戶端軟體與相關聯？
+下列檔案會安裝為 RMS 用戶端軟體的一部分：
 
 -   Msipc.dll
 
@@ -80,161 +79,161 @@ The following files  are installed as part of the  RMS client software:
 
 -   MSIPCEvents.man
 
-In addition to these files, the RMS client also installs multilingual user interface (MUI) support files in 44 languages. To verify the languages supported, run the RMS client installation and when the installation is complete, review the contents of the multilingual support folders under the default path.
+除了這些檔案外，RMS 用戶端還會安裝 44 種語言的多語系使用者介面 (MUI) 支援檔案。 若要確認支援的語言，請執行 RMS 用戶端安裝，並在安裝完成時，檢閱預設路徑下多語系支援資料夾的內容。
 
-### Is the RMS client included by default when I install a supported operating system?
-No. This version of the  RMS client ships as an optional download that can be installed separately on computers running supported versions of the Microsoft Windows operating system.
+### 當安裝支援的作業系統時，預設會包含 RMS 用戶端嗎？
+否。 這個版本的 RMS 用戶端是以選擇性下載項目提供，可個別安裝在執行支援的 Microsoft Windows 作業系統版本的電腦上。
 
-### Is the RMS client automatically updated by Microsoft Update?
-If you installed this RMS client by using the silent installation option, the RMS client  inherits your current Microsoft Update settings. If you installed the RMS client by using the GUI-based setup program, the RMS client installation wizard  prompts you to enable Microsoft Update.
+### Microsoft update 會自動更新 RMS 用戶端嗎?
+如果您已使用無訊息安裝選項來安裝此 RMS 用戶端，則 RMS 用戶端會繼承目前的 Microsoft Update 設定。 如果您已使用 GUI 安裝程式安裝 RMS 用戶端，則 RMS 用戶端安裝精靈會提示您啟用 Microsoft Update。
 
-## <a name="BKMK_Settings"></a>RMS Client Settings
-The following section contains settings information about the RMS client. This information might be helpful if you have problems with applications or services that use the RMS client.
+## <a name="BKMK_Settings"></a>RMS 用戶端設定
+下節包含有關 RMS 用戶端的設定資訊。 如果您有使用 RMS 用戶端的應用程式或服務方面的問題，這項資訊可能很有幫助。
 
 > [!NOTE]
-> Some settings depend on whether the RMS-enlightened application runs as a client mode application (such as Microsoft Word and Outlook, or the RMS sharing application), or server mode application  (such as SharePoint and Exchange).  In the following tables, these settings are identified as **Client Mode** and **Server Mode**, respectively.
+> 某些設定取決於啟用 RMS 的應用程式是以用戶端模式應用程式執行 (例如 Microsoft Word 和 Outlook，或 RMS 共用應用程式)，還是以伺服器模式應用程式執行 (例如 SharePoint 和 Exchange)。  在下列資料表中，這些設定會分別識別為**用戶端模式**和**伺服器模式**。
 
-### Where the RMS Client Stores Licenses on Client Computers
-The RMS client stores licenses on the local disk and also caches some  information in the Windows registry.
+### 用戶端電腦上 RMS 用戶端儲存授權的位置
+RMS 用戶端會在本機磁碟上儲存授權，也會快取 Windows 登錄中的某些資訊。
 
-|Description|Client Mode Paths|Server Mode Paths|
-|---------------|---------------------|---------------------|
-|License store location|%localappdata%\Microsoft\MSIPC|%allusersprofile%\Microsoft\MSIPC\Server\*&lt;SID&gt;*\|
-|Template store location|%localappdata%\Microsoft\MSIPC\Templates|%allusersprofile%\Microsoft\MSIPC\Server\Templates\*&lt;SID&gt;*\|
-|Registry location|HKEY_CURRENT_USER<br /> \Software<br /> \Classes<br /> \Local Settings<br /> \Software<br /> \Microsoft<br /> \MSIPC|HKEY_CURRENT_USER<br /> \Software<br /> \Microsoft<br /> \MSIPC<br /> \Server<br /> \*&lt;SID&gt;*|
+|說明|用戶端模式路徑|伺服器模式路徑|
+|------|-----------|-----------|
+|授權儲存位置|%localappdata%\Microsoft\MSIPC|%allusersprofile%\Microsoft\MSIPC\Server\*&lt;SID&gt;*\|
+|範本儲存位置|%localappdata%\Microsoft\MSIPC\Templates|%allusersprofile%\Microsoft\MSIPC\Server\Templates\*&lt;SID&gt;*\|
+|登錄位置|HKEY_CURRENT_USER<br /> \Software<br /> \Classes<br /> \Local Settings<br /> \Software<br /> \Microsoft<br /> \MSIPC|HKEY_CURRENT_USER<br /> \Software<br /> \Microsoft<br /> \MSIPC<br /> \Server<br /> \*&lt;SID&gt;*|
 > [!NOTE]
-> *&lt;SID&gt;* is the secure identifier (SID) for the account under which the server application is running. For example, if the application is running under the built-in Network Service account,    replace *&lt;SID&gt;* with the value of the well-known SID for that account (S-1-5-20).
+> *&lt;SID&gt;* 是伺服器應用程式執行時所依據之帳戶的安全識別碼 (SID)。 例如，如果應用程式是在內建的網路服務帳戶下執行，請將 *&lt;SID&gt;* 取代為該帳戶的已知 SID 值 (S-1-5-20)。
 
-### Windows Registry Settings for the RMS Client
-You can use Windows registry keys to set or modify some RMS client configurations. For example, as an administrator for RMS-enlightened applications that communicate with AD RMS servers, you might want to update the enterprise service location (override the AD RMS server that is currently selected for publishing) depending on the client computer's current location within your Active Directory topology. Or, you might  want to enable  RMS tracing at the client computer, to help troubleshoot a problem with an RMS-enlightened application. Use the following table to identify the registry settings that you can change for the RMS client.
+### RMS 用戶端的 Windows 登錄設定
+您可以使用 Windows 登錄機碼，來設定或修改某些 RMS 用戶端組態。 例如，作為與 AD RMS 伺服器通訊並啟用 RMS 之應用程式的系統管理員，您可能會想要更新企業服務位置 (覆寫目前為發行所選取的 AD RMS 伺服器)，取決於您的 Active Directory 拓樸內用戶端電腦的目前位置而定。 或者，您可能想要在用戶端電腦啟用 RMS 追蹤，以協助疑難排解啟用 RMS 的應用程式的問題。 請使用下表來識別您可以對 RMS 用戶端變更的登錄設定。
 
-|Task|Settings|
-|--------|------------|
-|AD RMS only: To update the enterprise service location for a client computer|Update the following registry keys:<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterpriseCertification<br />REG_SZ: default<br /><br />**Value:**&lt;http or https&gt;:// *RMS_Cluster_Name*/_wmcs/Certification<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterprisePublishing<br />REG_SZ: default<br /><br />**Value:** &lt;http or https&gt;:// *RMS_Cluster_Name*/_wmcs/Licensing|
-|To enable and disable tracing|Update the following registry key:<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC<br />REG_DWORD: Trace<br /><br />**Value:** 1 to enable tracing, 0 to disable tracing (default)|
-|To change the frequency in days to refresh templates|The following registry values specify how often templates  will be refreshed on the user’s computer if the TemplateUpdateFrequencyInSeconds value is not set.  If neither of these values are set, the default refresh interval for applications using the RMS client  (version 1.0.1784.0) to download templates is 1 day. Versions prior to this have a default value of every 7 days.<br /><br />**Client Mode:**<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: TemplateUpdateFrequency<br /><br />**Value:** An integer value that specifies the number of days (minimum of 1) between downloads.<br /><br />**Server Mode:**<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />REG_DWORD: TemplateUpdateFrequency<br /><br />**Value:** An integer value that specifies the number of days  (minimum of 1) between downloads.|
-|To change the frequency in seconds to refresh templates<br /><br />Important: If this is specified, the value to refresh templates in days is ignored. Specify one or the other,  not both.|The following registry values specify how often templates  will be refreshed on the user’s computer. If this value or the value to change the frequency in days (TemplateUpdateFrequency) is not set,  the default refresh interval for applications using the RMS client (version 1.0.1784.0) to download templates is 1 day. Versions prior to this have a default value of every 7 days.<br /><br />**Client Mode:**<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: TemplateUpdateFrequencyInSeconds<br /><br />**Value:** An integer value that specifies the number of seconds (minimum of 1) between downloads.<br /><br />**Server Mode:**<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />REG_DWORD: TemplateUpdateFrequencyInSeconds<br /><br />**Value:** An integer value that specifies the number of seconds   (minimum of 1) between downloads.|
-|AD RMS only: To  download templates immediately at the next publishing request|During testing and evaluations, you might want the RMS client to download templates as soon as possible. To do this, remove the following registry key and the RMS client will download templates immediately at the next publishing request rather than wait for the time specified by the TemplateUpdateFrequency registry setting:<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\&lt;Server Name&gt;\Template<br /><br />**Note**: &lt;Server Name&gt; could have both external (corprights.contoso.com) and internal (corprights) URLs and therefore two different entries.|
-|AD RMS only: To enable support  for federated authentication|If the RMS client computer connects to an AD RMS cluster by using a federated trust, you must configure the federation home realm.<br /><br />HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />REG_SZ: FederationHomeRealm<br /><br />**Value:** The value of this registry entry is the uniform resource identifier (URI) for the federation service (for example, "https://fs-01.contoso.com").|
-|AD RMS only: To  support partner federation servers that require forms-based authentication for user input|By default, the  RMS client operates in silent mode and user input is not required. Partner federation servers, however, might be configured to require user input such as by way of forms-based authentication. In this case, you must configure the RMS client     ignore  silent mode so that the federated authentication form appears in a browser window and the user is promoted for authentication.<br /><br />HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />REG_DWORD: EnableBrowser<br /><br />**Note**: If the federation server is configured to use forms-based authentication, this key is required. If the federation server is configured to use Windows integrated authentication, this key is not required.|
-|AD RMS only: To  block ILS service consumption|By default, the RMS client enables consuming content protected by the ILS service but you can configure the client to block this service by setting the following registry key. If this registry key is set to block the ILS service, any attempts to open and consume content protected by the ILS service will return the following error:<br />HRESULT_FROM_WIN32(ERROR_ACCESS_DISABLED_BY_POLICY)<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: **DisablePassportCertification**<br /><br />**Value:** 1 to block ILS consumption, 0 to allow ILS consumption (default)|
+|工作|設定|
+|------|------|
+|僅限 AD RMS：更新用戶端電腦的企業服務位置|更新下列登錄機碼：<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterpriseCertification<br />    REG_SZ: default<br />    **值：**&lt;http 或 https&gt;:// *RMS_Cluster_Name*/_wmcs/Certification<br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterprisePublishing<br />    REG_SZ: default<br />    **值：** &lt;http 或 https&gt;:// *RMS_Cluster_Name*/_wmcs/Licensing|
+|啟用和停用追蹤|更新下列登錄機碼：<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC<br />    REG_DWORD:追蹤<br />    **值：**1 表示啟用追蹤，0 表示停用追蹤 (預設值)|
+|變更以天為單位的頻率來重新整理範本|下列登錄值指定，如果未設定 TemplateUpdateFrequencyInSeconds 值，將在使用者的電腦上重新整理範本的頻率。  如果都未設定這些值，則使用 RMS 用戶端 (版本 1.0.1784.0) 下載範本之應用程式的預設重新整理間隔為 1 天。 在此之前的版本，其預設值為每 7 天。<br /><br />**用戶端模式：**<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD:TemplateUpdateFrequency<br />    **值：**指定下載之間的天數 (最少 1 天) 的整數值。<br /><br />**伺服器模式：**<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />    REG_DWORD:TemplateUpdateFrequency<br />    **值：**指定下載之間的天數 (最少 1 天) 的整數值。|
+|變更以秒為單位的頻率來重新整理範本 **Important:** 如果指定此項，則會忽略重新整理範本的值 (以天為單位)。 指定其中一個或另一個，不能同時指定兩者。|下列登錄值指定將在使用者的電腦上重新整理範本的頻率。 如果未設定此值或變更以天為單位之頻率 (TemplateUpdateFrequency) 的值，則使用 RMS 用戶端 (版本 1.0.1784.0) 下載範本之應用程式的預設重新整理間隔為 1 天。 在此之前的版本，其預設值為每 7 天。<br /><br />**用戶端模式：**<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD:TemplateUpdateFrequencyInSeconds<br />    **值：**指定下載之間的秒數 (最少 1 秒) 的整數值。<br /><br />**伺服器模式：**<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />    REG_DWORD:TemplateUpdateFrequencyInSeconds<br />    **值：**指定下載之間的秒數 (最少 1 秒) 的整數值。|
+|僅限 AD RMS：在下次發佈要求時立即下載範本|在測試和評估期間，您可能想要 RMS 用戶端盡快下載範本。 若要這樣做，請移除下列登錄機碼，然後 RMS 用戶端將在下次發佈要求時立即下載範本，而不是等待 TemplateUpdateFrequency 登錄設定所指定的時間：<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\&lt;Server Name&gt;\Template **Note:** &lt;Server Name&gt; 可能具有外部 (corprights.contoso.com) 和內部 (corprights) URL，因此為兩個不同的項目。|
+|僅限 AD RMS：啟用同盟驗證的支援|如果 RMS 用戶端電腦使用同盟信任連接至 AD RMS 叢集，您必須設定同盟主領域。<br /><br />-   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />    REG_SZ:FederationHomeRealm<br />    **值：**此登錄項目的值是同盟服務 (例如，"https://fs-01.contoso.com") 的統一資源識別項 (URI)。|
+|僅限 AD RMS：支援需要使用者輸入進行表單型驗證的夥伴同盟伺服器|根據預設，RMS 用戶端會以無訊息模式運作，因此不需要使用者輸入。 不過，夥伴同盟伺服器可能會設定為需要使用者輸入，例如藉由表單型驗證。 在此情況下，您必須設定 RMS 用戶端忽略無訊息模式，讓同盟驗證表單出現在瀏覽器視窗，並升級使用者進行驗證。<br /><br />-   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />    REG_DWORD:EnableBrowser **Note:** 如果同盟伺服器已設定為使用表單型驗證，則需要此金鑰。 如果同盟伺服器已設定為使用 Windows 整合式驗證，則不需要此金鑰。|
+|僅限 AD RMS：封鎖 ILS 服務取用|根據預設，RMS 用戶端會啟用 ILS 服務所保護的取用內容，但您可以設定下列登錄機碼，將用戶端設定為封鎖這項服務。 如果這個登錄機碼設定為封鎖 ILS 服務，只要嘗試開啟並取用由 ILS 服務保護的內容，就會傳回下列錯誤：<br />HRESULT_FROM_WIN32(ERROR_ACCESS_DISABLED_BY_POLICY)<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD: **DisablePassportCertification**<br />    **值：**1 表示封鎖 ILS 取用，0 表示允許 ILS 取用 (預設值)|
 
-### Managing Template Distribution for the RMS Client
-Templates make it easy for users and administrators to quickly apply Rights Management protection and the RMS client automatically downloads templates from its RMS servers or service If you put the  templates in the following folder location, the RMS client will not download any templates from its default location and instead, download the templates that you have put in this folder. The RMS client might continue to download templates from other available RMS servers.
+### 管理 RMS 用戶端的範本散發
+範本可讓使用者和系統管理員輕鬆且快速地套用 Rights Management 保護，而且 RMS 用戶端會從其 RMS 伺服器或服務自動下載範本 (如果您將範本放在下列資料夾位置的話)、RMS 用戶端不會從其預設位置下載任何範本，而是下載置於此資料夾的範本。 RMS 用戶端可能會繼續從其他可用的 RMS 伺服器下載範本。
 
-**Client Mode:** %localappdata%\Microsoft\MSIPC\UnmanagedTemplates
+**用戶端模式：** %localappdata%\Microsoft\MSIPC\UnmanagedTemplates
 
-**Server Mode:** %allusersprofile%\Microsoft\MSIPC\Server\UnmanagedTemplates\*&lt;SID&gt;*
+**伺服器模式：** %allusersprofile%\Microsoft\MSIPC\Server\UnmanagedTemplates\*&lt;SID&gt;*
 
-When you use this folder, there is no special naming convention required except that the templates should be issued by the RMS server or service and they must have the  .xml file name extension. For example, Contoso-Confidential.xml or Contoso-ReadOnly.xml are valid names.
+當您使用此資料夾時，不需要任何特殊命名慣例，但範本應由 RMS 伺服器或服務發行，而且它們必須具有.xml 副檔名。 例如，Contoso Confidential.xml 或 Contoso ReadOnly.xml 是有效的名稱。
 
-## <a name="BKMK_UsingTrustedServers"></a>AD RMS Only: Limiting the RMS Client to Use Trusted AD RMS Servers
-The RMS client can be limited to using only specific trusted AD RMS servers by making the following changes to the Windows registry on local computers.
+## <a name="BKMK_UsingTrustedServers"></a>僅限 AD RMS：限制 RMS 用戶端使用信任的 AD RMS 伺服器
+RMS 用戶端可以限制為只使用特定信任的 AD RMS 伺服器，方法為對本機電腦上的 Windows 登錄進行下列變更。
 
-**To enable limiting RMS client to use only trusted AD RMS servers**
+**啟用將 RMS 用戶端限制為僅使用信任的 AD RMS 伺服器**
 
 -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\TrustedServers\
-    REG_DWORD: AllowTrustedServersOnly
+    REG_DWORD:AllowTrustedServersOnly
 
-    **Value:** If a non-zero value is specified, the RMS client will trust only the specified servers that are configured in the TrustedServers list and the  Azure  Rights Management service.
+    **值：**如果指定非零值，則 RMS 用戶端將只信任指定的伺服器，而這些伺服器設定在 TrustedServers 清單和 Azure Rights Management Service 中。
 
-**To add members to the list of trusted AD RMS servers**
+**將成員加入至信任的 AD RMS 伺服器的清單**
 
 -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\TrustedServers\
     REG_SZ: *&lt;URL_or_HostName&gt;*
 
-    **Value:** The string values added in this registry key location can be either DNS domain name format (for example, **adrms.contoso.com**) or full URLs to trusted AD RMS servers (for example, **https://adrms.contoso.com**). If a specified URL starts with **https://**,  the RMS client will use SSL or TLS to contact   the specified AD RMS server.
+    **值：**此登錄機碼位置中加入的字串值可以是 DNS 網域名稱格式 (例如，**adrms.contoso.com**) 或信任的 AD RMS 伺服器的完整 URL (例如，**https://adrms.contoso.com**)。 如果指定的 URL 以 **https://** 開頭，則 RMS 用戶端會使用 SSL 或 TLS 來連絡指定的 AD RMS 伺服器。
 
-## <a name="BKMK_ServiceDiscovery"></a>RMS Service Discovery
-RMS service discovery lets the RMS client check which RMS server or service to communicate with before  protecting content. Service discovery might also happen when the RMS client consumes protected content, but this is less likely to happen because   the policy attached to the content  contains   the preferred RMS server or service and only if that is unsuccessful does the client then run service discovery.
+## <a name="BKMK_ServiceDiscovery"></a>RMS 服務探索
+RMS 服務探索可讓 RMS 用戶端在保護內容之前檢查哪一個 RMS 伺服器或服務與其通訊。 服務探索也可能會發生在 RMS 用戶端取用保護內容時，但是很少發生，原因是附加至內容的原則包含慣用的 RMS 伺服器或服務，而且只在不成功時，用戶端才會執行服務探索。
 
-Service discovery first looks for an on-premises version of Rights Management (AD RMS). If that is unsuccessful, service discovery automatically looks for the cloud version of Rights Management (Azure RMS).
+服務探索首先會尋找 Rights Management 的內部部署版本 (AD RMS) 。 如果不成功，則服務探索會自動尋找 Rights Management 的雲端版本 (Azure RMS)。
 
-To perform service discovery for an on-premises deployment, the RMS client checks the following:
+若要對內部部署執行服務探索，RMS 用戶端會檢查下列情況：
 
-1.  The Windows registry on the local computer: If service discovery settings are configured in the registry, these settings are tried first.  By default, these settings are not configured in the registry.
+1.  本機電腦上的 Windows 登錄：如果已在登錄中設定服務探索設定，則會先嘗試這些設定。  根據預設，不會在登錄中設定這些設定。
 
-2.  Active Directory Domain Services: A domain-joined computer queries Active Directory for a service connection point (SCP). If an SCP is registered, the URL of the RMS server is returned to the RMS client to use.
+2.  Active Directory 網域服務：已加入網域的電腦會查詢 Active Directory，以取得服務連線點 (SCP)。 如果已登錄 SCP，則 RMS 伺服器的 URL 會傳回給 RMS 用戶端，供其使用。
 
-### AD RMS Only: Enabling Server-Side Service Discovery by Using Active Directory
-If your account has  sufficient privileges (Enterprise Admins and  local administrator for the AD RMS server), you can automatically register a a service connection point (SCP) when you install the AD RMS root cluster server. If a SCP already exists in the forest, you must first delete the existing SCP before you can register  a new one.
+### 僅限 AD RMS：使用 Active Directory 啟用伺服器端服務探索
+如果您的帳戶具有足夠的權限 (AD RMS 伺服器的 Enterprise Admins 和本機系統管理員)，則您在安裝 AD RMS 根叢集伺服器時可以自動登錄服務連線點 (SCP) 。 如果 SCP 已存在於樹系中，您必須先刪除現有的 SCP，然後才能登錄新的 SCP。
 
-You can register and delete an SCP after AD RMS is installed by using the following procedure. Before you start, make sure that your account has the required privileges (Enterprise Admins and  local administrator for the AD RMS server).
+在安裝 AD RMS 之後，您可以使用下列程序，登錄並刪除 SCP。 在開始之前，請確定您的帳戶具有必要的權限 (AD RMS 伺服器的 Enterprise Admins 和本機系統管理員)。
 
-##### To enable AD RMS service discovery by registering an SCP in Active Directory
+##### 在 Active Directory 中登錄 SCP 來啟用 AD RMS 服務探索
 
-1.  Open the Active Directory Management Services console at the AD RMS server:
+1.  在 AD RMS 伺服器開啟 Active Directory Management Service 主控台：
 
-    -   If you are using Windows Server 2008 R2 or Windows Server 2008, click **Start**, click **Administrative Tools**, and then click **Active Directory Rights Management Services**.
+    -   如果您是使用 Windows Server 2008 R2 或 Windows Server 2008，請依序按一下 [**開始**]、[**系統管理工具**] 和 [**Active Directory Rights Management Service**]。
 
-    -   If you are using Windows Server 2012 R2 or Windows Server 2012,  in Server Manager, click **Tools**, and then click **Active Directory Rights Management Services**.
+    -   如果您是使用 Windows Server 2012 R2 或 Windows Server 2012，請在 [伺服器管理員] 中依序按一下 [**工具**] 和 [**Active Directory Rights Management Service**]。
 
-2.  In the AD RMS console right-click the AD RMS cluster, and then click **Properties**.
+2.  在 AD RMS 主控台中，以滑鼠右鍵按一下 AD RMS 叢集，然後按一下 [**內容**]。
 
-3.  Click the **SCP** tab.
+3.  按一下 [**SCP**] 索引標籤。
 
-4.  Select the **Change SCP** check box.
+4.  選取 [**變更 SCP**] 核取方塊。
 
-5.  Select the **Set SCP to current certification cluster** option, and then click **OK**.
+5.  選取 [**設定 SCP 為目前的憑證叢集**] 選項，然後按一下 [**確定**]。
 
-### Enabling Client-Side Service Discovery by Using the Windows Registry
-As an alternative to using an SCP or where an SCP does not exist, you can configure the registry on the client computer so that the RMS client can locate its AD RMS server.
+### 使用 Windows 登錄啟用用戶端服務探索
+作為使用 SCP 或 SCP 不存在時的替代方案，您可以在用戶端電腦上設定登錄，讓 RMS 用戶端可以找出其 AD RMS 伺服器。
 
-##### To enable client-side AD RMS service discovery by using the Windows registry
+##### 使用 Windows 登錄啟用用戶端 AD RMS 服務探索
 
-1.  Open the Windows registry editor, Regedit.exe:
+1.  開啟 Windows 登錄編輯程式 Regedit.exe：
 
-    -   On the client computer, in the Run window, type **regedit**, and then press ENTER to open the Registry Editor.
+    -   在用戶端電腦的 [執行] 視窗中，輸入 **regedit**，然後按 Enter 鍵以開啟登錄編輯器。
 
-2.  In the Registry Editor, navigate to **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC**.
+2.  在登錄編輯器中，瀏覽至 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC**。
 
     > [!IMPORTANT]
-    > If you are running a 32-bit application on a 64-bit computer, the path will be as follows: 
+    > 如果您是在 64 位元電腦上執行 32 位元應用程式，路徑會是如下：
     > **HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\MSIPC**
 
-3.  To create the ServiceLocation subkey, right-click **MSIPC**, point to **New**, click **Key**, and then type **ServiceLocation**.
+3.  若要建立 ServiceLocation 子機碼，請以滑鼠右鍵按一下 [**MSIPC**]、指向 [**新增**]、按一下 [**機碼**]，然後輸入 [**ServiceLocation**]。
 
-4.  To create the EnterpriseCertification subkey, right-click **ServiceLocation**, point to **New**, click **Key**, and then type **EnterpriseCertification**.
+4.  若要建立 EnterpriseCertification 子機碼，請以滑鼠右鍵按一下 [**ServiceLocation**]、指向 [**新增**]、按一下 [**機碼**]，然後輸入 [**EnterpriseCertification**]。
 
-5.  To set the enterprise certification URL, double-click the **(Default)** value, under the **EnterpriseCertification** subkey, and when the **Edit String** dialog box appears,  for **Value data**, type &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Certification, and then click **OK**.
+5.  若要設定企業憑證 URL，請連按兩下 [**EnterpriseCertification**] 子機碼下的 [**(預設值)**] 值，然後在 [**編輯字串**] 對話方塊出現時，針對 [**數值資料**]，輸入 &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Certification，然後按一下 [**確定**]。
 
-6.  To create the EnterprisePublishing subkey, right-click **ServiceLocation**, point to **New**, click **Key**, and then type EnterprisePublishing.
+6.  若要建立 EnterprisePublishing 子機碼，請以滑鼠右鍵按一下 [**ServiceLocation**]、指向 [**新增**]、按一下 [**機碼**]，然後輸入 EnterprisePublishing。
 
-7.  To set the enterprise publishing URL, double-click **(Default)** , under the **EnterprisePublishing** subkey, and when the **Edit String** dialog box appears, type for **Value data** the following &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Licensing, and then click **OK**.
+7.  若要設定企業發佈 URL，請連按兩下 [**EnterprisePublishing**] 子機碼下的 [**(預設值)**]，然後在 [**編輯字串**] 對話方塊出現時，針對 [**數值資料**]，輸入下列 &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Licensing，然後按一下 [**確定**]。
 
-8.  Close the Registry Editor.
+8.  關閉登錄編輯程式。
 
-If the RMS client can't find an SCP by querying Active Directory and it's not specified in the registry, service discovery calls for AD RMS will fail.
+如果 RMS 用戶端無法藉由查詢 Active Directory 找到 SCP，而且它未指定於登錄中，則 AD RMS 的服務探索呼叫將會失敗。
 
-### Redirecting Licensing Server Traffic
-In some cases, you might need to redirect traffic during service discovery, for example, when two organizations are merged and the old licensing server in one organization is retired and clients need to be redirected to a new licensing server. Or, you migrate from AD RMS to Azure RMS. To enable licensing redirection, use the following procedure.
+### 重新導向授權伺服器流量
+在某些情況下，您可能需要在服務探索期間重新導向流量，例如，當兩個組織合併，而且某個組織中的舊授權伺服器已停用，因此用戶端需要重新導向至新的授權伺服器時。 或者，從 AD RMS 移轉至 Azure RMS。 若要啟用授權重新導向，請使用下列程序。
 
-##### To enable RMS licensing redirection by using the Windows registry
+##### 使用 Windows 登錄啟用 RMS 授權重新導向
 
-1.  Open the Windows registry editor, Regedit.exe:
+1.  開啟 Windows 登錄編輯程式 Regedit.exe：
 
-    -   On the client computer, in the Run window, type **regedit**, and then press ENTER to open the Registry Editor.
+    -   在用戶端電腦的 [執行] 視窗中，輸入 **regedit**，然後按 Enter 鍵以開啟登錄編輯器。
 
-2.  In the Registry Editor, navigate to one of the following:
+2.  在登錄編輯器中，瀏覽至下列其中一項：
 
-    -   For 64-bit version of Office on x64 platform: HKLM\SOFTWARE\Microsoft\MSIPC\Servicelocation
+    -   若為 x64 平台上 64 位元版本的 Office：HKLM\SOFTWARE\Microsoft\MSIPC\Servicelocation
 
-    -   For 32-bit version of Office on x64 platform: HKLM\SOFTWARE\Wow6432Node\Microsoft\MSIPC\Servicelocation
+    -   若為 x64 平台上 32 位元版本的 Office：HKLM\SOFTWARE\Wow6432Node\Microsoft\MSIPC\Servicelocation
 
-3.  Create a LicensingRedirection subkey, by right-clicking **Servicelocation**, point to **New**, click **Key**, and then type **LicensingRedirection**.
+3.  建立一個 LicensingRedirection 子機碼，方法為以滑鼠右鍵按一下 [**Servicelocation**]、指向 [**新增**]、按一下 [**機碼**]，然後輸入 [**LicensingRedirection**]。
 
-4.  To set the licensing redirection, right-click the **LicensingRedirection** subkey, select **New**, and then select **String value**.  For **Name**, specify the previous server licensing URL and for **Value** specify the new server licensing URL.
+4.  若要設定授權重新導向，請以滑鼠右鍵按一下 [**LicensingRedirection**] 子機碼、選取 [**新增**]，然後選取 [**字串值**]。  針對 [**名稱**]，指定先前的伺服器授權 URL，針對 [**值**]，則指定新的伺服器授權 URL。
 
-    For example, to redirect licensing from a server at Contoso.com to one at Fabrikam.com, you might enter the following values:
+    例如，若要將授權從 Contoso.com 中的伺服器重新導向至 Fabrikam.com 中的伺服器，您可能輸入下列值：
 
-    **Name:**`https://contoso.com/_wmcs/licensing`
+    **名稱：** `https://contoso.com/_wmcs/licensing`
 
-    **Value:**`https://fabrikam.com/_wmcs/licensing`
+    **值：** `https://fabrikam.com/_wmcs/licensing`
 
     > [!NOTE]
-    > If the old licensing server has both intranet and extranet URLs specified then a new name and value mapping has to be set for both of these URLs under the LicensingRedirection key.
+    > 如果舊授權伺服器同時指定了內部網路和外部網路 URL，則必須在 LicensingRedirection 機碼下，對這兩個 URL 設定新的名稱和值對應。
 
-5.  Repeat the previous step for all servers that need to be redirected.
+5.  針對需要重新導向的所有伺服器重複前一個步驟。
 
-6.  Close the Registry Editor.
+6.  關閉登錄編輯程式。
 

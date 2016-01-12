@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: Confidential report accidentally sent to wrong person
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: ad666594-68df-4289-835a-235b2af9bf4b
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: Confidential report accidentally sent to wrong person
+# 全螢幕圖片：誤傳給不當對象的機密報表
 ![](../Image/AzRMS_FCI_Email.png)
 
-Back to [Azure RMS in action: Automatically protecting files on file servers running Windows Server and File Classification Infrastructure](http://technet.microsoft.com/library/jj585026.aspx).
+回到 [Azure RMS 運作方式：在執行 Windows Server 和檔案分類基礎結構的檔案伺服器上自動保護檔案](http://technet.microsoft.com/library/jj585026.aspx)。
 

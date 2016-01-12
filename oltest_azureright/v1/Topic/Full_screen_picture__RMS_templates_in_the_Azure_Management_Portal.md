@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: RMS templates in the Azure Management Portal
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 596e4fec-124c-41b1-8efd-63d5179193fb
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: RMS templates in the Azure Management Portal
+# 全螢幕圖片：Azure 管理入口網站中的 RMS 範本
 ![](../Image/AzRMS_TemplatesPortal.png)
 
-Back to [Azure RMS in action: Activating Rights Management](http://technet.microsoft.com/library/jj585026.aspx).
+回到 [Azure RMS 運作方式：啟用 Rights Management](http://technet.microsoft.com/library/jj585026.aspx)。
 

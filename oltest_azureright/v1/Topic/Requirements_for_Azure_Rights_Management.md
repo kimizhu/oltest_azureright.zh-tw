@@ -3,234 +3,231 @@ description: na
 keywords: na
 title: Requirements for Azure Rights Management
 search: na
-ms.date: 2016-01-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: dc78321d-d759-4653-8818-80da74b6cdeb
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Requirements for Azure Rights Management
-To deploy Microsoft Azure Rights Management (Azure RMS) in your organization, make sure that you have the following prerequisites. You can then use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) to deploy Rights Management for your organization.
+# Azure Rights Management 的需求
+若要在組織中部署 Microsoft Azure Rights Management (Azure RMS)，請確定您具備下列必要條件。 您接著可使用[Azure Rights Management 部署藍圖](../Topic/Azure_Rights_Management_Deployment_Roadmap.md)來部署您組織的 Rights Management。
 
-|Requirement|More information|
-|---------------|--------------------|
-|A cloud subscription for RMS|Your organization must have a cloud subscription that supports RMS.<br /><br />For licensing information, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in this topic.|
-|Azure AD directory|Your organization must have an Azure AD directory to support user authentication for RMS. In addition, if you want to use your user accounts from your on-premises directory (AD DS), you must also configure directory integration.<br /><br />Multi-factor authentication (MFA) is supported with Azure RMS when you have the required client software and correctly configured     MFA supporting infrastructure.<br /><br />For more information, see the [Azure AD directory](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_AzureADTenant) section in this topic.|
-|Client devices|Users must have a client devices (computer or mobile device) that run an operating system that supports RMS.<br /><br />For more information, see the [Client devices that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedDevices) section in this topic.|
-|Applications|Users must run applications that support RMS.<br /><br />For more information, see the [Applications that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedApplications) section in this topic.|
-|Infrastructure that supports connectivity to the Internet and dependent cloud services|If you have a firewall or similar intervening network devices that must be configured to allow specific connections, see [Office 356 URLs and IP address ranges](https://support.office.com/en-US/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).<br /><br />The list of URLs and IP addresses in the **Office 356 portal and identity** section apply to the Office 365 portal, Azure Active Directory resources, and Azure Rights Management. Use the instructions in this article to keep up-to-date with changes to this information, by subscribing to an RSS feed.<br /><br />In addition to the information in the Office article, specific to Azure RMS:<br /><br />Do not terminate the TLS client-to-service connection (for example, to do packet-level inspection). Doing so breaks the certificate pinning that RMS clients use with Microsoft-managed CAs to help secure their communication with Azure RMS.<br /><br />Do not use a web proxy configuration that authenticates on behalf of a user.|
+|需求|詳細資訊|
+|------|--------|
+|RMS 的雲端訂閱|您的組織必須具有支援 RMS 的雲端訂閱。<br /><br />如需授權資訊，請參閱本主題中的＜[支援 Azure RMS 的雲端訂閱](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions)＞一節。|
+|Azure AD 目錄|您的組織必須具備 Azure AD 目錄才能支援 RMS 的使用者驗證。 此外，若要從內部部署目錄 (AD DS) 使用您的使用者帳戶，您也必須設定目錄整合。<br /><br />當您有必要的用戶端軟體且正確設定 MFA 支援基礎結構時，Azure RMS 就支援 Multi-Factor Authentication (MFA)。<br /><br />如需詳細資訊，請參閱本主題中的 [Azure AD 目錄](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_AzureADTenant)一節。|
+|用戶端裝置|使用者必須擁有執行支援 RMS 作業系統的用戶端裝置 (電腦或行動裝置)。<br /><br />如需詳細資訊，請參閱本主題中的＜[支援 Azure RMS 的用戶端裝置](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedDevices)＞一節。|
+|應用程式|使用者必須執行支援 RMS 的應用程式。<br /><br />如需詳細資訊，請參閱本主題中的＜[支援 Azure RMS 的應用程式](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedApplications)＞一節。|
+|支援連線至網際網路和相依雲端服務的基礎結構|如果您有防火牆或類似介入網路裝置，必須設定為允許特定的連線，請參閱＜[Office 356 URL 和 IP 位址範圍](https://support.office.com/en-US/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)＞。<br /><br />**[Office 365 入口網站與身分識別]** 區段所列出的 URL 和 IP 位址適用於 Office 365 入口網站、Azure Active Directory 資源和 Azure Rights Management。 使用本文章的指示，藉由訂閱 RSS 摘要追蹤此資訊的最新變更。<br /><br />除了 Office 文章中的資訊，還有 Azure RMS 特有資訊：<br /><br />-   請勿終止 TLS 用戶端對服務連線 (例如，為了執行封包層級檢查)。 這麼做會中斷 RMS 用戶端為了保護自己與 Azure RMS 的通訊，而對 Microsoft 所管理的 CA 進行的憑證偵測。<br />-   請勿使用代表使用者進行驗證的 Web Proxy 設定。|
 
-If you want to use Azure RMS with on-premises servers, the following products are supported:
+若要搭配使用 Azure RMS 與內部部署伺服器，則會支援下列產品：
 
 -   Exchange Server
 
 -   SharePoint Server
 
--   Windows Server file servers that support File Classification Infrastructure
+-   支援檔案分類基礎結構的 Windows Server 檔案伺服器
 
-For information about the additional Azure RMS requirements for this scenario, see the [On-premises servers that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedServers) section in this topic.
+如需此案例的其他 Azure RMS 需求的詳細資訊，請參閱本主題中的＜[支援 Azure RMS 的內部部署伺服器](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedServers)＞一節。
 
 > [!IMPORTANT]
-> The following deployment scenario is not supported:
+> 不支援下列部署案例：
 > 
-> -   Running AD RMS and Azure RMS side-by-side in the same organization, except during migration, as described in [Migrating from AD RMS to Azure Rights Management](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md).
+> -   在相同組織中同時執行 AD RMS 和 Azure RMS (移轉期間除外)，如[從 AD RMS 移轉至 Azure Rights Management](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md) 所述。
 > 
-> There is a supported migration path [from AD RMS to Azure RMS](http://technet.microsoft.com/library/Dn858447.aspx), and from [Azure RMS to AD RMS](http://msdn.microsoft.com/library/azure/dn629429.aspx). If you deploy Azure RMS and then decide that you no longer want to use this cloud service, see [Decommissioning and Deactivating Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md).
+> 支援[從 AD RMS 到 Azure RMS](http://technet.microsoft.com/library/Dn858447.aspx)，以及從 [Azure RMS 到 AD RMS](http://msdn.microsoft.com/library/azure/dn629429.aspx) 的移轉路徑。 如果您部署 Azure RMS，然後決定您不再想要使用此雲端服務，請參閱＜[解除委任並停用 Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md)＞。
 
-Use the following sections to learn more about the Azure RMS requirements.
+請使用下列各節以深入了解 Azure RMS 需求。
 
-## <a name="BKMK_SupportedSubscriptions"></a>Cloud subscriptions that support Azure RMS
-To use Azure RMS, your organization must have at least one of the following subscriptions with a sufficient number of licenses for users and services that will protect files and email messages. If you have a service that will apply protection for users (owners of the files or email messages), those users require one of these licenses. Users who will only consume (for example, read and edit) this protected data do not need a license.
+## <a name="BKMK_SupportedSubscriptions"></a>支援 Azure RMS 的雲端訂閱
+若要使用 Azure RMS，您的組織必須至少有一個下列訂閱，且訂閱需具有可保護檔案和電子郵件訊息的足夠使用者和服務授權數目。 如果您有服務將對使用者 (檔案或電子郵件訊息的擁有者) 套用保護，這些使用者需要這些授權的其中一個。 只會使用 (例如讀取及編輯) 此受保護資料的使用者不需要授權。
 
 -   Office 365
 
--   Azure Rights Management Premium (formerly Azure RMS Standalone)
+-   Azure Rights Management Premium (先前稱為 Azure RMS Standalone)
 
 -   Enterprise Mobility Suite
 
--   RMS for individuals
+-   個人版 RMS
 
-Use the following sections for more information and sign up options.
+如需詳細資訊及申請選項的詳細資訊，請使用下列各節。
 
-For a licensing comparison of the Azure RMS capabilities for the paid subscriptions, see [Comparison of Rights Management Services (RMS) Offerings](http://technet.microsoft.com/dn858608).
+如需授權的付費訂閱的 Azure RMS 功能比較，請參閱 [Rights Management Services (RMS) 產品項目的比較](http://technet.microsoft.com/dn858608)。
 
-### Office 365 subscription
-[Free 30-day trial: Enterprise E3](http://go.microsoft.com/fwlink/p/?LinkID=403802)
+### Office 365 訂閱
+[免費 30 天試用：企業版 E3](http://go.microsoft.com/fwlink/p/?LinkID=403802)
 
-This subscription is designed for organizations who want to use the Office online services and use their Information Rights Management feature, which uses Azure RMS. However, not all Office 365 subscriptions include Azure RMS.
+此訂閱是對想要使用 Office 線上服務及使用其資訊版權管理功能 (使用 Azure RMS) 的組織所設計。 不過，並非所有 Office 365 訂用帳戶皆包括 Azure RMS。
 
-|Licensing option|Office 365 Business Essentials|Office 365 Business Premium|Office 365 Enterprise E1<br /><br />Office 365 Education A1|Office 365 Enterprise E3<br /><br />Office 365 Education A3<br /><br />Office 365 Government G3|Office 365 Enterprise E4<br /><br />Office 365 Education A4<br /><br />Office 365 Government G4|Office 365 Enterprise E5<br /><br />Office 365 Education A5<br /><br />Office 365 Government G5|Office 365 Enterprise K1|SharePoint Plan 1<br />SharePoint Plan 2|Exchange Online Plan 1<br />Exchange Online Plan 2|
-|--------------------|----------------------------------|-------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|----------------------------|----------------------------------------|--------------------------------------------------|
-|Information Rights Protection (IRM)|No|No|No|Yes|Yes|Yes|No|No|No|
+|授權選項|Office 365 商務基本版|Office 365 商務進階版|Office 365 企業版 E1<br /><br />Office 365 教育版 A1|Office 365 企業版 E3<br /><br />Office 365 教育版 A3<br /><br />Office 365 Government G3|Office 365 企業版 E4<br /><br />Office 365 教育版 A4<br /><br />Office 365 政府版 G4|Office 365 企業版 E5<br /><br />Office 365 教育版 A5<br /><br />Office 365 政府版 G5|Office 365 Enterprise K1|SharePoint 方案 1<br />SharePoint 方案 2|Exchange Online 方案 1<br />Exchange Online 方案 2|
+|--------|--------------------|--------------------|------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|----------------------------|------------------------------------|----------------------------------------------|
+|資訊版權保護 (IRM)|否|否|否|是|是|是|否|否|否|
 
-### Azure Rights Management Premium subscription
-[Free 30-day trial](https://portal.microsoftonline.com/Signup/MainSignUp15.aspx?&amp;OfferId=A43415D3-404C-4df3-B31B-AAD28118A778&amp;dl=RIGHTSMANAGEMENT&amp;ali=1)
+### Azure Rights Management Premium 訂用帳戶
+[免費 30 天試用](https://portal.microsoftonline.com/Signup/MainSignUp15.aspx?&amp;OfferId=A43415D3-404C-4df3-B31B-AAD28118A778&amp;dl=RIGHTSMANAGEMENT&amp;ali=1)
 
-This subscription was formerly known as Azure RMS Standalone and it is designed for organizations that want to use Azure RMS but don’t have subscription that includes Azure RMS. For example, if you have a subscription for Office 365 Business Essentials or Office 365 Enterprise E1, these subscriptions do not include Azure RMS (see the table in the preceding section). To use Azure RMS, you could purchase a subscription for Azure Rights Management Premium (or purchase another subscription, such as Office 365 Enterprise E4, that includes Azure RMS).
+此訂用帳戶先前稱為 Azure RMS Standalone，如果組織想要使用 Azure RMS，但不具有包含 Azure RMS 的訂用帳戶，就適合使用這個訂用帳戶。 例如，若您有 Office 365 商務基本版或 Office 365 Enterprise E1 訂用帳戶，這些訂用帳戶不會支援 Azure RMS (請參閱上一節的表格)。 若要使用 Azure RMS，您可購買 Azure Rights Management Premium 訂用帳戶 (或購買其他訂用帳戶，例如包含 Azure RMS 的 Office 365 Enterprise E4)。
 
-For more information, see [Microsoft Azure Rights Management](http://products.office.com/business/microsoft-azure-rights-management).
+如需詳細資訊，請參閱 [Microsoft Azure Rights Management](http://products.office.com/business/microsoft-azure-rights-management)。
 
-This subscription also offers a trial period for you to try out Azure RMS for 25 users, at no charge. If the subscription expires before you purchase a replacement subscription, see the following section, “What happens when the trial subscription expires?”
+此訂閱也提供試用期讓您免費試用 Azure RMS，人數是 25 個使用者。 如果在您購買更換的訂閱之前訂閱就過期，請參閱下一節＜試用訂閱過期時會發生什麼事？＞。
 
-|Licensing option|Office 365 Business Essentials|Office 365 Business Premium|Office 365 Enterprise E1<br /><br />Office 365 Education A1|Office 365 Enterprise E3<br /><br />Office 365 Education A3<br /><br />Office 365 Government G3|Office 365 Enterprise E4<br /><br />Office 365 Education A4<br /><br />Office 365 Government G4|Office 365 Enterprise E5<br /><br />Office 365 Education A5<br /><br />Office 365 Government G5|Office 365 Enterprise K1|SharePoint Plan 1<br />SharePoint Plan 2|Exchange Online Plan 1<br />Exchange Online Plan 2|
-|--------------------|----------------------------------|-------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|----------------------------|----------------------------------------|--------------------------------------------------|
-|Information Rights Protection (IRM)|Yes|Yes [footnote 1]|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-Footnote 1:
-             For Business Premium, there are some client restrictions: You can protect content and consume protected content with RMS by using the Outlook Web App and the RMS sharing app. You can consume protected content by using all other Office applications, which includes Office Online and the client applications for Office 365 Business Premium.
+|授權選項|Office 365 商務基本版|Office 365 商務進階版|Office 365 企業版 E1<br /><br />Office 365 教育版 A1|Office 365 企業版 E3<br /><br />Office 365 教育版 A3<br /><br />Office 365 Government G3|Office 365 企業版 E4<br /><br />Office 365 教育版 A4<br /><br />Office 365 政府版 G4|Office 365 企業版 E5<br /><br />Office 365 教育版 A5<br /><br />Office 365 政府版 G5|Office 365 Enterprise K1|SharePoint 方案 1<br />SharePoint 方案 2|Exchange Online 方案 1<br />Exchange Online 方案 2|
+|--------|--------------------|--------------------|------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|----------------------------|------------------------------------|----------------------------------------------|
+|資訊版權保護 (IRM)|是|是 <sup>1</sup>|是|是|是|是|是|是|是|
+<sup>1</sup> 針對商務進階版，有一些用戶端限制：您可以使用 Outlook Web App 及 RMS 共用應用程式保護內容，並透過 RMS 使用受保護的內容。 您可以使用所有其他的 Office 應用程式 (包括 Office Online 以及 Office 365 商務進階版的用戶端應用程式) 使用受保護的內容。
 
-#### <a name="BKMK_TrialExpiryBehavior"></a>What happens when the trial subscription expires?
-If your trial subscription expires, you will lose access to content that was protected by using your trial subscription for Azure RMS. However, if you then purchase a subscription that supports Azure RMS, access is automatically restored.
+#### <a name="BKMK_TrialExpiryBehavior"></a>試用訂閱過期時會發生什麼事？
+如果試用訂閱過期，您將無法存取以 Azure RMS 試用訂閱所保護的內容。 不過，如果您購買支援 Azure RMS 的訂閱，就會自動還原存取權。
 
-An exception to losing access upon expiry is if your organization used Azure RMS with the RMS for individuals subscription before you obtained the trial subscription. Then, access to previously protected content remains, even after the trial subscription expires.
+例外情況是如果在您取得試用訂閱之前，組織就已使用 Azure RMS 與個人版 RMS 訂閱，則不會在過期時喪失存取權。 所以，即使試用訂閱過期，仍然可以存取先前保護的內容。
 
-### Enterprise Mobility Suite subscription
-[Free 30-day trial](http://go.microsoft.com/fwlink/?LinkId=615385)
+### Enterprise Mobility Suite 訂閱
+[免費 30 天試用](http://go.microsoft.com/fwlink/?LinkId=615385)
 
-This subscription is designed for organizations who want to use a combination of Azure Active Directory Premium, Windows Intune, and Azure Rights Management. For more information, see the [Microsoft Enterprise Mobility Overview](http://go.microsoft.com/fwlink/?LinkId=615386).
+此訂閱是對想要使用 Azure Active Directory Premium、Windows Intune 和 Azure Rights Management 組合的組織所設計。 如需詳細資訊，請參閱 [Microsoft 企業行動化概觀](http://go.microsoft.com/fwlink/?LinkId=615386)。
 
-|Licensing option|Office 365 Business Essentials|Office 365 Business Premium|Office 365 Enterprise E1<br /><br />Office 365 Education A1|Office 365 Enterprise E3<br /><br />Office 365 Education A3<br /><br />Office 365 Government G3|Office 365 Enterprise E4<br /><br />Office 365 Education A4<br /><br />Office 365 Government G4|Office 365 Enterprise E5<br /><br />Office 365 Education A5<br /><br />Office 365 Government G5|Office 365 Enterprise K1|SharePoint Plan 1<br />SharePoint Plan 2|Exchange Online Plan 1<br />Exchange Online Plan 2|
-|--------------------|----------------------------------|-------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|----------------------------|----------------------------------------|--------------------------------------------------|
-|Information Rights Protection (IRM)|Yes|Yes [footnote 1]|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-Footnote 1:  For Business Premium, there are some client restrictions: You can protect content and consume protected content with RMS by using the Outlook Web App and the RMS sharing app. You can consume protected content by using all other Office applications, which includes Office Online and the client applications for Office 365 Business Premium.
+|授權選項|Office 365 商務基本版|Office 365 商務進階版|Office 365 企業版 E1<br /><br />Office 365 教育版 A1|Office 365 企業版 E3<br /><br />Office 365 教育版 A3<br /><br />Office 365 Government G3|Office 365 企業版 E4<br /><br />Office 365 教育版 A4<br /><br />Office 365 政府版 G4|Office 365 企業版 E5<br /><br />Office 365 教育版 A5<br /><br />Office 365 政府版 G5|Office 365 Enterprise K1|SharePoint 方案 1<br />SharePoint 方案 2|Exchange Online 方案 1<br />Exchange Online 方案 2|
+|--------|--------------------|--------------------|------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|----------------------------|------------------------------------|----------------------------------------------|
+|資訊版權保護 (IRM)|是|是 <sup>1</sup>|是|是|是|是|是|是|是|
+<sup>1</sup> 針對商務進階版，有一些用戶端限制：您可以使用 Outlook Web App 及 RMS 共用應用程式保護內容，並透過 RMS 使用受保護的內容。 您可以使用所有其他的 Office 應用程式 (包括 Office Online 以及 Office 365 商務進階版的用戶端應用程式) 使用受保護的內容。
 
-### RMS for individuals subscription
-This subscription is designed for individuals in an organization that hasn’t deployed Azure RMS or AD RMS. It lets these people read content that has been protected by an organization that is using Azure RMS, and they can also protect their own content.
+### 個人版 RMS 訂閱
+這是對尚未部署 Azure RMS 或 AD RMS 的組織中個人所設計的訂閱。 此可讓這些人員閱讀正在使用 Azure RMS 的組織所保護的內容，而他們也能保護其本身的內容。
 
-For more information, see [RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md).
+如需詳細資訊，請參閱[個人版 RMS 和 Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)。
 
-## <a name="BKMK_AzureADTenant"></a>Azure AD directory
-You must have an Azure AD directory to use Azure RMS. You use your organization account for this directory to sign in to the Azure classic portal, where, for example, you can configure and manage Rights Management templates.
+## <a name="BKMK_AzureADTenant"></a>Azure AD 目錄
+您必須有 Azure AD 目錄才能使用 Azure RMS。 您可為此目錄使用您的組織帳戶來登入 Azure 傳統入口網站，例如，您可設定和管理 Rights Management 範本。
 
-If you do not already have an Azure subscription for your organization, you can get one by signing up for a free trial.: Go to the [Azure Get started](https://account.windowsazure.com/organization) page and follow the instructions.
+如果您的組織尚無 Azure 訂閱，您可以註冊免費試用以取得訂閱：移至 [Azure 快速入門](https://account.windowsazure.com/organization)頁面，並依照指示進行。
 
-For more information, see the following resources in the Azure Active Directory documentation:
+如需詳細資訊，請參閱 Azure Active Directory 文件的下列資源：
 
--   [What is an Azure AD directory?](http://msdn.microsoft.com/en-us/library/185da266-58a9-43e6-9c66-2c8f702545c6)
+-   [什麼是 Azure AD 目錄？](http://msdn.microsoft.com/en-us/library/185da266-58a9-43e6-9c66-2c8f702545c6)
 
--   [How Azure subscriptions are associated with Azure AD](http://msdn.microsoft.com/en-us/library/edf05c2e-944a-4da5-a330-dc9dc479f127)
+-   [Azure 訂閱與 Azure AD 的關聯方式](http://msdn.microsoft.com/en-us/library/edf05c2e-944a-4da5-a330-dc9dc479f127)
 
-If you want to integrate your Azure AD directory with your on-premises AD forests, see [Directory integration](http://msdn.microsoft.com/en-us/library/bf82bdff-2467-403b-8c1a-0e9eebcf31e8).
+若要整合 Azure AD 目錄與內部部署 AD 樹系，請參閱[目錄整合](http://msdn.microsoft.com/en-us/library/bf82bdff-2467-403b-8c1a-0e9eebcf31e8)。
 
 > [!NOTE]
-> If you have mobile devices or Mac computers that authenticate on-premises by using AD FS or an equivalent authentication provider:
+> 如果您擁有的行動裝置或 Mac 電腦使用 AD FS 或同等的驗證提供者來驗證內部部署：
 > 
-> -   You must use AD FS on the minimum server version of **Windows Server 2012 R2**, or an alternative authentication provider that supports the OAuth 2.0 protocol.
+> -   您必須使用在最低伺服器版本的 **Windows Server 2012 R2** 上運作的 AD FS，或使用支援 OAuth 2.0 通訊協定的替代驗證提供者。
 
-### <a name="BKMK_MFA"></a>Multi-factor authentication (MFA) and Azure RMS
-To use multi-factor authentication (MFA) with Azure RMS requires at least one of the following:
+### <a name="BKMK_MFA"></a>Multi-Factor Authentication (MFA) 和 Azure RMS
+若要使用 Multi-Factor Authentication (MFA) 與 Azure RMS，至少需要下列其中一項：
 
--   Office 2013 (minimum version):
+-   Office 2013 (最低版本)：
 
-    -   If you have Office 2013, you must also install the [June 9, 2015, update for Office 2013 (KB3054853)](https://support.microsoft.com/kb/3054853). For more information about this update and how modern authentication brings Active Directory Authentication Library (ADAL)-based sign in to Office 2013, see [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)  on the Office blog.
+    -   如果您有 Office 2013，您也必須安裝 [Office 2013 更新 2015 年 6 月 9 日 (KB3054853)](https://support.microsoft.com/kb/3054853)。 如需有關此更新以及現代化驗證如何將 Active Directory Authentication Library (ADAL) 引進 Office 2013 的詳細資訊，請參閱 Office 部落格上的[宣布 Office 2013 現代化驗證公用預覽](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
 
--   Rights Management sharing application for Windows:
+-   適用於 Windows 的 Rights Management 共用應用程式：
 
-    -   You must have installed the minimum version of 1.0.1908.0, which can be confirmed by using Control Panel, Programs and Features. For more information about the sharing application, see  [Rights Management Sharing Application for Windows](../Topic/Rights_Management_Sharing_Application_for_Windows.md).
+    -   您必須已安裝最低版本 1.0.1908.0，可使用 [控制台]、[程式和功能] 來確認。 如需有關共用應用程式的詳細資訊，請參閱[適用於 Windows 的 Rights Management 共用應用程式](../Topic/Rights_Management_Sharing_Application_for_Windows.md)。
 
--   Rights Management sharing app for mobile devices and Mac computers:
+-   還有適用於行動裝置和 Mac 電腦的 Rights Management 共用應用程式：
 
-    -   Make sure that you have the latest version installed. MFA support went into the September 2015 release of the RMS sharing app.
+    -   確定您已安裝最新版本。 RMS 共用應用程式 2015 年 9 月份版本引進 MFA 支援。
 
-Then, configure your MFA solution:
+然後，設定 MFA 解決方案：
 
--   For Microsoft-managed tenants (you have Azure Active Directory or Office 365):
+-   Microsoft 管理的租用戶 (您有 Azure Active Directory 或 Office 365)：
 
-    -   Configure Azure MFA to enforce MFA for users. For instructions, see [Getting started with Azure Multi-Factor Authentication in the cloud](https://azure.microsoft.com/documentation/articles/multi-factor-authentication-get-started-cloud/) from the Azure documentation.
+    -   設定 Azure MFA 對使用者強制執行 MFA。 如需相關指示，請參閱 Azure 文件中的[開始在雲端中使用 Azure Multi-Factor Authentication](https://azure.microsoft.com/documentation/articles/multi-factor-authentication-get-started-cloud/)。
 
-        For more information about Azure MFA, see [What is Azure Multi-Factor Authentication?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/)
+        如需 Azure MFA 的詳細資訊，請參閱[什麼是 Azure Multi-Factor Authentication？](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/)。
 
--   For federated tenants (you operate federation servers on-premises):
+-   同盟租用戶 (您操作內部部署的同盟伺服器)：
 
-    -   Configure your federation servers for Azure Active Directory or Office 365. For example, if you are using AD FS, see [Configure Additional Authentication Methods for AD FS](https://technet.microsoft.com/library/dn758113.aspx) on TechNet.
+    -   為 Azure Active Directory 或 Office 365 設定同盟伺服器。例如，如果您使用 AD FS，請參閱 TechNet 上的[設定 AD FS 的其他驗證方法](https://technet.microsoft.com/library/dn758113.aspx)。
 
-        For more information about this scenario, see  [The Works with Office 365 – Identity program now streamlined](https://blogs.office.com/2014/01/30/the-works-with-office-365-identity-program-now-streamlined/) on the Office blog.
+        如需此案例的詳細資訊，請參閱 Office 部落格上的[「使用 Office 365 – 身分識別」計畫現在已簡化](https://blogs.office.com/2014/01/30/the-works-with-office-365-identity-program-now-streamlined/)。
 
-## <a name="BKMK_SupportedDevices"></a>Client devices that support Azure RMS
-Use the following sections to identify which devices support Azure Rights Management (RMS), and which RMS capabilities they support:
+## <a name="BKMK_SupportedDevices"></a>支援 Azure RMS 的用戶端裝置
+請使用下列各節來識別哪些裝置支援 Azure Rights Management (RMS) 及其支援的 RMS 功能：
 
--   [Computers](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_RMSSupportedComputers)
+-   [電腦](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_RMSSupportedComputers)
 
--   [Mobile devices](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_RMSSupportedMobileDevices)
+-   [行動裝置](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_RMSSupportedMobileDevices)
 
--   [Client device capabilities](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_ClientCapabilities)
+-   [用戶端裝置功能](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_ClientCapabilities)
 
-### <a name="BKMK_RMSSupportedComputers"></a>Computers
-The following computer operating systems support Azure Rights Management:
+### <a name="BKMK_RMSSupportedComputers"></a>電腦
+下列電腦作業系統支援 Azure Rights Management：
 
--   **Windows 7** (x86, x64)
+-   **Windows 7** (x86、x64)
 
--   **Windows 8** (x86, x64)
+-   **Windows 8** (x86、x64)
 
--   **Windows 8.1** (x86, x64)
+-   **Windows 8.1** (x86、x64)
 
--   **Windows 10** (x86, x64)
+-   **Windows 10** (x86、x64)
 
--   **Mac OS X**: Minimum version of Mac OS X 10.8 (Mountain Lion)
+-   **Mac OS X**：Mac OS X 10.8 的最低版本 (Mountain Lion)
 
-### <a name="BKMK_RMSSupportedMobileDevices"></a>Mobile devices
-The following mobile device operating systems support Azure Rights Management:
+### <a name="BKMK_RMSSupportedMobileDevices"></a>行動裝置
+下列行動裝置作業系統支援 Azure Rights Management：
 
--   **Windows Phone**: Windows Phone 8.1
+-   **Windows Phone**：Windows Phone 8.1
 
--   **Android phones and tablets**: Minimum version of Android 4.0.3
+-   **Android 手機和平板電腦**：Android 4.0.3 的最低版本
 
--   **iPhone and iPad**: Minimum version of iOS 7.0
+-   **iPhone 和 iPad**：iOS 7.0 的最低版本
 
--   **Windows RT tablets**: Windows 8 RT, Windows 8.1 RT
+-   **Windows RT 平板電腦**：Windows 8 RT、Windows 8.1 RT
 
-### <a name="BKMK_ClientCapabilities"></a>Client device capabilities
-Not all supported client devices currently support all RMS capabilities. Use the following table to identify which applications support the RMS capabilities, and the exceptions.
+### <a name="BKMK_ClientCapabilities"></a>用戶端裝置功能
+並非所有受支援的用戶端裝置目前都支援所有 RMS 功能。 請利用下表來識別哪些應用程式支援 RMS 功能及例外情況。
 
-Unless stated otherwise, the supported capabilities apply to both Azure RMS and AD RMS. In addition, AD RMS support on iOS, Android, OS X, and Windows Phone 8.1 requires [Active Directory Rights Management Services Mobile Device Extension](http://technet.microsoft.com/library/a69ead9d-7dd3-4b38-9830-4728e9757341).
+除非另外註明，否則支援的功能適用於 Azure RMS 與 AD RMS 兩者。 此外，在 iOS、Android、OS X 和 Windows Phone 8.1 上的 AD RMS 支援需要 [Active Directory 權限管理服務行動裝置延伸模組](http://technet.microsoft.com/library/a69ead9d-7dd3-4b38-9830-4728e9757341)。
 
-Information about the table columns:
+表格欄位的相關資訊：
 
--   **Protected PDF**: Files that have a .ppdf file name extension and that are automatically created when you use the RMS sharing application to share Office files and PDF files by email. The RMS sharing application includes a reader for protected PDF files. Previously, if you created PDF files that you protected by using Azure RMS or AD RMS, you can continue to read these files on Windows, iOS, and Android devices by using Foxit Reader and Nitro Pro.
+-   **保護 PDF**：這些檔案具有 .ppdf 副檔名，而且會在您使用 RMS 共用應用程式來透過電子郵件共用 Office 檔案和 PDF 檔案時自動建立。 RMS 共用應用程式含有用來讀取受保護的 PDF 檔案的閱讀程式。 如果您之前使用 Azure RMS 或 AD RMS 建立保護的 PDF 檔案，您可以繼續在 Windows、iOS 和 Android 裝置上，使用 Foxit Reader 和 Nitro Pro 讀取這些檔案。
 
--   **Email:** The email clients listed can protect the email message itself, which will automatically protect any attached files. In this scenario, the client’s preview feature can display the protected content (message and attachment) to authorized recipients. However, if an email message itself is not protected but the attachment is protected, the client’s preview feature cannot display the protected attachment to authorized recipients.
+-   **電子郵件：**列出的電子郵件用戶端可以保護電子郵件訊息本身，這樣會自動保護任何附加檔案。 在此情況下，用戶端的預覽功能可讓授權的收件者看見受保護的內容 (訊息和附件)。 不過，若電子郵件訊息本身未受保護，但附件受到保護，則用戶端預覽功能無法讓授權的收件者看見受保護的附件。
 
--   **Other file types**: Text and image files include files that have a file name extension such as .txt, .xml, .jpg, .and jpeg. These files change their file name extension after they are natively protected by RMS, and become read-only. Files that cannot be natively protected have a .pfile file name extension after they are generically protected by RMS. For more information, see the [Levels of protection – native and generic](https://technet.microsoft.com/library/dn339003.aspx) and [Supported file types and file name extensions](https://technet.microsoft.com/library/dn339003.aspx) sections from the [Rights Management sharing application administrator guide](http://technet.microsoft.com/library/dn339003%28v=ws.10%29.aspx).
+-   **其他檔案類型**：文字和影像檔包含副檔名為 .txt、.xml、.jpg 和 .jpeg 的檔案。 這些檔案在受到 RMS 原生保護後會變更其副檔名並成為唯讀狀態。 無法受到原生保護的檔案在 RMS 對其進行一般保護後，會有 .pfile 副檔名。 如需詳細資訊，請參閱 [Rights Management 共用應用程式系統管理員指南](http://technet.microsoft.com/library/dn339003%28v=ws.10%29.aspx)中的[保護層級 – 原生與一般](https://technet.microsoft.com/library/dn339003.aspx)和[支援的檔案類型和副檔名](https://technet.microsoft.com/library/dn339003.aspx)這兩個章節。
 
-|**Device operating system**|Word, Excel, PowerPoint|Protected PDF|Email|Other file types|
-|-------------------------------|---------------------------|-----------------|---------|--------------------|
-|**Windows**|Office 2010<br /><br />Office 2013<br /><br />Office Mobile apps (Azure RMS only) [footnote 1]<br /><br />Office Online [footnote 2]|Gaaiho Doc<br /><br />GigaTrust Desktop PDF Client for Adobe<br /><br />Foxit Reader<br /><br />Nitro PDF Reader<br /><br />RMS sharing app|Outlook 2010<br /><br />Outlook 2013<br /><br />Outlook Web App (OWA) [footnote 3]<br /><br />Windows Mail [footnote 4]|RMS sharing application for Windows: Text, images, pfile<br /><br />Siemens JT2Go: JT files (Windows 10 only)|
-|**iOS**|Office for iPad and iPhone [footnote 5]<br /><br />Office Online [footnote 2]<br /><br />TITUS Docs|Foxit Reader<br /><br />RMS sharing app [footnote 1]<br /><br />TITUS Docs|NitroDesk [footnote 4]<br /><br />Outlook for iPad and iPhone [footnote 4]<br /><br />OWA for iOS [footnote 3]<br /><br />TITUS Mail|RMS sharing app [footnote 1]: Text, images, pfile<br /><br />TITUS Docs: Pfile|
-|**Android**|GigaTrust App for Android<br /><br />Office Online [footnote 2]|GigaTrust App for Android<br /><br />Foxit Reader<br /><br />RMS sharing app [footnote 1]|9Folders [footnote 4]<br /><br />GigaTrust App for Android [footnote 4]<br /><br />NitroDesk [footnote 4]<br /><br />OWA for Android [footnote 3 and 6]<br /><br />Samsung Email (S3 and later) [footnote 6]<br /><br />TITUS Classification for Mobile|RMS sharing app [footnote 1]: Text, images, pfile|
-|**OS X**|Office 2011 (AD RMS only)<br /><br />Office 2016 for Mac<br /><br />Office Online [footnote 2]|Foxit Reader<br /><br />RMS sharing app [footnote 1]|Outlook 2011 (AD RMS only)<br /><br />Outlook 2016 for Mac<br /><br />Outlook for Mac|RMS sharing app [footnote 1]: Text, images, pfile|
-|**Windows RT**|Office 2013 RT<br /><br />Office Online [footnote 2]|Not supported|Outlook 2013 RT<br /><br />Mail app for Windows<br /><br />Windows Mail [footnote 4]|Siemens JT2Go: JT files|
-|**Windows Phone 8.1**|Office Mobile (AD RMS only)|RMS sharing app [footnote 1]|Outlook Mobile [footnote 4]|RMS sharing app [footnote 1]: Text, images, pfile|
-|**Blackberry 10**|Not supported|Not supported|Blackberry email [footnote 4]|Not supported|
-Footnote 1: Supports viewing protected content.
+|**裝置作業系統**|Word、Excel、PowerPoint|受保護的 PDF|電子郵件|其他檔案類型|
+|--------------|-------------------------|------------|--------|----------|
+|**訊息**|Office 2010<br /><br />Office 2013<br /><br />Office Mobile 應用程式(僅適用於 AD RMS) <sup>1</sup><br /><br />Office Online<sup>2</sup>|Gaaiho Doc<br /><br />GigaTrust Desktop PDF Client for Adobe<br /><br />Foxit Reader<br /><br />Nitro PDF 閱讀程式<br /><br />RMS 共用應用程式|Outlook 2010<br /><br />Outlook 2013<br /><br />Outlook Web App (OWA)<sup>3</sup><br /><br />Windows Mail<sup>4</sup>|適用於 Windows 的 RMS 共用應用程式：文字、影像、pfile<br /><br />Siemens JT2Go：JT 檔案 (僅限 Windows 10)|
+|**iOS**|Office for iPad and iPhone<sup>5</sup><br /><br />Office Online<sup>2</sup><br /><br />TITUS 文件|Foxit Reader<br /><br />RMS 共用應用程式 <sup>1</sup><br /><br />TITUS 文件|NitroDesk<sup>4</sup><br /><br />Outlook for iPad and iPhone<sup>4</sup><br /><br />OWA for iOS<sup>3</sup><br /><br />Secure Islands IQProtector<sup>1</sup><br /><br />TITUS Mail|RMS 共用應用程式 <sup>1</sup>：文字、影像、pfile<br /><br />TITUS Docs：Pfile|
+|**Android**|GigaTrust App for Android<br /><br />Office Online<sup>2</sup>|GigaTrust App for Android<br /><br />Foxit Reader<br /><br />RMS 共用應用程式 <sup>1</sup>|9Folders<sup>4</sup><br /><br />GigaTrust App for Android<sup>4</sup><br /><br />NitroDesk<sup>4</sup><br /><br />OWA for Android<sup>3</sup> <sup>6</sup><br /><br />Samsung Email (S3 和更新版本)<sup>6</sup><br /><br />Secure Islands IQProtector<sup>1</sup><br /><br />TITUS Classification for Mobile|RMS 共用應用程式 <sup>1</sup>：文字、影像、pfile|
+|**OS X**|Office 2011 (僅適用於 AD RMS)<br /><br />Office 2016 for Mac<br /><br />Office Online<sup>2</sup>|Foxit Reader<br /><br />RMS 共用應用程式 <sup>1</sup>|Outlook 2011 (僅適用於 AD RMS)<br /><br />Outlook 2016 for Mac<br /><br />Outlook for Mac|RMS 共用應用程式 <sup>1</sup>：文字、影像、pfile|
+|**Windows RT**|Office 2013 RT<br /><br />Office Online<sup>2</sup>|不支援|Outlook 2013 RT<br /><br />Windows 版郵件應用程式<br /><br />Windows Mail<sup>4</sup>|Siemens JT2Go：JT 檔案|
+|**Windows Phone 8.1**|Office Mobile (僅適用於 AD RMS)|RMS 共用應用程式 <sup>1</sup>|Outlook Mobile<sup>4</sup>|RMS 共用應用程式 <sup>1</sup>：文字、影像、pfile|
+|**Blackberry 10**|不支援|不支援|Blackberry 電子郵件 <sup>4</sup>|不支援|
+<sup>1</sup> 支援檢視受保護的內容。
 
-Footnote 2: Supports viewing protected content in SharePoint Online, OneDrive for Business, and Outlook Web Access.
+<sup>2</sup> 支援檢視 SharePoint Online、商務用 OneDrive 和 Outlook Web Access 中受保護的內容。
 
-Footnote 3: If a recipient has a mailbox in Exchange on-premises, and receives a protected email, this content can be opened only in a rich email client, such as Outlook.  This content cannot be opened from Outlook Web Access.
+<sup>3</sup> 如果收件者的信箱在內部部署的 Exchange 中，並收到受保護的電子郵件，則只可以在豐富的電子郵件用戶端 (如 Outlook) 中開啟此內容。  不能從 Outlook Web Access 開啟此內容。
 
-Footnote 4:  Uses Exchange ActiveSync IRM, which must be enabled by the Exchange administrator. Users can view, reply, and reply all for protected email messages but users cannot protect new email messages themselves.
+<sup>4</sup> 使用 Exchange ActiveSync IRM，必須由 Exchange 系統管理員啟用。 使用者可以檢視、回覆和全部回覆受保護的電子郵件訊息，但使用者本身無法保護新的電子郵件訊息。
 
-If a recipient has a mailbox in Exchange on-premises, and receives a protected email from another organization who is using Exchange, this content can be opened only in a rich email client, such as Outlook.  This content cannot be opened from a device that uses Exchange Active Sync IRM.
+如果收件者的信箱在內部部署的 Exchange 中，並收到來自其他使用 Exchange 的組織的受保護電子郵件，則只可以在豐富的電子郵件用戶端 (如 Outlook) 中開啟此內容。  不能從使用 Exchange Active Sync IRM 的裝置開啟此內容。
 
-Footnote 5:  Supports viewing and editing protected documents. For more information, see the following post on the Office blog: [Azure Rights Management support comes to Office for iPad and iPhone](https://blogs.office.com/2015/07/22/azure-rights-management-support-comes-to-office-for-ipad-and-iphone-2/)
+<sup>5</sup> 支援檢視和編輯受保護的文件。 如需詳細資訊，請參閱下列 Office 部落格文章：[Azure Rights Management 支援已適用 Office for iPad and iPhone](https://blogs.office.com/2015/07/22/azure-rights-management-support-comes-to-office-for-ipad-and-iphone-2/)
 
-Footnote 6:
-             For more information, see the following post on the Office blog: [OWA for Android now available on select devices](http://blogs.office.com/2014/06/11/owa-for-android-now-available-on-select-devices/)
+<sup>6</sup> 如需詳細資訊，請參閱下列 Office 部落格文章：[OWA for Android 目前可在選取的裝置上使用](http://blogs.office.com/2014/06/11/owa-for-android-now-available-on-select-devices/)
 
 > [!TIP]
-> For more information about upcoming RMS support in Office for different platforms, see the following post from the Office blog: [Office everywhere, encryption everywhere](http://blogs.office.com/2015/02/18/office-everywhere-encryption-everywhere/)
+> 如需 Office 即將在不同平台推出的 RMS 支援的詳細資訊，請參閱下列 Office 部落格文章：[Office 和加密功能無所不在](http://blogs.office.com/2015/02/18/office-everywhere-encryption-everywhere/)
 
-## <a name="BKMK_SupportedApplications"></a>Applications that support Azure RMS
-The following applications natively support Azure RMS, which means that RMS is tightly integrated into these applications by using RMS APIs to support usage restrictions. These applications are also known as RMS-enlightened:
+## <a name="BKMK_SupportedApplications"></a>支援 Azure RMS 的應用程式
+下列應用程式原生支援 Azure RMS，這意味 RMS 使用 RMS API 來支援使用限制，藉此嚴密整合至這些應用程式中。 這些應用程式也稱為 RMS 創新：
 
--   **Microsoft Office applications** (Word, Excel, PowerPoint, and Outlook) from the following suites can protect content by using Azure RMS:
+-   來自下列套件的 **Microsoft Office 應用程式** (Word、Excel、PowerPoint 和 Outlook) 可使用 Azure RMS 保護內容：
 
-    -   Office 365 ProPlus
+    -   Office 365 ProPlus
 
-    -   Office 365 Enterprise E3
+    -   Office 365 企業版 E3
 
     -   Office 365 Enterprise E4
 
-    -   Office 365 Enterprise E5
+    -   Office 365 企業版 E5
 
     -   Office Professional Plus 2016
 
@@ -238,89 +235,85 @@ The following applications natively support Azure RMS, which means that RMS is 
 
     -   Office Professional Plus 2010
 
-    Other editions of Office (with the exception of Office 2007) can consume protected content.
+    其他版本的 Office (不包括 Office 2007) 可以使用受保護的內容。
 
     > [!NOTE]
-    > Azure RMS with Office Professional Plus 2010 or Office Professional 2010:
+    > Azure RMS 與 Office Professional Plus 2010 或 Office Professional 2010：
     > 
-    > -   Requires the Rights Management sharing application for Windows
-    > -   Not supported on Windows 10
+    > -   需要適用於 Windows 的 Rights Management 共用應用程式
+    > -   不支援 Windows 10
 
--   **The Rights Management sharing application for Windows**
+-   **適用於 Windows 的 Rights Management 共用應用程式**
 
-    For more information about the Rights Management sharing application for Windows, see the following resources:
+    如需有關適用於 Windows 之 Rights Management 共用應用程式的詳細資訊，請參閱下列資源：
 
-    -   [Rights Management sharing application administrator guide](http://technet.microsoft.com/library/dn339003.aspx)
+    -   [Rights Management 共用應用程式系統管理員指南 (英文)](http://technet.microsoft.com/library/dn339003.aspx)
 
-    -   [Rights Management sharing application user guide](http://technet.microsoft.com/library/dn339006.aspx)
+    -   [Rights Management 共用應用程式使用者指南 (英文)](http://technet.microsoft.com/library/dn339006.aspx)
 
--   **The Rights Management sharing application for mobile platforms**
+-   **行動平台的 Rights Management 共用應用程式**
 
-    For more information about the Rights Management sharing application for mobile platforms, see the following resources:
+    如需有關行動平台之 Rights Management 共用應用程式的詳細資訊，請參閱下列資源：
 
-    -   Download the relevant app by using the links on the [Microsoft Rights Management page](http://go.microsoft.com/fwlink/?LinkId=303970)
+    -   使用 [Microsoft Rights Management 頁面](http://go.microsoft.com/fwlink/?LinkId=303970)上的連結，下載相關的應用程式
 
-    -   If you have Microsoft Intune, you can deploy and manage the app by using a policy managed app:
+    -   如果使用 Microsoft Intune 管理行動裝置，您可以將 [iOS 和 Android 裝置上的應用程式當作原則管理應用程式](HTTPs://technet.microsoft.com/library/dn878026.aspx) 來加以部署與設定。
 
-        -   For iOS and Android devices that are enrolled by Intune: [Control apps using mobile application management policies with Microsoft Intune](https://technet.microsoft.com/library/dn878026.aspx)
+    -   [行動平台的 Microsoft Rights Management 共用應用程式常見問題集](http://technet.microsoft.com/dn451248)
 
-        -   For Android devices that are not enrolled by Intune: [Create and deploy mobile app management policies with Microsoft Intune](https://technet.microsoft.com/library/mt627829.aspx)
+-   **支援 RMS API 的其他應用程式**：
 
-    -   [FAQ for Microsoft Rights Management Sharing Application for Mobile Platforms](http://technet.microsoft.com/dn451248)
+    -   使用 RMS SDK 在內部撰寫的企業營運系統應用程式
 
--   **Other applications that support the RMS APIs**:
+    -   使用 RMS SDK 撰寫之軟體廠商的應用程式
 
-    -   Line-of-business applications that are written in-house by using the RMS SDK
-
-    -   Applications from software vendors that are written by using the RMS SDK
-
-    For more information about the SDK, see the [Microsoft Rights Management SDK](http://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx).
+    如需有關 SDK 的詳細資訊，請參閱＜[Microsoft Rights Management SDK](http://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx)＞。
 
 > [!IMPORTANT]
-> The following applications are not currently supported by Azure RMS:
+> Azure RMS 目前不支援下列應用程式：
 > 
 > -   Microsoft Office for Mac 2011
-> -   Microsoft OneDrive for Business for SharePoint Server 2013
-> -   XPS Viewer
+> -   Microsoft OneDrive for Business for SharePoint Server 2013
+> -   XPS 檢視器
 > 
-> In addition, the RMS sharing application has the following restrictions:
+> 此外，RMS 共用應用程式具有下列限制：
 > 
-> -   For Windows computers: Requires a minimum version of Windows 7 Service Pack 1
+> -   若為 Windows 電腦：需要 Windows 7 Service Pack 1 的最低版本
 
-For more information about how these applications support Azure RMS, see [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md).
+如需這些應用程式如何支援 Azure RMS 的詳細資訊，請參閱＜[應用程式如何支援 Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md)＞。
 
-For information about how to configure them, see [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
+如需有關執行方式的詳細資訊，請參閱＜[設定 Azure Rights Management 的應用程式](../Topic/Configuring_Applications_for_Azure_Rights_Management.md)＞。
 
-## <a name="BKMK_SupportedServers"></a>On-premises servers that support Azure RMS
-The following on-premises server products are supported with Azure RMS when you use the Azure RMS connector, which acts as a communications interface (a relay) between the on-premises servers and Azure RMS. In addition, this configuration requires that you configure directory synchronization between your Active Directory forests and Azure Active Directory.
+## <a name="BKMK_SupportedServers"></a>支援 Azure RMS 的內部部署伺服器
+當您使用 Azure RMS 連接器時可搭配使用下列內部部署伺服器產品與 Azure RMS，其作為內部部署伺服器與 Azure RMS 之間的通訊介面 (轉送)。 此外，此設定需要您在 Active Directory 樹系與 Azure Active Directory 之間設定目錄同步。
 
--   **Exchange Server**:
+-   **Exchange Server**：
 
     -   Exchange Server 2013
 
     -   Exchange Server 2010
 
--   **Office SharePoint Server**:
+-   **Office SharePoint Server**：
 
     -   Office SharePoint Server 2013
 
     -   Office SharePoint Server 2010
 
--   **File servers that run Windows Server and use File Classification Infrastructure (FCI)**:
+-   **執行 Windows Server 並使用檔案分類基礎結構 (FCI) 的檔案伺服器**：
 
     -   Windows Server 2012 R2
 
     -   Windows Server 2012
 
     > [!NOTE]
-    > Because file servers that run Windows Server 2008 R2 do not have a built-in file management task action to apply RMS protection, you cannot use the RMS connector for this scenario. However, you can use File Classification Infrastructure and Azure RMS on these operating systems if you configure a custom file management task to run an executable or script that can protect files by using Azure RMS. For example, a Windows PowerShell script that uses the [RMS Protection cmdlets](https://msdn.microsoft.com/library/azure/mt433195.aspx).
+    > 因為執行 Windows Server 2008 R2 的檔案伺服器沒有內建的檔案管理工作動作可套用 RMS 保護，您在此情況下無法使用 RMS 連接器。 不過，若您設定自訂檔案管理工作來執行可執行檔或指令檔，而這些檔案可使用 Azure RMS 來保護檔案，則您可以在這些作業系統上使用檔案分類基礎結構和 Azure RMS。 例如，使用 [RMS 保護 Cmdlet](https://msdn.microsoft.com/library/azure/mt433195.aspx) 的 Windows PowerShell 指令碼。
     > 
-    > You can also use these cmdlets with servers running later versions of Windows Server, with the benefit that these cmdlets can protect all file types. The RMS connector protects Office files only. For how-to instructions, see [RMS Protection with Windows Server File Classification Infrastructure &#40;FCI&#41;](../Topic/RMS_Protection_with_Windows_Server_File_Classification_Infrastructure__FCI_.md).
+    > 您也可以對執行較新版本 Windows Server 的伺服器使用這些 Cmdlet，好處是這些 Cmdlet 可以保護所有檔案類型。 RMS 連接器只保護 Office 檔案。 如需相關指示，請參閱[具有 Windows Server 檔案分類基礎結構 &#40;FCI&#41; 的 RMS 保護](../Topic/RMS_Protection_with_Windows_Server_File_Classification_Infrastructure__FCI_.md)。
 
-The RMS connector is supported on Windows Server 2012 R2, Windows Server 2012, and Windows Server 2008 R2.
+RMS 連接器在 Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2 上受到支援。
 
-For more information about how to configure the RMS connector for these on-premises servers, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+如需有關如何為這些內部部署伺服器設定 RMS 連接器的詳細資訊，請參閱＜[部署 Azure Rights Management 連接器](../Topic/Deploying_the_Azure_Rights_Management_Connector.md)＞。
 
-## See Also
-[Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
+## 請參閱
+[開始使用 Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

@@ -3,27 +3,26 @@ description: na
 keywords: na
 title: Use keyboard shortcuts in the Rights Management sharing application
 search: na
-ms.date: 2015-09-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 72760134-94e0-4699-b20c-07b96aa061f1
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Use keyboard shortcuts in the Rights Management sharing application
-When you use the RMS sharing application, press the **Alt** key to see the available access keys, and then press **Alt** + the access key to select an option.
+# 在 Rights Management 共用應用程式中使用鍵盤快速鍵
+當您使用 RMS 共用應用程式時，按 **Alt** 鍵以查看可用的存取金鑰，然後按 **Alt** + 便捷鍵以選取選項。
 
-For example, in the **share protected** dialog box, press **Alt** to see the access keys, and then press **Alt + m** to select the **Email me when somebody tries to open these documents** check box.
+例如，在 [共用保護] 對話方塊中，按 **Alt** 以查看存取金鑰，然後按下 **Alt + m** 以選取 [當有人嘗試開啟這些文件時以電子郵件通知我] 核取方塊。
 
 ![](../Image/ADRMS_MSRMSApp_AccessKeys.png)
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## 範例和其他指示
+如需 Rights Management 共用應用程式的使用範例及作法指示，請參閱 Rights Management 共用應用程式使用者指南中下列各節：
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [使用 RMS 共用應用程式的範例](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [您想要做什麼事？](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## 請參閱
+[Rights Management 共用應用程式使用者指南 &#40;英文&#41;](../Topic/Rights_Management_sharing_application_user_guide.md)
 

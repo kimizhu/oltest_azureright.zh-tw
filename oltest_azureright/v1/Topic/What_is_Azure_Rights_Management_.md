@@ -3,286 +3,284 @@ description: na
 keywords: na
 title: What is Azure Rights Management?
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: aeeebcd7-6646-4405-addf-ee1cc74df5df
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# What is Azure Rights Management?
-Azure Rights Management (Azure RMS) is an information protection solution for organizations that want to protect their data in today's challenging working environment.
+# 什麼是 Azure Rights Management？
+Azure Rights Management (Azure RMS) 是一項資訊保護解決方案，可供組織在現在這個充滿挑戰的工作環境中保護資料。
 
-These challenges include the need to be Internet-connected, with users bringing personal device to work, accessing company data on the road and home, and sharing sensitive information with important business partners. As part of their daily work, users share information by using email, file-sharing sites, and cloud services. In these scenarios, traditional security controls (such as access control lists and NTFS permissions) and firewalls have limited effectiveness if you want to protect your company data while still empowering your users to work efficiently.
+這些挑戰包含連上網際網路的需求，因為使用者會攜帶個人裝置到公司、在路上和從家裡存取公司資料，並與重要商業夥伴分享敏感資訊。 使用者的部分例行工作是透過使用電子郵件、檔案共用網站及雲端服務分享資訊。 在這些案例中，如果您想要保護公司資料並同時提高使用者的工作效率，則傳統安全性控制項 (例如存取控制清單和 NTFS 權限) 和防火牆的成效有限。
 
-In comparison, Azure RMS can protect your company’s sensitive information in all these scenarios. It uses encryption, identity, and authorization policies to help secure your files and email, and it works across multiple devices—phones, tablets, and PCs. Information can be protected both within your organization and outside your organization because that protection remains with the data, even when it leaves your organization’s boundaries. As an example, employees might email a document to a partner company, or they save a document to their cloud drive. The persistent protection that Azure RMS provides not only helps to secure your company data, but might also be legally mandated for compliance, legal discovery requirements, or simply good information management practices.
+相較之下，Azure RMS 在所有這些情況下可保護公司的敏感資訊。 它會使用加密、身分識別及授權原則來協助保護您的檔案和電子郵件安全，並且可在多個裝置 (電話、平板電腦及 PC) 中運作。 資訊在組織內外同樣都會受到保護，因為資料的保護如影隨行，即使資料離開組織範圍也不例外。 例如，員工可能會透過電子郵件傳送文件到夥伴公司，或將文件儲存到其雲端磁碟。 Azure RMS 提供的持續性保護不僅可以協助您保護公司資料的安全，還可依法律規定，滿足法規遵循和法令搜尋要求，或只用作良好的資訊管理應用。
 
-But very importantly, authorized people and services (such as search and indexing) can continue to read and inspect the data that Azure RMS protects, which is not easily accomplished with other information protection solutions that use peer-to-peer encryption. This ability is sometimes referred to as “reasoning over data” and is a crucial element in maintaining control of your organization’s data.
+但非常重要的是，已獲授權的人員和服務 (例如搜尋和編製索引) 可以繼續讀取和檢查 Azure RMS 所保護的資料，這一點不是使用其他對等加密資訊保護方案就可以輕鬆達到的。 這個功能有時又稱為「資料的推理」，是維護組織資料控制權的一個關鍵要素。
 
-The following picture shows how Azure RMS works as a Rights Management solution for Office 365 as well as for on-premises servers and services. You'll also see that it supports the popular end user devices that run Windows, Mac OS, iOS, Android, and Windows Phone.
+下圖說明 Azure RMS 如何作為 Office 365 的 Rights Management 解決方案，以及內部部署伺服器和服務使用。 並支援執行 Windows、Mac OS、iOS、Android 和 Windows Phone 的熱門使用者裝置。
 
 ![](../Image/AzRMS_elements.png)
 
 > [!TIP]
-> At this point, you might find the additional resources useful:
+> 此時，您可能會發現其他資源很有用：
 > 
-> -   Two minute video: [What is Microsoft Azure Rights Management](http://technet.microsoft.com/dn833005.aspx)
-> -   Five-step tutorial: [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md)
-> -   Azure RMS requirements, including subscription options to purchase or evaluate: [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md)
+> -   兩分鐘的影片：[什麼是 Microsoft Azure Rights Management？](http://technet.microsoft.com/dn833005.aspx)
+> -   五個步驟教學課程：[Azure Rights Management 的快速入門教學指導](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md)
+> -   Azure RMS 需求，包括要購買或評估的訂用帳戶選項：[Azure Rights Management 的需求](../Topic/Requirements_for_Azure_Rights_Management.md)
 
-Use the following sections to learn more about Azure RMS:
+請使用下列各節以深入了解 Azure RMS：
 
--   [What problems does Azure RMS solve?](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSrequirements)
+-   [Azure RMS 可以解決哪些問題？](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSrequirements)
 
-    -   [Security, compliance, and regulatory requirements](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScompliance)
+    -   [安全性、規範和法規要求](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScompliance)
 
--   [Azure RMS in action: What administrators and users see](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSpictures)
+-   [Azure RMS 運作方式：系統管理員和使用者看到的內容](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSpictures)
 
-    -   [Activating and configuring Rights Management](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_ManagementPortal)
+    -   [啟用及設定 Rights Management](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_ManagementPortal)
 
-    -   [Automatically protecting files on file servers running Windows Server and File Classification Infrastructure](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_FCI)
+    -   [在執行 Windows Server 和檔案分類基礎結構的檔案伺服器上自動保護檔案](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_FCI)
 
-    -   [Automatically protecting emails with Exchange Online and data loss prevention policies](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_DLP)
+    -   [使用 Exchange Online 和資料外洩防護原則來自動保護電子郵件](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_DLP)
 
-    -   [Automatically protecting files with SharePoint Online and protected libraries](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharePoint)
+    -   [使用 SharePoint Online 和受保護的文件庫自動保護檔案](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharePoint)
 
-    -   [Users safely share attachments with mobile users](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp)
+    -   [使用者安全地與行動使用者共用附件](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp)
 
--   [How does Azure RMS work? Under the hood](../Topic/What_is_Azure_Rights_Management_.md#BKMK_HowRMSworks)
+-   [Azure RMS 如何運作？ 背後原理](../Topic/What_is_Azure_Rights_Management_.md#BKMK_HowRMSworks)
 
-    -   [Cryptographic controls used by Azure RMS: Algorithms and key lengths](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics)
+    -   [Azure RMS 使用的密碼編譯控制項：演算法和金鑰長度](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics)
 
-    -   [Walkthrough of how Azure RMS works: First use, content protection, content consumption](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough)
+    -   [Azure RMS 運作方式的逐步解說：第一次使用、內容保護、內容取用](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough)
 
--   [Next steps](../Topic/What_is_Azure_Rights_Management_.md#BKMK_NextSteps)
+-   [後續步驟](../Topic/What_is_Azure_Rights_Management_.md#BKMK_NextSteps)
 
-## <a name="BKMK_RMSrequirements"></a>What problems does Azure RMS solve?
-Use the following table to identify business requirements or problems that your organization might have, and how Azure RMS can address these.
+## <a name="BKMK_RMSrequirements"></a>Azure RMS 可以解決哪些問題？
+使用下表來識別組織可能會有的業務需求或問題，以及 Azure RMS 如何解決這些需求或問題的方式。
 
-|Requirement or problem|Solved by Azure RMS|
-|--------------------------|-----------------------|
-|Protect all file types|√ In previous implementation of Rights Management, only Office files could be protected, using native protection. Now, [generic protection](https://technet.microsoft.com/library/dn574738%28v=ws.10%29.aspx) means that all file types are supported.|
-|Protect files anywhere|√ When a file is saved to a location ([protect in-place](https://technet.microsoft.com/library/dn574733%28v=ws.10%29.aspx)), the protection stays with the file, even if it is copied to storage that is not under the control of IT, such as a cloud storage service.|
-|Share files securely by email|√ When a file is shared by email ([share protected](https://technet.microsoft.com/library/dn574735%28v=ws.10%29.aspx)), the file is protected as an attachment to an email message, with instructions how to open the protected attachment. The email text is not encrypted, so the recipient can always read these instructions. However, because the attached document is protected, only authorized users will be able to open it, even if the email or document is forwarded to other people.|
-|Auditing and monitoring|√ You can [audit and monitor usage](https://technet.microsoft.com/library/dn529121.aspx) of your protected files, even after these files leave your organization’s boundaries.<br /><br />For example, you work for Contoso, Ltd. You are working on a joint project with 3 people from Fabrikam, Inc. You email these 3 people a document that you protect and restrict to read-only. Azure RMS auditing can provide the following information:<br /><br />Whether the people you specified in Fabrikam opened the document, and when.<br /><br />Whether other people that you didn’t specify attempted (and failed) to open the document—perhaps because it was forwarded or saved to a shared location that others could access.<br /><br />Whether any of the specified people tried (and failed) to print or change the document.|
-|Support for all commonly used devices, not just Windows computers|√ [Supported devices](https://technet.microsoft.com/library/dn655136.aspx) include:<br /><br />Windows computers and phones<br /><br />Mac computers<br /><br />iOS tablets and phones<br /><br />Android tablets and phones|
-|Support for business-to-business collaboration|√ Because Azure RMS is a cloud service, there’s no need to explicitly configure trusts with other organizations before you can share protected content with them. If they already have an Office 365 or an Azure AD directory, collaboration across organizations is automatically supported. If they do not, users can sign up for the free [RMS for individuals](https://technet.microsoft.com/library/dn592127.aspx) subscription.|
-|Support for on-premises services, as well as Office 365|√  In addition to working [seamlessly with Office 365](https://technet.microsoft.com/library/jj585004.aspx), you can also use Azure RMS with the following on-premises services when you deploy the [RMS connector](https://technet.microsoft.com/library/dn375964.aspx):<br /><br />Exchange Server<br /><br />SharePoint Server<br /><br />Windows Server running File Classification Infrastructure|
-|Easy activation|√ [Activating the Rights Management service](https://technet.microsoft.com/library/jj658941.aspx) for users requires just a couple of clicks in the Azure classic portal.|
-|Ability to scale across your organization, as needed|√ Because Azure RMS runs as a cloud service with the Azure elasticity to scale up and out, you don’t have to provision or deploy additional on-premises servers.|
-|Ability to create simple and flexible policies|√ [Customized rights policy templates](https://technet.microsoft.com/library/dn642472.aspx) provide a quick and easy solution for administrators to apply policies, and for users to apply the correct level of protection for each document and restrict access to people inside your organization.<br /><br />For example, for a company-wide strategy paper to be shared with all employees, you could apply a read-only policy to all internal employees. Then, for a more sensitive document, such as a financial report, you could restrict access to executives only.|
-|Broad application support|√ Azure RMS has tight integration with Microsoft Office applications and services, and extends support for other applications by using the RMS sharing application.<br /><br />√ The   [Microsoft Rights Management SDK](https://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx) provides your internal developers and software vendors with APIs to write custom applications that support Azure RMS.<br /><br />For more information, see [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md).|
-|IT must maintain control of data|√ Organizations can choose to manage their own tenant key and use the “[Bring Your Own Key](https://technet.microsoft.com/library/dn440580.aspx)” (BYOK) solution and store their tenant key in Hardware Security Modules (HSMs).<br /><br />√ Support for auditing and [usage logging](https://technet.microsoft.com/library/dn529121.aspx) so that you can analyze for business insights, monitor for abuse, and (if you have an information leak) perform forensic analysis.<br /><br />√ Delegated access by using the [super user feature](https://technet.microsoft.com/library/mt147272.aspx) ensures that IT can always access protected content, even if a document was protected by an employee who then leaves the organization. In comparison, peer-to-peer encryption solutions risk losing access to company data.<br /><br />√ Synchronize [just the directory attributes that Azure RMS needs](https://azure.microsoft.com/documentation/articles/active-directory-aadconnectsync-attributes-synchronized/) to support a common identity for your on-premises Active Directory accounts, by using a [directory synchronization tool](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-get-started-tools-comparison/), such as Azure AD Connect.<br /><br />√ Enable single-sign on without replicating passwords to the cloud, by using AD FS.<br /><br />√ Organizations always have the choice to stop using Azure RMS without losing access to content that was previously protected by Azure RMS. For information about decommissioning options, see [Decommissioning and Deactivating Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md). In addition, organizations who have deployed Active Directory Rights Management Services (AD RMS) can [migrate to Azure RMS](https://technet.microsoft.com/library/dn858447.aspx) without losing access to data that was previously protected by AD RMS.|
+|需求或問題|透過 Azure RMS 解決|
+|---------|-------------------|
+|保護所有檔案類型|√ 在先前的版權管理實作中，使用原生保護時只會保護 Office 檔案。 現在，[一般保護](https://technet.microsoft.com/library/dn574738%28v=ws.10%29.aspx)表示支援所有檔案類型。|
+|隨時隨地保護檔案|√ 當檔案儲存至位置時 ([就地保護](https://technet.microsoft.com/library/dn574733%28v=ws.10%29.aspx))，檔案便可持續受到保護，即使它複製到不受 IT 控制的儲存體中也是一樣，例如雲端儲存體服務。|
+|透過電子郵件以安全的方式共用檔案|√ 透過電子郵件共用檔案時 ([共用保護](https://technet.microsoft.com/library/dn574735%28v=ws.10%29.aspx))，檔案是以電子郵件訊息的附件形式受到保護，具有如何開啟受保護的附件的指示。 電子郵件文字不會進行加密，所以收件者一定可以讀取這些指示。 不過，因為附加的文件會受到保護，即使將該電子郵件或文件轉寄給其他人，只有授權的使用者才能夠開啟附件。|
+|稽核與監視|√ 您可以對於受保護的檔案[稽核與監視使用量](https://technet.microsoft.com/library/dn529121.aspx)，即使這些檔案離開您的組織範圍也不例外。<br /><br />例如，您效力於 Contoso, Ltd。 您與 3 位來自 Fabrikam, Inc 的人員合作聯合專案。您透過電子郵件將您保護且限制為唯讀的文件傳送給這 3 位人員。 Azure RMS 稽核可提供下列資訊：<br /><br />-   您所指定的 Fabrikam 人員是否開啟文件以及開啟的時間。<br />-   您未指定的其他人是否嘗試開啟文件 (且沒有成功) — 或許因為轉寄或儲存到其他人可以存取的共用位置。<br />-   任何指定的人員是否嘗試列印或變更文件 (且沒有成功)。|
+|支援所有常見的裝置，不僅是 Windows 電腦|√ [支援的裝置](https://technet.microsoft.com/library/dn655136.aspx)包括：<br /><br />-   Windows 電腦和電話<br />-   Mac 電腦<br />-   iOS 平板電腦和電話<br />-   Android 平板電腦和電話|
+|支援企業對企業的共同作業|√ 因為 Azure RMS 屬於雲端服務，所以在與其他組織共用受保護的內容之前，您無需明確設定與其他組織的信任。 如果他們已經有 Office 365 或 Azure AD 目錄，則會自動支援跨組織的共同作業。 如果沒有的話，使用者可以註冊免費的[個人版 RMS](https://technet.microsoft.com/library/dn592127.aspx) 訂閱。|
+|支援內部部署服務以及 Office 365|√ 除了[順暢地搭配 Office 365](https://technet.microsoft.com/library/jj585004.aspx) 之外，您也可以在部署 [RMS 連接器](https://technet.microsoft.com/library/dn375964.aspx)時使用具有下列內部部署服務的 Azure RMS：<br /><br />-   Exchange Server<br />-   SharePoint Server<br />-   執行檔案分類基礎結構的 Windows Server|
+|輕鬆啟用|√ 只需要在 Azure 傳統入口網站中按幾下，就能為使用者[啟用 Rights Management 服務](https://technet.microsoft.com/library/jj658941.aspx)。|
+|視需要調整組織的能力|√ 因為 Azure RMS 會在 Azure 中以雲端服務的方式彈性執行以向上擴充和向外擴充，您無需佈建或部署其他內部部署伺服器。|
+|建立簡單且彈性原則的能力|√ [自訂的權限原則範本](https://technet.microsoft.com/library/dn642472.aspx)提供了一個快速簡易的解決方案，可讓系統管理員套用原則，讓使用者為每份文件套用正確的保護層級，並限制組織內部人員的存取權。<br /><br />例如，若要將全公司策略白皮書與所有員工分享，您可以對所有內部員工套用唯讀原則。 但若是更為敏感的文件 (例如財務報告)，您可以限制只有高層主管才能存取。|
+|廣泛的應用程式支援|√ Azure RMS 與 Microsoft Office 應用程式和服務緊密整合，並使用 RMS 共用應用程式來延伸對其他應用程式的支援。<br /><br />√ [Microsoft Rights Management SDK](https://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx) 為您的內部開發人員和軟體廠商，提供了可撰寫自訂應用程式以支援 Azure RMS 的 API。<br /><br />如需詳細資訊，請參閱[應用程式如何支援 Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md)。|
+|IT 必須維護資料的控制權|√ 組織可以選擇管理他們自己的租用戶金鑰，並使用「[整合您自己的金鑰](https://technet.microsoft.com/library/dn440580.aspx)」(BYOK) 解決方案，將其租用戶金鑰儲存在硬體安全性模組 (HSM)。<br /><br />√ 支援稽核和[使用量記錄](https://technet.microsoft.com/library/dn529121.aspx)，如此您就可以分析商業見解、監督濫用情形，以及 (如果有發生資訊外洩) 執行蒐證分析。<br /><br />√ 即使文件之前是由已離開組織的員工進行保護，委派存取可以藉由使用[進階使用者功能](https://technet.microsoft.com/library/mt147272.aspx)確保 IT 永遠可存取受保護的內容。 對照之下，對等加密解決方案會有遺失公司資料存取權的風險。<br /><br />√ 使用[目錄同步處理工具](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-get-started-tools-comparison/) (例如 Azure AD Connect)，僅同步處理 Azure RMS 為您的內部部署 Active Directory 帳戶支援通用識別身分[所需的目錄屬性](https://azure.microsoft.com/documentation/articles/active-directory-aadconnectsync-attributes-synchronized/)。<br /><br />√ 使用 AD FS 啟用單一登入，但不將密碼複寫至雲端。<br /><br />√ 組織永遠可以選擇停止使用 Azure RMS 而不會遺失先前受 Azure RMS 保護的內容的存取權。 如需解除委任選項的相關資訊，請參閱[解除委任並停用 Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md)。 此外，已部署 Active Directory Rights Management Services (AD RMS) 的組織可以[移轉至 Azure RMS](https://technet.microsoft.com/library/dn858447.aspx)，且不會失去先前受 AD RMS 保護之資料的存取權。|
 > [!TIP]
-> If you are familiar with the on-premises version of Rights Management, Active Directory Rights Management Services (AD RMS), you might be interested in the comparison table from [Comparing Azure Rights Management and AD RMS](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md).
+> 如果您熟悉內部部署版本的 Rights Management、Active Directory Rights Management Services (AD RMS)，您可能會對[比較 Azure Rights Management 與 AD RMS](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md) 中的比較表格有興趣。
 
-### <a name="BKMK_RMScompliance"></a>Security, compliance, and regulatory requirements
-Azure RMS supports the following security, compliance and regulatory requirements:
+### <a name="BKMK_RMScompliance"></a>安全性、規範和法規要求
+Azure RMS 支援下列安全性、規範和法規要求：
 
-√ Use of industry-standard cryptography and supports FIPS 140-2. For more information, see the [Cryptographic controls used by Azure RMS: Algorithms and key lengths](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics) section in this topic.
+√ 使用產業標準的密碼編譯，並支援 FIPS 140-2。 如需詳細資訊，請參閱本主題中的[Azure RMS 使用的密碼編譯控制項：演算法和金鑰長度](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics)一節。
 
-√ Support for Thales Hardware Security Modules (HSMs) to store your tenant key in Microsoft Azure data centers. Azure RMS uses separate security worlds for its data centers in North America, EMEA (Europe, Middle East and Africa), and Asia, so your keys can be used only in your region.
+√ 支援 Thales 硬體安全性模組 (HSM)，以便將您的租用戶金鑰儲存在 Microsoft Azure 資料中心內。 Azure RMS 對其在北美、EMEA (歐洲、中東和非洲) 和亞洲的資料中心使用不同的安全園地，因此您的金鑰只能用在您的地區。
 
-√ Certified for the following:
+√ 獲得下列項目的認證：
 
--   ISO/IEC 27001:2013 (includes [ISO/IEC 27018](http://azure.microsoft.com/blog/2015/02/16/azure-first-cloud-computing-platform-to-conform-to-isoiec-27018-only-international-set-of-privacy-controls-in-the-cloud/))
+-   ISO/IEC 27001:2013 (包括 [ISO/IEC 27018](http://azure.microsoft.com/blog/2015/02/16/azure-first-cloud-computing-platform-to-conform-to-isoiec-27018-only-international-set-of-privacy-controls-in-the-cloud/))
 
--   SOC 2 SSAE 16/ISAE 3402 attestations
+-   SOC 2 SSAE 16/ISAE 3402 認證
 
 -   HIPAA BAA
 
--   EU Model Clause
+-   EU 模型條款
 
--   FedRAMP as part of Azure Active Directory in Office 365 certification, issued FedRAMP Agency Authority to Operate by HHS
+-   FedRAMP 是 Office 365 憑證中 Azure Active Directory 的一部分，由 HHS 營運的 FedRAMP 機構發行
 
--   PCI DSS Level 1
+-   PCI DSS 層級 1
 
-For more information about these external certifications, see the [Azure Trust Center](http://azure.microsoft.com/support/trust-center/compliance/).
+如需有關這些外部認證的詳細資訊，請參閱＜[Azure 信任中心](http://azure.microsoft.com/support/trust-center/compliance/)＞。
 
-## <a name="BKMK_RMSpictures"></a>Azure RMS in action: What administrators and users see
-The pictures in this section show some typical examples of how administrators and users see and can use Azure RMS to help protect sensitive or confidential information.
+## <a name="BKMK_RMSpictures"></a>Azure RMS 運作方式：系統管理員和使用者看到的內容
+本節的圖片顯示系統管理員和使用者所見內容，以及使用 Azure RMS 來保護敏感或機密資訊的一些常見例子。
 
 > [!NOTE]
-> In all these examples where Azure RMS protects data, the content owner continues to have full access to the data (file or email), even if the applied protection grants permissions to a group that the owner wasn’t a member of, or even if the applied protection includes an expiration date.
+> 在 Azure RMS 保護資料的所有這些例子中，內容擁有者持續擁有資料 (檔案或電子郵件) 的完整存取權，即使套用的保護授與權限給擁有者未隸屬的群組，或套用的保護包含到期日也一樣。
 > 
-> Similarly, IT can always access the protected data without restrictions, by using the super user feature of Rights Management that grants delegated access to authorized users or services that you specify. In addition, IT can track and monitor usage for data that has been protected—for example, who is accessing the data and when.
+> 同樣地，利用 Rights Management 的進階使用者功能，將委派存取權授與您指定的獲授權使用者或服務，IT 即可毫無限制地存取受保護的資料。 此外，IT 可以追蹤和監視受保護資料的使用情況 - 例如，誰在存取資料和何時存取。
 
-For other screenshots and videos that show RMS in action, check the [Microsoft Rights Management services portal](http://www.microsoft.com/rms), the [Microsoft Rights Management (RMS) Team Blog](http://blogs.technet.com/b/rms), and [curated content for Azure RMS on the Curah! site](http://curah.microsoft.com/Search?query="Azure%20RMS").
+如需顯示作用中 RMS 的其他螢幕擷取畫面和影片，請參閱 [Microsoft Rights Management Services 入口網站](http://www.microsoft.com/rms)、[Microsoft Rights Management (RMS) 小組部落格](http://blogs.technet.com/b/rms)，和 [Curah! 網站上 Azure RMS 的策劃內容](http://curah.microsoft.com/Search?query="Azure%20RMS")。
 
-### <a name="BKMK_Example_ManagementPortal"></a>Activating and configuring Rights Management
-Although you can use Windows PowerShell to activate and configure Azure RMS, it’s easiest from the management portal. As soon as the service is activated, you have two default templates that administrators and users can select to quickly and easily apply information protection to files. But you can also create your own custom templates for additional options and settings.
-
-|||
-|-|-|
-|![](../Image/AzRMS_StoryboardActivate_small1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/98d53a12-3b19-4622-bb1e-75ef56df5438) (by default, in same browser window)|You can use either the Office 365 admin center (first picture) or the Azure classic portal (second picture) to activate RMS.<br /><br />Just one click to activate and another click to confirm, then information protection is enabled for administrators and users in your organization.|
-|![](../Image/AzRMS_TemplatesPortal_small.png)<br /><br />[Bigger picture](http://technet.microsoft.com/596e4fec-124c-41b1-8efd-63d5179193fb) (by default, in same browser window)|After activation, two rights policy templates are automatically available for your organization. One template is for read-only (**Confidential View Only** is included in the name), the other for read and modify access (**Confidential**).<br /><br />When these templates are applied to files or emails, they restrict access to users in your organization. This is a very quick and easy way to help prevent your company data leaking to people outside your organization.<br /><br />Tip: You can easily recognize these default templates, because they are automatically prefixed by your organization name. In our example, **VanArsdel, Ltd**.<br /><br />If you do not want users to see these templates or if you want to create your own templates, you can do this from the Azure classic portal. As this picture shows, a wizard takes you through the custom template creation process.|
-|![](../Image/AzRMS_TemplatesSettings3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/f5df80e5-efc9-4c0f-91be-060225977356) (by default, in same browser window)|Offline access, expiration settings, and whether to publish the template immediately (make it visible in applications that support Rights Management) are some of the configuration settings available if you decide to create your own templates.|
-|![](../Image/AzRMS_TemplatesPortal_ExplorerWord3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/597a3402-fd5a-4bcf-b5e6-5c983dbde697) (by default, in same browser window)|As a result of publishing these templates, users can now select them in applications such as  File Explorer and Microsoft Word:<br /><br />A user could choose the default template, **VanArsdel, Ltd – Confidential**. Then, only employees from the VanArsdel organization can open and use this document, even if it’s later emailed to somebody outside the organization or saved to a public location.<br /><br />A user could choose the custom template that the administrator created, **Sales and Marketing – Read and Print Only**. Then, not only is the file protected from people outside the organization, but it’s also restricted to employees from the Sales and Marketing department. Further, these employees do not have full rights to the document, only read and print. For example, they cannot modify it or copy from it.|
-For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md) and [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
-
-To help users protect important company files, see [Helping Users to Protect Files by Using Azure Rights Management](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md).
-
-Next, see some examples of how administrators can apply the templates to automatically configure information protection for files and emails.
-
-### <a name="BKMK_Example_FCI"></a>Automatically protecting files on file servers running Windows Server and File Classification Infrastructure
-This example shows how you can use Azure RMS to automatically protect files on file servers that run at least Windows Server 2012 and are configured to use File Classification Infrastructure.
-
-There are many ways to apply classification values to files. For example, you can inspect the contents of files and accordingly apply built-in classifications such as Confidentiality and Personally Identifiable Information. However, in this example, an administrator creates a custom classification of **Marketing** that is automatically applied to all user documents that are saved in the **Marketing Promotions** folder. Although this folder is protected with NTFS permissions that restricts access to members of the Marketing group, the administrator knows that these permissions can be lost if somebody from that group moves or emails the files. Then, the information in the files could be accessed by unauthorized users.
+### <a name="BKMK_Example_ManagementPortal"></a>啟用及設定 Rights Management
+雖然您可以使用 Windows PowerShell 來啟用及設定 Azure RMS，但從管理入口網站來做最簡單。 啟用此服務之後，隨即就有兩個預設範本供系統管理員和使用者選擇，可快速又輕鬆地將資訊保護套用至檔案。 但是，您也可以建立自己的自訂範本以進行其他選項和設定。
 
 |||
 |-|-|
-|![](../Image/AzRMS_FCI_ConnectorSmall.png)<br /><br />[Bigger picture](http://technet.microsoft.com/cf18c56b-c301-4640-8d9e-9e677e494091) (by default, in same browser window)|The administrators installs and configures the Rights Management (RMS) connector, which acts as a relay between on-premises servers and Azure RMS.|
-|![](../Image/AzRMS_ExampleFCI_ConfigurationSmall.png)<br /><br />[Bigger picture](http://technet.microsoft.com/ba3e247d-ea5e-4009-8eac-74f70270ece0) (by default, in same browser window)|On the file server, the administrator configures the classification rules and tasks so that all user files in the **Marketing Promotions** folder are automatically classified as **Marketing** and protected with RMS encryption.<br /><br />She selects the custom RMS template that was created in our first example, which restricts access to members of the Sales and Marketing departments: **Sales and Marketing – Read and Print Only**.<br /><br />As a result, all documents in that folder are automatically configured with the Marketing classification and protected by the Sales and Marketing RMS template.|
-|![](../Image/AzRMS_FCI_EmailSmall.png)<br /><br />[Bigger picture](http://technet.microsoft.com/ad666594-68df-4289-835a-235b2af9bf4b) (by default, in same browser window)|How RMS helps to prevent data leaking to people who should not have access to sensitive or confidential information:<br /><br />Janet, from Marketing, emails a confidential report from the Marketing Promotions folder. This report contains new product features and advertising plans and is requested by a co-worker who is currently traveling on business. However, Janet mistakenly emails it to the wrong person—she didn’t notice that she accidentally selected a recipient with a similar name, in another company.<br /><br />The recipient cannot read the confidential report because he is not a member of the Sales and Marketing group.|
-For more information, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+|![](../Image/AzRMS_StoryboardActivate_small1.png)<br /><br />[宏觀](http://technet.microsoft.com/98d53a12-3b19-4622-bb1e-75ef56df5438) (依預設，在相同的瀏覽器視窗)|您可以使用 Office 365 系統管理中心 (第一個圖片) 或 Azure 傳統入口網站 (第二個圖片) 來啟用 RMS。<br /><br />只要按一下來啟用，再按一下來確認，組織中的系統管理員和使用者即可受到資訊保護。|
+|![](../Image/AzRMS_TemplatesPortal_small.png)<br /><br />[宏觀](http://technet.microsoft.com/596e4fec-124c-41b1-8efd-63d5179193fb) (依預設，在相同的瀏覽器視窗)|啟用之後，自動就有兩個權限原則範本可供組織使用。 其中一個範本用於唯讀存取權 (名稱中包含 [僅限機密檢視])，另一個用於讀取和修改存取權 ([機密])。<br /><br />將這些範本套用至檔案或電子郵件，就可限制只有組織中的使用者才能存取。 這是防止公司資料洩漏給組織外部人士最快速又輕鬆的方法。 **Tip:** 這些預設範本的開頭都會自動加上您的組織名稱，很容易識別。 我們的範例中是 **VanArsdel, Ltd**。<br />如果不想讓使用者看到這些範本，或者您想要建立您自己的範本，您可以從 Azure 傳統入口網站執行這項作業。 依下圖所示，精靈會引導您完成自訂範本建立程序。|
+|![](../Image/AzRMS_TemplatesSettings3.png)<br /><br />[宏觀](http://technet.microsoft.com/f5df80e5-efc9-4c0f-91be-060225977356) (依預設，在相同的瀏覽器視窗)|如果您決定要建立自己的範本，可用的一些組態設定包括離線存取、到期日設定，以及是否要立即發佈範本 (讓它顯示在支援 Rights Management 的應用程式中)。|
+|![](../Image/AzRMS_TemplatesPortal_ExplorerWord3.png)<br /><br />[宏觀](http://technet.microsoft.com/597a3402-fd5a-4bcf-b5e6-5c983dbde697) (依預設，在相同的瀏覽器視窗)|由於發佈這些範本，使用者現在可以在檔案總管和 Microsoft Word 等應用程式中選取它們：<br /><br />-   使用者可以選擇預設範本：[VanArsdel, Ltd – 機密]。 然後，只有 VanArsdel 組織的員工才能開啟和使用這份文件，即使後來以電子郵件傳送給組織外部的人或儲存到公用位置也一樣。<br />-   使用者可以選擇系統管理員建立的自訂範本：[銷售和行銷 - 僅限讀取和列印]。 然後，不只是組織外部的人無法存取檔案，更限制只有銷售和行銷部門的員工才能存取此檔案。 此外，這些員工沒有此文件的完整權限，只能讀取和列印。 例如，他們不能修改或複製此文件。|
+如需詳細資訊，請參閱[啟用 Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)和[設定 Azure Rights Management 的自訂範本](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md)。
 
-### <a name="BKMK_Example_DLP"></a>Automatically protecting emails with Exchange Online and data loss prevention policies
-The previous example showed how you could automatically protect files that contain sensitive or confidential information, but what if the information is not in a file, but in an email message? This is where Exchange Online data loss prevention (DLP) policies comes in, either prompting users to apply information protection (by using Policy Tips) or automatically applying it for them (by using transport rules).
+若要協助使用者保護重要的公司檔案，請參閱＜[協助使用者使用 Azure Rights Management 來保護檔案](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md)＞。
 
-In this example, the administrator configures a policy to help keep the organization in compliance with US regulations for protecting personally identifiable information data, but rules can also be configured for other compliance regulations, or custom rules that you define.
+接下來，請參閱系統管理員如何套用範本來自動為檔案和電子郵件設定資訊保護的一些範例。
 
-|||
-|-|-|
-|![](../Image/AzRMS_DLPExample1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/58461319-3981-4b7f-a195-956a1778e907) (by default, in same browser window)|The Exchange template named **U.S. Personally Identifiable Information (PII) Data** is used by the administrator to create and configure a new DLP policy. This template looks for information such as social security numbers and driver license numbers in email messages.<br /><br />The rules are configured so that email messages that contain this information and that are sent outside the organization automatically have rights protection applied by using an RMS template that restricts access to company employees only.<br /><br />Here, the rule is configured to use one of the default templates, **VanArsdel, Ltd – Confidential**, from our first example. But you can also see how the choice of templates includes any custom templates you’ve created, and a **No Do Forward** option that is specific to Exchange.|
-|![](../Image/AzRMS_DLPUnprotectedEmail_small.png)<br /><br />[Bigger picture](http://technet.microsoft.com/bfb0762d-06fb-42e4-beff-eb391f4bedf0) (by default, in same browser window)|The hiring manager writes an email message that contains the social security number of a recently hired employee. He sends this email message to Sherrie in the Human Resources department.|
-|![](../Image/AzRMS_DLPProtectedEmail_small.png)<br /><br />[Bigger picture](http://technet.microsoft.com/59e3b68e-4bed-4962-bb1e-e82d82f8000a) (by default, in same browser window)|If this email message is sent or forwarded to somebody outside the organization, the DLP rule automatically applies rights protection.<br /><br />The email is encrypted when it leaves the organization’s infrastructure, so that the social security number in the email message cannot be read while in transit, or in the recipient’s inbox. The recipient will not be able to read the message unless he or she is a VanArsdel employee.|
-For more information, see the following sections:
+### <a name="BKMK_Example_FCI"></a>在執行 Windows Server 和檔案分類基礎結構的檔案伺服器上自動保護檔案
+此範例示範如何使用 Azure RMS，在至少執行 Windows Server 2012 且設定為使用檔案分類基礎結構的檔案伺服器上，自動保護檔案。
 
--   [Exchange Online and Exchange Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_ExchangeIntro) in the [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) topic.
-
--   [Exchange Online: IRM Configuration](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline) in the [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) topic.
-
-### <a name="BKMK_Example_SharePoint"></a>Automatically protecting files with SharePoint Online and protected libraries
-This shows how you can easily protect documents when you use SharePoint Online and protected libraries.
-
-In this example, the SharePoint administrator for Contoso has created a library for each department that they use to centrally store and check out documents for editing and version control. For example, there is a library for Sales, one for Marketing, one for Human Resources, and so on. When a new document is uploaded or created in one of these protected libraries, that document inherits the protection of the library (no need to select a rights policy template) and that document is automatically protected and remains protected, even if it’s moved outside the SharePoint library.
+有許多方法可將分類值套用至檔案。 例如，您可以檢查檔案的內容，再據以套用內建的分類，例如「機密性」和「個人識別資訊」。 不過，在此範例中，系統管理員建立 [行銷] 這個自訂分類，將自動套用到 [促銷] 資料夾中儲存的所有使用者文件。 雖然此資料夾受到 NTFS 權限的保護，限制只有 [行銷] 群組的成員才能存取，但系統管理員知道，如果該群組中的某人移動或以電子郵件傳送檔案，可能會丟失這些權限。 然後，未經授權的使用者就可能存取檔案中的資訊。
 
 |||
 |-|-|
-|![](../Image/AzRMS_StoryboardSPO_small1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/2fc90989-9289-4431-9e6a-07740b7f6e5a) (by default, in same browser window)|The administrator enables Information Rights Management for the SharePoint site.|
-|![](../Image/AzRMS_StoryboardSPO_small2.png)<br /><br />[Bigger picture](http://technet.microsoft.com/a18f2e99-5ac4-4103-a88c-527846374091) (by default, in same browser window)|Then, she enables Rights Management for a library. Although there are additional options, this simple setting is often all that’s needed.<br /><br />When documents are now downloaded from this library, they  are automatically protected by Rights Management, inheriting the protection that’s configured for the library.|
-|![](../Image/AzRMS_StoryboardSPO_small3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/0ebd6806-0190-441e-84db-72ac4b97e4a2) (by default, in same browser window)|When somebody from the sales department checks out this sales report from the library, they can clearly see from the information banner at the top that it’s a protected document with restricted access.<br /><br />The document remains protected even if the user renames it, saves it to another location, or shares it by email. No matter what the file is named, where it’s stored, or whether it’s shared by email, only members of the sales department can read it.|
-For more information, see the following sections:
+|![](../Image/AzRMS_FCI_ConnectorSmall.png)<br /><br />[宏觀](http://technet.microsoft.com/cf18c56b-c301-4640-8d9e-9e677e494091) (依預設，在相同的瀏覽器視窗)|系統管理員安裝並設定 Rights Management (RMS) 連接器，做為內部部署伺服器與 Azure RMS 之間的轉送站。|
+|![](../Image/AzRMS_ExampleFCI_ConfigurationSmall.png)<br /><br />[宏觀](http://technet.microsoft.com/ba3e247d-ea5e-4009-8eac-74f70270ece0) (依預設，在相同的瀏覽器視窗)|在檔案伺服器上，系統管理員設定分類規則和工作，以自動將 [促銷] 資料夾中的所有使用者檔案分類為 [行銷]，並以 RMS 加密來保護。<br /><br />她選取我們在第一個範例中建立的自訂 RMS 範本，限制只有銷售和行銷部門的成員才能存取：**銷售和行銷 - 僅限讀取和列印**。<br /><br />因此，該資料夾中的所有文件都自動設定為 [行銷] 分類，並以 [銷售和行銷] RMS 範本來保護。|
+|![](../Image/AzRMS_FCI_EmailSmall.png)<br /><br />[宏觀](http://technet.microsoft.com/ad666594-68df-4289-835a-235b2af9bf4b) (依預設，在相同的瀏覽器視窗)|RMS 如何協助防止資料洩漏給不應該存取敏感或機密資訊的人：<br /><br />-   [行銷] 群組中的 Janet 從 [促銷] 資料夾中以電子郵件傳送一份機密報表。 此報表包含新的產品功能和廣告計劃，正在出差的同事要求取得一份。 不過，Janet 誤將此報表寄給別人，她沒發現到已經不小心選取另一家公司中名稱類似的收件者。<br />    該收件者無法讀取此機密報表，因為他不是 [銷售和行銷] 群組的成員。|
+如需詳細資訊，請參閱[部署 Azure Rights Management 連接器](../Topic/Deploying_the_Azure_Rights_Management_Connector.md)。
 
--   [SharePoint Online and SharePoint Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharePointIntro) in the [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) topic.
+### <a name="BKMK_Example_DLP"></a>使用 Exchange Online 和資料外洩防護原則來自動保護電子郵件
+前一個範例示範如何自動保護包含敏感或機密資訊的檔案，但如果資訊不是在檔案中，而是在電子郵件訊息中，該怎麼辦？ Exchange Online 資料外洩防護 (DLP) 原則在此派上用場，可提示使用者套用資訊保護 (利用原則提示) 或自動套用 (利用傳輸規則)。
 
--   [SharePoint Online and OneDrive for Business: IRM Configuration](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_SharePointOnline) in the [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) topic.
-
-### <a name="BKMK_Example_SharingApp"></a>Users safely share attachments with mobile users
-The previous examples showed how administrators can automatically apply information protection to sensitive and confidential data. But there will be some occasions when users might need to apply this protection themselves. For example, they are collaborating with partners in another organization, they need custom permissions or settings that are not defined in templates, for or ad-hoc situations that are not covered by the previous examples. In these situations, users can apply the RMS templates themselves or configure custom permissions.
-
-This example shows how users can easily share a document with somebody they’re collaborating with from another company, but still be able to protect the document and be confident that the recipient can read it, even from a popular mobile device. This scenario uses the Rights Management sharing application, which you can automatically deploy to Windows computers in your organization. Or, users can install it themselves.
-
-In this example, Alice from Contoso, emails a confidential Word document that she sends to Bob, at Fabrikam. He reads the document on his iPad, but he could just as easily read it on an iPhone, an Android tablet or phone, a Mac computer, or a Windows phone or computer.
+在此範例中，系統管理員設定原則來協助組織遵守美國的個人識別資訊資料保護規定，但也可以針對其他法規來設定規則，或根據您定義的自訂規則。
 
 |||
 |-|-|
-|![](../Image/AzRMS_StoryboardEmail_small1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/feeef78d-3c2e-432b-817d-d06f784be226) (by default, in same browser window)|From her Windows PC, Alice creates a standard email message and attaches a document.<br /><br />She clicks **Share Protected** on the ribbon, which loads the **share protected** dialog box from the RMS sharing application.<br /><br />Alice wants to restrict Bob to viewing and editing the document, and doesn’t want him to copy or print it, so she selects **REVIEWER – View and Edit**. She also wants to be emailed when somebody tries to open the document, and have the ability to revoke the document later if necessary and know that revocation will take effect immediately.|
-|![](../Image/AzRMS_StoryboardEmail_small2.png)<br /><br />[Bigger picture](http://technet.microsoft.com/e748fd78-8bba-4168-96cf-f96def078283) (by default, in same browser window)|Bob sees the email on his iPad.<br /><br />In addition to Alice’s message and attachment, there are instructions that he follows to sign up and install the RMS sharing app on his iPad.|
-|![](../Image/AzRMS_StoryboardEmail_small3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/7dba5ff9-a61d-4a83-8adc-d6ffb0e85df6) (by default, in same browser window)|Bob can now open the attachment. He is first asked to sign in to confirm that he is the intended recipient.<br /><br />When Bob views the document, he also sees the restricted access information that tells him he can view and edit the document, but not copy or print.|
-|![](../Image/AzRMS_StoryboardEmail_small4.png)<br /><br />[Bigger picture](http://technet.microsoft.com/9f642a2e-58ad-44ab-9f81-f890d15380f9) (by default, in same browser window)|Alice receives an email message that tells her Bob successfully opened the document that she sent, and when he accessed the document.<br /><br />If Bob forwards his email with the attachment, or saves it where others can access it, or it is intercepted on the network, other people will not be able to read the document.|
-For more information, see [Protect a file that you share by email](https://technet.microsoft.com/library/dn574735.aspx) and [View and use files that have been protected](https://technet.microsoft.com/library/dn574741.aspx) from the [Rights Management sharing application user guide](https://technet.microsoft.com/library/dn339006.aspx).
+|![](../Image/AzRMS_DLPExample1.png)<br /><br />[宏觀](http://technet.microsoft.com/58461319-3981-4b7f-a195-956a1778e907) (依預設，在相同的瀏覽器視窗)|系統管理員使用名為[美國個人識別資訊 (PII) 資料] 的 Exchange 範本來建立及設定新的 DLP 原則。 此範本會在電子郵件訊息中尋找社會安全號碼和駕駛執照號碼等資訊。<br /><br />對於包含這項資訊和傳送到組織外部的電子郵件訊息，設定的規則會利用 RMS 範本來自動套用權限保護，以限制只有公司員工才能存取。<br /><br />在這裡，規則設定為使用我們第一個範例的其中一個預設範本：[VanArsdel, Ltd – 機密]。 此外，您也可以看到可供選擇的範本中包含您已建立的任何自訂範本，以及 Exchange 專用的 [禁止轉寄] 選項。|
+|![](../Image/AzRMS_DLPUnprotectedEmail_small.png)<br /><br />[宏觀](http://technet.microsoft.com/bfb0762d-06fb-42e4-beff-eb391f4bedf0) (依預設，在相同的瀏覽器視窗)|人事經理撰寫一封電子郵件，內容中含有一位新進員工的社會安全號碼號碼。 他將此電子郵件訊息傳送給人力資源部門的 Sherrie。|
+|![](../Image/AzRMS_DLPProtectedEmail_small.png)<br /><br />[宏觀](http://technet.microsoft.com/59e3b68e-4bed-4962-bb1e-e82d82f8000a) (依預設，在相同的瀏覽器視窗)|如果此電子郵件訊息傳送或轉寄到組織外部的某人，DLP 規則會自動套用權限保護。<br /><br />電子郵件在離開組織基礎結構時會經過加密，因此，不論是在傳輸中或收件者的收件匣中，都無法讀取電子郵件訊息中的社會安全號碼號碼。 除非收件者是 VanArsdel 員工，否則無法讀取訊息。|
+如需詳細資訊，請參閱下列各節：
 
-In addition, the [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md) includes step-by-step instructions for this scenario.
+-   [應用程式如何支援 Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) 主題中的 [Exchange Online 和 Exchange Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_ExchangeIntro)。
 
-Now you’ve seen some examples of what Azure RMS can do, you might be interested in how it does it. For technical information about how Azure RMS works, see the next section.
+-   [設定 Azure Rights Management 的應用程式](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) 主題中的 [Exchange Online：IRM 設定](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline)。
 
-## <a name="BKMK_HowRMSworks"></a>How does Azure RMS work? Under the hood
-One important thing to understand about how Azure RMS works is that the Rights Management service (and Microsoft) do not see or store your data as part of the information protection process. Information that you protect is never sent to or stored in Azure unless you explicitly store it in Azure or use another cloud service that stores it in Azure. Azure RMS simply makes the data in a document unreadable to anyone other than authorized users and services:
+### <a name="BKMK_Example_SharePoint"></a>使用 SharePoint Online 和受保護的文件庫自動保護檔案
+本節示範如何使用 SharePoint Online 和受保護的文件庫來輕鬆保護文件。
 
--   The data is encrypted at the application level and includes a policy that defines the authorized use for that document.
+在此範例中，Contoso 的 SharePoint 系統管理員已經為每個部門建立文件庫，用以集中儲存和取出文件來編輯和進行版本控制。 例如，銷售、行銷、人力資源等部門各有一個文件庫。 當新文件上傳或建立於其中一個受保護的文件庫時，該文件會獲得文件庫的保護 (不需要選取權限原則範本)，而且該文件會自動且持續受到保護，即使移到 SharePoint 文件庫之外也一樣。
 
--   When a protected document is used by a legitimate user or it is processed by an authorized service, the data in the document is decrypted and the rights that are defined in the policy are enforced.
+|||
+|-|-|
+|![](../Image/AzRMS_StoryboardSPO_small1.png)<br /><br />[宏觀](http://technet.microsoft.com/2fc90989-9289-4431-9e6a-07740b7f6e5a) (依預設，在相同的瀏覽器視窗)|系統管理員對 SharePoint 網站啟用資訊版權管理。|
+|![](../Image/AzRMS_StoryboardSPO_small2.png)<br /><br />[宏觀](http://technet.microsoft.com/a18f2e99-5ac4-4103-a88c-527846374091) (依預設，在相同的瀏覽器視窗)|然後，她對一個文件庫啟用 Rights Management。 雖然還有其他選項，但這個簡單的設定通常就足夠。<br /><br />從此文件庫下載文件後，文件便自動受到 Rights Management 的保護，並繼承針對文件庫所設定的保護。|
+|![](../Image/AzRMS_StoryboardSPO_small3.png)<br /><br />[宏觀](http://technet.microsoft.com/0ebd6806-0190-441e-84db-72ac4b97e4a2) (依預設，在相同的瀏覽器視窗)|當銷售部門的人從文件庫取出此銷售報表時，他們會在頂端的資訊橫幅清楚看到這是受保護的文件且限制存取。<br /><br />就算使用者將文件重新命名、儲存到其他位置或透過電子郵件分享，文件仍受到保護。 不論檔案如何命名、儲存在何處，或是否透過電子郵件分享，只有銷售部門的成員才能讀取。|
+如需詳細資訊，請參閱下列各節：
 
-At a high level, you can see how this process works in the following picture. A document containing the secret formula is protected, and then successfully opened by an authorized user or service. The document is protected by a content key (the green key in this picture). It is unique for each document and is placed in the file header where it is protected by your RMS tenant root key (the red key in this picture). Your tenant key can be generated and managed by Microsoft, or you can generate and manage your own tenant key.
+-   [應用程式如何支援 Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) 主題中的 [SharePoint Online 和 SharePoint Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharePointIntro)。
 
-Throughout the protection process when Azure RMS is encrypting and decrypting, authorizing, and enforcing restrictions, the secret formula is never sent to Azure.
+-   [設定 Azure Rights Management 的應用程式](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) 主題中的 [SharePoint Online 和商務用 OneDrive：IRM 設定](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_SharePointOnline)。
+
+### <a name="BKMK_Example_SharingApp"></a>使用者安全地與行動使用者共用附件
+前述範例示範系統管理員如何將資訊保護自動套用至敏感和機密資料。 但在某些情況下，使用者可能需要自行套用此保護。 例如，他們與其他組織中的夥伴共同作業、需要範本中未定義的自訂權限或設定，或面對先前範例未涵蓋的特殊情況。 在這些情況下，使用者可以自行套用 RMS 範本或設定自訂權限。
+
+此範例示範使用者如何輕鬆地與其他公司中共同合作的人共用文件，但是仍然能夠保護文件，並深信收件者能夠讀取文件，即使是從熱門的行動裝置也一樣。 此案例使用 Rights Management 共用應用程式，而該應用程式可自動部署至組織中的 Windows 電腦。 或者，也可以由使用者自行安裝。
+
+在此範例中，Contoso 的 Alice 以電子郵件將機密的 Word 文件傳送給 Fabrikam 的 Bob。 他在 iPad 上閱讀此文件，但他可以在 iPhone、Android 平板電腦或手機、Mac 電腦或 Windows 手機或電腦上輕鬆地閱讀此文件。
+
+|||
+|-|-|
+|![](../Image/AzRMS_StoryboardEmail_small1.png)<br /><br />[宏觀](http://technet.microsoft.com/feeef78d-3c2e-432b-817d-d06f784be226) (依預設，在相同的瀏覽器視窗)|Alice 在她的 Windows PC 上建立標準的電子郵件訊息，並附加文件。<br /><br />她按一下功能區的 [共用保護]，這樣會從 RMS 共用應用程式載入 [共用保護] 對話方塊。<br /><br />Alice 想要限制 Bob 只能檢視和編輯此文件，而不希望他複製或列印此文件，因此她選取 [檢閱者 - 檢視及編輯]。 她也想要在當有人嘗試開啟文件時收到電子郵件，並且能夠視需要稍後撤銷文件，以及知道撤銷會立即生效。|
+|![](../Image/AzRMS_StoryboardEmail_small2.png)<br /><br />[宏觀](http://technet.microsoft.com/e748fd78-8bba-4168-96cf-f96def078283) (依預設，在相同的瀏覽器視窗)|Bob 在他的 iPad 上看到電子郵件。<br /><br />除了 Alice 的訊息和附件，還有可讓他在 iPad 上註冊和安裝 RMS 共用應用程式的指示。|
+|![](../Image/AzRMS_StoryboardEmail_small3.png)<br /><br />[宏觀](http://technet.microsoft.com/7dba5ff9-a61d-4a83-8adc-d6ffb0e85df6) (依預設，在相同的瀏覽器視窗)|Bob 現在可以開啟附件。 首先會要求他登入，以確認他是預定的收件者。<br /><br />當 Bob 檢視文件時，他也看到限制存取的資訊，告訴他可以檢視和編輯文件，但不能複製或列印。|
+|![](../Image/AzRMS_StoryboardEmail_small4.png)<br /><br />[宏觀](http://technet.microsoft.com/9f642a2e-58ad-44ab-9f81-f890d15380f9) (依預設，在相同的瀏覽器視窗)|Alice 收到電子郵件訊息，得知 Bob 已成功開啟她所傳送的文件及他何時存取文件。<br /><br />如果 Bob 將他的電子郵件連同附件轉寄出去，或儲存到其他人可存取的位置，或在網路上遭到攔截，則其他人也無法讀取文件。|
+如需詳細資訊，請參閱《[Rights Management 共用應用程式使用者指南](https://technet.microsoft.com/library/dn339006.aspx)》的＜[保護您以電子郵件共用的檔案](https://technet.microsoft.com/library/dn574735.aspx)＞和＜[檢視及使用已保護的檔案](https://technet.microsoft.com/library/dn574741.aspx)＞。
+
+此外，[Azure Rights Management 的快速入門教學指導](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md)包含此案例的逐步指示。
+
+現在您已看過 Azure RMS 用途的一些範例，您可能想要了解其運作方式。 如需 Azure RMS 運作方式的技術資訊，請參閱下一節。
+
+## <a name="BKMK_HowRMSworks"></a>Azure RMS 如何運作？ 背後原理
+了解 Azure RMS 運作方式的一大要點就是 Rights Management 服務 (和 Microsoft) 不會在資訊保護程序中查看或儲存您的資料。 您所保護的資訊永遠不會傳送至或儲存在 Azure 中，除非您明確地將它儲存在 Azure 中，或使用將它儲存在 Azure 中的另一項雲端服務。 Azure RMS 只是讓授權使用者和服務以外的任何人都無法讀取文件中的資料：
+
+-   資料會在應用程式層級加密，並包含一個原則來定義該文件的授權使用。
+
+-   當合法使用者使用受保護的文件或由已授權的服務進行處理時，文件中的資料會解密並強制執行原則中定義的權限。
+
+在高層級，您可以在下圖中看到這個程序的運作方式。 包含密碼公式的文件會受到保護，並由授權的使用者或服務成功開啟。 此文件受內容金鑰 (此圖中的綠色金鑰) 保護。 每份文件的內容金鑰都是唯一的並放置在檔案標頭中，由 RMS 租用戶根金鑰 (此圖中的紅色金鑰) 所保護。 租用戶金鑰可以由 Microsoft 產生和管理，您也可以產生和管理自己的租用戶金鑰。
+
+在 Azure RMS 進行加密和解密、授權以及強制執行限制的保護程序中，密碼公式永遠不會傳送至 Azure。
 
 ![](../Image/AzRMS_SecretColaFormula_final.png)
 
-For a detailed description of what’s happening, see the [Walkthrough of how Azure RMS works: First use, content protection, content consumption](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough) section in this topic.
+如需詳細的情況說明，請參閱本主題中的＜[Azure RMS 運作方式的逐步解說：第一次使用、內容保護、內容取用](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough)＞一節。
 
-For technical details about the algorithms and key lengths that Azure RMS uses, see the next section.
+如需 Azure RMS 使用的演算法和金鑰長度技術詳細資訊，請參閱下一節。
 
-### <a name="BKMK_RMScrytographics"></a>Cryptographic controls used by Azure RMS: Algorithms and key lengths
-Even if you don't need to know yourself how RMS works, you might be asked about the cryptographic controls that it uses, to make sure that the security protection is industry-standard.
+### <a name="BKMK_RMScrytographics"></a>Azure RMS 使用的密碼編譯控制項：演算法和金鑰長度
+即使您本身不需要知道 RMS 運作方式，但系統可能會詢問您有關它所使用的密碼編譯控制項，以確定安全性保護符合業界標準。
 
 |||
 |-|-|
-|Documentation protection method:|Algorithm: AES<br /><br />Key length: 128 bits and 256 bits [footnote 1]|
-|Key protection method:|Algorithm: RSA<br /><br />Key length: 2048 bits|
-|Certificate signing:|Algorithm: SHA-256|
-Footnote 1:
-             256 bits is used by the Rights Management sharing application for generic protection and native protection when the file has a .ppdf file name extension or is a protected text or image file (such as .ptxt or .pjpg).
+|文件保護方法：|演算法：AES<br /><br />金鑰長度：128 位元和 256 位元 <sup>1</sup>|
+|金鑰保護方法：|演算法：RSA<br /><br />金鑰長度：2048 位元|
+|憑證簽章：|演算法：SHA-256|
+<sup>1</sup> 當檔案的副檔名為 .ppdf，或檔案為受保護的文字檔或影像檔時 (例如 .ptxt 或 .pjpg)，Rights Management 共用應用程式會使用 256 位元進行一般保護與原生保護。
 
-### <a name="BKMK_Walthrough"></a>Walkthrough of how Azure RMS works: First use, content protection, content consumption
-To understand in more detail how Azure RMS works, let's walk through a typical flow after the [Azure RMS service is activated](https://technet.microsoft.com/library/jj658941.aspx) and when a user first uses RMS on their Windows computer (a process sometimes known as **initializing the user environment** or bootstrapping), **protects content** (a document or email), and then **consumes**  (opens and uses) content that has been protected by somebody else.
+### <a name="BKMK_Walthrough"></a>Azure RMS 運作方式的逐步解說：第一次使用、內容保護、內容取用
+若要進一步了解 Azure RMS 運作方式，讓我們在[啟動 Azure RMS 服務](https://technet.microsoft.com/library/jj658941.aspx)之後，以及當使用者第一次在其 Windows 電腦上使用 RMS (有時候也稱為**初始化使用者環境**或啟動的程序)、**保護內容** (文件或電子郵件)，然後**取用** (開啟並使用) 其他人所保護的內容時，逐步執行一般流程。
 
-After the user environment is initialized, that user can then protect documents or consume protected documents on that computer.
+初始化使用者環境之後，該使用者可接著保護文件或取用該電腦上受保護的文件。
 
 > [!NOTE]
-> If this user moves to another Windows computer, or another user uses this same Windows computer, the initialization process is repeated.
+> 如果此使用者移到另一部 Windows 電腦，或另一位使用者使用同一部 Windows 電腦，則會重複進行初始化程序。
 
-#### Initializing the user environment
-Before a user can protect content or consume protected content on a Windows computer, the user environment must be prepared on the device. This is a one-time process and happens automatically without user intervention when a user tries to protect or consume protected content:
-
-|||
-|-|-|
-|![](../Image/AzRMS.png)|The RMS client on the computer first connects to Azure RMS, and authenticates the user by using their Azure Active Directory account.<br /><br />When the user’s account is federated with Azure Active Directory, this authentication is automatic and the user is not prompted for credentials.|
+#### 初始化使用者環境
+必須在裝置上備妥使用者環境，使用者才能保護內容或取用 Windows 電腦上受保護的內容。 這是一次性程序，而且當使用者嘗試保護或取用受保護的內容時，不需要使用者介入即自動發生：
 
 |||
 |-|-|
-|![](../Image/AzRMS_useractivation2.png)|After the user is authenticated, the connection is automatically redirected to the organization’s RMS tenant, which issues certificates that let the user authenticate to Azure RMS in order to consume protected content and to protect content offline.<br /><br />A copy of the user’s certificate is stored in Azure RMS so that if the user moves to another device, the certificates are created by using the same keys.|
-
-#### Content protection
-When a user protects a document, the RMS client takes the following actions on an unprotected document:
+|![](../Image/AzRMS.png)|電腦上的 RMS 用戶端會先連接至 Azure RMS，並使用 Azure Active Directory 帳戶來驗證使用者。<br /><br />當使用者的帳戶與 Azure Active Directory 同盟時，系統會自動執行此驗證，而且不會提示使用者輸入認證。|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentprotection1.png)|The RMS client creates a random key (the content key) and encrypts the document using this key with the AES symmetric encryption algorithm.|
+|![](../Image/AzRMS_useractivation2.png)|使用者經過驗證之後，連線會自動重新導向組織的 RMS 租用戶，以發出可讓使用者向 Azure RMS 進行驗證的憑證，進而使用受保護的內容以及離線保護內容。<br /><br />在 Azure RMS 中會儲存一份使用者的憑證，如果使用者移到另一個裝置，即可使用相同的金鑰建立憑證。|
+
+#### 內容保護
+當使用者保護文件時，RMS 用戶端會對未受保護的文件採取下列動作：
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentprotection2.png)|The RMS client then creates a certificate that includes a policy for the document, either based on a template or by specifying specific rights for the document. This policy includes the rights for different users or groups and other restrictions, such as an expiration date.<br /><br />The RMS client then uses the organization’s key that was obtained when the user environment was initialized and uses this key to encrypt the policy and the symmetric content key. The RMS client also signs the policy with the user’s certificate that was obtained when the user environment was initialized.|
+|![](../Image/AzRMS_documentprotection1.png)|RMS 用戶端會建立隨機金鑰 (內容金鑰)，並使用此金鑰搭配 AES 對稱式加密演算法來加密文件。|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentprotection3.png)|Finally, the RMs client embeds the policy into a file with the body of the document encrypted previously, which together comprise a protected document.<br /><br />This document can be stored anywhere or shared by using any method, and the policy always stays with the encrypted document.|
-
-#### Content consumption
-When a user wants to consume a protected document, the RMS client starts by requesting access to the Azure RMS service:
+|![](../Image/AzRMS_documentprotection2.png)|RMS 用戶端會接著根據範本或藉由指定文件的特定權限來建立包含文件原則的憑證。 此原則包含不同使用者或群組的權限以及其他限制，例如到期日。<br /><br />RMS 用戶端會接著使用在初始化使用者環境時取得的組織金鑰，並使用此金鑰來加密原則和對稱內容金鑰。 RMS 用戶端也會使用在初始化使用者環境時所取得的使用者憑證來簽署原則。|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentconsumption1.png)|The authenticated user sends the document policy and the user’s certificates to Azure RMS. The service decrypts and evaluates the policy, and builds a list of rights (if any) the user has for the document.|
+|![](../Image/AzRMS_documentprotection3.png)|最後，RMS 用戶端會將原則嵌入具有先前加密之文件本文的檔案中，一起構成受保護的文件。<br /><br />這份文件可以儲存在任何地方或使用任何方法進行共用，而且原則永遠與加密的文件並存。|
+
+#### 內容取用
+當使用者想要取用受保護的文件時，RMS 用戶端會從要求 Azure RMS 服務的存取權著手：
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentconsumption2.png)|The service then extracts the AES content key from the decrypted policy. This key is then encrypted with the user’s public RSA key that was obtained with the request.<br /><br />The re-encrypted content key is then embedded into an encrypted use license with the list of user rights, which is then returned to the RMS client.|
+|![](../Image/AzRMS_documentconsumption1.png)|經過驗證的使用者會將文件原則和使用者的憑證傳送至 Azure RMS。 服務會解密和評估原則，以及建立使用者對此文件具備的權限清單 (如果有的話)。|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentconsumption3.png)|Finally, the RMS client takes the encrypted use license and decrypts it with its own user private key. This lets the RMS client decrypt the document’s body as it is needed and render it on the screen.<br /><br />The client also decrypts the rights list and passes them to the application, which enforces those rights in the application’s user interface.|
+|![](../Image/AzRMS_documentconsumption2.png)|服務會接著從解密的原則擷取 AES 內容金鑰。 然後，使用透過要求取得的使用者公開 RSA 金鑰來加密這個金鑰。<br /><br />重新加密的內容金鑰會接著與使用者權限清單一起內嵌到加密的使用授權中，然後傳回至 RMS 用戶端。|
 
-#### Variations
-The preceding walkthroughs cover the standard scenarios but there are some variations:
+|||
+|-|-|
+|![](../Image/AzRMS_documentconsumption3.png)|最後，RMS 用戶端會採用加密的使用授權，並使用自己的使用者私密金鑰加以解密。 這可讓 RMS 用戶端視需要將文件的本文解密並呈現在螢幕上。<br /><br />用戶端也會解密權限清單並將其傳遞至應用程式，以在應用程式的使用者介面中強制執行這些權限。|
 
--   **Mobile devices**: When mobile devices protect or consume files with Azure RMS, the process flows are much simpler. Mobile devices don’t first go through the user initialization process because instead, each transaction (to protect or consume content) is independent. As with Windows computers, mobile devices connect to the Azure RMS service and authenticate. To protect content, mobile devices submit a policy and Azure RMS sends them a publishing license and symmetric key to protect the document. To consume content, when mobile devices connect to the Azure RMS service and authenticate, they send the document policy to Azure RMS and request a use license to consume the document. In response, Azure RMS sends the necessary keys and restrictions to the mobile devices. Both processes use TLS to protect the key exchange and other communications.
+#### 變化
+先前的逐步解說內容涵蓋了標準案例，但另外有一些變化案例：
 
--   **RMS connector**: When Azure RMS is used with the RMS connector, the process flows remain the same. The only difference is that the connector acts as a relay between the on-premises services (such as Exchange Server and SharePoint Server) and Azure RMS. The connector itself does not perform any operations, such as the initialization of the user environment, or encryption or decryption. It simply relays the communication that would usually go to an AD RMS server, handling the translation between the protocols that are used on each side. This scenario lets you use Azure RMS with on-premises services.
+-   **行動裝置**：當行動裝置透過 Azure RMS 保護或取用檔案時，程序流程會簡單許多。 行動裝置不會先經過使用者初始化程序，因為每項交易 (用以保護或取用內容) 都是獨立的。 在 Windows 電腦中，行動裝置會連接至 Azure RMS 服務並進行驗證。 若要保護內容，行動裝置會提交一個原則，而 Azure RMS 會將用以保護文件的發行授權和對稱金鑰傳送給行動裝置。 若要取用內容，行動裝置在連接至 Azure RMS 服務並進行驗證時，會將此文件原則傳送至 Azure RMS 並要求用以取用文件的使用授權。 Azure RMS 會將必要的金鑰和限制傳送給行動裝置，作為回應。 這兩個程序都使用 TLS 來保護金鑰交換和其他通訊。
 
--   **Generic protection (.pfile)**: When Azure RMS generically protects a file, the flow is basically the same for content protection except that the RMS client creates a policy that grants all rights. When the file is consumed, it is decrypted before it is passed to the target application. This scenario lets you protect all files, even if they don’t natively support RMS.
+-   **RMS 連接器**：當 Azure RMS 搭配 RMS 連接器使用時，程序流程維持不變。 唯一的差別在於連接器會作為內部部署服務 (例如 Exchange Server 和 SharePoint Server) 與 Azure RMS 之間的轉送。 連接器本身不會執行任何作業，例如：初始化使用者環境，或是加密或解密。 它只會轉送通常會送至 AD RMS 伺服器的通訊，並處理每一端使用的通訊協定之間的轉譯。 這種情況下，您可搭配使用 Azure RMS 與內部部署服務。
 
--   **Protected PDF (.ppdf)**: When Azure RMS natively protects an Office file, it also creates a copy of that file and protects it in the same way. The only difference is that the file copy is in PPDF file format, which the RMS sharing application knows how to open for viewing only. This scenario lets you send protected attachments via email, knowing that the recipient on a mobile device will always be able to read them even if the mobile device doesn’t have an app that natively supports protected Office files.
+-   **一般保護 (.pfile)**：當 Azure RMS 保護檔案時，流程基本上與內容保護相同，只不過 RMS 用戶端會建立一個可授與所有權限的原則。 取用檔案時，檔案會先解密，再傳遞至目標應用程式。 即使檔案原本不支援 RMS，這麼做可讓您保護所有的檔案。
 
-## <a name="BKMK_NextSteps"></a>Next steps
-To learn more about Azure RMS, use the other topics in the [Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md) section, such as [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) to learn how your existing applications can integrate with Azure RMS to provide an information protection solution. Review [Terminology for Azure Rights Management](../Topic/Terminology_for_Azure_Rights_Management.md) so that you’re familiar with the terms that you might come across as you’re configuring and using Azure RMS, and be sure to also check [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) before you start your deployment. If you want to dive right in and try it out for yourself, use the [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md).
+-   **保護 PDF (.ppdf)**：當 Azure RMS 以原生方式保護 Office 檔案時，也會建立該檔案的複本並以同樣的方式予以保護。 唯一的差別在於檔案複本為 PPDF 檔案格式，而 RMS 共用應用程式知道如何開啟該種檔案格式僅供檢視。 這種情況下，您可透過電子郵件傳送受保護的附件，而且即使行動裝置沒有原本支援受保護 Office 檔案的應用程式，行動裝置上的收件者仍舊可以讀取附件。
 
-If you’re ready to start deploying Azure RMS for your organization, use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) for your deployment steps and links for how-to instructions.
+## <a name="BKMK_NextSteps"></a>後續步驟
+若要深入了解 Azure RMS，請使用＜[開始使用 Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)＞一節中的其他主題 (例如，[應用程式如何支援 Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md))，了解現有應用程式如何與 Azure RMS 整合，以提供資訊保護解決方案。 檢閱＜[Azure Rights Management 術語](../Topic/Terminology_for_Azure_Rights_Management.md)＞以熟悉設定和使用 Azure RMS 時可能會遇到的詞彙，並確定查看＜[Azure Rights Management 的需求](../Topic/Requirements_for_Azure_Rights_Management.md)＞之後再開始部署。 如果您想要直接開始並且自行嘗試，請使用 [Azure Rights Management 的快速入門教學指導](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md)。
+
+如果您已準備好開始為組織部署 Azure RMS，請使用 [Azure Rights Management 部署藍圖](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) 作為您的部署步驟和作法指示的連結。
 
 > [!TIP]
-> For additional information and help, use the resources and links in [Information and Support for Azure Rights Management](../Topic/Information_and_Support_for_Azure_Rights_Management.md).
+> 如需其他資訊與協助，請使用＜[Azure Rights Management 的資訊與支援](../Topic/Information_and_Support_for_Azure_Rights_Management.md)＞中的資源和連結。
 
-## See Also
-[Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
+## 請參閱
+[開始使用 Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

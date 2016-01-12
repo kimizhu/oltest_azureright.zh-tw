@@ -3,59 +3,58 @@ description: na
 keywords: na
 title: Configuring Super Users for Azure Rights Management and Discovery Services or Data Recovery
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: acb4c00b-d3a9-4d74-94fe-91eeb481f7e3
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Configuring Super Users for Azure Rights Management and Discovery Services or Data Recovery
-The super user feature of Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) ensures that authorized people and services can always read and inspect the data that Azure RMS protects for your organization. And if necessary, remove the protection or change the protection that was previously applied. A super user always has full owner rights for all use licenses that was granted by the organization’s RMS tenant. This ability is sometimes referred to as “reasoning over data” and is a crucial element in maintaining control of your organization’s data. For example, you would use this feature for any of the following scenarios:
+# 設定 Azure Rights Management 和探索服務或資料復原的進階使用者
+Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) 的進階使用者功能可確保獲得授權的人員和服務可以永遠讀取及檢查 Azure RMS 為貴組織保護的資料。 並且視需要移除保護或變更先前套用的保護。 進階使用者針對組織的 RMS 租用戶授與的所有使用授權，一律具有完整的擁有者權限。 這個功能有時又稱為「資料的推理」，是維護組織資料控制權的一個關鍵要素。 例如，您會對下列任何案例使用這項功能：
 
--   An employee leaves the organization and you need to read the files that they protected.
+-   員工離職而且您需要讀取他們保護的檔案。
 
--   An IT administrator needs to remove the current protection policy that was configured for files and apply a new protection policy.
+-   IT 系統管理員必須移除已針對檔案設定的目前保護原則，並且套用新的保護原則。
 
--   Exchange Server needs to index mailboxes for search operations.
+-   Exchange Server 需要針對搜尋作業為信箱編製索引。
 
--   You have existing IT services for data loss prevention (DLP) solutions, content encryption gateways (CEG), and anti-malware products that need to inspect files that are already protected.
+-   您對於需要檢查已受保護檔案的資料外洩防護 (DLP) 方案、內容加密閘道 (CEG) 和反惡意程式碼產品有現有 IT 服務。
 
--   You need to bulk decrypt files for auditing, legal, or other compliance reasons.
+-   您需要針對稽核、法律或其他法務遵循因素大量解密檔案。
 
-By default, the super user feature is not enabled, and no users are assigned this role. It is enabled for you automatically if you configure the Rights Management connector for Exchange, and it is not required for standard services that run Exchange Online, SharePoint Online, or SharePoint Server.
+根據預設，未啟用進階使用者功能，而且沒有任何使用者被指派這個角色。 如果您設定適用於 Exchange 的 Rights Management 連接器，且不是執行 Exchange Online、SharePoint Online 或 SharePoint Server 的標準服務必須的項目，則它會為您自動啟用。
 
-If you need to manually enable the super user feature, use the Windows PowerShell cmdlet [Enable-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629400.aspx), and then assign users (or service accounts) as needed by using the [Add-AadrmSuperUser](https://msdn.microsoft.com/library/azure/dn629411.aspx) cmdlet. You can have one or multiple super users for your organization, but you must add individual users; groups are not supported.
+如果您需要以手動方式啟用進階使用者功能，使用 Windows PowerShell Cmdlet [Enable-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629400.aspx)，然後視需要指派使用者 (或服務帳戶)，方法是使用 [Add-AadrmSuperUser](https://msdn.microsoft.com/library/azure/dn629411.aspx) Cmdlet。 您可以針對您的組織擁有一或多個進階使用者，但是您必須新增個別使用者；不支援群組。
 
 > [!NOTE]
-> If you have not yet installed the Windows PowerShell module for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)], see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+> 如果您有尚未安裝適用於 [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] 的 Windows PowerShell 模組，請參閱[針對 Azure Rights Management 安裝 Windows PowerShell](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md)。
 
-Security best practices for the super user feature:
+進階使用者功能的安全性最佳做法：
 
--   Restrict and monitor the administrators who are assigned a global administrator for your Office 365 or Azure RMS tenant, or who are  assigned the GlobalAdministrator role by using the [Add-AadrmRoleBasedAdministrator](https://msdn.microsoft.com/library/azure/dn629417.aspx) cmdlet. These users can enable the super user feature and assign users (and themselves) as super users, and potentially decrypt all files that your organization protects.
+-   限制和監視被指派 Office 365 或 Azure RMS 租用戶的全域系統管理員的系統管理員，或被指派 GlobalAdministrator 角色的使用者，方法是使用 [Add-AadrmRoleBasedAdministrator](https://msdn.microsoft.com/library/azure/dn629417.aspx) Cmdlet。 這些使用者可以啟用進階使用者功能並且指派使用者 (和本身) 為進階使用者，以及潛在解密您的組織保護的所有檔案。
 
--   To see which users and service accounts are assigned as super users, use the [Get-AadrmSuperUser cmdlet](https://msdn.microsoft.com/library/azure/dn629408.aspx).  Like all administration actions, enabling or disabling the super feature, and adding or removing super users are logged and can be audited by using the [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) command. When super users decrypt files, this action is logged and can be audited with [usage logging](https://technet.microsoft.com/library/dn529121.aspx).
+-   若要查看哪些使用者和服務帳戶已被指派為進階使用者，使用 [Get-AadrmSuperUser Cmdlet](https://msdn.microsoft.com/library/azure/dn629408.aspx)。  像所有系統管理動作一樣，啟用或停用進階功能，以及新增或移除進階使用者可以使用 [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) 命令進行記錄和稽核。 當進階使用者解密檔案時，這個動作可以使用[流量記錄](https://technet.microsoft.com/library/dn529121.aspx)進行記錄和稽核。
 
--   If you do not need the super user feature for everyday services, enable the feature only when you need it, and disable it again by using the [Disable-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629428.aspx) cmdlet.
+-   如果您對於日常服務不需要進階使用者功能，則只有在需要時啟用此功能，並且使用 [Disable-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629428.aspx) Cmdlet 再次停用它。
 
-The following log extract shows some example entries from using the Get-AadrmAdminLog cmdlet . In this example, the administrator for Contoso Ltd confirms that the super user feature is disabled, adds Richard Simone as a super user, checks that Richard is the only super user configured for Azure RMS, and then enables the super user feature so that Richard can now decrypt some files that were protected by an employee who has now left the company.
+下列記錄擷取顯示使用 Get-AadrmAdminLog Cmdlet 的一些範例項目。 在此範例中，Contoso Ltd 的系統管理員確認進階使用者功能已停用，新增 Richard Simone 做為進階使用者，檢查 Richard 是針對 Azure RMS 設定的唯一進階使用者，然後啟用進階使用者功能，讓 Richard 現在可以解密現在已離職之員工所保護的某些檔案。
 
 `2015-08-01T18:58:20	admin@contoso.com	GetSuperUserFeatureState	Passed	Disabled`
 `2015-08-01T18:59:44	admin@contoso.com	AddSuperUser -id rsimone@contoso.com	Passed	True`
 `2015-08-01T19:00:51	admin@contoso.com	GetSuperUser	Passed	rsimone@contoso.com`
 `2015-08-01T19:01:45	admin@contoso.com	SetSuperUserFeatureState -state Enabled	Passed	True`
 
-## <a name="BKMK_RMSProtectionModule"></a>Scripting options for super users
-Often, somebody who is assigned a super user for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] will need to remove protection from multiple files, in multiple locations. While it’s possible to do this manually, it’s more efficient (and often more reliable) to script this. To do so, [download the RMS Protection Tool](http://www.microsoft.com/en-us/download/details.aspx?id=47256). Then, use the  [Unprotect-RMSFile](https://msdn.microsoft.com/library/azure/mt433200.aspx) cmdlet, and [Protect-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx)   cmdlet as required.
+## <a name="BKMK_RMSProtectionModule"></a>適用於進階使用者的指令碼選項
+通常，指派為 [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] 之進階使用者的人必須從多個位置中的多個檔案移除保護。 雖然可以手動執行這項操作，但是使用指令碼會更有效率 (且通常更可靠)。 若要這樣做，請[下載 RMS 保護工具](http://www.microsoft.com/en-us/download/details.aspx?id=47256)。 然後，視需要使用 [Unprotect-RMSFile](https://msdn.microsoft.com/library/azure/mt433200.aspx) Cmdlet 和 [Protect-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx) Cmdlet。
 
 > [!IMPORTANT]
-> Although the RMS Protection tool is designed for super users to bulk unprotect files for recovery purposes, the current version of the tool does not support user authentication for Azure RMS. Until this limitation is resolved, you must use a service principal account to authenticate with Azure RMS before you can remove protection from files.  For more information and instructions, see [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/azure/mt433202.aspx).
+> 雖然 RMS 保護工具是針對進階使用者為了復原而大量取消保護檔案的目的而設計，此工具的目前版本不支援 Azure RMS 的使用者驗證。 解決這項限制之後，您必須使用服務主體帳戶向 Azure RMS 進行驗證，才能從檔案移除保護。  如需詳細資訊和指示，請參閱 [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/azure/mt433202.aspx)。
 
-For more information about these cmdlets, see [RMS Protection Cmdlets](https://msdn.microsoft.com/library/azure/mt433195.aspx).
+如需有關這些 Cmdlet 的詳細資訊，請參閱 [RMS 保護 Cmdlet](https://msdn.microsoft.com/library/azure/mt433195.aspx)。
 
 > [!NOTE]
-> The RMSProtection Windows PowerShell module that ships with the RMS Protection Tool is different from and supplements the main [Windows PowerShell module for Azure Rights Management](https://technet.microsoft.com/library/jj585027.aspx). It supports both Azure RMS and AD RMS.
+> RMS 保護工具隨附的 RMSProtection Windows PowerShell 模組不同於主要 [Azure Rights Management 的 Windows PowerShell 模組](https://technet.microsoft.com/library/jj585027.aspx)的補充。 它同時支援 Azure RMS 與 AD RMS。
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## 請參閱
+[設定 Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 
